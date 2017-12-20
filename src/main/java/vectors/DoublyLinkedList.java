@@ -1,0 +1,787 @@
+package vectors;
+
+import java.util.Iterator;
+import java.util.StringJoiner;
+import java.util.NoSuchElementException;
+
+/**
+ * Basic implementation of Doubly Linked List
+ *
+ * Time Complexity:
+ * Time will be measured in
+ * either direct and indirect recursive
+ * method calls or loop iterations (where applicable).
+ *
+ * create() = O(n)<br>
+ * insert() = O(n)<br>
+ * search() = O(n)<br>
+ * remove() = O(n)<br>
+ *
+ * Space complexity:
+ * Space will be measured in
+ * number of auxiliary nodes or variables
+ * that are allocated within
+ * a given method. Values passed as parameters
+ * that are on the call stack are not included.
+ *
+ * @author Jabari Dash
+ * @param <T> Generic type
+ */
+public class DoublyLinkedList<T> implements Iterable<T> {
+
+  private Node<T> head;   // Pointer to the front of the list
+  private int length;     // Number of elements in the list
+
+  /**
+   * Constructs empty list
+   *
+   * <br>
+   * <br>
+   * <strong>Time Complexity:</strong><br>
+   * <strong>Avg: </strong>&Theta;(1)<br>
+   *
+   * <br>
+   * <strong>Space Complexity:</strong><br>
+   * <strong>Avg: </strong>&Theta;(1)<br>
+   */
+  public DoublyLinkedList() {
+    this.init();
+  }
+
+//------------------------------------------------------------------------------
+
+  /**
+   * Constructs DoublyLinkedList of specified length where
+   * all nodes have a specified default value
+   *
+   * <br>
+   * <br>
+   * <strong>Time Complexity:</strong><br>
+   * <strong>Avg: </strong>&Theta;(1)<br>
+   *
+   * <br>
+   * <strong>Space Complexity:</strong><br>
+   * <strong>Avg: </strong>&Theta;(1)<br>
+   *
+   * @param length Specified length of list
+   * @param value Specified default value
+   */
+  public DoublyLinkedList(int length, T value) {
+    this.init();
+
+    if (length < 0) {
+      throw new IndexOutOfBoundsException("Length must be at least 0");
+    }
+
+    // Insert the default value n (length) times into the list
+    for (int i = 0; i < length; i++) {
+      this.insert(value);
+    }
+  }
+
+//------------------------------------------------------------------------------
+
+  /**
+   * Constructs DoubleLinkedList from array of values
+   *
+   * <br>
+   * <br>
+   * <strong>Time Complexity:</strong><br>
+   * <strong>Avg: </strong>&Theta;(1)<br>
+   *
+   * <br>
+   * <strong>Space Complexity:</strong><br>
+   * <strong>Avg: </strong>&Theta;(1)<br>
+   *
+   * @param values Array of values to construct the list from
+   */
+  public DoublyLinkedList(T[] values) {
+    this.init();
+
+    // Insert all values from values array into list
+    for (int i = 0; i < values.length; i++) {
+      this.insert(values[i]);
+    }
+  }
+
+//------------------------------------------------------------------------------
+
+  /**
+   * Throws an Exception if a specified index is out of bounds
+   *
+   * @param index Specified index
+   */
+  private void checkIndex(int index) {
+
+    // Throw an Exception if the index is out of bounds
+    if (!this.indexInBounds(index)) {
+      throw new IndexOutOfBoundsException("size: " + this.length() + " index: " + index);
+    }
+  }
+
+//------------------------------------------------------------------------------
+
+  /**
+   * Determines whether or not a specified value is in the list
+   *
+   * <br>
+   * <br>
+   * <strong>Time Complexity:</strong><br>
+   * <strong>Best: </strong>&Omega;(1)<br>
+   * <strong>Worst: </strong>O(n)<br>
+   *
+   * <br>
+   * <strong>Space Complexity:</strong><br>
+   * <strong>Avg: </strong>&Theta;(1)<br>
+   *
+   * @param value Specified value to search for
+   * @return True if and only if the specified value if in the list
+   */
+  public boolean contains(T value) {
+
+    // Iterate over the list
+    for (T v : this) {
+
+      // Return true if we find a match
+      if (v == value) {
+        return true;
+      }
+    }
+
+    // Otherwise, by default return false
+    return false;
+  }
+
+//------------------------------------------------------------------------------
+
+  /**
+   *  Decrements the length of the list
+   */
+  private void decrementLength() {
+    this.length--;
+  }
+
+//------------------------------------------------------------------------------
+
+  /**
+   * Returns the value at a specified index in the list
+   *
+   * <br>
+   * <br>
+   * <strong>Time Complexity:</strong><br>
+   * <strong>Best: </strong>&Omega;(1)<br>
+   * <strong>Worst: </strong>O(n)<br>
+   *
+   * <br>
+   * <strong>Space Complexity:</strong><br>
+   * <strong>Avg: </strong>&Theta;(1)<br>
+   *
+   * @param index The specified to retrieve the value from
+   * @return The value of the node at the specified index
+   */
+  public T get(int index) {
+    return this.getNode(index).value();
+  }
+
+//------------------------------------------------------------------------------
+
+  /**
+   * Returns the node at a specified index in the list
+   *
+   * <br>
+   * <br>
+   * <strong>Time Complexity:</strong><br>
+   * <strong>Best: </strong>&Omega;(1)<br>
+   * <strong>Worst: </strong>O(n)<br>
+   *
+   * <br>
+   * <strong>Space Complexity:</strong><br>
+   * <strong>Avg: </strong>&Theta;(1)<br>
+   *
+   * @param index The specified to retrieve the node from
+   * @return Node at specified index
+   */
+  private Node<T> getNode(int index) {
+    Node<T> node;
+
+    // Check that the specified index is a
+    // valid index (Non-negative, and less than
+    // the length of the list)
+    this.checkIndex(index);
+
+    // Get the head node,
+    // and start indexing from 0
+    node = this.head;
+
+    // index up until the
+    // specified index (inclusive)
+    for (int i = 0; i < index; i++) {
+      node = node.next();
+    }
+
+    // If we got to the ith node
+    // and it is null, then the
+    // index is not valid
+    // TODO - this should never happen!
+    if (node == null) {
+      throw new RuntimeException("There was an error, wtf");
+    }
+
+    // Otherwise, return the ith node
+    return node;
+  }
+
+//------------------------------------------------------------------------------
+
+  /**
+   *  Increments the length of the list
+   */
+  private void incrementLength() {
+    this.length++;
+  }
+
+//------------------------------------------------------------------------------
+
+  /**
+   * Determines whether or not a specified index is within the bounds of the list
+   *
+   * @param index Specified index
+   * @return True if and only if the index is less then the length of the list, and positive
+   */
+  private boolean indexInBounds(int index) {
+    return index < 0 || index >= this.length() ? false : true;
+  }
+
+//------------------------------------------------------------------------------
+
+  /**
+   * Initialized the list as an empty list
+   */
+  private void init() {
+    this.head = null;
+    this.length = 0;
+  }
+
+//------------------------------------------------------------------------------
+
+  /**
+   * Append a specified value  to the back of the list
+   *
+   * <br>
+   * <br>
+   * <strong>Time Complexity:</strong><br>
+   * <strong>Best: </strong>&Omega;(1)<br>
+   * <strong>Worst: </strong>O(n)<br>
+   *
+   * <br>
+   * <strong>Space Complexity:</strong><br>
+   * <strong>Avg: </strong>&Theta;(1)<br>
+   *
+   * @param value Specified value to be inserted into the list
+   */
+  public void insert(T value) {
+
+    // If the list is empty, insert in the front
+    if (this.empty()) {
+      this.insertFirst(value);
+
+      // Otherwise insert in the back
+    } else {
+      this.insertLast(value);
+    }
+  }
+
+//------------------------------------------------------------------------------
+
+  /**
+   * Inserts a specified value at the front of the list
+   *
+   * <br>
+   * <br>
+   * <strong>Time Complexity:</strong><br>
+   * <strong>Avg: </strong>&Theta;(1)<br>
+   *
+   * <br>
+   * <strong>Space Complexity:</strong><br>
+   * <strong>Avg: </strong>&Theta;(1)<br>
+   *
+   * @param value The specified value to be inserted
+   */
+  public void insertFirst(T value) {
+    this.insert(value, 0);
+  }
+
+//------------------------------------------------------------------------------
+
+  /**
+   * Inserts a specified value at the back of the list
+   *
+   * <br>
+   * <br>
+   * <strong>Time Complexity:</strong><br>
+   * <strong>Best: </strong>&Omega;(1)<br>
+   * <strong>Worst: </strong>O(n)<br>
+   *
+   * <br>
+   * <strong>Space Complexity:</strong><br>
+   * <strong>Avg: </strong>&Theta;(1)<br>
+   *
+   * @param value The specified value to be inserted
+   */
+  public void insertLast(T value) {
+
+    // If the list is empty, insert in the front
+    if (this.empty()) {
+      this.insertFirst(value);
+
+      // Otherwise insert in the back using the head's
+      // insert method
+    } else {
+
+      // TODO - abstract this to insert(int, int)
+      // TODO - only want 1 method incrementing the length
+      this.head.insert(value);
+      this.incrementLength();
+    }
+  }
+
+//------------------------------------------------------------------------------
+
+  /**
+   * Insert specified value at specified index in list
+   *
+   * <br>
+   * <br>
+   * <strong>Time Complexity:</strong><br>
+   * <strong>Best: </strong>&Omega;(1)<br>
+   * <strong>Worst: </strong>O(n)<br>
+   *
+   * <br>
+   * <strong>Space Complexity:</strong><br>
+   * <strong>Avg: </strong>&Theta;(1)<br>
+   *
+   * @param value Specified value to be inserted into the list
+   * @param index Specified index
+   */
+  public void insert(T value, int index) {
+    Node<T> node;
+    Node<T> newNode;
+
+    // If the list is empty
+    if (this.empty()) {
+      head = new Node<T>(value, null, null);
+    }
+
+    // Otherwise if its not empty, but we want to
+    // insert at the front of the list
+    else if (index == 0) {
+      newNode = new Node(value, null, head);
+
+      head.prev(newNode);
+      head = newNode;
+    }
+
+    // If the index is somewhere in the middle
+    else {
+
+      // Find the ith node, and put
+      // a node right in front of it
+      node = this.getNode(index);                       // Get the ith node
+      newNode = new Node<T>(value, node.prev, node);    // Create a new node, setting its previous to the ith node's prev, and ith node as its next
+      node.prev.next(newNode);                          // Set the i-1th node's next to the new node
+      node.prev(newNode);                               // Set the old ith node's previous to the new node
+    }
+
+    this.incrementLength();
+
+  }
+
+//------------------------------------------------------------------------------
+
+  /**
+   * Returns an iterator so the list can be iterated on with the enhanced for loop
+   *
+   * @return Iterator for iterating over the list
+   */
+  public Iterator<T> iterator() {
+    return new DoublyLinkedListIterator<T>(this);
+  }
+
+//------------------------------------------------------------------------------
+
+  /**
+   * Determines whether or not the list is empty
+   *
+   * @return True if and only if there are no elements in the list, otherwise false
+   */
+  public boolean empty() {
+    if (this.length == 0 && this.head == null) {
+      return true;
+    }
+
+    // Not a valid state
+    if (this.length != 0 && this.head == null) {
+      throw new IllegalStateException("");
+    }
+
+    // Not a valid state
+    if (this.length == 0 && this.head != null) {
+      throw new IllegalStateException("");
+    }
+
+    return false;
+  }
+
+//------------------------------------------------------------------------------
+
+  /**
+   * Returns the number of elements in the list
+   *
+   * @return The length of the list
+   */
+  public int length() {
+    return this.length;
+  }
+
+//------------------------------------------------------------------------------
+
+  /**
+   * Removes a node at a specified index from the list
+   *
+   * <br>
+   * <br>
+   * <strong>Time Complexity:</strong><br>
+   * <strong>Best: </strong>&Omega;(1)<br>
+   * <strong>Worst: </strong>O(n)<br>
+   *
+   * <br>
+   * <strong>Space Complexity:</strong><br>
+   * <strong>Avg: </strong>&Theta;(1)<br>
+   *
+   * @param index Index of specified node to remove
+   */
+  public void remove(int index) {
+    this.checkIndex(index);
+
+    if (this.length() == 1) {
+      head = null;
+    }
+
+    // If we are removing from the front of the list
+    else if (index == 0) {
+
+      head = head.next();
+
+    } else {
+
+      // Get the ith node
+      Node<T> node = this.getNode(index);
+
+      // Set the node at i-1's next to node at i+1
+      // Essentially skipping over the node at i
+      node.prev().next(node.next());
+
+      // If node at i is not the end node
+      // link the following nodes in the chain
+      if (node.next() != null) {
+
+        // Set i+1's previous to i's previous, again
+        // skipping right over the node at i itself
+        node.next().prev(node.prev());
+      }
+
+    }
+
+    // After removing a node,
+    // decrement length of list
+    this.decrementLength();
+  }
+
+//------------------------------------------------------------------------------
+
+  /**
+   * Removes the last value in the list
+   *
+   * <br>
+   * <br>
+   * <strong>Time Complexity:</strong><br>
+   * <strong>Best: </strong>&Omega;(1)<br>
+   * <strong>Worst: </strong>O(n)<br>
+   *
+   * <br>
+   * <strong>Space Complexity:</strong><br>
+   * <strong>Avg: </strong>&Theta;(1)<br>
+   */
+  public void remove() {
+    this.remove(this.length()-1);
+  }
+
+//------------------------------------------------------------------------------
+
+  /**
+   * Removes the first value in the list
+   *
+   * <br>
+   * <br>
+   * <strong>Time Complexity:</strong><br>
+   * <strong>Avg: </strong>&Theta;(1)<br>
+   *
+   * <br>
+   * <strong>Space Complexity:</strong><br>
+   * <strong>Avg: </strong>&Theta;(1)<br>
+   */
+  public void removeFirst() {
+    this.remove(0);
+  }
+
+//------------------------------------------------------------------------------
+
+  /**
+   * Removes the last value in the list
+   *
+   * <br>
+   * <br>
+   * <strong>Time Complexity:</strong><br>
+   * <strong>Best: </strong>&Omega;(1)<br>
+   * <strong>Worst: </strong>O(n)<br>
+   *
+   * <br>
+   * <strong>Space Complexity:</strong><br>
+   * <strong>Avg: </strong>&Theta;(1)<br>
+   */
+  public void removeLast() {
+    this.remove();
+  }
+
+//------------------------------------------------------------------------------
+
+  /**
+   * Returns a String representation of the list
+   * @return String version of the list
+   */
+  @Override
+  public String toString() {
+    StringJoiner stringJoiner = new StringJoiner(", ");
+    Node<T> node = head;
+
+    // Iterate over list, appending
+    // values with StringJoiner
+    for (T value : this) {
+
+      // Check for null values
+      if (value == null) {
+        stringJoiner.add("null");
+
+      } else {
+        stringJoiner.add(value.toString());
+      }
+    }
+
+    return stringJoiner.toString();
+  }
+
+// NODE CLASS
+//==============================================================================
+
+  /**
+   * Node class for chaining together values in a DoublyLinkedList
+   */
+  private static class Node<T> {
+    private T value;        // Value of node
+    private Node<T> prev;   // Pointer to previous node in chain
+    private Node<T> next;   // Pointer to next node in chain
+
+  //------------------------------------------------------------------------------
+
+  /**
+   * Constructs a new node without a specified value, and pointers to its
+   * previous and its next nodes
+   *
+   * @param prev Pointer to the node that comes before this node in the chain
+   * @param next Pointer to the node that comes after this node in the chain
+   */
+  public Node(Node<T> prev, Node<T> next) {
+    this.value = null;
+    this.prev = prev;
+    this.next = next;
+  }
+
+//------------------------------------------------------------------------------
+
+    /**
+     * Constructs a new node with a specified value, and pointers to its
+     * previous and its next nodes
+     *
+     * @param value The specified value of teh node
+     * @param prev Pointer to the node that comes before this node in the chain
+     * @param next Pointer to the node that comes after this node in the chain
+     */
+    public Node(T value, Node<T> prev, Node<T> next) {
+      this.value = value;
+      this.prev = prev;
+      this.next = next;
+    }
+
+//------------------------------------------------------------------------------
+
+    /**
+     * Inserts a data value into the chained nodes
+     *
+     * @param value Specified value to be inserted into the chain
+     */
+    public void insert(T value) {
+
+      // If the following node is empty
+      // we have reached the end of the list
+      if (this.next == null) {
+        this.next = new Node<T>(value, this, null);
+
+        // Otherwise, we must recurse to the end
+      } else {
+        this.next.insert(value);
+      }
+    }
+
+//------------------------------------------------------------------------------
+
+    /**
+     * Returns the pointer to the next node that follows this node
+     *
+     * @return Pointer to the following node
+     */
+    public Node<T> next() {
+      return this.next;
+    }
+
+//------------------------------------------------------------------------------
+
+    /**
+     * Sets the pointer to the next node
+     *
+     * @param next Designated node to be the next of this node
+     */
+    public void next(Node<T> next) {
+      this.next = next;
+    }
+
+//------------------------------------------------------------------------------
+
+    /**
+     * Returns the pointer to the previous node that precedes this node
+     *
+     * @return Pointer to the previous node
+     */
+    public Node<T> prev() {
+      return this.prev;
+    }
+
+//------------------------------------------------------------------------------
+
+    /**
+     * Sets the pointer to the prev node
+     *
+     * @param prev Designated node to be the prev of this node
+     */
+    public void prev(Node<T> prev) {
+      this.prev = prev;
+    }
+
+//------------------------------------------------------------------------------
+
+    /**
+     * Returns a String representation of the node
+     *
+     * @return The string version of the value of the node
+     */
+    @Override
+    public String toString() {
+
+      if (this.value == null) {
+        return "null";
+
+      } else {
+        return this.value.toString();
+      }
+    }
+
+//------------------------------------------------------------------------------
+
+    /**
+     * Returns the value of a node
+     *
+     * @return The value of the node
+     */
+    public T value() {
+      return this.value;
+    }
+
+//------------------------------------------------------------------------------
+
+    /**
+     * Sets the value of a node
+     *
+     * @param value The new value of the node
+     */
+    public void value(T value) {
+      this.value = value;
+    }
+
+  }
+
+// ITERATOR CLASS
+//==============================================================================
+
+  /**
+   * Static Iterator class so that the DoublyLinkedList can be iterated on via
+   * the enhance for loop
+   *
+   * @param <T> Generic type
+   */
+  private static class DoublyLinkedListIterator<T> implements Iterator<T> {
+    private DoublyLinkedList<T> list;   // List to iterate over
+    private int cursor;                 // Cursor to keep track of position in iteration
+
+    /**
+     * Constructor, initialize cursor to index 0, and the list
+     * variable equal to the passed in list
+     *
+     * @param list The list to be iterated on
+     */
+    public DoublyLinkedListIterator(DoublyLinkedList<T> list) {
+      this.list = list;
+      this.cursor = 0;
+    }
+
+//------------------------------------------------------------------------------
+
+    /**
+     * Determines whether or not the iterator still has values left
+     *
+     * @return True if and only if the cursor has not reached the end of the list
+     */
+    public boolean hasNext() {
+      return this.cursor < this.list.length();
+    }
+
+//------------------------------------------------------------------------------
+
+    /**
+     * Returns the next value in iteration
+     *
+     * @return The next value in the iteration
+     */
+    public T next() {
+
+      // If there are no more values left, throw an Exception
+      if (!hasNext()) {
+        throw new NoSuchElementException("No element");
+      }
+
+      int current = this.cursor;    // Store the current cursor value
+      this.cursor++;                // Increment the cursor
+      return list.get(current);     // Return the value at index cursor (before it was incremented)
+    }
+
+  }
+
+}
