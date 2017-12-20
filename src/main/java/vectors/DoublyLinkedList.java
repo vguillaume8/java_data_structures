@@ -316,6 +316,8 @@ public class DoublyLinkedList<T> implements Iterable<T> {
   /**
    * Inserts a specified value at the back of the list
    *
+   * TODO - Turn this into constant time by keeping track of the tail
+   *
    * <br>
    * <br>
    * <strong>Time Complexity:</strong><br>
@@ -459,23 +461,29 @@ public class DoublyLinkedList<T> implements Iterable<T> {
    * <strong>Avg: </strong>&Theta;(1)<br>
    *
    * @param index Index of specified node to remove
+   * @return Value of node at specified index
    */
-  public void remove(int index) {
+  public T remove(int index) {
     this.checkIndex(index);
 
+    T value;
+
     if (this.length() == 1) {
+      value = head.value();
       head = null;
     }
 
     // If we are removing from the front of the list
     else if (index == 0) {
 
+      value = head.value();
       head = head.next();
 
     } else {
 
-      // Get the ith node
+      // Get the ith node and its value
       Node<T> node = this.getNode(index);
+      value = node.value();
 
       // Set the node at i-1's next to node at i+1
       // Essentially skipping over the node at i
@@ -495,6 +503,8 @@ public class DoublyLinkedList<T> implements Iterable<T> {
     // After removing a node,
     // decrement length of list
     this.decrementLength();
+
+    return value;
   }
 
 //------------------------------------------------------------------------------
@@ -511,9 +521,10 @@ public class DoublyLinkedList<T> implements Iterable<T> {
    * <br>
    * <strong>Space Complexity:</strong><br>
    * <strong>Avg: </strong>&Theta;(1)<br>
+   * @return Value of node at specified index
    */
-  public void remove() {
-    this.remove(this.length()-1);
+  public T remove() {
+    return this.remove(this.length()-1);
   }
 
 //------------------------------------------------------------------------------
@@ -529,9 +540,10 @@ public class DoublyLinkedList<T> implements Iterable<T> {
    * <br>
    * <strong>Space Complexity:</strong><br>
    * <strong>Avg: </strong>&Theta;(1)<br>
+   * @return Value of node at specified index
    */
-  public void removeFirst() {
-    this.remove(0);
+  public T removeFirst() {
+    return this.remove(0);
   }
 
 //------------------------------------------------------------------------------
@@ -548,9 +560,10 @@ public class DoublyLinkedList<T> implements Iterable<T> {
    * <br>
    * <strong>Space Complexity:</strong><br>
    * <strong>Avg: </strong>&Theta;(1)<br>
+   * @return Value of node at specified index
    */
-  public void removeLast() {
-    this.remove();
+  public T removeLast() {
+    return this.remove();
   }
 
 //------------------------------------------------------------------------------

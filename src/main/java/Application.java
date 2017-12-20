@@ -1,24 +1,19 @@
-import vectors.DoublyLinkedList;
+import vectors.Stack;
 
 public class Application {
 
   public static void main(String[] args) {
-    DoublyLinkedList<Object> list;
-    Integer[] array = {0, 1, 2, 4, 5};
 
-    list = new DoublyLinkedList<Object>(array);
+    Integer[] array = {1, 2, 3};
+    Stack<Integer> stack = new Stack<Integer>(array);
 
-    while (list.length() > 0) {
-      list.remove();
-    }
+    System.out.println(stack.size());
 
-  display(list);
+    stack.pop();
+    stack.pop();
 
-  System.out.println(list.empty());
+    System.out.println(stack.top());
 
   }
 
-  public static void display(DoublyLinkedList<Object> list) {
-    System.out.format("size: %d\nlist: %s\n", list.length(), list.toString());
-  }
 }

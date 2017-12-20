@@ -1,6 +1,5 @@
 import spock.lang.Unroll
 import spock.lang.Specification
-
 import vectors.DoublyLinkedList
 
 class DoublyLinkedListSpec extends Specification {
@@ -273,17 +272,18 @@ class DoublyLinkedListSpec extends Specification {
     DoublyLinkedList list = new DoublyLinkedList(values)
 
     when:
-    list.remove(index)
+    def r = list.remove(index)
 
     then:
     list.contains(check) == false
     list.length() == length - 1
+    r == removed
 
     where:
-    values                 | index | check  | length
-    [1, 2, 3] as Integer[] | 0     | 1      | 3
-    [1, 2, 3] as Integer[] | 1     | 2      | 3
-    [1] as Integer[]       | 0     | 1      | 1
+    values                 | index | check  | length | removed
+    [1, 2, 3] as Integer[] | 0     | 1      | 3      | 1
+    [1, 2, 3] as Integer[] | 1     | 2      | 3      | 2
+    [1] as Integer[]       | 0     | 1      | 1      | 1
   }
 
   @Unroll
