@@ -9,7 +9,18 @@ mainClassName = "Application"
 
 jar {
   baseName = 'java_data_structures'
-  version = '0.0.1'
+//  version = '0.0.1'
+
+
+  manifest {
+    attributes 'Implementation-Title' : baseName,
+//            'Implementation-Version' : version,
+            'Main-Class' : 'Application'
+  }
+}
+
+task publish(type: Exec) {
+  commandLine './publish/publish_artifact.sh'
 }
 
 repositories {
@@ -32,3 +43,4 @@ javadoc {
   source = sourceSets.main.allJava
   classpath = configurations.compile
 }
+

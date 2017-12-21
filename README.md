@@ -1,5 +1,7 @@
 # Java Data Structures
 
+[![Build Status](https://travis-ci.org/N02870941/java_data_structures.svg?branch=vectors)](https://travis-ci.org/N02870941/java_data_structures)
+
 This is a small Java library that consists of common data structures that are
 seen in introductory level to intermediate programming courses. This library is
 for the purpose of educational and practicing purposes - not for production.
