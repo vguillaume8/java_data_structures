@@ -1,6 +1,8 @@
+package structures.vectors
+
 import spock.lang.Unroll
 import spock.lang.Specification
-import vectors.Stack
+import structures.vectors.Stack
 
 class StackSpec extends Specification {
 

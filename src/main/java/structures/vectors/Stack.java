@@ -1,4 +1,4 @@
-package vectors;
+package structures.vectors;
 
 import java.util.EmptyStackException;
 

@@ -1,18 +1,16 @@
-import vectors.Stack;
+import structures.vectors.DoublyLinkedList;
+import structures.vectors.LinkedList;
 
 public class Application {
 
   public static void main(String[] args) {
 
     Integer[] array = {1, 2, 3};
-    Stack<Integer> stack = new Stack<Integer>(array);
+    LinkedList<Integer> list = new DoublyLinkedList<Integer>(array);
 
-    System.out.println(stack.size());
-
-    stack.pop();
-    stack.pop();
-
-    System.out.println(stack.top());
+    for (Integer i : list) {
+      System.out.println(i);
+    }
 
   }
 

@@ -1,6 +1,8 @@
+package structures.vectors
+
 import spock.lang.Unroll
 import spock.lang.Specification
-import vectors.DoublyLinkedList
+import structures.vectors.DoublyLinkedList
 
 class DoublyLinkedListSpec extends Specification {
 

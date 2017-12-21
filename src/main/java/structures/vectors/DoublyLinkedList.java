@@ -1,8 +1,7 @@
-package vectors;
+package structures.vectors;
 
-import java.util.Iterator;
 import java.util.StringJoiner;
-import java.util.NoSuchElementException;
+import structures.auxiliary.DoublyLinkedListNode;
 
 /**
  * Basic implementation of Doubly Linked List
@@ -27,10 +26,9 @@ import java.util.NoSuchElementException;
  * @author Jabari Dash
  * @param <T> Generic type
  */
-public class DoublyLinkedList<T> implements Iterable<T> {
+public class DoublyLinkedList<T> extends LinkedList<T> {
 
-  private Node<T> head;   // Pointer to the front of the list
-  private int length;     // Number of elements in the list
+  private DoublyLinkedListNode<T> head;   // Pointer to the front of the list
 
   /**
    * Constructs empty list
@@ -45,7 +43,11 @@ public class DoublyLinkedList<T> implements Iterable<T> {
    * <strong>Avg: </strong>&Theta;(1)<br>
    */
   public DoublyLinkedList() {
-    this.init();
+    super.init();
+  }
+
+  protected void nullHead() {
+    this.head = null;
   }
 
 //------------------------------------------------------------------------------
@@ -67,16 +69,13 @@ public class DoublyLinkedList<T> implements Iterable<T> {
    * @param value Specified default value
    */
   public DoublyLinkedList(int length, T value) {
-    this.init();
 
     if (length < 0) {
       throw new IndexOutOfBoundsException("Length must be at least 0");
     }
 
     // Insert the default value n (length) times into the list
-    for (int i = 0; i < length; i++) {
-      this.insert(value);
-    }
+    super.init(length, value);
   }
 
 //------------------------------------------------------------------------------
@@ -96,70 +95,9 @@ public class DoublyLinkedList<T> implements Iterable<T> {
    * @param values Array of values to construct the list from
    */
   public DoublyLinkedList(T[] values) {
-    this.init();
-
-    // Insert all values from values array into list
-    for (int i = 0; i < values.length; i++) {
-      this.insert(values[i]);
-    }
+    super.init(values);
   }
 
-//------------------------------------------------------------------------------
-
-  /**
-   * Throws an Exception if a specified index is out of bounds
-   *
-   * @param index Specified index
-   */
-  private void checkIndex(int index) {
-
-    // Throw an Exception if the index is out of bounds
-    if (!this.indexInBounds(index)) {
-      throw new IndexOutOfBoundsException("size: " + this.length() + " index: " + index);
-    }
-  }
-
-//------------------------------------------------------------------------------
-
-  /**
-   * Determines whether or not a specified value is in the list
-   *
-   * <br>
-   * <br>
-   * <strong>Time Complexity:</strong><br>
-   * <strong>Best: </strong>&Omega;(1)<br>
-   * <strong>Worst: </strong>O(n)<br>
-   *
-   * <br>
-   * <strong>Space Complexity:</strong><br>
-   * <strong>Avg: </strong>&Theta;(1)<br>
-   *
-   * @param value Specified value to search for
-   * @return True if and only if the specified value if in the list
-   */
-  public boolean contains(T value) {
-
-    // Iterate over the list
-    for (T v : this) {
-
-      // Return true if we find a match
-      if (v == value) {
-        return true;
-      }
-    }
-
-    // Otherwise, by default return false
-    return false;
-  }
-
-//------------------------------------------------------------------------------
-
-  /**
-   *  Decrements the length of the list
-   */
-  private void decrementLength() {
-    this.length--;
-  }
 
 //------------------------------------------------------------------------------
 
@@ -199,10 +137,10 @@ public class DoublyLinkedList<T> implements Iterable<T> {
    * <strong>Avg: </strong>&Theta;(1)<br>
    *
    * @param index The specified to retrieve the node from
-   * @return Node at specified index
+   * @return SinglyLinkedListNode at specified index
    */
-  private Node<T> getNode(int index) {
-    Node<T> node;
+  protected DoublyLinkedListNode<T> getNode(int index) {
+    DoublyLinkedListNode<T> node;
 
     // Check that the specified index is a
     // valid index (Non-negative, and less than
@@ -229,37 +167,6 @@ public class DoublyLinkedList<T> implements Iterable<T> {
 
     // Otherwise, return the ith node
     return node;
-  }
-
-//------------------------------------------------------------------------------
-
-  /**
-   *  Increments the length of the list
-   */
-  private void incrementLength() {
-    this.length++;
-  }
-
-//------------------------------------------------------------------------------
-
-  /**
-   * Determines whether or not a specified index is within the bounds of the list
-   *
-   * @param index Specified index
-   * @return True if and only if the index is less then the length of the list, and positive
-   */
-  private boolean indexInBounds(int index) {
-    return index < 0 || index >= this.length() ? false : true;
-  }
-
-//------------------------------------------------------------------------------
-
-  /**
-   * Initialized the list as an empty list
-   */
-  private void init() {
-    this.head = null;
-    this.length = 0;
   }
 
 //------------------------------------------------------------------------------
@@ -366,18 +273,18 @@ public class DoublyLinkedList<T> implements Iterable<T> {
    * @param index Specified index
    */
   public void insert(T value, int index) {
-    Node<T> node;
-    Node<T> newNode;
+    DoublyLinkedListNode<T> node;
+    DoublyLinkedListNode<T> newNode;
 
     // If the list is empty
     if (this.empty()) {
-      head = new Node<T>(value, null, null);
+      head = new DoublyLinkedListNode<T>(value, null, null);
     }
 
     // Otherwise if its not empty, but we want to
     // insert at the front of the list
     else if (index == 0) {
-      newNode = new Node(value, null, head);
+      newNode = new DoublyLinkedListNode(value, null, head);
 
       head.prev(newNode);
       head = newNode;
@@ -389,24 +296,13 @@ public class DoublyLinkedList<T> implements Iterable<T> {
       // Find the ith node, and put
       // a node right in front of it
       node = this.getNode(index);                       // Get the ith node
-      newNode = new Node<T>(value, node.prev, node);    // Create a new node, setting its previous to the ith node's prev, and ith node as its next
-      node.prev.next(newNode);                          // Set the i-1th node's next to the new node
-      node.prev(newNode);                               // Set the old ith node's previous to the new node
+      newNode = new DoublyLinkedListNode<T>(value, node.prev(), node);  // Create a new node, setting its previous to the ith node's prev, and ith node as its next
+      node.prev().next(newNode);                                        // Set the i-1th node's next to the new node
+      node.prev(newNode);                                               // Set the old ith node's previous to the new node
     }
 
     this.incrementLength();
 
-  }
-
-//------------------------------------------------------------------------------
-
-  /**
-   * Returns an iterator so the list can be iterated on with the enhanced for loop
-   *
-   * @return Iterator for iterating over the list
-   */
-  public Iterator<T> iterator() {
-    return new DoublyLinkedListIterator<T>(this);
   }
 
 //------------------------------------------------------------------------------
@@ -417,32 +313,23 @@ public class DoublyLinkedList<T> implements Iterable<T> {
    * @return True if and only if there are no elements in the list, otherwise false
    */
   public boolean empty() {
-    if (this.length == 0 && this.head == null) {
+    int length = this.length();
+
+    if (length == 0 && this.head == null) {
       return true;
     }
 
     // Not a valid state
-    if (this.length != 0 && this.head == null) {
+    if (length != 0 && this.head == null) {
       throw new IllegalStateException("");
     }
 
     // Not a valid state
-    if (this.length == 0 && this.head != null) {
+    if (length == 0 && this.head != null) {
       throw new IllegalStateException("");
     }
 
     return false;
-  }
-
-//------------------------------------------------------------------------------
-
-  /**
-   * Returns the number of elements in the list
-   *
-   * @return The length of the list
-   */
-  public int length() {
-    return this.length;
   }
 
 //------------------------------------------------------------------------------
@@ -482,7 +369,7 @@ public class DoublyLinkedList<T> implements Iterable<T> {
     } else {
 
       // Get the ith node and its value
-      Node<T> node = this.getNode(index);
+      DoublyLinkedListNode<T> node = this.getNode(index);
       value = node.value();
 
       // Set the node at i-1's next to node at i+1
@@ -575,7 +462,6 @@ public class DoublyLinkedList<T> implements Iterable<T> {
   @Override
   public String toString() {
     StringJoiner stringJoiner = new StringJoiner(", ");
-    Node<T> node = head;
 
     // Iterate over list, appending
     // values with StringJoiner
@@ -591,210 +477,6 @@ public class DoublyLinkedList<T> implements Iterable<T> {
     }
 
     return stringJoiner.toString();
-  }
-
-// NODE CLASS
-//==============================================================================
-
-  /**
-   * Node class for chaining together values in a DoublyLinkedList
-   */
-  private static class Node<T> {
-    private T value;        // Value of node
-    private Node<T> prev;   // Pointer to previous node in chain
-    private Node<T> next;   // Pointer to next node in chain
-
-  //------------------------------------------------------------------------------
-
-  /**
-   * Constructs a new node without a specified value, and pointers to its
-   * previous and its next nodes
-   *
-   * @param prev Pointer to the node that comes before this node in the chain
-   * @param next Pointer to the node that comes after this node in the chain
-   */
-  public Node(Node<T> prev, Node<T> next) {
-    this.value = null;
-    this.prev = prev;
-    this.next = next;
-  }
-
-//------------------------------------------------------------------------------
-
-    /**
-     * Constructs a new node with a specified value, and pointers to its
-     * previous and its next nodes
-     *
-     * @param value The specified value of teh node
-     * @param prev Pointer to the node that comes before this node in the chain
-     * @param next Pointer to the node that comes after this node in the chain
-     */
-    public Node(T value, Node<T> prev, Node<T> next) {
-      this.value = value;
-      this.prev = prev;
-      this.next = next;
-    }
-
-//------------------------------------------------------------------------------
-
-    /**
-     * Inserts a data value into the chained nodes
-     *
-     * @param value Specified value to be inserted into the chain
-     */
-    public void insert(T value) {
-
-      // If the following node is empty
-      // we have reached the end of the list
-      if (this.next == null) {
-        this.next = new Node<T>(value, this, null);
-
-        // Otherwise, we must recurse to the end
-      } else {
-        this.next.insert(value);
-      }
-    }
-
-//------------------------------------------------------------------------------
-
-    /**
-     * Returns the pointer to the next node that follows this node
-     *
-     * @return Pointer to the following node
-     */
-    public Node<T> next() {
-      return this.next;
-    }
-
-//------------------------------------------------------------------------------
-
-    /**
-     * Sets the pointer to the next node
-     *
-     * @param next Designated node to be the next of this node
-     */
-    public void next(Node<T> next) {
-      this.next = next;
-    }
-
-//------------------------------------------------------------------------------
-
-    /**
-     * Returns the pointer to the previous node that precedes this node
-     *
-     * @return Pointer to the previous node
-     */
-    public Node<T> prev() {
-      return this.prev;
-    }
-
-//------------------------------------------------------------------------------
-
-    /**
-     * Sets the pointer to the prev node
-     *
-     * @param prev Designated node to be the prev of this node
-     */
-    public void prev(Node<T> prev) {
-      this.prev = prev;
-    }
-
-//------------------------------------------------------------------------------
-
-    /**
-     * Returns a String representation of the node
-     *
-     * @return The string version of the value of the node
-     */
-    @Override
-    public String toString() {
-
-      if (this.value == null) {
-        return "null";
-
-      } else {
-        return this.value.toString();
-      }
-    }
-
-//------------------------------------------------------------------------------
-
-    /**
-     * Returns the value of a node
-     *
-     * @return The value of the node
-     */
-    public T value() {
-      return this.value;
-    }
-
-//------------------------------------------------------------------------------
-
-    /**
-     * Sets the value of a node
-     *
-     * @param value The new value of the node
-     */
-    public void value(T value) {
-      this.value = value;
-    }
-
-  }
-
-// ITERATOR CLASS
-//==============================================================================
-
-  /**
-   * Static Iterator class so that the DoublyLinkedList can be iterated on via
-   * the enhance for loop
-   *
-   * @param <T> Generic type
-   */
-  private static class DoublyLinkedListIterator<T> implements Iterator<T> {
-    private DoublyLinkedList<T> list;   // List to iterate over
-    private int cursor;                 // Cursor to keep track of position in iteration
-
-    /**
-     * Constructor, initialize cursor to index 0, and the list
-     * variable equal to the passed in list
-     *
-     * @param list The list to be iterated on
-     */
-    public DoublyLinkedListIterator(DoublyLinkedList<T> list) {
-      this.list = list;
-      this.cursor = 0;
-    }
-
-//------------------------------------------------------------------------------
-
-    /**
-     * Determines whether or not the iterator still has values left
-     *
-     * @return True if and only if the cursor has not reached the end of the list
-     */
-    public boolean hasNext() {
-      return this.cursor < this.list.length();
-    }
-
-//------------------------------------------------------------------------------
-
-    /**
-     * Returns the next value in iteration
-     *
-     * @return The next value in the iteration
-     */
-    public T next() {
-
-      // If there are no more values left, throw an Exception
-      if (!hasNext()) {
-        throw new NoSuchElementException("No element");
-      }
-
-      int current = this.cursor;    // Store the current cursor value
-      this.cursor++;                // Increment the cursor
-      return list.get(current);     // Return the value at index cursor (before it was incremented)
-    }
-
   }
 
 }
