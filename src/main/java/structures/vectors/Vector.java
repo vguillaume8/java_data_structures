@@ -1,14 +1,15 @@
 package structures.vectors;
 
-import structures.DataStructure;
+import structures.auxiliary.DataStructure;
 import util.iterators.VectorIterator;
-
 import java.util.Iterator;
+import java.util.StringJoiner;
 
 /**
  * Abstract Vector structure. All vector-like structures (linear structures)
  * will extend this abstract class
  *
+ * @author Jabari Dash
  * @param <T> Generic type
  */
 public abstract class Vector<T> extends DataStructure implements Iterable<T> {
@@ -21,12 +22,16 @@ public abstract class Vector<T> extends DataStructure implements Iterable<T> {
      */
     public abstract T get(int index);
 
+//------------------------------------------------------------------------------
+
     /**
      * Inserts a specified value into the Vector
      *
      * @param value The specified value to insert
      */
     public abstract void insert(T value);
+
+//------------------------------------------------------------------------------
 
     /**
      * Retrieves and removes a value from the Vector
@@ -37,6 +42,11 @@ public abstract class Vector<T> extends DataStructure implements Iterable<T> {
 
 //------------------------------------------------------------------------------
 
+    /**
+     * Initializes the Vector with a specified array of values
+     *
+     * @param values Values to be inserted into the Vector
+     */
     protected void init(T[] values) {
         super.init();
 
@@ -45,6 +55,14 @@ public abstract class Vector<T> extends DataStructure implements Iterable<T> {
         }
     }
 
+//------------------------------------------------------------------------------
+
+    /**
+     * Initializes the Vector with a specified length and default value
+     *
+     * @param length Specified length of Vector
+     * @param value Specified default value
+     */
     protected void init(int length, T value) {
         super.init();
 
@@ -52,6 +70,8 @@ public abstract class Vector<T> extends DataStructure implements Iterable<T> {
             this.insert(value);
         }
     }
+
+//------------------------------------------------------------------------------
 
     /**
      * Determines whether or not a specified value is in the vector
@@ -84,7 +104,7 @@ public abstract class Vector<T> extends DataStructure implements Iterable<T> {
         return false;
     }
 
-    //------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
     /**
      * Returns an iterator so the list can be iterated on with the enhanced for loop
@@ -134,7 +154,7 @@ public abstract class Vector<T> extends DataStructure implements Iterable<T> {
 //------------------------------------------------------------------------------
 
     /**
-     * Incrementes the length of the Vector
+     * Increments the length of the Vector
      */
     protected void incrementLength() {
         this.incrementSize();
@@ -149,5 +169,31 @@ public abstract class Vector<T> extends DataStructure implements Iterable<T> {
      */
     public int length() {
         return this.size();
+    }
+
+//------------------------------------------------------------------------------
+
+    /**
+     * Returns a String representation of the list
+     * @return String version of the list
+     */
+    @Override
+    public String toString() {
+        StringJoiner stringJoiner = new StringJoiner(", ");
+
+        // Iterate over list, appending
+        // values with StringJoiner
+        for (T value : this) {
+
+            // Check for null values
+            if (value == null) {
+                stringJoiner.add("null");
+
+            } else {
+                stringJoiner.add(value.toString());
+            }
+        }
+
+        return stringJoiner.toString();
     }
 }

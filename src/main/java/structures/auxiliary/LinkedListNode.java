@@ -4,10 +4,10 @@ package structures.auxiliary;
  * Abstract class for use with DoublyLinkedListNodes and
  * SinglyLinkedListNodes
  *
+ * @author Jabari Dash
  * @param <T> Generic type
  */
-public abstract class LinkedListNode<T> {
-    private T value;
+public abstract class LinkedListNode<T> extends Value<T> {
 
     /**
      * Inserts a specified value into the chain of nodes
@@ -17,36 +17,19 @@ public abstract class LinkedListNode<T> {
     public abstract void insert(T value);
 
     /**
-     * Returns the value of the node
+     * Returns pointer to next node in chain
      *
-     * @return The value of the node
+     * @return Pointer to next node
      */
-    public T value() {
-        return this.value;
-    }
+    public abstract LinkedListNode<T> next();
 
     /**
-     * Updates the value of the node with a specified value
+     * Sets next pointer to specified node
      *
-     * @param value New value of the node
-     */
-    public void value(T value) {
-        this.value = value;
-    }
-
-    /**
-     * Returns a String representation of the node
+     * TODO - Figure out why subclasses complain about
+     *  public void next(DoublyLinkedList<T> next) {...}
      *
-     * @return String version of the node's value
+     * @param next Specified node
      */
-    @Override
-    public String toString() {
-
-        if (this.value == null) {
-            return "null";
-
-        } else {
-            return this.value.toString();
-        }
-    }
+//    public abstract void next(LinkedListNode<T> next);
 }

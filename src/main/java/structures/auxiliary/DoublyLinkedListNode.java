@@ -2,10 +2,13 @@ package structures.auxiliary;
 
 /**
  * DoublyLinkedListNode class for chaining together values in a DoublyLinkedList
+ *
+ * @author Jabari Dash
+ * @param <T> Generic type
  */
-public class DoublyLinkedListNode<T> extends LinkedListNode<T> {
+public class DoublyLinkedListNode<T> extends LinkedListNode<T>  {
     private DoublyLinkedListNode<T> prev;   // Pointer to previous node in chain
-    private DoublyLinkedListNode<T> next;   // Pointer to next node in chain
+    private DoublyLinkedListNode<T> next;   // Pointer to previous node in chain
 
 //------------------------------------------------------------------------------
 
@@ -62,6 +65,7 @@ public class DoublyLinkedListNode<T> extends LinkedListNode<T> {
      * @param next Designated node to be the next of this node
      */
     public void next(DoublyLinkedListNode<T> next) {
+
         this.next = next;
     }
 

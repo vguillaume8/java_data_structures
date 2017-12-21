@@ -1,4 +1,4 @@
-package structures;
+package structures.auxiliary;
 
 /**
  * Generic interface for any data structure in this library
