@@ -12,7 +12,7 @@ class StackSpec extends Specification {
         Stack stack = new Stack()
 
         expect:
-        stack.size() == 1
+        stack.size() == 0
         stack.empty() == true
     }
 
