@@ -217,6 +217,23 @@ public abstract class DynamicallySizedArray<T> extends DynamicallySizedDataStruc
         this.alloc(-1 * shrinkBy);
     }
 
+    /**
+     *
+     * @return
+     */
+    public T[] toArray() {
+
+        // TODO - Unit test
+
+        T[] temp = (T[]) new Object[this.size()];
+
+        for (int i = 0; i < this.size(); i++) {
+            temp[i] = this.get(i);
+        }
+
+        return temp;
+    }
+
 //------------------------------------------------------------------------------
 
     /**

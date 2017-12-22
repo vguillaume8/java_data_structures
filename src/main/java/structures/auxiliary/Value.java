@@ -12,6 +12,18 @@ public abstract class Value<T> {
     private T value;
 
     /**
+     * Determines whether or not the Value object
+     * is equal to another value object
+     *
+     * @param value Specified value to be compared to
+     * @return True if and only if they gave the same internal value
+     */
+    public boolean equals(Value<T> value) {
+        return this.value == value.value;
+    }
+
+
+    /**
      * Returns the value of the node
      *
      * @return The value of the node

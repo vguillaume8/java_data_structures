@@ -1,4 +1,4 @@
-package structures.trees;
+package structures.trees.auxiliary;
 
 import structures.auxiliary.DataStructure;
 

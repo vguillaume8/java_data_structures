@@ -19,4 +19,11 @@ public interface LinearDataStructure<T> extends DataStructure<T>,  Iterable<T> {
      * @param value Specified default value
      */
     void init(int length, T value);
+
+    /**
+     * Returns the data structure as an array
+     *
+     * @return Array representation of DataStructure
+     */
+    T[] toArray();
 }

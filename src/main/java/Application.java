@@ -1,34 +1,36 @@
-import structures.vectors.ArrayList;
-import structures.vectors.LinkedList;
-import structures.vectors.Queue;
-import structures.vectors.Stack;
-import structures.vectors.auxiliary.LinearDataStructure;
+import structures.trees.BinarySearchTree;
+import structures.trees.auxiliary.BinaryTree;
+
+import java.util.Arrays;
 
 public class Application<T> {
 
   public static void main(String[] args) {
     int size = 10;
-    Object[] array = initArray(size);
 
-    Stack<Object>      stack      = new Stack<>(array);
-    Queue<Object>      queue      = new Queue<>(array);
-    LinkedList<Object> linkedList = new LinkedList<>(array);
-    ArrayList<Object>  arrayList  = new ArrayList<>(array);
+    Character[] array = {
+            'f',
+            'i', 'h', 'g', 'k', 'j',
+            'b', 'a', 'd', 'c', 'e',
+
+    };
+
+    BinarySearchTree<Character> tree = new BinarySearchTree<Character>(array);
 
 
-    display(stack);
-    display(queue);
-    display(linkedList);
-    display(arrayList);
+//    tree.display();
+
+    Object[] characters = tree.toArray(BinaryTree.IN_ORDER);
+
+    for (Object c : characters) {
+      System.out.println(c);
+    }
+
   }
 
-  public static void display(LinearDataStructure<Object> structure) {
-    System.out.println(structure.getClass().getSimpleName() + ": " + structure.size());
-    System.out.println(structure.toString() + "\n");
-  }
 
-  public static Object[] initArray(int size) {
-    Object[] array = new Object[size];
+  public static Integer[] initArray(int size) {
+    Integer[] array = new Integer[size];
 
     for (int i = 0; i < size; i++) {
       array[i] = i+1;

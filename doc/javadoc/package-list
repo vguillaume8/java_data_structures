@@ -1,5 +1,6 @@
 
 structures.auxiliary
 structures.trees
+structures.trees.auxiliary
 structures.vectors
 structures.vectors.auxiliary

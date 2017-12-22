@@ -181,6 +181,13 @@ public abstract class ChainedDataStructure<T> extends DynamicallySizedDataStruct
         return stringJoiner.toString();
     }
 
+    public T[] toArray() {
+        // TODO - Implement
+        // TODO Unit test
+
+        return null;
+    }
+
 //------------------------------------------------------------------------------
 
     /**
