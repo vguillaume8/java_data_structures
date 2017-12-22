@@ -53,11 +53,11 @@ public class LinkedList<T> extends ChainedIndexedDataStructure<T> {
    * <br>
    * <br>
    * <strong>Time Complexity:</strong><br>
-   * <strong>Avg: </strong>&Theta;(1)<br>
+   * <strong>Avg: </strong>&Theta;(n)<br>
    *
    * <br>
    * <strong>Space Complexity:</strong><br>
-   * <strong>Avg: </strong>&Theta;(1)<br>
+   * <strong>Avg: </strong>&Theta;(n)<br>
    *
    * @param length Specified length of list
    * @param value Specified default value

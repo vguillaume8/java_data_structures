@@ -1,7 +1,6 @@
 package structures.vectors;
 
 import structures.vectors.auxiliary.ChainedDataStructure;
-import java.util.EmptyStackException;
 
 /**
  *  Basic implementation of a Stack class using a Linked List
@@ -16,7 +15,16 @@ import java.util.EmptyStackException;
 public class Stack<T>  extends ChainedDataStructure<T> {
 
     /**
-     * Constructs an empty Stack
+     * Constructs empty Stack
+     *
+     * <br>
+     * <br>
+     * <strong>Time Complexity:</strong><br>
+     * <strong>Avg: </strong>&Theta;(1)<br>
+     *
+     * <br>
+     * <strong>Space Complexity:</strong><br>
+     * <strong>Avg: </strong>&Theta;(1)<br>
      */
     public Stack() {
         this.init();
@@ -25,9 +33,18 @@ public class Stack<T>  extends ChainedDataStructure<T> {
 //------------------------------------------------------------------------------
 
     /**
-     * Constructs a Stack from a specified array of values
+     * Constructs Queue from array of values
      *
-     * @param values Specified array of values to instantiate the Stack from
+     * <br>
+     * <br>
+     * <strong>Time Complexity:</strong><br>
+     * <strong>Avg: </strong>&Theta;(n)<br>
+     *
+     * <br>
+     * <strong>Space Complexity:</strong><br>
+     * <strong>Avg: </strong>&Theta;(1)<br>
+     *
+     * @param values Array of values to instatiate Queue from
      */
     public Stack(T[] values) {
         this.init(values);
@@ -35,12 +52,43 @@ public class Stack<T>  extends ChainedDataStructure<T> {
 
 //------------------------------------------------------------------------------
 
+    /**
+     * Constructs Queue of specified length where
+     * all values have a specified default value
+     *
+     * <br>
+     * <br>
+     * <strong>Time Complexity:</strong><br>
+     * <strong>Avg: </strong>&Theta;(n)<br>
+     *
+     * <br>
+     * <strong>Space Complexity:</strong><br>
+     * <strong>Avg: </strong>&Theta;(1)<br>
+     *
+     * @param length Specified length of list
+     * @param value Specified default value
+     */
     public Stack(int length, T value) {
         this.init(length, value);
     }
 
 //------------------------------------------------------------------------------
 
+    /**
+     * Inserts value at top of Stack
+     *
+     * <br>
+     * <br>
+     * <strong>Time Complexity:</strong><br>
+     * <strong>Best: </strong>&Omega;(1)<br>
+     * <strong>Worst: </strong>O(n)<br>
+     *
+     * <br>
+     * <strong>Space Complexity:</strong><br>
+     * <strong>Avg: </strong>&Theta;(1)<br>
+     *
+     * @param value The specified value to insert
+     */
     @Override
     public void insert(T value) {
         if (this.empty()) {
@@ -56,6 +104,22 @@ public class Stack<T>  extends ChainedDataStructure<T> {
 
 //------------------------------------------------------------------------------
 
+    /**
+     * Retrieves and removes top of Stack
+     *
+     * <br>
+     * <br>
+     * <strong>Time Complexity:</strong><br>
+     * <strong>Avg: </strong>&Theta;(1)<br>
+     *
+     * <br>
+     * <strong>Space Complexity:</strong><br>
+     * <strong>Avg: </strong>&Theta;(1)<br>
+     *
+     * @return The topmost value on the Stack
+     *
+     * @return Value form top of Stack
+     */
     @Override
     public T remove() {
         if (this.empty()) {

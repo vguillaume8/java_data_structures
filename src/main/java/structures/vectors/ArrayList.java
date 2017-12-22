@@ -11,25 +11,54 @@ import structures.vectors.auxiliary.DynamicallySizedArray;
 public class ArrayList<T> extends DynamicallySizedArray<T> {
 
     /**
-     * Constructs an empty ArrayList
+     * Constructs empty list
+     *
+     * <br>
+     * <br>
+     * <strong>Time Complexity:</strong><br>
+     * <strong>Avg: </strong>&Theta;(1)<br>
+     *
+     * <br>
+     * <strong>Space Complexity:</strong><br>
+     * <strong>Avg: </strong>&Theta;(1)<br>
      */
     public ArrayList() {
         this.init();
     }
 
+
     /**
-     * Constructs an ArrayList from a provided array of integer
-     * @param values Specified array of integers to instantiate ArrayList with
+     * Constructs ArrayList from array of values
+     *
+     * <br>
+     * <br>
+     * <strong>Time Complexity:</strong><br>
+     * <strong>Avg: </strong>&Theta;(n)<br>
+     *
+     * <br>
+     * <strong>Space Complexity:</strong><br>
+     * <strong>Avg: </strong>&Theta;(1)<br>
+     *
+     * @param values Array of values to construct the list from
      */
     public ArrayList(T[] values) {
         this.init(values);
     }
 
     /**
-     * Constructs an ArrayList of a specified length with a specified
-     * default value
+     * Constructs LinkedList of specified length where
+     * all values have a specified default value
      *
-     * @param length Specified length
+     * <br>
+     * <br>
+     * <strong>Time Complexity:</strong><br>
+     * <strong>Avg: </strong>&Theta;(n)<br>
+     *
+     * <br>
+     * <strong>Space Complexity:</strong><br>
+     * <strong>Avg: </strong>&Theta;(1)<br>
+     *
+     * @param length Specified length of list
      * @param value Specified default value
      */
     public ArrayList(int length, T value) {
@@ -38,6 +67,15 @@ public class ArrayList<T> extends DynamicallySizedArray<T> {
 
     /**
      * Returns the value at a specified index
+     *
+     * <br>
+     * <br>
+     * <strong>Time Complexity:</strong><br>
+     * <strong>Avg: </strong>&Theta;(1)<br>
+     *
+     * <br>
+     * <strong>Space Complexity:</strong><br>
+     * <strong>Avg: </strong>&Theta;(1)<br>
      *
      * @param index Specified index
      * @return Value at specified index
@@ -51,6 +89,15 @@ public class ArrayList<T> extends DynamicallySizedArray<T> {
     /**
      * Inserts a value at the end of the list
      *
+     * <br>
+     * <br>
+     * <strong>Time Complexity:</strong><br>
+     * <strong>Avg: </strong>&Theta;(1)<br>
+     *
+     * <br>
+     * <strong>Space Complexity:</strong><br>
+     * <strong>Avg: </strong>&Theta;(1)<br>
+     *
      * @param value The specified value to insert
      */
     @Override
@@ -61,14 +108,24 @@ public class ArrayList<T> extends DynamicallySizedArray<T> {
     /**
      * Inserts a value at a specified index
      *
+     * <br>
+     * <br>
+     * <strong>Time Complexity:</strong><br>
+     * <strong>Best: </strong>&Omega;(1)<br>
+     * <strong>Worst: </strong>O(n)<br>
+     *
+     * <br>
+     * <strong>Space Complexity:</strong><br>
+     * <strong>Avg: </strong>&Theta;(1)<br>
+     *
      * @param value Value to be inserted
      * @param index Specified index to insert value at
      */
     @Override
     public void insert(T value, int index) {
         if (!this.empty() && index < this.size()) {
-            this.verifyIndex(index);        // Verify that the index is a valid index
-            this.shiftRight(index);         // Shift all values up one index, starting at designated index
+            this.verifyIndex(index);    // Verify that the index is a valid index
+            this.shiftRight(index);     // Shift all values up one index, starting at designated index
         }
 
         this.alloc();                   // Potentially alloc the internal array before insertion
@@ -82,6 +139,16 @@ public class ArrayList<T> extends DynamicallySizedArray<T> {
      * index itself will be shifted to the right one
      * spot for the purpose of making space for a new element
      * to be inserted. This is an auxiliary function
+     *
+     * <br>
+     * <br>
+     * <strong>Time Complexity:</strong><br>
+     * <strong>Best: </strong>&Omega;(1)<br>
+     * <strong>Worst: </strong>O(n)<br>
+     *
+     * <br>
+     * <strong>Space Complexity:</strong><br>
+     * <strong>Avg: </strong>&Theta;(1)<br>
      *
      * @param index Index to start shifting from
      */
@@ -103,6 +170,16 @@ public class ArrayList<T> extends DynamicallySizedArray<T> {
      * from the array. This is an auxiliary function for
      * use with the remove functionality
      *
+     * <br>
+     * <br>
+     * <strong>Time Complexity:</strong><br>
+     * <strong>Best: </strong>&Omega;(1)<br>
+     * <strong>Worst: </strong>O(n)<br>
+     *
+     * <br>
+     * <strong>Space Complexity:</strong><br>
+     * <strong>Avg: </strong>&Theta;(1)<br>
+     *
      * @param index Specified index to shift left into
      */
     private void shiftLeft(int index) {
@@ -116,6 +193,15 @@ public class ArrayList<T> extends DynamicallySizedArray<T> {
     /**
      * Inserts a value into the front of the list
      *
+     * <br>
+     * <br>
+     * <strong>Time Complexity:</strong><br>
+     * <strong>Avg: </strong>&Theta;(1)<br>
+     *
+     * <br>
+     * <strong>Space Complexity:</strong><br>
+     * <strong>Avg: </strong>&Theta;(1)<br>
+     *
      * @param value Specified value to insert
      */
     @Override
@@ -126,6 +212,15 @@ public class ArrayList<T> extends DynamicallySizedArray<T> {
     /**
      * Inserts an element to the back of the list
      *
+     * <br>
+     * <br>
+     * <strong>Time Complexity:</strong><br>
+     * <strong>Avg: </strong>&Theta;(1)<br>
+     *
+     * <br>
+     * <strong>Space Complexity:</strong><br>
+     * <strong>Avg: </strong>&Theta;(1)<br>
+     *
      * @param value Specified value to insert
      */
     @Override
@@ -135,6 +230,16 @@ public class ArrayList<T> extends DynamicallySizedArray<T> {
 
     /**
      * Retrieves and removes the value at a specified index
+     *
+     * <br>
+     * <br>
+     * <strong>Time Complexity:</strong><br>
+     * <strong>Best: </strong>&Omega;(1)<br>
+     * <strong>Worst: </strong>O(n)<br>
+     *
+     * <br>
+     * <strong>Space Complexity:</strong><br>
+     * <strong>Avg: </strong>&Theta;(1)<br>
      *
      * @param index Index to remove value from
      * @return Value at specified index
@@ -157,6 +262,16 @@ public class ArrayList<T> extends DynamicallySizedArray<T> {
     /**
      * Retrieves and removes the first value in the list
      *
+     * <br>
+     * <br>
+     * <strong>Time Complexity:</strong><br>
+     * <strong>Best: </strong>&Omega;(1)<br>
+     * <strong>Worst: </strong>O(n)<br>
+     *
+     * <br>
+     * <strong>Space Complexity:</strong><br>
+     * <strong>Avg: </strong>&Theta;(1)<br>
+     *
      * @return The first value in the list
      */
     @Override
@@ -166,6 +281,16 @@ public class ArrayList<T> extends DynamicallySizedArray<T> {
 
     /**
      * Retrieves and removes the last value in the list
+     * <br>
+     *
+     * <br>
+     * <strong>Time Complexity:</strong><br>
+     * <strong>Best: </strong>&Omega;(1)<br>
+     * <strong>Worst: </strong>O(n)<br>
+     *
+     * <br>
+     * <strong>Space Complexity:</strong><br>
+     * <strong>Avg: </strong>&Theta;(1)<br>
      *
      * @return Last value in the list
      */
@@ -177,6 +302,15 @@ public class ArrayList<T> extends DynamicallySizedArray<T> {
     /**
      * Retrieves and removes the last value in the list
      *
+     * <br>
+     * <br>
+     * <strong>Time Complexity:</strong><br>
+     * <strong>Best: </strong>&Omega;(1)<br>
+     * <strong>Worst: </strong>O(n)<br>
+     *
+     * <br>
+     * <strong>Space Complexity:</strong><br>
+     * <strong>Avg: </strong>&Theta;(1)<br>
      * @return The last value in the list
      */
     @Override

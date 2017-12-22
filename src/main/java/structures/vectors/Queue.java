@@ -3,20 +3,83 @@ package structures.vectors;
 import structures.vectors.auxiliary.ChainedDataStructure;
 import java.util.EmptyStackException;
 
+/**
+ * Basic FIFO Queue implementation
+ *
+ * @author Jabari Dash
+ * @param <T> Generic type
+ */
 public class Queue<T> extends ChainedDataStructure<T> {
 
+    /**
+     * Constructs empty Queue
+     *
+     * <br>
+     * <br>
+     * <strong>Time Complexity:</strong><br>
+     * <strong>Avg: </strong>&Theta;(1)<br>
+     *
+     * <br>
+     * <strong>Space Complexity:</strong><br>
+     * <strong>Avg: </strong>&Theta;(1)<br>
+     */
     public Queue() {
         this.init();
     }
 
+    /**
+     * Constructs Queue from array of values
+     *
+     * <br>
+     * <br>
+     * <strong>Time Complexity:</strong><br>
+     * <strong>Avg: </strong>&Theta;(n)<br>
+     *
+     * <br>
+     * <strong>Space Complexity:</strong><br>
+     * <strong>Avg: </strong>&Theta;(1)<br>
+     *
+     * @param values Array of values to instatiate Queue from
+     */
     public Queue(T[] values) {
         this.init(values);
     }
 
+    /**
+     * Constructs Queue of specified length where
+     * all values have a specified default value
+     *
+     * <br>
+     * <br>
+     * <strong>Time Complexity:</strong><br>
+     * <strong>Avg: </strong>&Theta;(n)<br>
+     *
+     * <br>
+     * <strong>Space Complexity:</strong><br>
+     * <strong>Avg: </strong>&Theta;(1)<br>
+     *
+     * @param length Specified length of list
+     * @param value Specified default value
+     */
     public Queue(int length, T value) {
         this.init(length, value);
     }
 
+    /**
+     * Retrieves, but does not remove the front-most
+     * element in the Queue
+     *
+     * <br>
+     * <br>
+     * <strong>Time Complexity:</strong><br>
+     * <strong>Avg: </strong>&Theta;(1)<br>
+     *
+     * <br>
+     * <strong>Space Complexity:</strong><br>
+     * <strong>Avg: </strong>&Theta;(1)<br>
+     *
+     * @return Front-most value from Queue
+     */
     public T peek() {
         if (this.empty()) {
             throw new EmptyDataStructureException("Cannot peek() empty Queue");
@@ -25,6 +88,21 @@ public class Queue<T> extends ChainedDataStructure<T> {
         return this.head().value();
     }
 
+    /**
+     * Inserts value at back of Queue
+     *
+     * <br>
+     * <br>
+     * <strong>Time Complexity:</strong><br>
+     * <strong>Best: </strong>&Omega;(1)<br>
+     * <strong>Worst: </strong>O(n)<br>
+     *
+     * <br>
+     * <strong>Space Complexity:</strong><br>
+     * <strong>Avg: </strong>&Theta;(1)<br>
+     *
+     * @param value The specified value to insert
+     */
     @Override
     public void insert(T value) {
         if (this.empty()) {
@@ -36,6 +114,20 @@ public class Queue<T> extends ChainedDataStructure<T> {
         this.incrementSize();
     }
 
+    /**
+     * Retrieve and remove front-most value from Queue
+     *
+     * <br>
+     * <br>
+     * <strong>Time Complexity:</strong><br>
+     * <strong>Avg: </strong>&Theta;(1)<br>
+     *
+     * <br>
+     * <strong>Space Complexity:</strong><br>
+     * <strong>Avg: </strong>&Theta;(1)<br>
+     *
+     * @return Front most value from Queue
+     */
     @Override
     public T remove() {
         if (this.empty()) {
