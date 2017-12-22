@@ -1,5 +1,6 @@
 package structures.vectors;
 
+import structures.vectors.auxiliary.ChainedDataStructure;
 import java.util.EmptyStackException;
 
 /**
@@ -12,14 +13,13 @@ import java.util.EmptyStackException;
  * @author Jabari Dash
  * @param <T> Generic type
  */
-public class Stack<T> {
-    LinkedList<T> stack;
+public class Stack<T>  extends ChainedDataStructure<T> {
 
     /**
      * Constructs an empty Stack
      */
     public Stack() {
-        this.stack = new LinkedList<T>();
+        this.init();
     }
 
 //------------------------------------------------------------------------------
@@ -30,44 +30,43 @@ public class Stack<T> {
      * @param values Specified array of values to instantiate the Stack from
      */
     public Stack(T[] values) {
-        this.stack = new LinkedList<>();
+        this.init(values);
+    }
 
-        for (int i = 0; i < values.length; i++) {
-            this.push(values[i]);
+//------------------------------------------------------------------------------
+
+    public Stack(int length, T value) {
+        this.init(length, value);
+    }
+
+//------------------------------------------------------------------------------
+
+    @Override
+    public void insert(T value) {
+        if (this.empty()) {
+            this.head(new Node(value, null, null));
+        } else {
+            Node node = new Node(value, null, this.head());
+            this.head().prev(node);
+            this.head(node);
         }
+
+        this.incrementSize();
     }
 
 //------------------------------------------------------------------------------
 
-    /**
-     * Determines whether or not the Stack is empty
-     *
-     * @return True if an only if there are 0 values on the Stack
-     */
-    public boolean empty() {
-        return this.stack.empty();
-    }
+    @Override
+    public T remove() {
+        if (this.empty()) {
+            throw new EmptyStackException();
+        }
 
-//------------------------------------------------------------------------------
+        T value = this.head().value();  // Get value from head
+        this.head(this.head().next());  // Set head equal to head's next
+        this.decrementSize();           // Decrement size of Queue
 
-    /**
-     * Determines whether or not the Stack contains a designated value
-     *
-     * <br>
-     * <br>
-     * <strong>Time Complexity:</strong><br>
-     * <strong>Best: </strong>&Omega;(1)<br>
-     * <strong>Worst: </strong>O(n)<br>
-     *
-     * <br>
-     * <strong>Space Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(1)<br>
-     *
-     * @param value Designated value to look for
-     * @return True if and only if the Stack contains the specified value
-     */
-    public boolean contains(T value) {
-        return this.stack.contains(value);
+        return value;
     }
 
 //------------------------------------------------------------------------------
@@ -87,7 +86,7 @@ public class Stack<T> {
      * @param value Specified value to be pushed onto the Stack
      */
     public void push(T value) {
-        this.stack.insertFirst(value);
+        this.insert(value);
     }
 
 //------------------------------------------------------------------------------
@@ -107,16 +106,7 @@ public class Stack<T> {
      * @return The topmost value on the Stack
      */
     public T pop() {
-        T value = null;
-
-        try {
-            value = this.stack.removeFirst();
-
-        } catch (IndexOutOfBoundsException exception) {
-            throw new EmptyStackException();
-        }
-
-        return value;
+        return this.remove();
     }
 
 //------------------------------------------------------------------------------
@@ -136,40 +126,10 @@ public class Stack<T> {
      * @return The topmost value on the Stack
      */
     public T top() {
-        T value = null;
-
-        try {
-            value = this.stack.get(0);
-
-        } catch (IndexOutOfBoundsException exception) {
+        if (this.empty()) {
             throw new EmptyStackException();
         }
 
-        return value;
-    }
-
-//------------------------------------------------------------------------------
-
-    /**
-     * Returns the number of elements on the Stack
-     *
-     * @return The number of elements on the Stack
-     */
-    public int size() {
-        return this.stack.size();
-    }
-
-//------------------------------------------------------------------------------
-
-    /**
-     * Returns String representation of the Stack.
-     * Note, the top is at the left, and the String
-     * is meant to be read from top down (left to right)
-     *
-     * @return String version of the Stack
-     */
-    @Override
-    public String toString() {
-        return this.stack.toString();
+        return this.head().value();
     }
 }

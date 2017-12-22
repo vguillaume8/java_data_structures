@@ -1,7 +1,6 @@
-package structures.auxiliary;
+package structures.vectors.auxiliary;
 
 import java.util.Iterator;
-import java.util.StringJoiner;
 
 public abstract class ChainedIndexedDataStructure<T> extends ChainedDataStructure<T> implements IndexedDataStructure<T> {
 
@@ -20,8 +19,9 @@ public abstract class ChainedIndexedDataStructure<T> extends ChainedDataStructur
      *
      * @return Iterator for iterating over the list
      */
+    @Override
     public Iterator<T> iterator() {
-        return new VectorIterator<>(this);
+        return new ChainedDataStructureIterator<T>(this.head());
     }
 
 //------------------------------------------------------------------------------
@@ -32,8 +32,10 @@ public abstract class ChainedIndexedDataStructure<T> extends ChainedDataStructur
      * @param index Specified index
      * @return True if and only if the index is less then the length of the list, and positive
      */
-    protected boolean indexInBounds(int index) {
-        return index < 0 || index >= this.size() ? false : true;
+    public boolean indexOutOfBounds(int index) {
+        return index < 0 || index >= this.size();
+
+//        return index < 0 || index >= this.size() ? false : true;
     }
 
 //------------------------------------------------------------------------------
@@ -43,38 +45,12 @@ public abstract class ChainedIndexedDataStructure<T> extends ChainedDataStructur
      *
      * @param index Specified index
      */
-    protected void checkIndex(int index) {
+    public void verifyIndex(int index) {
 
         // Throw an Exception if the index is out of bounds
-        if (!this.indexInBounds(index)) {
+        if (this.indexOutOfBounds(index)) {
             throw new IndexOutOfBoundsException("size: " + this.size() + " index: " + index);
         }
-    }
-
-//------------------------------------------------------------------------------
-
-    /**
-     * Returns a String representation of the list
-     * @return String version of the list
-     */
-    @Override
-    public String toString() {
-        StringJoiner stringJoiner = new StringJoiner(", ");
-
-        // Iterate over list, appending
-        // values with StringJoiner
-        for (T value : this) {
-
-            // Check for null values
-            if (value == null) {
-                stringJoiner.add("null");
-
-            } else {
-                stringJoiner.add(value.toString());
-            }
-        }
-
-        return stringJoiner.toString();
     }
 
     /**
@@ -93,6 +69,7 @@ public abstract class ChainedIndexedDataStructure<T> extends ChainedDataStructur
      * @param index The specified to retrieve the value from
      * @return The value of the node at the specified index
      */
+    @Override
     public T get(int index) {
         return this.getNode(index).value();
     }
@@ -114,6 +91,7 @@ public abstract class ChainedIndexedDataStructure<T> extends ChainedDataStructur
      *
      * @param value Specified value to be inserted into the list
      */
+    @Override
     public void insert(T value) {
 
         // If the list is empty, insert in the front
@@ -124,6 +102,10 @@ public abstract class ChainedIndexedDataStructure<T> extends ChainedDataStructur
         } else {
             this.insertLast(value);
         }
+    }
+
+    public T remove(int index) {
+        return null;
     }
 
 }

@@ -1,7 +1,7 @@
 package structures.vectors;
 
-import structures.auxiliary.ChainedDataStructure;
-import structures.auxiliary.ChainedIndexedDataStructure;
+import structures.vectors.auxiliary.ChainedDataStructure;
+import structures.vectors.auxiliary.ChainedIndexedDataStructure;
 
 /**
  * Basic implementation of Doubly Linked List
@@ -110,7 +110,7 @@ public class LinkedList<T> extends ChainedIndexedDataStructure<T> {
     // Check that the specified index is a
     // valid index (Non-negative, and less than
     // the length of the list)
-    this.checkIndex(index);
+    this.verifyIndex(index);
 
     // Get the head node,
     // and start indexing from 0
@@ -244,33 +244,6 @@ public class LinkedList<T> extends ChainedIndexedDataStructure<T> {
 //------------------------------------------------------------------------------
 
   /**
-   * Determines whether or not the list is empty
-   *
-   * @return True if and only if there are no elements in the list, otherwise false
-   */
-  public boolean empty() {
-    int length = this.size();
-
-    if (length == 0 && this.head() == null) {
-      return true;
-    }
-
-    // Not a valid state
-    if (length != 0 && this.head() == null) {
-      throw new IllegalStateException("");
-    }
-
-    // Not a valid state
-    if (length == 0 && this.head() != null) {
-      throw new IllegalStateException("");
-    }
-
-    return false;
-  }
-
-//------------------------------------------------------------------------------
-
-  /**
    * Removes a node at a specified index from the list
    *
    * <br>
@@ -287,7 +260,7 @@ public class LinkedList<T> extends ChainedIndexedDataStructure<T> {
    * @return Value of node at specified index
    */
   public T remove(int index) {
-    this.checkIndex(index);
+    this.verifyIndex(index);
 
     T value;
 

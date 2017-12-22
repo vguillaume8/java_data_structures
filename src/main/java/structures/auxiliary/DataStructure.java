@@ -26,11 +26,26 @@ public interface DataStructure<T> {
 //------------------------------------------------------------------------------
 
     /**
+     * Initializes the data structure
+     */
+    void init();
+
+//------------------------------------------------------------------------------
+
+    /**
      * Inserts a specified value into the IndexedDataStructure
      *
      * @param value The specified value to insert
      */
     void insert(T value);
+
+//------------------------------------------------------------------------------
+
+    /**
+     *
+     * @return
+     */
+    T remove();
 
 //------------------------------------------------------------------------------
 

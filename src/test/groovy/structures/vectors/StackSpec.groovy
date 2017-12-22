@@ -16,24 +16,39 @@ class StackSpec extends Specification {
         stack.empty() == true
     }
 
-//------------------------------------------------------------------------------
-
     @Unroll
-    def "#Construct stack from array"() {
+    def "#Construct an empty Stack from array"() {
         setup:
-        Stack stack = new Stack(values);
+        Stack stack = new Stack(values)
 
         expect:
         stack.size() == size
-        stack.empty() == empty
+        stack.empty() == isEmpty
 
         where:
-        values                 | size | empty
+        values                 | size | isEmpty
+        [] as Integer[]        | 0    | true
+    }
+
+//------------------------------------------------------------------------------
+
+    @Unroll
+    def "#Construct stack from non-empty array"() {
+        when:
+        Stack<Integer> stack = new Stack<Integer>(values);
+
+        then:
+        stack.empty() == isEmpty
+        stack.size() == size
+
+//        stack.size() == size
+//        stack.empty() == isEmpty
+
+        where:
+        values                 | size | isEmpty
         [1, 2, 3] as Integer[] | 3    | false
         [1, 2] as Integer[]    | 2    | false
         [1] as Integer[]       | 1    | false
-        [] as Integer[]        | 0    | true
-
     }
 
 //------------------------------------------------------------------------------

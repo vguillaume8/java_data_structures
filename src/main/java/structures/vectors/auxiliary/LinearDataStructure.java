@@ -1,11 +1,8 @@
-package structures.auxiliary;
+package structures.vectors.auxiliary;
+
+import structures.auxiliary.DataStructure;
 
 public interface LinearDataStructure<T> extends DataStructure<T>,  Iterable<T> {
-
-    /**
-     * Initializes the vector as an empty IndexedDataStructure
-     */
-    void init();
 
     /**
      * Initializes the IndexedDataStructure with a specified array of values

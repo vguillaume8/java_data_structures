@@ -1,4 +1,10 @@
-package structures.auxiliary;
+package structures.vectors.auxiliary;
+
+import structures.auxiliary.DynamicallySizedDataStructure;
+import structures.auxiliary.Value;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+import java.util.StringJoiner;
 
 /**
  * Abstract class to be implemented by all types
@@ -9,10 +15,36 @@ package structures.auxiliary;
  * @author Jabari Dash
  * @param <T> Generic type
  */
-public abstract class ChainedDataStructure<T> implements LinearDataStructure<T> {
+public abstract class ChainedDataStructure<T> extends DynamicallySizedDataStructure<T> implements LinearDataStructure<T> {
 
     private Node<T> head;   // Pointer to the front of the list
-    private int size;       // Tracks the number of values in the structure
+
+//------------------------------------------------------------------------------
+
+    /**
+     * Determines whether or not the list is empty
+     *
+     * @return True if and only if there are no elements in the list, otherwise false
+     */
+    public boolean empty() {
+        int length = this.size();
+
+        if (length == 0 && this.head() == null) {
+            return true;
+        }
+
+        // Not a valid state
+        if (length != 0 && this.head() == null) {
+            throw new IllegalStateException("");
+        }
+
+        // Not a valid state
+        if (length == 0 && this.head() != null) {
+            throw new IllegalStateException("");
+        }
+
+        return false;
+    }
 
 
 //------------------------------------------------------------------------------
@@ -84,23 +116,6 @@ public abstract class ChainedDataStructure<T> implements LinearDataStructure<T> 
         // Otherwise, by default return false
         return false;
     }
-//------------------------------------------------------------------------------
-
-    /**
-     * Decrements the size of the structure by 1
-     */
-    protected void decrementSize() {
-        this.size--;
-    }
-
-//------------------------------------------------------------------------------
-
-    /**
-     * Increments the size of the structure by 1
-     */
-    protected void incrementSize() {
-        this.size++;
-    }
 
 //------------------------------------------------------------------------------
 
@@ -128,20 +143,43 @@ public abstract class ChainedDataStructure<T> implements LinearDataStructure<T> 
      * Initializes an empty ChainedDataStructure
      */
     public void init() {
+        super.init();
         this.head(null);
-        this.size = 0;
+    }
+
+
+    @Override
+    public Iterator<T> iterator() {
+        return new ChainedDataStructureIterator(this.head());
+    }
+
+    //------------------------------------------------------------------------------
+
+    /**
+     * Returns a String representation of the list
+     * @return String version of the list
+     */
+    @Override
+    public String toString() {
+        StringJoiner stringJoiner = new StringJoiner(", ");
+
+        // Iterate over list, appending
+        // values with StringJoiner
+        for (T value : this) {
+
+            // Check for null values
+            if (value == null) {
+                stringJoiner.add("null");
+
+            } else {
+                stringJoiner.add(value.toString());
+            }
+        }
+
+        return stringJoiner.toString();
     }
 
 //------------------------------------------------------------------------------
-
-    /**
-     * Returns the size of the structure
-     *
-     * @return The number of elements in the structure
-     */
-    public int size() {
-        return this.size;
-    }
 
     /**
      * Node class for chaining together values in a LinkedList
@@ -149,7 +187,7 @@ public abstract class ChainedDataStructure<T> implements LinearDataStructure<T> 
      * @author Jabari Dash
      * @param <T> Generic type
      */
-    public static class Node<T> extends Value<T>  {
+    public static class Node<T> extends Value<T> {
         private Node<T> prev;   // Pointer to previous node in chain
         private Node<T> next;   // Pointer to previous node in chain
 
@@ -234,6 +272,35 @@ public abstract class ChainedDataStructure<T> implements LinearDataStructure<T> 
         }
     }
 
+    public static class ChainedDataStructureIterator<T> implements Iterator<T> {
+        private Node<T> node;
+
+        public ChainedDataStructureIterator(Node<T> head) {
+            this.node = head;
+        }
+
+        @Override
+        public boolean hasNext() {
+
+            // If there is a node left to print, return false
+            // if the node is null, we have traversed off the list
+            return this.node == null ? false : true;
+        }
+
+        @Override
+        public T next() {
+            // If there are no more values left, throw an Exception
+            if (!hasNext()) {
+                throw new NoSuchElementException("No element");
+            }
+
+            T value = node.value();
+            this.node = this.node.next();
+
+            return value;
+        }
+    }
 }
+
 
 

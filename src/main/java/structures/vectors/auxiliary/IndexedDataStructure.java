@@ -1,4 +1,4 @@
-package structures.auxiliary;
+package structures.vectors.auxiliary;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -19,6 +19,33 @@ public interface IndexedDataStructure<T> extends LinearDataStructure<T> {
      * @return Item at the specified index
      */
     T get(int index);
+
+    /**
+     *
+     * @param index
+     * @return
+     */
+    boolean indexOutOfBounds(int index);
+
+//------------------------------------------------------------------------------
+
+    /**
+     * Insert a value at a specified index
+     *
+     * @param value Value to be inserted
+     * @param index Specified index to insert value at
+     */
+    void insert(T value, int index);
+
+//------------------------------------------------------------------------------
+
+    /**
+     * Retrieves and removes a value from a specified index
+     *
+     * @param index Index to remove value from
+     * @return The value at the specified index
+     */
+    T remove(int index);
 
 //------------------------------------------------------------------------------
 
@@ -56,6 +83,14 @@ public interface IndexedDataStructure<T> extends LinearDataStructure<T> {
      */
     T removeLast();
 
+    /**
+     * Verify that an index is valid, if not, and exception
+     * is thrown to stop execution
+     *
+     * @param index
+     */
+    void verifyIndex(int index);
+
 //------------------------------------------------------------------------------
 
     /**
@@ -65,9 +100,9 @@ public interface IndexedDataStructure<T> extends LinearDataStructure<T> {
      * @author Jabari Dash
      * @param <T> Generic type
      */
-    class VectorIterator<T> implements Iterator<T> {
+    class IndexedDataStructureIterator<T> implements Iterator<T> {
         private IndexedDataStructure<T> list;   // List to iterate over
-        private int cursor;           // Cursor to keep track of position in iteration
+        private int cursor;                     // Cursor to keep track of position in iteration
 
         /**
          * Constructor, initialize cursor to index 0, and the list
@@ -75,7 +110,7 @@ public interface IndexedDataStructure<T> extends LinearDataStructure<T> {
          *
          * @param list The list to be iterated on
          */
-        public VectorIterator(IndexedDataStructure<T> list) {
+        public IndexedDataStructureIterator(IndexedDataStructure<T> list) {
             this.list = list;
             this.cursor = 0;
         }
