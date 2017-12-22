@@ -4,7 +4,7 @@ import spock.lang.Unroll
 import spock.lang.Specification
 import structures.auxiliary.DataStructure.EmptyDataStructureException;
 
-class DoublyLinkedListSpec extends Specification {
+class LinkedListSpec extends Specification {
 
   @Unroll
   def "#Construct an empty list"() {

@@ -17,6 +17,14 @@ public class Queue<T> extends ChainedDataStructure<T> {
         this.init(length, value);
     }
 
+    public T peek() {
+        if (this.empty()) {
+            throw new EmptyDataStructureException("Cannot peek() empty Queue");
+        }
+
+        return this.head().value();
+    }
+
     @Override
     public void insert(T value) {
         if (this.empty()) {
@@ -31,7 +39,7 @@ public class Queue<T> extends ChainedDataStructure<T> {
     @Override
     public T remove() {
         if (this.empty()) {
-            throw new EmptyStackException();
+            throw new EmptyDataStructureException("Cannot remove() from empty Queue");
         }
 
         T value = this.head().value();  // Get value from head

@@ -4,26 +4,25 @@ import spock.lang.Unroll
 import spock.lang.Specification
 import structures.auxiliary.DataStructure.EmptyDataStructureException;
 
-class StackSpec extends Specification {
-
+class QueueSpec extends Specification {
     @Unroll
-    def "#Construct an empty Stack"() {
+    def "#Construct an empty Queue"() {
         setup:
-        Stack stack = new Stack()
+        Queue queue = new Queue()
 
         expect:
-        stack.size() == 0
-        stack.empty() == true
+        queue.size() == 0
+        queue.empty() == true
     }
 
     @Unroll
-    def "#Construct an empty Stack from array"() {
+    def "#Construct an empty Queue from array"() {
         setup:
-        Stack stack = new Stack(values)
+        Queue queue = new Queue(values)
 
         expect:
-        stack.size() == size
-        stack.empty() == isEmpty
+        queue.size() == size
+        queue.empty() == isEmpty
 
         where:
         values                 | size | isEmpty
@@ -33,16 +32,16 @@ class StackSpec extends Specification {
 //------------------------------------------------------------------------------
 
     @Unroll
-    def "#Construct stack from non-empty array"() {
+    def "#Construct queue from non-empty array"() {
         when:
-        Stack<Integer> stack = new Stack<Integer>(values);
+        Queue<Integer> queue = new Queue<Integer>(values);
 
         then:
-        stack.empty() == isEmpty
-        stack.size() == size
+        queue.empty() == isEmpty
+        queue.size() == size
 
-//        stack.size() == size
-//        stack.empty() == isEmpty
+//        queue.size() == size
+//        queue.empty() == isEmpty
 
         where:
         values                 | size | isEmpty
@@ -56,23 +55,23 @@ class StackSpec extends Specification {
     @Unroll
     def "#push()"() {
         setup:
-        Stack stack = new Stack();
+        Queue queue = new Queue();
 
         when:
         int i = 0
         while (pushes > 0) {
-            stack.push(values[i])
+            queue.insert(values[i])
             pushes--
             i++
         }
 
         then:
-        stack.top() == top
+        queue.peek() == peek
 
         where:
-        values                  | pushes | top
-        [1, 2, 3] as Integer[]  | 3      | 3
-        [1, 2] as Integer[]     | 2      | 2
+        values                  | pushes | peek
+        [1, 2, 3] as Integer[]  | 3      | 1
+        [1, 2] as Integer[]     | 2      | 1
         [1] as Integer[]        | 1      | 1
     }
 
@@ -81,35 +80,35 @@ class StackSpec extends Specification {
     @Unroll
     def "#pop()"() {
         setup:
-        Stack stack = new Stack(values);
+        Queue queue = new Queue(values);
 
         when:
         int i = 0
         while (pops > 0) {
-            stack.pop()
+            queue.remove()
             pops--
             i++
         }
 
         then:
-        stack.top() == top
+        queue.peek() == peek
 
         where:
-        values                  | pops | top
-        [1, 2, 3] as Integer[]  | 2    | 1
-        [1, 2] as Integer[]     | 1    | 1
+        values                  | pops | peek
+        [1, 2, 3] as Integer[]  | 2    | 3
+        [1, 2] as Integer[]     | 1    | 2
         [1] as Integer[]        | 0    | 1
     }
 
 //------------------------------------------------------------------------------
 
     @Unroll
-    def "#pop() an empty Stack"() {
+    def "#pop() an empty Queue"() {
         setup:
-        Stack stack = new Stack();
+        Queue queue = new Queue();
 
         when:
-        stack.pop()
+        queue.remove()
 
         then:
         thrown EmptyDataStructureException
@@ -117,29 +116,29 @@ class StackSpec extends Specification {
 
 //------------------------------------------------------------------------------
 
-    @Unroll def "#top()"() {
+    @Unroll def "#peek()"() {
         setup:
-        Stack stack = new Stack(values);
+        Queue queue = new Queue(values);
 
         expect:
-        stack.top() == top
+        queue.peek() == peek
 
         where:
-        values                  | top
-        [1, 2, 3] as Integer[]  | 3
-        [1, 2] as Integer[]     | 2
+        values                  | peek
+        [1, 2, 3] as Integer[]  | 1
+        [1, 2] as Integer[]     | 1
         [1] as Integer[]        | 1
     }
 
 //------------------------------------------------------------------------------
 
     @Unroll
-    def "#top() an empty Stack"() {
+    def "#peek() an empty Queue"() {
         setup:
-        Stack stack = new Stack();
+        Queue queue = new Queue();
 
         when:
-        stack.top()
+        queue.peek()
 
         then:
         thrown EmptyDataStructureException
@@ -150,15 +149,15 @@ class StackSpec extends Specification {
     @Unroll
     def "#toString()"() {
         setup:
-        Stack stack = new Stack(values);
+        Queue queue = new Queue(values);
 
         expect:
-        stack.toString() == string
+        queue.toString() == string
 
         where:
         values                  | string
-        [1, 2, 3] as Integer[]  | "3, 2, 1"
-        [1, 2] as Integer[]     | "2, 1"
+        [1, 2, 3] as Integer[]  | "1, 2, 3"
+        [1, 2] as Integer[]     | "1, 2"
         [1] as Integer[]        | "1"
         [] as Integer[]         | ""
     }
