@@ -36,7 +36,7 @@ class LinkedListSpec extends Specification {
     where:
     value | exception
     null  | NullPointerException
-    -1    | IndexOutOfBoundsException
+    -1    | IllegalArgumentException
 
   }
 

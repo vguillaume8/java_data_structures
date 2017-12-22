@@ -58,7 +58,7 @@ public abstract class ChainedDataStructure<T> extends DynamicallySizedDataStruct
      */
     public void init(int length, T value) {
         if (length < 0) {
-            throw new IndexOutOfBoundsException("Length must be at least 0");
+            throw new IllegalArgumentException("Length must be at least 0");
         }
 
         this.init();

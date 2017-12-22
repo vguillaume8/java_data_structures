@@ -66,9 +66,12 @@ public class ArrayList<T> extends DynamicallySizedArray<T> {
      */
     @Override
     public void insert(T value, int index) {
-        this.verifyIndex(index);        // Verify that the index is a valid index
+        if (!this.empty() && index < this.size()) {
+            this.verifyIndex(index);        // Verify that the index is a valid index
+            this.shiftRight(index);         // Shift all values up one index, starting at designated index
+        }
+
         this.alloc();                   // Potentially alloc the internal array before insertion
-        this.shiftRight(index);         // Shift all values up one index, starting at designated index
         this.values[index] = value;     // Insert the new value into the designated index
         this.incrementSize();           // Increment size of list
     }
@@ -117,11 +120,7 @@ public class ArrayList<T> extends DynamicallySizedArray<T> {
      */
     @Override
     public void insertFirst(T value) {
-        if (this.empty()) {
-            this.insertLast(value);
-        } else {
-            this.insert(value, 0);
-        }
+        this.insert(value, 0);
     }
 
     /**
@@ -131,10 +130,7 @@ public class ArrayList<T> extends DynamicallySizedArray<T> {
      */
     @Override
     public void insertLast(T value) {
-        this.alloc();                        // Potentially alloc the internal array if we need space
-        this.values[this.size()] = value;   // Append the value to the back of the array
-        this.incrementSize();               // Increment the size of the list
-
+        this.insert(value, this.size());
     }
 
     /**

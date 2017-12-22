@@ -74,6 +74,10 @@ public abstract class DynamicallySizedArray<T> extends DynamicallySizedDataStruc
      * @param value Specified default value
      */
     public void init(int length, T value) {
+        if (length < 0) {
+            throw new IllegalArgumentException("Length must be at least 0");
+        }
+
         this.init();
 
         for (int i = 0; i < length; i++) {
