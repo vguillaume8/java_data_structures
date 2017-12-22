@@ -1,12 +1,12 @@
-import structures.vectors.DoublyLinkedList;
 import structures.vectors.LinkedList;
+import structures.auxiliary.ChainedDataStructure;
 
 public class Application {
 
   public static void main(String[] args) {
 
     Integer[] array = {1, 2, 3};
-    LinkedList<Integer> list = new DoublyLinkedList<Integer>(array);
+    ChainedDataStructure<Integer> list = new LinkedList<Integer>(array);
 
     for (Integer i : list) {
       System.out.println(i);

@@ -5,40 +5,39 @@ package structures.auxiliary;
  *
  * @author Jabari Dash
  */
-public abstract class DataStructure {
-    private int size;
+public interface DataStructure<T> {
 
-    protected void init() {
-        this.size = 0;
-    }
+    /**
+     *
+     * @param value
+     * @return
+     */
+    boolean contains(T value);
+
+//------------------------------------------------------------------------------
 
     /**
      * Determines whether or not the structure is empty
      *
      * @return True if and only if there are no elements in the structure
      */
-    public abstract boolean empty();
+    boolean empty();
+
+//------------------------------------------------------------------------------
 
     /**
-     * Decrements the size of the structure by 1
-     */
-    public void decrementSize() {
-        this.size--;
-    }
-
-    /**
-     * Increments the size of the structure by 1
-     */
-    public void incrementSize() {
-        this.size++;
-    }
-
-    /**
-     * Returns the size of the structure
+     * Inserts a specified value into the IndexedDataStructure
      *
-     * @return The number of elements in the structure
+     * @param value The specified value to insert
      */
-    public int size() {
-        return this.size;
-    }
+    void insert(T value);
+
+//------------------------------------------------------------------------------
+
+    /**
+     *
+     * @return
+     */
+    int size();
+
 }

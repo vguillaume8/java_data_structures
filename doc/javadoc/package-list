@@ -1,5 +1,5 @@
 
 structures.auxiliary
+structures.trees
 structures.vectors
 util.exceptions
-util.iterators

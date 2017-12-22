@@ -2,17 +2,16 @@ package structures.vectors
 
 import spock.lang.Unroll
 import spock.lang.Specification
-import structures.vectors.DoublyLinkedList
 
 class DoublyLinkedListSpec extends Specification {
 
   @Unroll
   def "#Construct an empty list"() {
     setup:
-    DoublyLinkedList list = new DoublyLinkedList()
+    LinkedList list = new LinkedList()
 
     expect:
-    list.length() == 0
+    list.size() == 0
     list.empty() == true
   }
 
@@ -21,13 +20,13 @@ class DoublyLinkedListSpec extends Specification {
   @Unroll
   def "#Constructing a list with bad values"() {
     setup:
-    DoublyLinkedList list
+    LinkedList list
 
     when:
     if (value == null) {
-      list = new DoublyLinkedList(value);
+      list = new LinkedList(value);
     } else {
-      list = new DoublyLinkedList(value, "x")
+      list = new LinkedList(value, "x")
     }
 
     then:
@@ -46,10 +45,10 @@ class DoublyLinkedListSpec extends Specification {
   @Unroll
   def "#Construct a non-empty list from array"() {
     setup:
-    DoublyLinkedList list = new DoublyLinkedList(values)
+    LinkedList list = new LinkedList(values)
 
     expect:
-    list.length() == length
+    list.size() == length
     list.empty() == empty
 
     where:
@@ -64,10 +63,10 @@ class DoublyLinkedListSpec extends Specification {
   @Unroll
   def "#Construct a non-empty list by length"() {
     setup:
-    DoublyLinkedList list = new DoublyLinkedList(length, "x")
+    LinkedList list = new LinkedList(length, "x")
 
     expect:
-    list.length() == length
+    list.size() == length
     list.empty() == empty
 
     where:
@@ -82,7 +81,7 @@ class DoublyLinkedListSpec extends Specification {
   @Unroll
   def "#contains()"() {
     setup:
-    DoublyLinkedList list = new DoublyLinkedList(values)
+    LinkedList list = new LinkedList(values)
 
     expect:
     list.contains(1) == contains
@@ -100,7 +99,7 @@ class DoublyLinkedListSpec extends Specification {
   @Unroll
   def "#get(index) with good data"() {
     setup:
-    DoublyLinkedList list = new DoublyLinkedList(values)
+    LinkedList list = new LinkedList(values)
 
     when:
     Object x = list.get(index)
@@ -119,7 +118,7 @@ class DoublyLinkedListSpec extends Specification {
   @Unroll
   def "#get(index) with bad data"() {
     setup:
-    DoublyLinkedList list = new DoublyLinkedList(values)
+    LinkedList list = new LinkedList(values)
 
     when:
     Object x = list.get(index)
@@ -138,7 +137,7 @@ class DoublyLinkedListSpec extends Specification {
   @Unroll
   def "#insert()"() {
     setup:
-    DoublyLinkedList list = new DoublyLinkedList()
+    LinkedList list = new LinkedList()
 
     when:
     list.insert(value)
@@ -161,7 +160,7 @@ class DoublyLinkedListSpec extends Specification {
   @Unroll
   def "#insertFirst()"() {
     setup:
-    DoublyLinkedList list = new DoublyLinkedList(values);
+    LinkedList list = new LinkedList(values);
 
     when:
     list.insertFirst(value)
@@ -182,13 +181,13 @@ class DoublyLinkedListSpec extends Specification {
   @Unroll
   def "#insertLast()"() {
     setup:
-    DoublyLinkedList list = new DoublyLinkedList(values);
+    LinkedList list = new LinkedList(values);
 
     when:
     list.insertLast(value)
 
     then:
-    list.get(list.length()-1) == value
+    list.get(list.size()-1) == value
 
     where:
     values                 | value
@@ -203,7 +202,7 @@ class DoublyLinkedListSpec extends Specification {
   @Unroll
   def "#insert(value, index)"() {
     setup:
-    DoublyLinkedList list = new DoublyLinkedList(values);
+    LinkedList list = new LinkedList(values);
 
     when:
     list.insert(value, index)
@@ -224,7 +223,7 @@ class DoublyLinkedListSpec extends Specification {
   @Unroll
   def "#empty() when initializing with an array"() {
     setup:
-    DoublyLinkedList list = new DoublyLinkedList(values);
+    LinkedList list = new LinkedList(values);
 
     expect:
     list.empty() == empty
@@ -240,7 +239,7 @@ class DoublyLinkedListSpec extends Specification {
   @Unroll
   def "#empty() when initializing with specified length"() {
     setup:
-    DoublyLinkedList list = new DoublyLinkedList(length, "x");
+    LinkedList list = new LinkedList(length, "x");
 
     expect:
     list.empty() == empty
@@ -257,7 +256,7 @@ class DoublyLinkedListSpec extends Specification {
   @Unroll
   def "#empty() when using basic constructor"() {
     setup:
-    DoublyLinkedList list = new DoublyLinkedList();
+    LinkedList list = new LinkedList();
 
     expect:
     list.empty() == empty
@@ -271,14 +270,14 @@ class DoublyLinkedListSpec extends Specification {
   @Unroll
   def "#remove(index) with valid index"() {
     setup:
-    DoublyLinkedList list = new DoublyLinkedList(values)
+    LinkedList list = new LinkedList(values)
 
     when:
     def r = list.remove(index)
 
     then:
     list.contains(check) == false
-    list.length() == length - 1
+    list.size() == length - 1
     r == removed
 
     where:
@@ -291,7 +290,7 @@ class DoublyLinkedListSpec extends Specification {
   @Unroll
   def "#remove(index) with invalid input"() {
     setup:
-    DoublyLinkedList list = new DoublyLinkedList(values)
+    LinkedList list = new LinkedList(values)
 
     when:
     list.remove(index)
@@ -310,7 +309,7 @@ class DoublyLinkedListSpec extends Specification {
   @Unroll
   def "#remove()"() {
     setup:
-    DoublyLinkedList list = new DoublyLinkedList(values);
+    LinkedList list = new LinkedList(values);
 
     when:
     while (removals > 0) {
@@ -320,8 +319,8 @@ class DoublyLinkedListSpec extends Specification {
 
     then:
 
-    if (list.length() > 0) {
-      assert list.get(list.length()-1) == value
+    if (list.size() > 0) {
+      assert list.get(list.size()-1) == value
 
     } else {
       assert list.empty() == true
@@ -339,7 +338,7 @@ class DoublyLinkedListSpec extends Specification {
   @Unroll
   def "#removeFirst()"() {
     setup:
-    DoublyLinkedList list = new DoublyLinkedList(values);
+    LinkedList list = new LinkedList(values);
 
     when:
     while (removals > 0) {
@@ -349,7 +348,7 @@ class DoublyLinkedListSpec extends Specification {
 
     then:
 
-    if (list.length() > 0) {
+    if (list.size() > 0) {
       assert list.get(0) == value
 
     } else {
@@ -368,7 +367,7 @@ class DoublyLinkedListSpec extends Specification {
   @Unroll
   def "#removeLast()"() {
     setup:
-    DoublyLinkedList list = new DoublyLinkedList(values);
+    LinkedList list = new LinkedList(values);
 
     when:
     while (removals > 0) {
@@ -378,8 +377,8 @@ class DoublyLinkedListSpec extends Specification {
 
     then:
 
-    if (list.length() > 0) {
-      assert list.get(list.length() - 1) == value
+    if (list.size() > 0) {
+      assert list.get(list.size() - 1) == value
 
     } else {
       assert list.empty() == true
@@ -397,7 +396,7 @@ class DoublyLinkedListSpec extends Specification {
   @Unroll
   def "#toString()" () {
     setup:
-    DoublyLinkedList list = new DoublyLinkedList(values)
+    LinkedList list = new LinkedList(values)
 
     when:
     String s = list.toString()

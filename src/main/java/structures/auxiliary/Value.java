@@ -12,23 +12,6 @@ public abstract class Value<T> {
     private T value;
 
     /**
-     * Initializes the value of this object to null
-     */
-    public void init() {
-        this.value = null;
-    }
-
-    /**
-     * Initializes the value of this object with
-     * a specified value
-     *
-     * @param value Specified value
-     */
-    public void init(T value) {
-        this.value = value;
-    }
-
-    /**
      * Returns the value of the node
      *
      * @return The value of the node

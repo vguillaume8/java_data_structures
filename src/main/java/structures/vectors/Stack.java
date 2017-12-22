@@ -13,13 +13,13 @@ import java.util.EmptyStackException;
  * @param <T> Generic type
  */
 public class Stack<T> {
-    DoublyLinkedList<T> stack;
+    LinkedList<T> stack;
 
     /**
      * Constructs an empty Stack
      */
     public Stack() {
-        this.stack = new DoublyLinkedList<T>();
+        this.stack = new LinkedList<T>();
     }
 
 //------------------------------------------------------------------------------
@@ -30,7 +30,7 @@ public class Stack<T> {
      * @param values Specified array of values to instantiate the Stack from
      */
     public Stack(T[] values) {
-        this.stack = new DoublyLinkedList<>();
+        this.stack = new LinkedList<>();
 
         for (int i = 0; i < values.length; i++) {
             this.push(values[i]);
@@ -156,7 +156,7 @@ public class Stack<T> {
      * @return The number of elements on the Stack
      */
     public int size() {
-        return this.stack.length();
+        return this.stack.size();
     }
 
 //------------------------------------------------------------------------------
