@@ -260,6 +260,11 @@ public class LinkedList<T> extends ChainedIndexedDataStructure<T> {
    * @return Value of node at specified index
    */
   public T remove(int index) {
+
+    if (this.empty()) {
+      throw new EmptyDataStructureException("Cannot remove from an empty LinkedList");
+    }
+
     this.verifyIndex(index);
 
     T value;

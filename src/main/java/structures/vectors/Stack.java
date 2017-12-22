@@ -59,7 +59,7 @@ public class Stack<T>  extends ChainedDataStructure<T> {
     @Override
     public T remove() {
         if (this.empty()) {
-            throw new EmptyStackException();
+            throw new EmptyDataStructureException("Cannot remove from an empty Stack");
         }
 
         T value = this.head().value();  // Get value from head
@@ -127,7 +127,7 @@ public class Stack<T>  extends ChainedDataStructure<T> {
      */
     public T top() {
         if (this.empty()) {
-            throw new EmptyStackException();
+            throw new EmptyDataStructureException("Cannot top() and empty Stack");
         }
 
         return this.head().value();

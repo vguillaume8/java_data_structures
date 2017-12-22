@@ -3,4 +3,3 @@ structures.auxiliary
 structures.trees
 structures.vectors
 structures.vectors.auxiliary
-util.exceptions

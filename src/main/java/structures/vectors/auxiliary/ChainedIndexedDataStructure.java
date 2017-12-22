@@ -34,8 +34,6 @@ public abstract class ChainedIndexedDataStructure<T> extends ChainedDataStructur
      */
     public boolean indexOutOfBounds(int index) {
         return index < 0 || index >= this.size();
-
-//        return index < 0 || index >= this.size() ? false : true;
     }
 
 //------------------------------------------------------------------------------

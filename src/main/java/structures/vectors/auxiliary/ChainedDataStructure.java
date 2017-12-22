@@ -274,13 +274,30 @@ public abstract class ChainedDataStructure<T> extends DynamicallySizedDataStruct
         }
     }
 
+    /**
+     * Iterates over a ChainedDataStructure via pointers
+     *
+     * @author Jabari Dash
+     * @param <T> Generic type
+     */
     public static class ChainedDataStructureIterator<T> implements Iterator<T> {
         private Node<T> node;
 
+        /**
+         * Constructor
+         *
+         * @param head Pointer to first node to start iterating with
+         */
         public ChainedDataStructureIterator(Node<T> head) {
             this.node = head;
         }
 
+        /**
+         * Determines whether or not there are more Nodes
+         * to iterate over
+         *
+         * @return True if and only if there are more nodes in the chain
+         */
         @Override
         public boolean hasNext() {
 
@@ -289,6 +306,11 @@ public abstract class ChainedDataStructure<T> extends DynamicallySizedDataStruct
             return this.node == null ? false : true;
         }
 
+        /**
+         * Returns the value of the next Node in the chain
+         *
+         * @return Value of the next Node
+         */
         @Override
         public T next() {
             // If there are no more values left, throw an Exception

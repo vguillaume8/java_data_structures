@@ -3,7 +3,7 @@ package structures.vectors
 import spock.lang.Unroll
 import spock.lang.Specification
 import structures.vectors.Stack
-
+import structures.auxiliary.DataStructure.EmptyDataStructureException;
 class StackSpec extends Specification {
 
     @Unroll
@@ -112,7 +112,7 @@ class StackSpec extends Specification {
         stack.pop()
 
         then:
-        thrown EmptyStackException
+        thrown EmptyDataStructureException
     }
 
 //------------------------------------------------------------------------------
@@ -142,7 +142,7 @@ class StackSpec extends Specification {
         stack.top()
 
         then:
-        thrown EmptyStackException
+        thrown EmptyDataStructureException
     }
 
 //------------------------------------------------------------------------------

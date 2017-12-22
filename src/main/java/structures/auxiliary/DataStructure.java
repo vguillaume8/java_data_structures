@@ -60,4 +60,23 @@ public interface DataStructure<T> {
      */
     int size();
 
+//------------------------------------------------------------------------------
+
+    /**
+     * Exception that is throw when an operation takes places that
+     * requires the DataStructure to be non-empty, but its empty
+     *
+     * @author Jabari Dash
+     */
+    class EmptyDataStructureException extends RuntimeException {
+
+        /**
+         * Call superclass constructor
+         * @param message Message to be printed to Standard Error
+         */
+        public EmptyDataStructureException(String message) {
+            super(message);
+        }
+    }
+
 }
