@@ -8,9 +8,10 @@ package structures.auxiliary;
 public interface DataStructure<T> {
 
     /**
+     * Determines whether or not the DataStructure has a contains a specified value
      *
-     * @param value
-     * @return
+     * @param value Specified value
+     * @return True if and only if the specified value is within the Structure
      */
     boolean contains(T value);
 
@@ -42,16 +43,20 @@ public interface DataStructure<T> {
 //------------------------------------------------------------------------------
 
     /**
+     * Removes an element from the DataStructure. The order
+     * in which the value comes out depends on the implementation
+     * of implementing class
      *
-     * @return
+     * @return Removed value from DataStructure
      */
     T remove();
 
 //------------------------------------------------------------------------------
 
     /**
+     * Returns the number of values in the data structure
      *
-     * @return
+     * @return Number of values in the DataStructure
      */
     int size();
 

@@ -5,7 +5,11 @@ import java.util.Iterator;
 import java.util.StringJoiner;
 
 /**
+ * Incomplete class that should be implemented
+ * by classes that have growing arrays in the
+ * back. For example, Heaps or ArrayLists
  *
+ * @author Jabari Dash
  * @param <T> Generic type
  */
 public abstract class DynamicallySizedArray<T> extends DynamicallySizedDataStructure<T> implements IndexedDataStructure<T> {
@@ -15,7 +19,7 @@ public abstract class DynamicallySizedArray<T> extends DynamicallySizedDataStruc
     /**
      * Determines whether or not the internal array is full
      *
-     * @return
+     * @return True if the internal array has run out of space for new elements
      */
     protected boolean full() {
         return this.size() < this.values.length;
@@ -24,9 +28,11 @@ public abstract class DynamicallySizedArray<T> extends DynamicallySizedDataStruc
 //------------------------------------------------------------------------------
 
     /**
+     * Determines whether or not a specified index is within the bounds
+     * of the DataStructure
      *
-     * @param index
-     * @return
+     * @param index Specified index to check
+     * @return True if and only if the index is non-negative and less than the size of the structure
      */
     public boolean indexOutOfBounds(int index) {
         return index < 0 || index >= this.size();
@@ -46,6 +52,7 @@ public abstract class DynamicallySizedArray<T> extends DynamicallySizedDataStruc
 //------------------------------------------------------------------------------
 
     /**
+     * Initializes the Structure with a specified array of values
      *
      * @param values Values to be inserted into the IndexedDataStructure
      */
@@ -60,6 +67,8 @@ public abstract class DynamicallySizedArray<T> extends DynamicallySizedDataStruc
 //------------------------------------------------------------------------------
 
     /**
+     * Initializes the DataStructure to a specified length
+     * with a specified default value
      *
      * @param length Specified length of IndexedDataStructure
      * @param value Specified default value
@@ -75,9 +84,11 @@ public abstract class DynamicallySizedArray<T> extends DynamicallySizedDataStruc
 //------------------------------------------------------------------------------
 
     /**
+     * Determines whether or a specified value is within
+     * the Structure.
      *
-     * @param value
-     * @return
+     * @param value Specified value
+     * @return  True if and only if the DataStrcture contains the value
      */
     @Override
     public boolean contains(T value) {
@@ -97,25 +108,26 @@ public abstract class DynamicallySizedArray<T> extends DynamicallySizedDataStruc
 //------------------------------------------------------------------------------
 
     /**
-     *
+     * If the internal array is full, it's size will be doubled plus 1
      */
-    protected void grow() {
-        if (this.empty() || this.full()) {
-            this.grow(this.size() * 2 + 1);
+    protected void alloc() {
+        if (this.full()) {
+            this.alloc(this.size() * 2 + 1);
         }
     }
 
 //------------------------------------------------------------------------------
 
     /**
+     * Allocates (or de-allocates) space in the interal array
      *
-     * @param growBy
+     * @param slots How many new slots to make
      */
     @SuppressWarnings("unchecked")
-    protected void grow(int growBy) {
+    protected void alloc(int slots) {
         int length;
 
-        length = this.values.length + growBy;
+        length = this.values.length + slots;
 
         // If the length of the internal
         // array would become less than 0
@@ -149,13 +161,21 @@ public abstract class DynamicallySizedArray<T> extends DynamicallySizedDataStruc
 
 //------------------------------------------------------------------------------
 
+    /**
+     * Returns iterator (allows use with enhanced forloop)
+     *
+     * @return Iterator for iterating over Structure by index
+     */
     @Override
     public Iterator<T> iterator() {
         return new IndexedDataStructureIterator<>(this);
     }
 
+//------------------------------------------------------------------------------
+
     /**
      * Returns a String representation of the list
+     *
      * @return String version of the list
      */
     @Override
@@ -185,14 +205,22 @@ public abstract class DynamicallySizedArray<T> extends DynamicallySizedDataStruc
      *
      * @param shrinkBy Number of elements to shrink the list by
      */
-    protected void shrink(int shrinkBy) {
+    protected void deloc(int shrinkBy) {
         if (shrinkBy < 0) {
             throw new RuntimeException("");
         }
 
-        this.grow(-1 * shrinkBy);
+        this.alloc(-1 * shrinkBy);
     }
 
+//------------------------------------------------------------------------------
+
+    /**
+     * Verifies if a provided index is within the DataStructure or not
+     *
+     * @param index Specified index to verify
+     * @throws IndexOutOfBoundsException Exception thrown if the index is invalid
+     */
     public void verifyIndex(int index) {
         if (this.indexOutOfBounds(index)) {
             throw new IndexOutOfBoundsException("size: " + this.size() + " index: " + index);

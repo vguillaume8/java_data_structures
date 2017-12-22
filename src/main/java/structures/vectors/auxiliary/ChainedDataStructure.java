@@ -120,8 +120,9 @@ public abstract class ChainedDataStructure<T> extends DynamicallySizedDataStruct
 //------------------------------------------------------------------------------
 
     /**
+     * Sets pointer to head node via a specified Node pointer
      *
-     * @param head
+     * @param head New head pointer
      */
     protected void head(Node<T> head) {
         this.head = head;
@@ -130,8 +131,9 @@ public abstract class ChainedDataStructure<T> extends DynamicallySizedDataStruct
 //------------------------------------------------------------------------------
 
     /**
+     * Returns a pointer to the first Node in the chain
      *
-     * @return
+     * @return Pointer to first Node in chain
      */
     protected Node<T> head() {
         return this.head;

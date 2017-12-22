@@ -20,10 +20,13 @@ public interface IndexedDataStructure<T> extends LinearDataStructure<T> {
      */
     T get(int index);
 
+//------------------------------------------------------------------------------
+
     /**
+     * Checks if a specified index is out of bounds of the DataStructure
      *
-     * @param index
-     * @return
+     * @param index Specified index
+     * @return True if and only if the index is out of bound
      */
     boolean indexOutOfBounds(int index);
 
@@ -70,7 +73,7 @@ public interface IndexedDataStructure<T> extends LinearDataStructure<T> {
     /**
      * Removes first value from the IndexedDataStructure
      *
-     * @return
+     * @return First element in DataStructure
      */
     T removeFirst();
 
@@ -79,15 +82,17 @@ public interface IndexedDataStructure<T> extends LinearDataStructure<T> {
     /**
      * Removes the last value from the IndexedDataStructure
      *
-     * @return
+     * @return Last element in DataStructure
      */
     T removeLast();
+
+//------------------------------------------------------------------------------
 
     /**
      * Verify that an index is valid, if not, and exception
      * is thrown to stop execution
      *
-     * @param index
+     * @param index Specified index
      */
     void verifyIndex(int index);
 

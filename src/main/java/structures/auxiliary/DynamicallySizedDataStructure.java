@@ -3,6 +3,7 @@ package structures.auxiliary;
 /**
  * All dynamically sized data types should extend this class
  *
+ * @author Jabari Dash
  * @param <T> Generic type
  */
 public abstract class DynamicallySizedDataStructure<T> implements DataStructure<T> {
@@ -12,8 +13,9 @@ public abstract class DynamicallySizedDataStructure<T> implements DataStructure<
 //------------------------------------------------------------------------------
 
     /**
+     * Determines whether or not the data structure is empty
      *
-     * @return
+     * @return True if and only if the size of the structure is 0
      */
     public boolean empty() {
         return this.size() == 0 ? true : false;
@@ -28,9 +30,12 @@ public abstract class DynamicallySizedDataStructure<T> implements DataStructure<
         this.size = 0;
     }
 
+//------------------------------------------------------------------------------
+
     /**
+     * Initialies the structure to a specified size
      *
-     * @param size
+     * @param size Specified size
      */
     public void init(int size) {
         this.incrementSize(size);
@@ -45,6 +50,13 @@ public abstract class DynamicallySizedDataStructure<T> implements DataStructure<
         this.decrementSize(1);
     }
 
+//------------------------------------------------------------------------------
+
+    /**
+     * Decrements the size of the structure by a specified amount
+     *
+     * @param decrements Number of times to decrement
+     */
     protected void decrementSize(int decrements) {
         while (decrements > 0) {
             this.size--;
@@ -61,6 +73,13 @@ public abstract class DynamicallySizedDataStructure<T> implements DataStructure<
         this.incrementSize(1);
     }
 
+//------------------------------------------------------------------------------
+
+    /**
+     * Increments the size of the structure by a specified amount
+     *
+     * @param increments Number of times to increment
+     */
     protected void incrementSize(int increments) {
         while (increments > 0) {
             this.size++;
