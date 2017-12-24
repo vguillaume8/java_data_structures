@@ -99,10 +99,10 @@ var activeTableTab = "activeTableTab";
 <li>java.lang.Object</li>
 <li>
 <ul class="inheritance">
-<li><a href="../../../structures/auxiliary/Value.html" title="class in structures.auxiliary">structures.auxiliary.Value</a>&lt;T&gt;</li>
+<li><a href="../../../structures/auxiliary/Value.html" title="class in structures.auxiliary">structures.auxiliary.interfaces.Value</a>&lt;T&gt;</li>
 <li>
 <ul class="inheritance">
-<li>structures.vectors.auxiliary.ChainedDataStructure.Node&lt;T&gt;</li>
+<li>structures.auxiliary.classes.incomplete.ChainedDataStructure.Node&lt;T&gt;</li>
 </ul>
 </li>
 </ul>
@@ -165,7 +165,7 @@ extends <a href="../../../structures/auxiliary/Value.html" title="class in struc
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../structures/vectors/auxiliary/ChainedDataStructure.Node.html#Node-T-structures.vectors.auxiliary.ChainedDataStructure.Node-structures.vectors.auxiliary.ChainedDataStructure.Node-">Node</a></span>(<a href="../../../structures/vectors/auxiliary/ChainedDataStructure.Node.html" title="type parameter in ChainedDataStructure.Node">T</a>&nbsp;value,
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../structures/vectors/auxiliary/ChainedDataStructure.Node.html#Node-T-structures.auxiliary.classes.incomplete.ChainedDataStructure.Node-structures.auxiliary.classes.incomplete.ChainedDataStructure.Node-">Node</a></span>(<a href="../../../structures/vectors/auxiliary/ChainedDataStructure.Node.html" title="type parameter in ChainedDataStructure.Node">T</a>&nbsp;value,
     <a href="../../../structures/vectors/auxiliary/ChainedDataStructure.Node.html" title="class in structures.vectors.auxiliary">ChainedDataStructure.Node</a>&lt;<a href="../../../structures/vectors/auxiliary/ChainedDataStructure.Node.html" title="type parameter in ChainedDataStructure.Node">T</a>&gt;&nbsp;prev,
     <a href="../../../structures/vectors/auxiliary/ChainedDataStructure.Node.html" title="class in structures.vectors.auxiliary">ChainedDataStructure.Node</a>&lt;<a href="../../../structures/vectors/auxiliary/ChainedDataStructure.Node.html" title="type parameter in ChainedDataStructure.Node">T</a>&gt;&nbsp;next)</code>
 <div class="block">Constructs a new node with a specified value, and pointers to its
@@ -201,7 +201,7 @@ extends <a href="../../../structures/auxiliary/Value.html" title="class in struc
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../structures/vectors/auxiliary/ChainedDataStructure.Node.html#next-structures.vectors.auxiliary.ChainedDataStructure.Node-">next</a></span>(<a href="../../../structures/vectors/auxiliary/ChainedDataStructure.Node.html" title="class in structures.vectors.auxiliary">ChainedDataStructure.Node</a>&lt;<a href="../../../structures/vectors/auxiliary/ChainedDataStructure.Node.html" title="type parameter in ChainedDataStructure.Node">T</a>&gt;&nbsp;next)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../structures/vectors/auxiliary/ChainedDataStructure.Node.html#next-structures.auxiliary.classes.incomplete.ChainedDataStructure.Node-">next</a></span>(<a href="../../../structures/vectors/auxiliary/ChainedDataStructure.Node.html" title="class in structures.vectors.auxiliary">ChainedDataStructure.Node</a>&lt;<a href="../../../structures/vectors/auxiliary/ChainedDataStructure.Node.html" title="type parameter in ChainedDataStructure.Node">T</a>&gt;&nbsp;next)</code>
 <div class="block">Sets the pointer to the next node</div>
 </td>
 </tr>
@@ -213,17 +213,17 @@ extends <a href="../../../structures/auxiliary/Value.html" title="class in struc
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../structures/vectors/auxiliary/ChainedDataStructure.Node.html#prev-structures.vectors.auxiliary.ChainedDataStructure.Node-">prev</a></span>(<a href="../../../structures/vectors/auxiliary/ChainedDataStructure.Node.html" title="class in structures.vectors.auxiliary">ChainedDataStructure.Node</a>&lt;<a href="../../../structures/vectors/auxiliary/ChainedDataStructure.Node.html" title="type parameter in ChainedDataStructure.Node">T</a>&gt;&nbsp;prev)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../structures/vectors/auxiliary/ChainedDataStructure.Node.html#prev-structures.auxiliary.classes.incomplete.ChainedDataStructure.Node-">prev</a></span>(<a href="../../../structures/vectors/auxiliary/ChainedDataStructure.Node.html" title="class in structures.vectors.auxiliary">ChainedDataStructure.Node</a>&lt;<a href="../../../structures/vectors/auxiliary/ChainedDataStructure.Node.html" title="type parameter in ChainedDataStructure.Node">T</a>&gt;&nbsp;prev)</code>
 <div class="block">Sets the pointer to the prev node</div>
 </td>
 </tr>
 </table>
 <ul class="blockList">
-<li class="blockList"><a name="methods.inherited.from.class.structures.auxiliary.Value">
+<li class="blockList"><a name="methods.inherited.from.class.structures.auxiliary.interfaces.Value">
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;structures.auxiliary.<a href="../../../structures/auxiliary/Value.html" title="class in structures.auxiliary">Value</a></h3>
-<code><a href="../../../structures/auxiliary/Value.html#equals-structures.auxiliary.Value-">equals</a>, <a href="../../../structures/auxiliary/Value.html#toString--">toString</a>, <a href="../../../structures/auxiliary/Value.html#value--">value</a>, <a href="../../../structures/auxiliary/Value.html#value-T-">value</a></code></li>
+<code><a href="../../../structures/auxiliary/Value.html#equals-structures.auxiliary.interfaces.Value-">equals</a>, <a href="../../../structures/auxiliary/Value.html#toString--">toString</a>, <a href="../../../structures/auxiliary/Value.html#value--">value</a>, <a href="../../../structures/auxiliary/Value.html#value-T-">value</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
@@ -272,9 +272,9 @@ extends <a href="../../../structures/auxiliary/Value.html" title="class in struc
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="Node-java.lang.Object-structures.vectors.auxiliary.ChainedDataStructure.Node-structures.vectors.auxiliary.ChainedDataStructure.Node-">
+<a name="Node-java.lang.Object-structures.auxiliary.classes.incomplete.ChainedDataStructure.Node-structures.auxiliary.classes.incomplete.ChainedDataStructure.Node-">
 <!--   -->
-</a><a name="Node-T-structures.vectors.auxiliary.ChainedDataStructure.Node-structures.vectors.auxiliary.ChainedDataStructure.Node-">
+</a><a name="Node-T-structures.auxiliary.classes.incomplete.ChainedDataStructure.Node-structures.auxiliary.classes.incomplete.ChainedDataStructure.Node-">
 <!--   -->
 </a>
 <ul class="blockListLast">
@@ -331,7 +331,7 @@ extends <a href="../../../structures/auxiliary/Value.html" title="class in struc
 </dl>
 </li>
 </ul>
-<a name="next-structures.vectors.auxiliary.ChainedDataStructure.Node-">
+<a name="next-structures.auxiliary.classes.incomplete.ChainedDataStructure.Node-">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -359,7 +359,7 @@ extends <a href="../../../structures/auxiliary/Value.html" title="class in struc
 </dl>
 </li>
 </ul>
-<a name="prev-structures.vectors.auxiliary.ChainedDataStructure.Node-">
+<a name="prev-structures.auxiliary.classes.incomplete.ChainedDataStructure.Node-">
 <!--   -->
 </a>
 <ul class="blockListLast">

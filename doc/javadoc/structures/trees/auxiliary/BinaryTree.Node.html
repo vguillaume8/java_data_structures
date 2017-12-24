@@ -99,10 +99,10 @@ var activeTableTab = "activeTableTab";
 <li>java.lang.Object</li>
 <li>
 <ul class="inheritance">
-<li><a href="../../../structures/auxiliary/Value.html" title="class in structures.auxiliary">structures.auxiliary.Value</a>&lt;T&gt;</li>
+<li><a href="../../../structures/auxiliary/Value.html" title="class in structures.auxiliary">structures.auxiliary.interfaces.Value</a>&lt;T&gt;</li>
 <li>
 <ul class="inheritance">
-<li>structures.trees.auxiliary.BinaryTree.Node&lt;T&gt;</li>
+<li>structures.trees.auxiliary.interfaces.Tree.Node&lt;T&gt;</li>
 </ul>
 </li>
 </ul>
@@ -169,7 +169,7 @@ extends <a href="../../../structures/auxiliary/Value.html" title="class in struc
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../structures/trees/auxiliary/BinaryTree.Node.html#Node-T-structures.trees.auxiliary.BinaryTree.Node-structures.trees.auxiliary.BinaryTree.Node-">Node</a></span>(<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="type parameter in BinaryTree.Node">T</a>&nbsp;value,
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../structures/trees/auxiliary/BinaryTree.Node.html#Node-T-structures.trees.auxiliary.interfaces.Tree.Node-structures.trees.auxiliary.interfaces.Tree.Node-">Node</a></span>(<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="type parameter in BinaryTree.Node">T</a>&nbsp;value,
     <a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="type parameter in BinaryTree.Node">T</a>&gt;&nbsp;leftChild,
     <a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="type parameter in BinaryTree.Node">T</a>&gt;&nbsp;rightChild)</code>&nbsp;</td>
 </tr>
@@ -190,13 +190,13 @@ extends <a href="../../../structures/auxiliary/Value.html" title="class in struc
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>static int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../structures/trees/auxiliary/BinaryTree.Node.html#height-structures.trees.auxiliary.BinaryTree.Node-">height</a></span>(<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&nbsp;node)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../structures/trees/auxiliary/BinaryTree.Node.html#height-structures.trees.auxiliary.interfaces.Tree.Node-">height</a></span>(<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&nbsp;node)</code>
 <div class="block">Determines the maximum depth (number of levels) in the tree</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>abstract <a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="type parameter in BinaryTree.Node">T</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../structures/trees/auxiliary/BinaryTree.Node.html#insert-structures.trees.auxiliary.BinaryTree.Node-T-">insert</a></span>(<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="type parameter in BinaryTree.Node">T</a>&gt;&nbsp;node,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../structures/trees/auxiliary/BinaryTree.Node.html#insert-structures.trees.auxiliary.interfaces.Tree.Node-T-">insert</a></span>(<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="type parameter in BinaryTree.Node">T</a>&gt;&nbsp;node,
       <a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="type parameter in BinaryTree.Node">T</a>&nbsp;value)</code>&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
@@ -207,7 +207,7 @@ extends <a href="../../../structures/auxiliary/Value.html" title="class in struc
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../structures/trees/auxiliary/BinaryTree.Node.html#leftChild-structures.trees.auxiliary.BinaryTree.Node-">leftChild</a></span>(<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="type parameter in BinaryTree.Node">T</a>&gt;&nbsp;leftChild)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../structures/trees/auxiliary/BinaryTree.Node.html#leftChild-structures.trees.auxiliary.interfaces.Tree.Node-">leftChild</a></span>(<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="type parameter in BinaryTree.Node">T</a>&gt;&nbsp;leftChild)</code>
 <div class="block">Sets the leftChild of a Node</div>
 </td>
 </tr>
@@ -219,45 +219,45 @@ extends <a href="../../../structures/auxiliary/Value.html" title="class in struc
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../structures/trees/auxiliary/BinaryTree.Node.html#rightChild-structures.trees.auxiliary.BinaryTree.Node-">rightChild</a></span>(<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="type parameter in BinaryTree.Node">T</a>&gt;&nbsp;rightChild)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../structures/trees/auxiliary/BinaryTree.Node.html#rightChild-structures.trees.auxiliary.interfaces.Tree.Node-">rightChild</a></span>(<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="type parameter in BinaryTree.Node">T</a>&gt;&nbsp;rightChild)</code>
 <div class="block">Sets the rightChild of a Node</div>
 </td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>abstract <a href="../../../structures/vectors/ArrayList.html" title="class in structures.vectors">ArrayList</a>&lt;<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="type parameter in BinaryTree.Node">T</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../structures/trees/auxiliary/BinaryTree.Node.html#toArrayList-structures.trees.auxiliary.BinaryTree.Node-structures.vectors.ArrayList-">toArrayList</a></span>(<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="type parameter in BinaryTree.Node">T</a>&gt;&nbsp;node,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../structures/trees/auxiliary/BinaryTree.Node.html#toArrayList-structures.trees.auxiliary.interfaces.Tree.Node-structures.vectors.ArrayList-">toArrayList</a></span>(<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="type parameter in BinaryTree.Node">T</a>&gt;&nbsp;node,
            <a href="../../../structures/vectors/ArrayList.html" title="class in structures.vectors">ArrayList</a>&lt;<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="type parameter in BinaryTree.Node">T</a>&gt;&nbsp;arrayList)</code>
 <div class="block">Flattens the tree to an ArrayList (pre-order)</div>
 </td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>abstract <a href="../../../structures/vectors/ArrayList.html" title="class in structures.vectors">ArrayList</a>&lt;<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="type parameter in BinaryTree.Node">T</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../structures/trees/auxiliary/BinaryTree.Node.html#toArrayList-structures.trees.auxiliary.BinaryTree.Node-structures.vectors.ArrayList-int-">toArrayList</a></span>(<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="type parameter in BinaryTree.Node">T</a>&gt;&nbsp;node,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../structures/trees/auxiliary/BinaryTree.Node.html#toArrayList-structures.trees.auxiliary.interfaces.Tree.Node-structures.vectors.ArrayList-int-">toArrayList</a></span>(<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="type parameter in BinaryTree.Node">T</a>&gt;&nbsp;node,
            <a href="../../../structures/vectors/ArrayList.html" title="class in structures.vectors">ArrayList</a>&lt;<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="type parameter in BinaryTree.Node">T</a>&gt;&nbsp;arrayList,
            int&nbsp;traversalType)</code>&nbsp;</td>
 </tr>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code>abstract <a href="../../../structures/vectors/ArrayList.html" title="class in structures.vectors">ArrayList</a>&lt;<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="type parameter in BinaryTree.Node">T</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../structures/trees/auxiliary/BinaryTree.Node.html#toArrayListInOrder-structures.trees.auxiliary.BinaryTree.Node-structures.vectors.ArrayList-">toArrayListInOrder</a></span>(<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="type parameter in BinaryTree.Node">T</a>&gt;&nbsp;node,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../structures/trees/auxiliary/BinaryTree.Node.html#toArrayListInOrder-structures.trees.auxiliary.interfaces.Tree.Node-structures.vectors.ArrayList-">toArrayListInOrder</a></span>(<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="type parameter in BinaryTree.Node">T</a>&gt;&nbsp;node,
                   <a href="../../../structures/vectors/ArrayList.html" title="class in structures.vectors">ArrayList</a>&lt;<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="type parameter in BinaryTree.Node">T</a>&gt;&nbsp;arrayList)</code>&nbsp;</td>
 </tr>
 <tr id="i9" class="rowColor">
 <td class="colFirst"><code>abstract <a href="../../../structures/vectors/ArrayList.html" title="class in structures.vectors">ArrayList</a>&lt;<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="type parameter in BinaryTree.Node">T</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../structures/trees/auxiliary/BinaryTree.Node.html#toArrayListPostOrder-structures.trees.auxiliary.BinaryTree.Node-structures.vectors.ArrayList-">toArrayListPostOrder</a></span>(<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="type parameter in BinaryTree.Node">T</a>&gt;&nbsp;node,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../structures/trees/auxiliary/BinaryTree.Node.html#toArrayListPostOrder-structures.trees.auxiliary.interfaces.Tree.Node-structures.vectors.ArrayList-">toArrayListPostOrder</a></span>(<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="type parameter in BinaryTree.Node">T</a>&gt;&nbsp;node,
                     <a href="../../../structures/vectors/ArrayList.html" title="class in structures.vectors">ArrayList</a>&lt;<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="type parameter in BinaryTree.Node">T</a>&gt;&nbsp;arrayList)</code>&nbsp;</td>
 </tr>
 <tr id="i10" class="altColor">
 <td class="colFirst"><code>abstract <a href="../../../structures/vectors/ArrayList.html" title="class in structures.vectors">ArrayList</a>&lt;<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="type parameter in BinaryTree.Node">T</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../structures/trees/auxiliary/BinaryTree.Node.html#toArrayListPreOrder-structures.trees.auxiliary.BinaryTree.Node-structures.vectors.ArrayList-">toArrayListPreOrder</a></span>(<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="type parameter in BinaryTree.Node">T</a>&gt;&nbsp;node,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../structures/trees/auxiliary/BinaryTree.Node.html#toArrayListPreOrder-structures.trees.auxiliary.interfaces.Tree.Node-structures.vectors.ArrayList-">toArrayListPreOrder</a></span>(<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="type parameter in BinaryTree.Node">T</a>&gt;&nbsp;node,
                    <a href="../../../structures/vectors/ArrayList.html" title="class in structures.vectors">ArrayList</a>&lt;<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="type parameter in BinaryTree.Node">T</a>&gt;&nbsp;arrayList)</code>&nbsp;</td>
 </tr>
 </table>
 <ul class="blockList">
-<li class="blockList"><a name="methods.inherited.from.class.structures.auxiliary.Value">
+<li class="blockList"><a name="methods.inherited.from.class.structures.auxiliary.interfaces.Value">
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;structures.auxiliary.<a href="../../../structures/auxiliary/Value.html" title="class in structures.auxiliary">Value</a></h3>
-<code><a href="../../../structures/auxiliary/Value.html#equals-structures.auxiliary.Value-">equals</a>, <a href="../../../structures/auxiliary/Value.html#toString--">toString</a>, <a href="../../../structures/auxiliary/Value.html#value--">value</a>, <a href="../../../structures/auxiliary/Value.html#value-T-">value</a></code></li>
+<code><a href="../../../structures/auxiliary/Value.html#equals-structures.auxiliary.interfaces.Value-">equals</a>, <a href="../../../structures/auxiliary/Value.html#toString--">toString</a>, <a href="../../../structures/auxiliary/Value.html#value--">value</a>, <a href="../../../structures/auxiliary/Value.html#value-T-">value</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
@@ -306,9 +306,9 @@ extends <a href="../../../structures/auxiliary/Value.html" title="class in struc
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="Node-java.lang.Object-structures.trees.auxiliary.BinaryTree.Node-structures.trees.auxiliary.BinaryTree.Node-">
+<a name="Node-java.lang.Object-structures.trees.auxiliary.interfaces.Tree.Node-structures.trees.auxiliary.interfaces.Tree.Node-">
 <!--   -->
-</a><a name="Node-T-structures.trees.auxiliary.BinaryTree.Node-structures.trees.auxiliary.BinaryTree.Node-">
+</a><a name="Node-T-structures.trees.auxiliary.interfaces.Tree.Node-structures.trees.auxiliary.interfaces.Tree.Node-">
 <!--   -->
 </a>
 <ul class="blockListLast">
@@ -333,9 +333,9 @@ extends <a href="../../../structures/auxiliary/Value.html" title="class in struc
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="insert-structures.trees.auxiliary.BinaryTree.Node-java.lang.Object-">
+<a name="insert-structures.trees.auxiliary.interfaces.Tree.Node-java.lang.Object-">
 <!--   -->
-</a><a name="insert-structures.trees.auxiliary.BinaryTree.Node-T-">
+</a><a name="insert-structures.trees.auxiliary.interfaces.Tree.Node-T-">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -345,7 +345,7 @@ extends <a href="../../../structures/auxiliary/Value.html" title="class in struc
                                           <a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="type parameter in BinaryTree.Node">T</a>&nbsp;value)</pre>
 </li>
 </ul>
-<a name="height-structures.trees.auxiliary.BinaryTree.Node-">
+<a name="height-structures.trees.auxiliary.interfaces.Tree.Node-">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -373,7 +373,7 @@ extends <a href="../../../structures/auxiliary/Value.html" title="class in struc
 </dl>
 </li>
 </ul>
-<a name="leftChild-structures.trees.auxiliary.BinaryTree.Node-">
+<a name="leftChild-structures.trees.auxiliary.interfaces.Tree.Node-">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -401,7 +401,7 @@ extends <a href="../../../structures/auxiliary/Value.html" title="class in struc
 </dl>
 </li>
 </ul>
-<a name="rightChild-structures.trees.auxiliary.BinaryTree.Node-">
+<a name="rightChild-structures.trees.auxiliary.interfaces.Tree.Node-">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -415,7 +415,7 @@ extends <a href="../../../structures/auxiliary/Value.html" title="class in struc
 </dl>
 </li>
 </ul>
-<a name="toArrayList-structures.trees.auxiliary.BinaryTree.Node-structures.vectors.ArrayList-int-">
+<a name="toArrayList-structures.trees.auxiliary.interfaces.Tree.Node-structures.vectors.ArrayList-int-">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -426,7 +426,7 @@ extends <a href="../../../structures/auxiliary/Value.html" title="class in struc
                                          int&nbsp;traversalType)</pre>
 </li>
 </ul>
-<a name="toArrayList-structures.trees.auxiliary.BinaryTree.Node-structures.vectors.ArrayList-">
+<a name="toArrayList-structures.trees.auxiliary.interfaces.Tree.Node-structures.vectors.ArrayList-">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -444,7 +444,7 @@ extends <a href="../../../structures/auxiliary/Value.html" title="class in struc
 </dl>
 </li>
 </ul>
-<a name="toArrayListInOrder-structures.trees.auxiliary.BinaryTree.Node-structures.vectors.ArrayList-">
+<a name="toArrayListInOrder-structures.trees.auxiliary.interfaces.Tree.Node-structures.vectors.ArrayList-">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -454,7 +454,7 @@ extends <a href="../../../structures/auxiliary/Value.html" title="class in struc
                                                 <a href="../../../structures/vectors/ArrayList.html" title="class in structures.vectors">ArrayList</a>&lt;<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="type parameter in BinaryTree.Node">T</a>&gt;&nbsp;arrayList)</pre>
 </li>
 </ul>
-<a name="toArrayListPreOrder-structures.trees.auxiliary.BinaryTree.Node-structures.vectors.ArrayList-">
+<a name="toArrayListPreOrder-structures.trees.auxiliary.interfaces.Tree.Node-structures.vectors.ArrayList-">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -464,7 +464,7 @@ extends <a href="../../../structures/auxiliary/Value.html" title="class in struc
                                                  <a href="../../../structures/vectors/ArrayList.html" title="class in structures.vectors">ArrayList</a>&lt;<a href="../../../structures/trees/auxiliary/BinaryTree.Node.html" title="type parameter in BinaryTree.Node">T</a>&gt;&nbsp;arrayList)</pre>
 </li>
 </ul>
-<a name="toArrayListPostOrder-structures.trees.auxiliary.BinaryTree.Node-structures.vectors.ArrayList-">
+<a name="toArrayListPostOrder-structures.trees.auxiliary.interfaces.Tree.Node-structures.vectors.ArrayList-">
 <!--   -->
 </a>
 <ul class="blockListLast">

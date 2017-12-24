@@ -1,42 +1,26 @@
 import structures.trees.BinarySearchTree;
-import structures.trees.auxiliary.BinaryTree;
-
-import java.util.Arrays;
 
 public class Application<T> {
 
   public static void main(String[] args) {
     int size = 10;
 
-    Character[] array = {
+    Character[] letters = {
             'f',
             'i', 'h', 'g', 'k', 'j',
             'b', 'a', 'd', 'c', 'e',
 
     };
 
-    BinarySearchTree<Character> tree = new BinarySearchTree<Character>(array);
+    Integer[] numbers = {1, 2, 3, 4, 5, 6, 7};
 
+    Double[] doubles = {1.1, 3.1, 10.1, 0.0001, 19.0, 2.11};
 
-//    tree.display();
+    BinarySearchTree<Comparable> tree = new BinarySearchTree<>(letters);
 
-    Object[] characters = tree.toArray(BinaryTree.IN_ORDER);
-
-    for (Object c : characters) {
-      System.out.println(c);
-    }
+    tree.display();
 
   }
 
-
-  public static Integer[] initArray(int size) {
-    Integer[] array = new Integer[size];
-
-    for (int i = 0; i < size; i++) {
-      array[i] = i+1;
-    }
-
-    return array;
-  }
 
 }

@@ -1,6 +1,6 @@
 package structures.vectors;
 
-import structures.vectors.auxiliary.DynamicallySizedArray;
+import structures.auxiliary.classes.incomplete.DynamicallySizedArray;
 
 /**
  * Basic implementation of a generic ArrayList
@@ -8,7 +8,7 @@ import structures.vectors.auxiliary.DynamicallySizedArray;
  * @author Jabari Dash
  * @param <T> Generic type
  */
-public class ArrayList<T> extends DynamicallySizedArray<T> {
+public final class ArrayList<T> extends DynamicallySizedArray<T> {
 
     /**
      * Constructs empty list
@@ -101,8 +101,10 @@ public class ArrayList<T> extends DynamicallySizedArray<T> {
      * @param value The specified value to insert
      */
     @Override
-    public void insert(T value) {
+    public boolean insert(T value) {
         this.insertLast(value);
+
+        return true;
     }
 
     /**

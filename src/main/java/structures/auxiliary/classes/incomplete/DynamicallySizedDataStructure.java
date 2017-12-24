@@ -1,4 +1,6 @@
-package structures.auxiliary;
+package structures.auxiliary.classes.incomplete;
+
+import structures.auxiliary.interfaces.DataStructure;
 
 /**
  * All dynamically sized data types should extend this class

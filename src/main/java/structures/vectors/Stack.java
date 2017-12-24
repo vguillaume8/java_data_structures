@@ -1,6 +1,7 @@
 package structures.vectors;
 
-import structures.vectors.auxiliary.ChainedDataStructure;
+import structures.auxiliary.classes.incomplete.ChainedDataStructure;
+import structures.auxiliary.classes.concrete.Node;
 
 /**
  *  Basic implementation of a Stack class using a Linked List
@@ -12,7 +13,7 @@ import structures.vectors.auxiliary.ChainedDataStructure;
  * @author Jabari Dash
  * @param <T> Generic type
  */
-public class Stack<T>  extends ChainedDataStructure<T> {
+public final class Stack<T>  extends ChainedDataStructure<T> {
 
     /**
      * Constructs empty Stack
@@ -90,7 +91,7 @@ public class Stack<T>  extends ChainedDataStructure<T> {
      * @param value The specified value to insert
      */
     @Override
-    public void insert(T value) {
+    public boolean insert(T value) {
         if (this.empty()) {
             this.head(new Node(value, null, null));
         } else {
@@ -100,6 +101,8 @@ public class Stack<T>  extends ChainedDataStructure<T> {
         }
 
         this.incrementSize();
+
+        return true;
     }
 
 //------------------------------------------------------------------------------

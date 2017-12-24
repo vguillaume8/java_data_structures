@@ -1,4 +1,4 @@
-package structures.auxiliary;
+package structures.auxiliary.interfaces;
 
 /**
  * Generic Value class to be extended from by classes
@@ -8,8 +8,7 @@ package structures.auxiliary;
  * @author Jabari Dash
  * @param <T> Generic type
  */
-public abstract class Value<T> {
-    private T value;
+public interface Value<T> {
 
     /**
      * Determines whether or not the Value object
@@ -18,44 +17,21 @@ public abstract class Value<T> {
      * @param value Specified value to be compared to
      * @return True if and only if they gave the same internal value
      */
-    public boolean equals(Value<T> value) {
-        return this.value == value.value;
-    }
-
+    public abstract boolean equals(Value<T> value);
 
     /**
      * Returns the value of the node
      *
      * @return The value of the node
      */
-    public T value() {
-        return this.value;
-    }
+    public abstract T value();
 
     /**
      * Updates the value of the node with a specified value
      *
      * @param value New value of the node
      */
-    public void value(T value) {
-        this.value = value;
-    }
-
-    /**
-     * Returns a String representation of the node
-     *
-     * @return String version of the node's value
-     */
-    @Override
-    public String toString() {
-
-        if (this.value() == null) {
-            return "null";
-
-        } else {
-            return this.value().toString();
-        }
-    }
+    public abstract void value(T value);
 }
 
 

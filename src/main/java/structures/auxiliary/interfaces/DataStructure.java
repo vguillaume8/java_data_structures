@@ -1,4 +1,4 @@
-package structures.auxiliary;
+package structures.auxiliary.interfaces;
 
 /**
  * Generic interface for any data structure in this library
@@ -38,18 +38,7 @@ public interface DataStructure<T> {
      *
      * @param value The specified value to insert
      */
-    void insert(T value);
-
-//------------------------------------------------------------------------------
-
-    /**
-     * Removes an element from the DataStructure. The order
-     * in which the value comes out depends on the implementation
-     * of implementing class
-     *
-     * @return Removed value from DataStructure
-     */
-    T remove();
+    boolean insert(T value);
 
 //------------------------------------------------------------------------------
 

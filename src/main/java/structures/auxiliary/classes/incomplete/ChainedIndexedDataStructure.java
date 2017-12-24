@@ -1,4 +1,7 @@
-package structures.vectors.auxiliary;
+package structures.auxiliary.classes.incomplete;
+
+import structures.auxiliary.classes.concrete.Node;
+import structures.auxiliary.interfaces.IndexedDataStructure;
 
 import java.util.Iterator;
 
@@ -90,7 +93,7 @@ public abstract class ChainedIndexedDataStructure<T> extends ChainedDataStructur
      * @param value Specified value to be inserted into the list
      */
     @Override
-    public void insert(T value) {
+    public boolean insert(T value) {
 
         // If the list is empty, insert in the front
         if (this.empty()) {
@@ -100,6 +103,8 @@ public abstract class ChainedIndexedDataStructure<T> extends ChainedDataStructur
         } else {
             this.insertLast(value);
         }
+
+        return true;
     }
 
     public T remove(int index) {

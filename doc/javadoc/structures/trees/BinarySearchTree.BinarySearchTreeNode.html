@@ -99,10 +99,10 @@ var activeTableTab = "activeTableTab";
 <li>java.lang.Object</li>
 <li>
 <ul class="inheritance">
-<li><a href="../../structures/auxiliary/Value.html" title="class in structures.auxiliary">structures.auxiliary.Value</a>&lt;T&gt;</li>
+<li><a href="../../structures/auxiliary/Value.html" title="class in structures.auxiliary">structures.auxiliary.interfaces.Value</a>&lt;T&gt;</li>
 <li>
 <ul class="inheritance">
-<li><a href="../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">structures.trees.auxiliary.BinaryTree.Node</a>&lt;T&gt;</li>
+<li><a href="../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">structures.trees.auxiliary.interfaces.Tree.Node</a>&lt;T&gt;</li>
 <li>
 <ul class="inheritance">
 <li>structures.trees.BinarySearchTree.BinarySearchTreeNode&lt;T&gt;</li>
@@ -152,7 +152,7 @@ implements java.lang.Comparable&lt;<a href="../../structures/trees/BinarySearchT
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html#BinarySearchTreeNode-T-structures.trees.auxiliary.BinaryTree.Node-structures.trees.auxiliary.BinaryTree.Node-">BinarySearchTreeNode</a></span>(<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a>&nbsp;value,
+<td class="colOne"><code><span class="memberNameLink"><a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html#BinarySearchTreeNode-T-structures.trees.auxiliary.interfaces.Tree.Node-structures.trees.auxiliary.interfaces.Tree.Node-">BinarySearchTreeNode</a></span>(<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a>&nbsp;value,
                     <a href="../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a>&gt;&nbsp;leftChild,
                     <a href="../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a>&gt;&nbsp;rightChild)</code>&nbsp;</td>
 </tr>
@@ -177,51 +177,51 @@ implements java.lang.Comparable&lt;<a href="../../structures/trees/BinarySearchT
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code><a href="../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html#insert-structures.trees.auxiliary.BinaryTree.Node-T-">insert</a></span>(<a href="../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a>&gt;&nbsp;node,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html#insert-structures.trees.auxiliary.interfaces.Tree.Node-T-">insert</a></span>(<a href="../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a>&gt;&nbsp;node,
       <a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a>&nbsp;value)</code>&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code><a href="../../structures/vectors/ArrayList.html" title="class in structures.vectors">ArrayList</a>&lt;<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html#toArrayList-structures.trees.auxiliary.BinaryTree.Node-structures.vectors.ArrayList-">toArrayList</a></span>(<a href="../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a>&gt;&nbsp;node,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html#toArrayList-structures.trees.auxiliary.interfaces.Tree.Node-structures.vectors.ArrayList-">toArrayList</a></span>(<a href="../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a>&gt;&nbsp;node,
            <a href="../../structures/vectors/ArrayList.html" title="class in structures.vectors">ArrayList</a>&lt;<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a>&gt;&nbsp;arrayList)</code>
 <div class="block">Flattens the tree to an ArrayList (pre-order)</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code><a href="../../structures/vectors/ArrayList.html" title="class in structures.vectors">ArrayList</a>&lt;<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html#toArrayList-structures.trees.auxiliary.BinaryTree.Node-structures.vectors.ArrayList-int-">toArrayList</a></span>(<a href="../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a>&gt;&nbsp;node,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html#toArrayList-structures.trees.auxiliary.interfaces.Tree.Node-structures.vectors.ArrayList-int-">toArrayList</a></span>(<a href="../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a>&gt;&nbsp;node,
            <a href="../../structures/vectors/ArrayList.html" title="class in structures.vectors">ArrayList</a>&lt;<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a>&gt;&nbsp;arrayList,
            int&nbsp;traversalType)</code>&nbsp;</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code><a href="../../structures/vectors/ArrayList.html" title="class in structures.vectors">ArrayList</a>&lt;<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html#toArrayListInOrder-structures.trees.auxiliary.BinaryTree.Node-structures.vectors.ArrayList-">toArrayListInOrder</a></span>(<a href="../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a>&gt;&nbsp;node,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html#toArrayListInOrder-structures.trees.auxiliary.interfaces.Tree.Node-structures.vectors.ArrayList-">toArrayListInOrder</a></span>(<a href="../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a>&gt;&nbsp;node,
                   <a href="../../structures/vectors/ArrayList.html" title="class in structures.vectors">ArrayList</a>&lt;<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a>&gt;&nbsp;arrayList)</code>&nbsp;</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code><a href="../../structures/vectors/ArrayList.html" title="class in structures.vectors">ArrayList</a>&lt;<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html#toArrayListPostOrder-structures.trees.auxiliary.BinaryTree.Node-structures.vectors.ArrayList-">toArrayListPostOrder</a></span>(<a href="../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a>&gt;&nbsp;node,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html#toArrayListPostOrder-structures.trees.auxiliary.interfaces.Tree.Node-structures.vectors.ArrayList-">toArrayListPostOrder</a></span>(<a href="../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a>&gt;&nbsp;node,
                     <a href="../../structures/vectors/ArrayList.html" title="class in structures.vectors">ArrayList</a>&lt;<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a>&gt;&nbsp;arrayList)</code>&nbsp;</td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code><a href="../../structures/vectors/ArrayList.html" title="class in structures.vectors">ArrayList</a>&lt;<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html#toArrayListPreOrder-structures.trees.auxiliary.BinaryTree.Node-structures.vectors.ArrayList-">toArrayListPreOrder</a></span>(<a href="../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a>&gt;&nbsp;node,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html#toArrayListPreOrder-structures.trees.auxiliary.interfaces.Tree.Node-structures.vectors.ArrayList-">toArrayListPreOrder</a></span>(<a href="../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a>&gt;&nbsp;node,
                    <a href="../../structures/vectors/ArrayList.html" title="class in structures.vectors">ArrayList</a>&lt;<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a>&gt;&nbsp;arrayList)</code>&nbsp;</td>
 </tr>
 </table>
 <ul class="blockList">
-<li class="blockList"><a name="methods.inherited.from.class.structures.trees.auxiliary.BinaryTree.Node">
+<li class="blockList"><a name="methods.inherited.from.class.structures.trees.auxiliary.interfaces.Tree.Node">
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;structures.trees.auxiliary.<a href="../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a></h3>
-<code><a href="../../structures/trees/auxiliary/BinaryTree.Node.html#height-structures.trees.auxiliary.BinaryTree.Node-">height</a>, <a href="../../structures/trees/auxiliary/BinaryTree.Node.html#leftChild--">leftChild</a>, <a href="../../structures/trees/auxiliary/BinaryTree.Node.html#leftChild-structures.trees.auxiliary.BinaryTree.Node-">leftChild</a>, <a href="../../structures/trees/auxiliary/BinaryTree.Node.html#rightChild--">rightChild</a>, <a href="../../structures/trees/auxiliary/BinaryTree.Node.html#rightChild-structures.trees.auxiliary.BinaryTree.Node-">rightChild</a></code></li>
+<code><a href="../../structures/trees/auxiliary/BinaryTree.Node.html#height-structures.trees.auxiliary.interfaces.Tree.Node-">height</a>, <a href="../../structures/trees/auxiliary/BinaryTree.Node.html#leftChild--">leftChild</a>, <a href="../../structures/trees/auxiliary/BinaryTree.Node.html#leftChild-structures.trees.auxiliary.interfaces.Tree.Node-">leftChild</a>, <a href="../../structures/trees/auxiliary/BinaryTree.Node.html#rightChild--">rightChild</a>, <a href="../../structures/trees/auxiliary/BinaryTree.Node.html#rightChild-structures.trees.auxiliary.interfaces.Tree.Node-">rightChild</a></code></li>
 </ul>
 <ul class="blockList">
-<li class="blockList"><a name="methods.inherited.from.class.structures.auxiliary.Value">
+<li class="blockList"><a name="methods.inherited.from.class.structures.auxiliary.interfaces.Value">
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;structures.auxiliary.<a href="../../structures/auxiliary/Value.html" title="class in structures.auxiliary">Value</a></h3>
-<code><a href="../../structures/auxiliary/Value.html#equals-structures.auxiliary.Value-">equals</a>, <a href="../../structures/auxiliary/Value.html#toString--">toString</a>, <a href="../../structures/auxiliary/Value.html#value--">value</a>, <a href="../../structures/auxiliary/Value.html#value-T-">value</a></code></li>
+<code><a href="../../structures/auxiliary/Value.html#equals-structures.auxiliary.interfaces.Value-">equals</a>, <a href="../../structures/auxiliary/Value.html#toString--">toString</a>, <a href="../../structures/auxiliary/Value.html#value--">value</a>, <a href="../../structures/auxiliary/Value.html#value-T-">value</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
@@ -244,9 +244,9 @@ implements java.lang.Comparable&lt;<a href="../../structures/trees/BinarySearchT
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="BinarySearchTreeNode-java.lang.Comparable-structures.trees.auxiliary.BinaryTree.Node-structures.trees.auxiliary.BinaryTree.Node-">
+<a name="BinarySearchTreeNode-java.lang.Comparable-structures.trees.auxiliary.interfaces.Tree.Node-structures.trees.auxiliary.interfaces.Tree.Node-">
 <!--   -->
-</a><a name="BinarySearchTreeNode-T-structures.trees.auxiliary.BinaryTree.Node-structures.trees.auxiliary.BinaryTree.Node-">
+</a><a name="BinarySearchTreeNode-T-structures.trees.auxiliary.interfaces.Tree.Node-structures.trees.auxiliary.interfaces.Tree.Node-">
 <!--   -->
 </a>
 <ul class="blockListLast">
@@ -271,9 +271,9 @@ implements java.lang.Comparable&lt;<a href="../../structures/trees/BinarySearchT
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="insert-structures.trees.auxiliary.BinaryTree.Node-java.lang.Comparable-">
+<a name="insert-structures.trees.auxiliary.interfaces.Tree.Node-java.lang.Comparable-">
 <!--   -->
-</a><a name="insert-structures.trees.auxiliary.BinaryTree.Node-T-">
+</a><a name="insert-structures.trees.auxiliary.interfaces.Tree.Node-T-">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -283,11 +283,11 @@ implements java.lang.Comparable&lt;<a href="../../structures/trees/BinarySearchT
                                  <a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a>&nbsp;value)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../structures/trees/auxiliary/BinaryTree.Node.html#insert-structures.trees.auxiliary.BinaryTree.Node-T-">insert</a></code>&nbsp;in class&nbsp;<code><a href="../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a> extends java.lang.Comparable&gt;</code></dd>
+<dd><code><a href="../../structures/trees/auxiliary/BinaryTree.Node.html#insert-structures.trees.auxiliary.interfaces.Tree.Node-T-">insert</a></code>&nbsp;in class&nbsp;<code><a href="../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a> extends java.lang.Comparable&gt;</code></dd>
 </dl>
 </li>
 </ul>
-<a name="toArrayList-structures.trees.auxiliary.BinaryTree.Node-structures.vectors.ArrayList-int-">
+<a name="toArrayList-structures.trees.auxiliary.interfaces.Tree.Node-structures.vectors.ArrayList-int-">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -298,11 +298,11 @@ implements java.lang.Comparable&lt;<a href="../../structures/trees/BinarySearchT
                                 int&nbsp;traversalType)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../structures/trees/auxiliary/BinaryTree.Node.html#toArrayList-structures.trees.auxiliary.BinaryTree.Node-structures.vectors.ArrayList-int-">toArrayList</a></code>&nbsp;in class&nbsp;<code><a href="../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a> extends java.lang.Comparable&gt;</code></dd>
+<dd><code><a href="../../structures/trees/auxiliary/BinaryTree.Node.html#toArrayList-structures.trees.auxiliary.interfaces.Tree.Node-structures.vectors.ArrayList-int-">toArrayList</a></code>&nbsp;in class&nbsp;<code><a href="../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a> extends java.lang.Comparable&gt;</code></dd>
 </dl>
 </li>
 </ul>
-<a name="toArrayList-structures.trees.auxiliary.BinaryTree.Node-structures.vectors.ArrayList-">
+<a name="toArrayList-structures.trees.auxiliary.interfaces.Tree.Node-structures.vectors.ArrayList-">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -310,11 +310,11 @@ implements java.lang.Comparable&lt;<a href="../../structures/trees/BinarySearchT
 <h4>toArrayList</h4>
 <pre>public&nbsp;<a href="../../structures/vectors/ArrayList.html" title="class in structures.vectors">ArrayList</a>&lt;<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a>&gt;&nbsp;toArrayList(<a href="../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a>&gt;&nbsp;node,
                                 <a href="../../structures/vectors/ArrayList.html" title="class in structures.vectors">ArrayList</a>&lt;<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a>&gt;&nbsp;arrayList)</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../../structures/trees/auxiliary/BinaryTree.Node.html#toArrayList-structures.trees.auxiliary.BinaryTree.Node-structures.vectors.ArrayList-">BinaryTree.Node</a></code></span></div>
+<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../../structures/trees/auxiliary/BinaryTree.Node.html#toArrayList-structures.trees.auxiliary.interfaces.Tree.Node-structures.vectors.ArrayList-">BinaryTree.Node</a></code></span></div>
 <div class="block">Flattens the tree to an ArrayList (pre-order)</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../structures/trees/auxiliary/BinaryTree.Node.html#toArrayList-structures.trees.auxiliary.BinaryTree.Node-structures.vectors.ArrayList-">toArrayList</a></code>&nbsp;in class&nbsp;<code><a href="../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a> extends java.lang.Comparable&gt;</code></dd>
+<dd><code><a href="../../structures/trees/auxiliary/BinaryTree.Node.html#toArrayList-structures.trees.auxiliary.interfaces.Tree.Node-structures.vectors.ArrayList-">toArrayList</a></code>&nbsp;in class&nbsp;<code><a href="../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a> extends java.lang.Comparable&gt;</code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>node</code> - Node to start appending to ArrayList from</dd>
 <dd><code>arrayList</code> - Growing ArrayList</dd>
@@ -322,7 +322,7 @@ implements java.lang.Comparable&lt;<a href="../../structures/trees/BinarySearchT
 </dl>
 </li>
 </ul>
-<a name="toArrayListInOrder-structures.trees.auxiliary.BinaryTree.Node-structures.vectors.ArrayList-">
+<a name="toArrayListInOrder-structures.trees.auxiliary.interfaces.Tree.Node-structures.vectors.ArrayList-">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -332,11 +332,11 @@ implements java.lang.Comparable&lt;<a href="../../structures/trees/BinarySearchT
                                        <a href="../../structures/vectors/ArrayList.html" title="class in structures.vectors">ArrayList</a>&lt;<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a>&gt;&nbsp;arrayList)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../structures/trees/auxiliary/BinaryTree.Node.html#toArrayListInOrder-structures.trees.auxiliary.BinaryTree.Node-structures.vectors.ArrayList-">toArrayListInOrder</a></code>&nbsp;in class&nbsp;<code><a href="../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a> extends java.lang.Comparable&gt;</code></dd>
+<dd><code><a href="../../structures/trees/auxiliary/BinaryTree.Node.html#toArrayListInOrder-structures.trees.auxiliary.interfaces.Tree.Node-structures.vectors.ArrayList-">toArrayListInOrder</a></code>&nbsp;in class&nbsp;<code><a href="../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a> extends java.lang.Comparable&gt;</code></dd>
 </dl>
 </li>
 </ul>
-<a name="toArrayListPreOrder-structures.trees.auxiliary.BinaryTree.Node-structures.vectors.ArrayList-">
+<a name="toArrayListPreOrder-structures.trees.auxiliary.interfaces.Tree.Node-structures.vectors.ArrayList-">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -346,11 +346,11 @@ implements java.lang.Comparable&lt;<a href="../../structures/trees/BinarySearchT
                                         <a href="../../structures/vectors/ArrayList.html" title="class in structures.vectors">ArrayList</a>&lt;<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a>&gt;&nbsp;arrayList)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../structures/trees/auxiliary/BinaryTree.Node.html#toArrayListPreOrder-structures.trees.auxiliary.BinaryTree.Node-structures.vectors.ArrayList-">toArrayListPreOrder</a></code>&nbsp;in class&nbsp;<code><a href="../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a> extends java.lang.Comparable&gt;</code></dd>
+<dd><code><a href="../../structures/trees/auxiliary/BinaryTree.Node.html#toArrayListPreOrder-structures.trees.auxiliary.interfaces.Tree.Node-structures.vectors.ArrayList-">toArrayListPreOrder</a></code>&nbsp;in class&nbsp;<code><a href="../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a> extends java.lang.Comparable&gt;</code></dd>
 </dl>
 </li>
 </ul>
-<a name="toArrayListPostOrder-structures.trees.auxiliary.BinaryTree.Node-structures.vectors.ArrayList-">
+<a name="toArrayListPostOrder-structures.trees.auxiliary.interfaces.Tree.Node-structures.vectors.ArrayList-">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -360,7 +360,7 @@ implements java.lang.Comparable&lt;<a href="../../structures/trees/BinarySearchT
                                          <a href="../../structures/vectors/ArrayList.html" title="class in structures.vectors">ArrayList</a>&lt;<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a>&gt;&nbsp;arrayList)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../structures/trees/auxiliary/BinaryTree.Node.html#toArrayListPostOrder-structures.trees.auxiliary.BinaryTree.Node-structures.vectors.ArrayList-">toArrayListPostOrder</a></code>&nbsp;in class&nbsp;<code><a href="../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a> extends java.lang.Comparable&gt;</code></dd>
+<dd><code><a href="../../structures/trees/auxiliary/BinaryTree.Node.html#toArrayListPostOrder-structures.trees.auxiliary.interfaces.Tree.Node-structures.vectors.ArrayList-">toArrayListPostOrder</a></code>&nbsp;in class&nbsp;<code><a href="../../structures/trees/auxiliary/BinaryTree.Node.html" title="class in structures.trees.auxiliary">BinaryTree.Node</a>&lt;<a href="../../structures/trees/BinarySearchTree.BinarySearchTreeNode.html" title="type parameter in BinarySearchTree.BinarySearchTreeNode">T</a> extends java.lang.Comparable&gt;</code></dd>
 </dl>
 </li>
 </ul>

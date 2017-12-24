@@ -1,6 +1,4 @@
-package structures.vectors.auxiliary;
-
-import structures.auxiliary.DataStructure;
+package structures.auxiliary.interfaces;
 
 public interface LinearDataStructure<T> extends DataStructure<T>,  Iterable<T> {
 
@@ -11,7 +9,6 @@ public interface LinearDataStructure<T> extends DataStructure<T>,  Iterable<T> {
      */
     void init(T[] values);
 
-
     /**
      * Initializes the IndexedDataStructure with a specified length and default value
      *
@@ -19,6 +16,17 @@ public interface LinearDataStructure<T> extends DataStructure<T>,  Iterable<T> {
      * @param value Specified default value
      */
     void init(int length, T value);
+
+//------------------------------------------------------------------------------
+
+    /**
+     * Removes an element from the DataStructure. The order
+     * in which the value comes out depends on the implementation
+     * of implementing class
+     *
+     * @return Removed value from DataStructure
+     */
+    T remove();
 
     /**
      * Returns the data structure as an array

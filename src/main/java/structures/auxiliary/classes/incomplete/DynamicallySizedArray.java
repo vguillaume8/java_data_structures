@@ -1,6 +1,7 @@
-package structures.vectors.auxiliary;
+package structures.auxiliary.classes.incomplete;
 
-import structures.auxiliary.DynamicallySizedDataStructure;
+import structures.auxiliary.interfaces.IndexedDataStructure;
+
 import java.util.Iterator;
 import java.util.StringJoiner;
 

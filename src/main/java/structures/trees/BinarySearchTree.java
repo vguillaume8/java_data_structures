@@ -1,17 +1,30 @@
 package structures.trees;
 
-import structures.auxiliary.DynamicallySizedDataStructure;
-import structures.trees.auxiliary.BinaryTree;
+import structures.auxiliary.classes.incomplete.DynamicallySizedDataStructure;
+import structures.trees.auxiliary.classes.BinarySearchTreeNode;
+import structures.trees.auxiliary.interfaces.Tree;
 import structures.vectors.ArrayList;
 
-public class BinarySearchTree<T extends Comparable> extends DynamicallySizedDataStructure<T> implements BinaryTree<T> {
+import java.util.Arrays;
+import java.util.NoSuchElementException;
 
-    private Node<T> root;
+public final class BinarySearchTree<T extends Comparable> extends DynamicallySizedDataStructure<T> implements Tree<T> {
 
+    private BinarySearchTreeNode<T> root;
+
+    /**
+     * Initialize an empty BinarySearchTree
+     */
     public BinarySearchTree() {
         this.init();
     }
 
+    /**
+     * Initialize a BinarySearchTree with a specified
+     * set of values
+     *
+     * @param values Specified values to insert into BinarySearchTree
+     */
     public BinarySearchTree(T[] values) {
         this.init();
 
@@ -20,28 +33,109 @@ public class BinarySearchTree<T extends Comparable> extends DynamicallySizedData
         }
     }
 
+    /**
+     * Display tree's important information to verify that
+     * it was build correctly. This method is for development purposes
+     */
+    @SuppressWarnings("unchecked")
     public void display() {
+        int size   = this.size();
+        int height = this.height();
+
         System.out.println(this.getClass().getSimpleName());
-        System.out.println("Size: " + this.size());
-        System.out.println("Height: " + this.height());
-        System.out.println("inorder: " + this.toArrayList(BinaryTree.IN_ORDER));
-        System.out.println("preorder: " + this.toArrayList(BinarySearchTree.PRE_ORDER));
-        System.out.println("postorder: " + this.toArrayList(BinaryTree.POST_ORDER));
+        System.out.println("Size: "      + size);
+        System.out.println("Height: "    + height);
+        System.out.println("inorder: "   + this.toString(IN_ORDER));
+        System.out.println("preorder: "  + this.toString(PRE_ORDER));
+        System.out.println("postorder: " + this.toString(POST_ORDER));
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
-    public Node<T> root() {
+    public boolean empty() {
+        return this.size() == 0 && this.root() == null;
+    }
+
+    /**
+     * Returns a pointer the root node of the tree
+     *
+     * @return Pointer to root of tree
+     */
+    public BinarySearchTreeNode<T> root() {
         return this.root;
     }
 
+    public void root(BinarySearchTreeNode<T> root) {
+        this.root = root;
+    }
+
+    /**
+     * Returns the height of the tree
+     *
+     * @return Max depth of the tree
+     */
     @Override
     public int height() {
-        return Node.height(root);
+        return BinarySearchTreeNode.height(this.root());
+    }
+
+    /**
+     * Retrieves and removes a specified value from the tree
+     *
+     * @param value
+     * @return Specified value
+     */
+    @Override
+    public boolean remove(T value) {
+        boolean result;
+
+        if (this.empty()) {
+            throw new EmptyDataStructureException("Cannot remove from an empty Binary Search Tree");
+        } else {
+            if (root().value() == value) {
+                BinarySearchTreeNode<T> temp = new BinarySearchTreeNode<T>(null, null, null);
+                temp.leftChild(root());
+                result = root.remove(root, value);
+                root = temp.leftChild();
+            } else {
+                result = root().remove(null, value);
+            }
+        }
+
+        // If the removal was successful
+        if (result) {
+            this.decrementSize();
+        } else {
+
+            throw new NoSuchElementException("Cannot remove value {" + value + "} because its not in the tree");
+        }
+
+        if (this.size() == 0) {
+            this.root = null;
+        }
+
+        return result;
     }
 
     @Override
-    public ArrayList<T> toArrayList() {
-        return this.root.toArrayList(this.root, new ArrayList<T>());
+    public String toString() {
+        return this.toString(DEFAULT_ORDER);
+    }
+
+    public String toString(int traversalType) {
+        T[] array;
+
+        switch (traversalType) {
+            case IN_ORDER:   array = this.toArray(IN_ORDER);   break;
+            case PRE_ORDER:  array = this.toArray(PRE_ORDER);  break;
+            case POST_ORDER: array = this.toArray(POST_ORDER); break;
+            default: throw new IllegalArgumentException("Traversal type {" + traversalType + "} note recognized");
+        }
+
+        return Arrays.toString(array);
     }
 
     /**
@@ -51,27 +145,31 @@ public class BinarySearchTree<T extends Comparable> extends DynamicallySizedData
      * @return Array representation of tree
      */
     @Override
-    public Object[] toArray() {
-        ArrayList<?> arrayList = this.toArrayList();
+    @SuppressWarnings("unchecked")
+    public <T> T[] toArray(int traversalType, T[] array) {
 
-        return arrayList.toArray();
+        // Convert the list into an array vida the ArrayList class
+        T[] arr = ((ArrayList<T>) this.root().toArrayList(traversalType)).toArray();
+
+        return (T[]) Arrays.copyOf(arr, arr.length, array.getClass());
     }
 
-    /**
-     * Returns Array representation of tree
-     * in specified order
-     *
-     * @param traversalType Specified order (inorder, preorder, postorder)
-     * @return Array representation of tree
-     */
-    @Override
-    public Object[] toArray(int traversalType) {
-        return this.toArrayList(traversalType).toArray();
+
+    @SuppressWarnings("unchecked")
+    public <T> T[] toArray(T[] array) {
+
+        return this.toArray(DEFAULT_ORDER, array);
     }
 
     @Override
-    public ArrayList<T> toArrayList(int traversalType) {
-        return this.root.toArrayList(this.root, new ArrayList<T>(), traversalType);
+    @SuppressWarnings("unchecked")
+    public <T> T[] toArray() {
+        return (T[]) this.toArray(new Comparable[0]);
+    }
+
+    @Override
+    public <T> T[] toArray(int traversalType) {
+        return (T[]) this.toArray(traversalType, new Comparable[0]);
     }
 
     /**
@@ -82,29 +180,11 @@ public class BinarySearchTree<T extends Comparable> extends DynamicallySizedData
      */
     @Override
     public boolean contains(T value) {
-        return contains(root, value);
-    }
-
-    /**
-     * Determines whether or not a specified value is present in the tree.
-     * This is an auxiliary method that helps traverse the list via pointers
-     *
-     * @param node Node to start searching from
-     * @param value Specified value
-     * @return True if and nly if the specified value is in the tree
-     */
-    private boolean contains(Node<T> node, T value) {
-        if (node == null) {
+        if (this.empty()) {
             return false;
         }
 
-        // See if its in left subtree, right subtree, or in parent
-        boolean parent = node.value() == value ? true : false;
-        boolean left = contains(node.leftChild(), value);
-        boolean right = contains(node.rightChild(), value);
-
-        // If its in any of the three, we found it
-        return left || right || parent;
+        return this.root().contains(value);
     }
 
     /**
@@ -122,134 +202,22 @@ public class BinarySearchTree<T extends Comparable> extends DynamicallySizedData
      * @param value The specified value to insert
      */
     @Override
-    public void insert(T value) {
+    public boolean insert(T value) {
+        boolean result;
+
         if (this.empty()) {
             this.root = new BinarySearchTreeNode<T>(value, null, null);
+            result = true;
         } else {
-                this.root = this.root.insert(this.root, value);
+
+           result = this.root().insert(value);
         }
 
-        this.incrementSize();
-    }
-
-    /**
-     * Removes the root value from the tree
-     *
-     * @return Value at root
-     */
-    @Override
-    public T remove() {
-        return null;
-    }
-
-    /**
-     * Node for use in Binary SearchTree
-     *
-     * @author Jabari Dash
-     * @param <T> Generic type
-     */
-    public static class BinarySearchTreeNode<T extends Comparable> extends Node<T> implements Comparable<BinarySearchTreeNode<T>> {
-
-        /**
-         *
-         *
-         * @param value
-         * @param leftChild
-         * @param rightChild
-         */
-        public BinarySearchTreeNode(T value, Node<T> leftChild, Node<T> rightChild) {
-            super(value, leftChild, rightChild);
+        // If the node was successfully inserted
+        if (result) {
+            this.incrementSize();
         }
 
-        @Override
-        public Node<T> insert(Node<T> node, T value) {
-            if (node == null) {
-                return new BinarySearchTreeNode<T>(value, null, null);
-
-            } else {
-                int comparison = value.compareTo(node.value());
-
-                if (comparison < 0) {
-
-                    node.leftChild(node.insert(node.leftChild(), value));
-
-                } else if (comparison > 0) {
-
-                    node.rightChild(node.insert(node.rightChild(), value));
-                }
-            }
-
-            return node;
-        }
-
-        @Override
-        public ArrayList<T> toArrayList(Node<T> node, ArrayList<T> arrayList, int traversalType) {
-            switch (traversalType) {
-                case IN_ORDER: return this.toArrayListInOrder(node, arrayList);
-                case PRE_ORDER: return this.toArrayListPreOrder(node, arrayList);
-                case POST_ORDER: return this.toArrayListPostOrder(node, arrayList);
-                default: throw new IllegalArgumentException("traversalType: " + traversalType + " unrecognized");
-            }
-        }
-
-        /**
-         *
-         * @param node Node to start appending to ArrayList from
-         * @param arrayList Growing ArrayList
-         * @return
-         */
-        @Override
-        public ArrayList<T> toArrayList(Node<T> node, ArrayList<T> arrayList) {
-            return this.toArrayListPreOrder(node, arrayList);
-        }
-
-        @Override
-        public ArrayList<T> toArrayListInOrder(Node<T> node, ArrayList<T> arrayList) {
-            if (node == null) {
-                return arrayList;
-            }
-
-            arrayList = node.toArrayListInOrder(node.leftChild(), arrayList);
-            arrayList.insert(node.value());
-            arrayList = node.toArrayListInOrder(node.rightChild(), arrayList);
-
-            return arrayList;
-        }
-
-        @Override
-        public ArrayList<T> toArrayListPreOrder(Node<T> node, ArrayList<T> arrayList) {
-            if (node == null) {
-                return arrayList;
-            }
-
-            arrayList.insert(node.value());
-            arrayList = node.toArrayListPreOrder(node.leftChild(), arrayList);
-            arrayList = node.toArrayListPreOrder(node.rightChild(), arrayList);
-
-            return arrayList;
-        }
-
-        @Override
-        public ArrayList<T> toArrayListPostOrder(Node<T> node, ArrayList<T> arrayList) {
-            if (node == null) {
-                return arrayList;
-            }
-
-            arrayList = node.toArrayListPostOrder(node.leftChild(), arrayList);
-            arrayList = node.toArrayListPostOrder(node.rightChild(), arrayList);
-            arrayList.insert(node.value());
-
-            return arrayList;
-        }
-
-        /**
-         *
-         * @param node
-         * @return
-         */
-        @Override
-        public int compareTo(BinarySearchTreeNode<T> node) {
-            return this.value().compareTo(node.value());
-        }
+        return result;
     }
 }

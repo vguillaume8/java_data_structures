@@ -1,4 +1,4 @@
-package structures.vectors.auxiliary;
+package structures.auxiliary.interfaces;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
