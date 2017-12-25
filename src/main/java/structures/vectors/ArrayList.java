@@ -1,6 +1,6 @@
 package structures.vectors;
 
-import structures.auxiliary.classes.incomplete.DynamicallySizedArray;
+import structures.vectors.classes.DynamicallySizedArray;
 
 /**
  * Basic implementation of a generic ArrayList
@@ -23,9 +23,8 @@ public final class ArrayList<T> extends DynamicallySizedArray<T> {
      * <strong>Avg: </strong>&Theta;(1)<br>
      */
     public ArrayList() {
-        this.init();
+        super();
     }
-
 
     /**
      * Constructs ArrayList from array of values
@@ -42,7 +41,7 @@ public final class ArrayList<T> extends DynamicallySizedArray<T> {
      * @param values Array of values to construct the list from
      */
     public ArrayList(T[] values) {
-        this.init(values);
+        super(values);
     }
 
     /**
@@ -62,7 +61,7 @@ public final class ArrayList<T> extends DynamicallySizedArray<T> {
      * @param value Specified default value
      */
     public ArrayList(int length, T value) {
-        this.init(length, value);
+        super(length, value);
     }
 
     /**

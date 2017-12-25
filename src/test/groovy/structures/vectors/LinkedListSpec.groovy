@@ -2,7 +2,7 @@ package structures.vectors
 
 import spock.lang.Unroll
 import spock.lang.Specification
-import structures.auxiliary.interfaces.DataStructure.EmptyDataStructureException;
+import structures.util.interfaces.DataStructure.EmptyDataStructureException;
 
 class LinkedListSpec extends Specification {
 
@@ -19,7 +19,7 @@ class LinkedListSpec extends Specification {
 //------------------------------------------------------------------------------
 
   @Unroll
-  def "#Constructing a list with bad values"() {
+  def "Constructing a list with bad values"() {
     setup:
     LinkedList list
 

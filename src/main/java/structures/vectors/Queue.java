@@ -1,7 +1,6 @@
 package structures.vectors;
 
-import structures.auxiliary.classes.incomplete.ChainedDataStructure;
-import structures.auxiliary.classes.concrete.Node;
+import structures.vectors.classes.ChainedDataStructure;
 
 /**
  * Basic FIFO Queue implementation
@@ -24,7 +23,7 @@ public final class Queue<T> extends ChainedDataStructure<T> {
      * <strong>Avg: </strong>&Theta;(1)<br>
      */
     public Queue() {
-        this.init();
+        super();
     }
 
     /**
@@ -42,7 +41,7 @@ public final class Queue<T> extends ChainedDataStructure<T> {
      * @param values Array of values to instatiate Queue from
      */
     public Queue(T[] values) {
-        this.init(values);
+        super(values);
     }
 
     /**
@@ -62,7 +61,7 @@ public final class Queue<T> extends ChainedDataStructure<T> {
      * @param value Specified default value
      */
     public Queue(int length, T value) {
-        this.init(length, value);
+        super(length, value);
     }
 
     /**

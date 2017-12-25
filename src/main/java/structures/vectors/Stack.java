@@ -1,7 +1,6 @@
 package structures.vectors;
 
-import structures.auxiliary.classes.incomplete.ChainedDataStructure;
-import structures.auxiliary.classes.concrete.Node;
+import structures.vectors.classes.ChainedDataStructure;
 
 /**
  *  Basic implementation of a Stack class using a Linked List
@@ -28,7 +27,7 @@ public final class Stack<T>  extends ChainedDataStructure<T> {
      * <strong>Avg: </strong>&Theta;(1)<br>
      */
     public Stack() {
-        this.init();
+        super();
     }
 
 //------------------------------------------------------------------------------
@@ -48,7 +47,7 @@ public final class Stack<T>  extends ChainedDataStructure<T> {
      * @param values Array of values to instatiate Queue from
      */
     public Stack(T[] values) {
-        this.init(values);
+        super(values);
     }
 
 //------------------------------------------------------------------------------
@@ -70,7 +69,7 @@ public final class Stack<T>  extends ChainedDataStructure<T> {
      * @param value Specified default value
      */
     public Stack(int length, T value) {
-        this.init(length, value);
+        super(length, value);
     }
 
 //------------------------------------------------------------------------------

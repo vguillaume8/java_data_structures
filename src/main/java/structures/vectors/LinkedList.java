@@ -1,7 +1,6 @@
 package structures.vectors;
 
-import structures.auxiliary.classes.incomplete.ChainedIndexedDataStructure;
-import structures.auxiliary.classes.concrete.Node;
+import structures.vectors.classes.ChainedIndexedDataStructure;
 
 /**
  * Basic implementation of Doubly Linked List
@@ -41,7 +40,7 @@ public final class LinkedList<T> extends ChainedIndexedDataStructure<T> {
    * <strong>Avg: </strong>&Theta;(1)<br>
    */
   public LinkedList() {
-    super.init();
+    super();
   }
 
 //------------------------------------------------------------------------------
@@ -63,7 +62,7 @@ public final class LinkedList<T> extends ChainedIndexedDataStructure<T> {
    * @param value Specified default value
    */
   public LinkedList(int length, T value) {
-    super.init(length, value);
+    super(length, value);
   }
 
 //------------------------------------------------------------------------------
@@ -83,7 +82,7 @@ public final class LinkedList<T> extends ChainedIndexedDataStructure<T> {
    * @param values Array of values to construct the list from
    */
   public LinkedList(T[] values) {
-    super.init(values);
+    super(values);
   }
 
 //------------------------------------------------------------------------------

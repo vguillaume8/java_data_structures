@@ -1,22 +1,28 @@
 package structures.trees;
 
-import structures.auxiliary.classes.incomplete.DynamicallySizedDataStructure;
-import structures.trees.auxiliary.classes.BinarySearchTreeNode;
-import structures.trees.auxiliary.interfaces.Tree;
+import structures.vectors.classes.DynamicallySizedDataStructure;
+//import structures.trees.auxiliary.interfaces.Tree;
 import structures.vectors.ArrayList;
 
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 
-public final class BinarySearchTree<T extends Comparable> extends DynamicallySizedDataStructure<T> implements Tree<T> {
+public final class BinarySearchTree<T extends Comparable> extends DynamicallySizedDataStructure<T> {
 
+    public static final int IN_ORDER    = 0;
+    public static final int PRE_ORDER   = 1;
+    public static final int POST_ORDER  = 2;
+    public static final int LEVEL_ORDER = 3;
+
+    private int defaultOrder;
     private BinarySearchTreeNode<T> root;
 
     /**
      * Initialize an empty BinarySearchTree
      */
     public BinarySearchTree() {
-        this.init();
+        super();
+        this.root(null);
     }
 
     /**
@@ -54,9 +60,14 @@ public final class BinarySearchTree<T extends Comparable> extends DynamicallySiz
      *
      * @return
      */
-    @Override
+    
     public boolean empty() {
         return this.size() == 0 && this.root() == null;
+    }
+
+//    
+    public void init() {
+
     }
 
     /**
@@ -77,7 +88,7 @@ public final class BinarySearchTree<T extends Comparable> extends DynamicallySiz
      *
      * @return Max depth of the tree
      */
-    @Override
+    
     public int height() {
         return BinarySearchTreeNode.height(this.root());
     }
@@ -88,7 +99,7 @@ public final class BinarySearchTree<T extends Comparable> extends DynamicallySiz
      * @param value
      * @return Specified value
      */
-    @Override
+    
     public boolean remove(T value) {
         boolean result;
 
@@ -120,9 +131,9 @@ public final class BinarySearchTree<T extends Comparable> extends DynamicallySiz
         return result;
     }
 
-    @Override
+    
     public String toString() {
-        return this.toString(DEFAULT_ORDER);
+        return this.toString(defaultOrder);
     }
 
     public String toString(int traversalType) {
@@ -144,12 +155,14 @@ public final class BinarySearchTree<T extends Comparable> extends DynamicallySiz
      *
      * @return Array representation of tree
      */
-    @Override
+    
     @SuppressWarnings("unchecked")
     public <T> T[] toArray(int traversalType, T[] array) {
 
+        ArrayList<T> arrayList = (ArrayList<T>) this.root().toArrayList(traversalType);
+
         // Convert the list into an array vida the ArrayList class
-        T[] arr = ((ArrayList<T>) this.root().toArrayList(traversalType)).toArray();
+        T[] arr = arrayList.toArray(array);
 
         return (T[]) Arrays.copyOf(arr, arr.length, array.getClass());
     }
@@ -158,16 +171,16 @@ public final class BinarySearchTree<T extends Comparable> extends DynamicallySiz
     @SuppressWarnings("unchecked")
     public <T> T[] toArray(T[] array) {
 
-        return this.toArray(DEFAULT_ORDER, array);
+        return this.toArray(defaultOrder, array);
     }
 
-    @Override
+    
     @SuppressWarnings("unchecked")
     public <T> T[] toArray() {
-        return (T[]) this.toArray(new Comparable[0]);
+        return (T[]) this.toArray(defaultOrder, new Comparable[0]);
     }
 
-    @Override
+    
     public <T> T[] toArray(int traversalType) {
         return (T[]) this.toArray(traversalType, new Comparable[0]);
     }
@@ -178,7 +191,7 @@ public final class BinarySearchTree<T extends Comparable> extends DynamicallySiz
      * @param value Specified value
      * @return True if and nly if the specified value is in the tree
      */
-    @Override
+    
     public boolean contains(T value) {
         if (this.empty()) {
             return false;
@@ -188,20 +201,11 @@ public final class BinarySearchTree<T extends Comparable> extends DynamicallySiz
     }
 
     /**
-     * Initializes an empty tree
-     */
-    @Override
-    public void init() {
-        super.init();
-        this.root = null;
-    }
-
-    /**
      * Inserts a specified value into the tree
      *
      * @param value The specified value to insert
      */
-    @Override
+    
     public boolean insert(T value) {
         boolean result;
 

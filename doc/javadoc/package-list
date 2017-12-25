@@ -1,6 +1,11 @@
 
-structures.auxiliary
+structures.graphs
+structures.maps
+structures.matricies
+structures.sets
 structures.trees
-structures.trees.auxiliary
+structures.util
+structures.util.interfaces
 structures.vectors
-structures.vectors.auxiliary
+structures.vectors.classes
+structures.vectors.interfaces
