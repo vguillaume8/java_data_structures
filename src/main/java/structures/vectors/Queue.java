@@ -1,7 +1,6 @@
 package structures.vectors;
 
-import structures.vectors.auxiliary.ChainedDataStructure;
-import java.util.EmptyStackException;
+import structures.vectors.classes.ChainedDataStructure;
 
 /**
  * Basic FIFO Queue implementation
@@ -9,7 +8,7 @@ import java.util.EmptyStackException;
  * @author Jabari Dash
  * @param <T> Generic type
  */
-public class Queue<T> extends ChainedDataStructure<T> {
+public final class Queue<T> extends ChainedDataStructure<T> {
 
     /**
      * Constructs empty Queue
@@ -24,7 +23,7 @@ public class Queue<T> extends ChainedDataStructure<T> {
      * <strong>Avg: </strong>&Theta;(1)<br>
      */
     public Queue() {
-        this.init();
+        super();
     }
 
     /**
@@ -42,7 +41,7 @@ public class Queue<T> extends ChainedDataStructure<T> {
      * @param values Array of values to instatiate Queue from
      */
     public Queue(T[] values) {
-        this.init(values);
+        super(values);
     }
 
     /**
@@ -62,7 +61,7 @@ public class Queue<T> extends ChainedDataStructure<T> {
      * @param value Specified default value
      */
     public Queue(int length, T value) {
-        this.init(length, value);
+        super(length, value);
     }
 
     /**
@@ -104,14 +103,16 @@ public class Queue<T> extends ChainedDataStructure<T> {
      * @param value The specified value to insert
      */
     @Override
-    public void insert(T value) {
+    public boolean insert(T value) {
         if (this.empty()) {
-            this.head(new ChainedDataStructure.Node<T>(value, null, null));
+            this.head(new Node<T>(value, null, null));
         } else {
             this.head().insert(value);
         }
 
         this.incrementSize();
+
+        return true;
     }
 
     /**

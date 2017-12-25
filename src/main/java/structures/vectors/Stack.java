@@ -1,6 +1,6 @@
 package structures.vectors;
 
-import structures.vectors.auxiliary.ChainedDataStructure;
+import structures.vectors.classes.ChainedDataStructure;
 
 /**
  *  Basic implementation of a Stack class using a Linked List
@@ -12,7 +12,7 @@ import structures.vectors.auxiliary.ChainedDataStructure;
  * @author Jabari Dash
  * @param <T> Generic type
  */
-public class Stack<T>  extends ChainedDataStructure<T> {
+public final class Stack<T>  extends ChainedDataStructure<T> {
 
     /**
      * Constructs empty Stack
@@ -27,7 +27,7 @@ public class Stack<T>  extends ChainedDataStructure<T> {
      * <strong>Avg: </strong>&Theta;(1)<br>
      */
     public Stack() {
-        this.init();
+        super();
     }
 
 //------------------------------------------------------------------------------
@@ -47,7 +47,7 @@ public class Stack<T>  extends ChainedDataStructure<T> {
      * @param values Array of values to instatiate Queue from
      */
     public Stack(T[] values) {
-        this.init(values);
+        super(values);
     }
 
 //------------------------------------------------------------------------------
@@ -69,7 +69,7 @@ public class Stack<T>  extends ChainedDataStructure<T> {
      * @param value Specified default value
      */
     public Stack(int length, T value) {
-        this.init(length, value);
+        super(length, value);
     }
 
 //------------------------------------------------------------------------------
@@ -90,7 +90,7 @@ public class Stack<T>  extends ChainedDataStructure<T> {
      * @param value The specified value to insert
      */
     @Override
-    public void insert(T value) {
+    public boolean insert(T value) {
         if (this.empty()) {
             this.head(new Node(value, null, null));
         } else {
@@ -100,6 +100,8 @@ public class Stack<T>  extends ChainedDataStructure<T> {
         }
 
         this.incrementSize();
+
+        return true;
     }
 
 //------------------------------------------------------------------------------

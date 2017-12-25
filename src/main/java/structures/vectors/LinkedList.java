@@ -1,7 +1,6 @@
 package structures.vectors;
 
-import structures.vectors.auxiliary.ChainedDataStructure;
-import structures.vectors.auxiliary.ChainedIndexedDataStructure;
+import structures.vectors.classes.ChainedIndexedDataStructure;
 
 /**
  * Basic implementation of Doubly Linked List
@@ -26,7 +25,7 @@ import structures.vectors.auxiliary.ChainedIndexedDataStructure;
  * @author Jabari Dash
  * @param <T> Generic type
  */
-public class LinkedList<T> extends ChainedIndexedDataStructure<T> {
+public final class LinkedList<T> extends ChainedIndexedDataStructure<T> {
 
   /**
    * Constructs empty list
@@ -41,7 +40,7 @@ public class LinkedList<T> extends ChainedIndexedDataStructure<T> {
    * <strong>Avg: </strong>&Theta;(1)<br>
    */
   public LinkedList() {
-    super.init();
+    super();
   }
 
 //------------------------------------------------------------------------------
@@ -63,7 +62,7 @@ public class LinkedList<T> extends ChainedIndexedDataStructure<T> {
    * @param value Specified default value
    */
   public LinkedList(int length, T value) {
-    super.init(length, value);
+    super(length, value);
   }
 
 //------------------------------------------------------------------------------
@@ -83,7 +82,7 @@ public class LinkedList<T> extends ChainedIndexedDataStructure<T> {
    * @param values Array of values to construct the list from
    */
   public LinkedList(T[] values) {
-    super.init(values);
+    super(values);
   }
 
 //------------------------------------------------------------------------------
@@ -104,8 +103,8 @@ public class LinkedList<T> extends ChainedIndexedDataStructure<T> {
    * @param index The specified to retrieve the node from
    * @return SinglyLinkedListNode at specified index
    */
-  protected ChainedDataStructure.Node<T> getNode(int index) {
-    ChainedDataStructure.Node<T> node;
+  protected Node<T> getNode(int index) {
+    Node<T> node;
 
     // Check that the specified index is a
     // valid index (Non-negative, and less than
@@ -209,18 +208,18 @@ public class LinkedList<T> extends ChainedIndexedDataStructure<T> {
    * @param index Specified index
    */
   public void insert(T value, int index) {
-    ChainedDataStructure.Node<T> node;
-    ChainedDataStructure.Node<T> newNode;
+    Node<T> node;
+    Node<T> newNode;
 
     // If the list is empty
     if (this.empty()) {
-      this.head(new ChainedDataStructure.Node<T>(value, null, null));
+      this.head(new Node<T>(value, null, null));
     }
 
     // Otherwise if its not empty, but we want to
     // insert at the front of the list
     else if (index == 0) {
-      newNode = new ChainedDataStructure.Node<T>(value, null, this.head());
+      newNode = new Node<T>(value, null, this.head());
 
       this.head().prev(newNode);
       this.head(newNode);
@@ -232,7 +231,7 @@ public class LinkedList<T> extends ChainedIndexedDataStructure<T> {
       // Find the ith node, and put
       // a node right in front of it
       node = this.getNode(index);                                        // Get the ith node
-      newNode = new ChainedDataStructure.Node<T>(value, node.prev(), node);  // Create a new node, setting its previous to the ith node's prev, and ith node as its next
+      newNode = new Node<T>(value, node.prev(), node);  // Create a new node, setting its previous to the ith node's prev, and ith node as its next
       node.prev().next(newNode);                                         // Set the i-1th node's next to the new node
       node.prev(newNode);                                                // Set the old ith node's previous to the new node
     }
@@ -283,7 +282,7 @@ public class LinkedList<T> extends ChainedIndexedDataStructure<T> {
     } else {
 
       // Get the ith node and its value
-      ChainedDataStructure.Node<T> node = this.getNode(index);
+      Node<T> node = this.getNode(index);
       value = node.value();
 
       // Set the node at i-1's next to node at i+1

@@ -1,40 +1,43 @@
-import structures.vectors.ArrayList;
-import structures.vectors.LinkedList;
-import structures.vectors.Queue;
-import structures.vectors.Stack;
-import structures.vectors.auxiliary.LinearDataStructure;
+import structures.trees.BinarySearchTree;
 
-public class Application<T> {
+import structures.vectors.Stack;
+import structures.vectors.Queue;
+import structures.vectors.LinkedList;
+import structures.vectors.ArrayList;
+import structures.vectors.interfaces.LinearDataStructure;
+import java.util.Arrays;
+
+public final class Application<T> {
 
   public static void main(String[] args) {
     int size = 10;
-    Object[] array = initArray(size);
 
-    Stack<Object>      stack      = new Stack<>(array);
-    Queue<Object>      queue      = new Queue<>(array);
-    LinkedList<Object> linkedList = new LinkedList<>(array);
-    ArrayList<Object>  arrayList  = new ArrayList<>(array);
+    Character[] letters = {'f', 'i', 'h', 'g', 'k', 'j', 'b', 'a', 'd', 'c', 'e'};
+    Integer[] numbers = {1, 2, 3, 4, 5, 6, 7};
+    Double[] doubles = {1.1, 3.1, 10.1, 0.0001, 19.0, 2.11};
 
+//    BinarySearchTree<Comparable> tree = new BinarySearchTree<>(letters);
+//    tree.display();
 
-    display(stack);
-    display(queue);
-    display(linkedList);
-    display(arrayList);
-  }
+    Stack<Comparable>      stack      = new Stack<>(numbers);
+    Queue<Comparable>      queue      = new Queue<>(numbers);
+    LinkedList<Comparable> linkedList = new LinkedList<>(numbers);
+    ArrayList<Comparable>  arrayList  = new ArrayList<>(numbers);
 
-  public static void display(LinearDataStructure<Object> structure) {
-    System.out.println(structure.getClass().getSimpleName() + ": " + structure.size());
-    System.out.println(structure.toString() + "\n");
-  }
+    ArrayList<LinearDataStructure<Comparable>> list = new ArrayList<>();
 
-  public static Object[] initArray(int size) {
-    Object[] array = new Object[size];
+    list.insert(stack);
+    list.insert(queue);
+    list.insert(linkedList);
+    list.insert(arrayList);
 
-    for (int i = 0; i < size; i++) {
-      array[i] = i+1;
+    Object[] array;
+
+    for (LinearDataStructure<Comparable> structure : list) {
+      array = structure.toArray(new Integer[0]);
+      System.out.println(structure.getClass().getSimpleName() + "<" + ">" + ":\n" + structure);
+      System.out.println(Arrays.toString(array) + "\n");
     }
-
-    return array;
   }
 
 }
