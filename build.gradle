@@ -19,10 +19,6 @@ jar {
   }
 }
 
-task publish(type: Exec) {
-  commandLine './publish/publish_artifact.sh'
-}
-
 repositories {
   mavenCentral()
 }

@@ -191,17 +191,6 @@ public class BinarySearchTreeNode<T extends Comparable> extends ChainedDataStruc
      *
      * @return
      */
-    public boolean isLeafNode() {
-
-        return this.leftChild() == null && this.rightChild() == null;
-    }
-
-//------------------------------------------------------------------------------
-
-    /**
-     *
-     * @return
-     */
     public BinarySearchTreeNode<T> leftChild() {
         return (BinarySearchTreeNode<T>) this.prev();
     }

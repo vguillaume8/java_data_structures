@@ -55,11 +55,6 @@ public class BinarySearchTree<T extends Comparable> extends DynamicallySizedData
     private BinarySearchTreeNode<T> root;
 
     /**
-     * Number of nodes in subtree
-     */
-    private int size;
-
-    /**
      * Initialize an empty BinarySearchTree.
      */
     @SuppressWarnings("unused")
@@ -106,7 +101,7 @@ public class BinarySearchTree<T extends Comparable> extends DynamicallySizedData
 
     /**
      * Display tree's important information to verify that
-     * it was build correctly. This method is for development purposes
+     * it was built correctly. This method is for development purposes
      */
     @SuppressWarnings("unchecked")
     public void display() {
@@ -115,8 +110,9 @@ public class BinarySearchTree<T extends Comparable> extends DynamicallySizedData
         System.out.println("Size: "         + this.size());
         System.out.println("Height: "       + this.height());
         System.out.println("Balanced: "     + this.isBalanced());
-        System.out.println("Complete: "     + this.isComplete());
         System.out.println("Full: "         + this.isFull());
+        System.out.println("Complete: "     + this.isComplete());
+        System.out.println("Perfect: "      + this.isPerfect());
         System.out.println("In-order: "     + this.toString(IN_ORDER));
         System.out.println("Pre-order: "    + this.toString(PRE_ORDER));
         System.out.println("Post-order: "   + this.toString(POST_ORDER));
@@ -177,7 +173,12 @@ public class BinarySearchTree<T extends Comparable> extends DynamicallySizedData
 //------------------------------------------------------------------------------
 
     /**
-     * Determines whether or not the tree is balanced.
+     * Determines whether or not the tree is balanced. A balanced tree is defined
+     * as a tree where for all subtrees of a given node, the maximum depth of the
+     * left subtree differs from the maximum depth of right subtree by at most one.
+     * An example follows:
+     *
+     * TODO - Insert image of example
      *
      * @return True if and only if the tree is balanced.
      */
@@ -190,9 +191,15 @@ public class BinarySearchTree<T extends Comparable> extends DynamicallySizedData
 
     /**
      *
-     * Inspired by https://www.geeksforgeeks.org/check-if-a-given-binary-tree-is-complete-tree-or-not/
+     * Determines whether or not the tree is complete. A complete tree is defined
+     * as a tree where all levels are filled, except possibly the bottom (deepest) level.
+     * In the event that the last level is not filled, all values in tree are as left as possible.
+     * An example follows:
      *
-     * @return
+     * TODO - Insert image of example
+     *
+     *
+     * @return True if and only if the above conditions are met.
      */
     public boolean isComplete() {
         Queue<BinarySearchTreeNode<T>> queue;
@@ -259,6 +266,11 @@ public class BinarySearchTree<T extends Comparable> extends DynamicallySizedData
 //------------------------------------------------------------------------------
 
     /**
+     * Determines whether or not the tree is full. A full tree is defined
+     * as a tree where all nodes other than leaf nodes have two children.
+     * An example follows:
+     *
+     * TODO - Insert image of example
      *
      * @return
      */
@@ -266,6 +278,8 @@ public class BinarySearchTree<T extends Comparable> extends DynamicallySizedData
     public boolean isFull() {
         return this.isFull(root);
     }
+
+//------------------------------------------------------------------------------
 
     /**
      *
@@ -293,6 +307,56 @@ public class BinarySearchTree<T extends Comparable> extends DynamicallySizedData
 
         // Or both must be null
         return left == null && right == null;
+    }
+
+//------------------------------------------------------------------------------
+
+    /**
+     * Returns true if an only if the tree is perfect. A perfect tree is defined
+     * as a tree whether all nodes that are not leaf nodes have two children, and
+     * all leaf nodes are at the same level. An example follows:
+     *
+     * TODO - Insert image of example
+     *
+     * @return True if and only if the above conditions are met.
+     */
+    public boolean isPerfect() {
+        return this.isPerfect(root, height(), 0);
+    }
+
+//------------------------------------------------------------------------------
+
+    /**
+     * Returns true if an only if the tree is perfect.
+     *
+     * @param node Current node in the tree to check.
+     * @return True if and only if the above conditions are met.
+     */
+    private boolean isPerfect(BinarySearchTreeNode<T> node, int depth, int level) {
+        BinarySearchTreeNode<T> left;
+        BinarySearchTreeNode<T> right;
+
+        // An empty tree is perfect
+        if (node == null) {
+            return true;
+        }
+
+        // Get the left and right children
+        left = node.leftChild();
+        right = node.rightChild();
+
+        // If both children are null, we just need
+        // to make sure the levels are the same
+        if (left == null && right == null)
+            return depth == level + 1;
+
+        // If either child is null, then the tree
+        // automatically is not perfect
+        if (left == null || right == null)
+            return false;
+
+        // Otherwise we need to continue down the tree
+        return isPerfect(left, depth, level+1) && isPerfect(right, depth, level+1);
     }
 
 //------------------------------------------------------------------------------
