@@ -1,4 +1,4 @@
-package structures.util;
+package util;
 
 import java.util.Arrays;
 
@@ -10,18 +10,20 @@ import java.util.Arrays;
 public final class Util<T> {
 
     /**
-     * Wrapper around Java library array copy function
+     * Wrapper around Java library array copy function.
      *
-     * @param original
-     * @param newLength
-     * @param newType
-     * @param <T>
-     * @param <U>
-     * @return
+     * @param original Original array.
+     * @param newLength Length of new array.
+     * @param newType Type of new array.
+     * @param <T> Generic type of new array.
+     * @param <U> Generic type of original array.
+     * @return Copied array.
      */
     public static <T, U> T[] ArrayCopy(U[] original, int newLength, Class<? extends T[]> newType) {
         return Arrays.copyOf(original, newLength, newType);
     }
+
+//------------------------------------------------------------------------------
 
     /**
      * Returns String representation of a specified array
@@ -35,22 +37,30 @@ public final class Util<T> {
         stringBuilder.append('[');
         stringBuilder.append(']');
 
-        if (array.length > 0) {
+        if (array != null) {
+            if (array.length > 0) {
 
-            // Append all the values in the array to the back
-            // but in between the brackets
-            for (Object value : array) {
-                stringBuilder.insert(stringBuilder.length()-1, value.toString() + ", ");
+                // Append all the values in the array to the back
+                // but in between the brackets
+                for (Object value : array) {
+                    if (value == null)
+                        stringBuilder.insert(stringBuilder.length()-1, "null" + ", ");
+
+                    else
+                        stringBuilder.insert(stringBuilder.length()-1, value.toString() + ", ");
+                }
+
+                int length = stringBuilder.length();
+
+                // Get rid of the extra comma and space at the end
+                stringBuilder.delete(length-3, length-1);
             }
-
-            int length = stringBuilder.length();
-
-            // Get rid of the extra comma and space at the end
-            stringBuilder.delete(length-3, length-1);
         }
 
         return stringBuilder.toString();
     }
+
+//------------------------------------------------------------------------------
 
     /**
      * Determines whether two arrays are equal to each other. For them to
@@ -62,6 +72,7 @@ public final class Util<T> {
      * @param b Second array to compare
      * @return True if and only if the above conditions are met
      */
+    @SuppressWarnings("unchecked")
     public static boolean equals(Object[] a, Object[] b) {
         boolean equals = false;
 

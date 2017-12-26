@@ -1,12 +1,9 @@
 
+structures.commons
 structures.graphs
 structures.maps
 structures.matricies
 structures.sets
 structures.trees
-structures.trees.auxiliary
-structures.util
-structures.util.interfaces
 structures.vectors
-structures.vectors.classes
-structures.vectors.interfaces
+util

@@ -1,6 +1,6 @@
-package structures.vectors.interfaces;
+package structures.commons;
 
-import structures.util.interfaces.DataStructure;
+import structures.commons.DataStructure;
 
 public interface LinearDataStructure<T> extends DataStructure<T>,  Iterable<T> {
 
@@ -23,5 +23,5 @@ public interface LinearDataStructure<T> extends DataStructure<T>,  Iterable<T> {
      */
     T[] toArray();
 
-    <T> T[] toArray(T[] array);
+    T[] toArray(T[] array);
 }

@@ -2,7 +2,7 @@ package structures.vectors
 
 import spock.lang.Unroll
 import spock.lang.Specification
-import structures.util.interfaces.DataStructure.EmptyDataStructureException;
+import structures.commons.DataStructure.EmptyDataStructureException;
 
 class QueueSpec extends Specification {
     @Unroll

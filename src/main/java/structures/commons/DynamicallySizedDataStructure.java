@@ -1,6 +1,6 @@
-package structures.vectors.classes;
+package structures.commons;
 
-import structures.util.interfaces.DataStructure;
+import structures.commons.DataStructure;
 
 /**
  * All dynamically sized data types should extend this class

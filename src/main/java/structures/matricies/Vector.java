@@ -1,6 +1,6 @@
 package structures.matricies;
 
-import structures.util.Util;
+import util.Util;
 
 public final class Vector<T> {
 

@@ -1,6 +1,6 @@
 package structures.vectors;
 
-import structures.vectors.classes.DynamicallySizedArray;
+import structures.commons.DynamicallySizedArray;
 
 /**
  * Basic implementation of a generic ArrayList

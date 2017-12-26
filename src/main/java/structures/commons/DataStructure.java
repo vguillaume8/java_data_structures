@@ -1,4 +1,4 @@
-package structures.util.interfaces;
+package structures.commons;
 
 /**
  * Generic interface for any data structure in this library
@@ -38,6 +38,7 @@ public interface DataStructure<T> {
      * Inserts a specified value into the IndexedDataStructure
      *
      * @param value The specified value to insert
+     * @return True if and only if the value was successfully inserted.
      */
     boolean insert(T value);
 
