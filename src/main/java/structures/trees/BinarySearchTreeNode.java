@@ -1,20 +1,19 @@
 package structures.trees;
 
-import structures.util.interfaces.ComparableValue;
+import structures.util.interfaces.Value;
 import structures.vectors.ArrayList;
+import structures.vectors.Queue;
 import structures.vectors.classes.ChainedDataStructure;
 
-import static structures.trees.BinarySearchTree.IN_ORDER;
-import static structures.trees.BinarySearchTree.POST_ORDER;
-import static structures.trees.BinarySearchTree.PRE_ORDER;
+import static structures.trees.BinarySearchTree.*;
 
 /**
- * Node for use in Binary SearchTree
+ * Node for use in Binary SearchTree.
  *
  * @author Jabari Dash
  * @param <T> Generic type
  */
-public class BinarySearchTreeNode<T extends Comparable> extends ChainedDataStructure.Node<T> implements ComparableValue<T> {
+public class BinarySearchTreeNode<T extends Comparable> extends ChainedDataStructure.Node<T> implements Value<T> {
 
     /**
      * Initializes a new tree node with its value
@@ -27,6 +26,8 @@ public class BinarySearchTreeNode<T extends Comparable> extends ChainedDataStruc
     public BinarySearchTreeNode(T value, BinarySearchTreeNode<T> leftChild, BinarySearchTreeNode<T> rightChild) {
         super(value, leftChild, rightChild);
     }
+
+//------------------------------------------------------------------------------
 
     /**
      * Constructs empty Node
@@ -67,7 +68,8 @@ public class BinarySearchTreeNode<T extends Comparable> extends ChainedDataStruc
      * @param value
      * @return
      */
-    public BinarySearchTreeNode<T> find(T value) {
+    @SuppressWarnings("unused")
+    protected BinarySearchTreeNode<T> find(T value) {
         return this.find(this, value);
     }
 
@@ -80,6 +82,7 @@ public class BinarySearchTreeNode<T extends Comparable> extends ChainedDataStruc
      * @param value
      * @return
      */
+    @SuppressWarnings("unused")
     private BinarySearchTreeNode<T> find(BinarySearchTreeNode<T> node, T value) {
 
         if (node != null) {
@@ -106,7 +109,7 @@ public class BinarySearchTreeNode<T extends Comparable> extends ChainedDataStruc
      *
      * @return Number of levels in the Tree
      */
-    public static int height(BinarySearchTreeNode node) {
+    protected static int height(BinarySearchTreeNode node) {
         int leftHeight;
         int rightHeight;
 
@@ -160,17 +163,37 @@ public class BinarySearchTreeNode<T extends Comparable> extends ChainedDataStruc
 
 //------------------------------------------------------------------------------
 
+    /**
+     *
+     * @param node
+     * @return
+     */
+    protected int isBalanced(BinarySearchTreeNode<T> node) {
+        if (node == null)
+            return 0;
+
+        int h1 = isBalanced(node.leftChild());
+        int h2 = isBalanced(node.rightChild());
+
+        if (h1 == -1 || h2 == -1)
+            return -1;
+        if (Math.abs(h1 - h2) > 1)
+            return -1;
+        if (h1 > h2)
+            return h1 + 1;
+        else
+            return h2 + 1;
+    }
+
+//------------------------------------------------------------------------------
 
     /**
      *
      * @return
      */
     public boolean isLeafNode() {
-        if (this.leftChild() == null && this.rightChild() == null) {
-            return true;
-        }
 
-        return false;
+        return this.leftChild() == null && this.rightChild() == null;
     }
 
 //------------------------------------------------------------------------------
@@ -197,26 +220,47 @@ public class BinarySearchTreeNode<T extends Comparable> extends ChainedDataStruc
 
     /**
      *
+     * @param node
+     * @return
+     */
+    protected BinarySearchTreeNode<T> maxNode(BinarySearchTreeNode<T> node) {
+
+        // Go as far right as possible
+        return node.rightChild() == null ? this : node.rightChild().minNode(node.rightChild());
+    }
+
+//------------------------------------------------------------------------------
+
+    /**
+     *
+     * @return
+     */
+    protected T maxValue() {
+        return this.maxNode(this).value();
+    }
+
+//------------------------------------------------------------------------------
+
+    /**
+     *
+     * @param node
+     * @return
+     */
+    protected BinarySearchTreeNode<T> minNode(BinarySearchTreeNode<T> node) {
+
+        // Go as far left as possible
+        return node.leftChild() == null ? this : node.leftChild().minNode(node.leftChild());
+
+    }
+
+//------------------------------------------------------------------------------
+
+    /**
+     *
      * @return
      */
     private T minValue() {
         return minNode(this).value();
-    }
-
-    protected BinarySearchTreeNode<T> minNode(BinarySearchTreeNode<T> node) {
-        if (node.leftChild() == null) {
-            return this;
-        } else {
-            return node.leftChild().minNode(node.leftChild());
-        }
-    }
-
-    protected BinarySearchTreeNode<T> maxNode(BinarySearchTreeNode<T> node) {
-        if (node.rightChild() == null) {
-            return this;
-        } else {
-            return node.rightChild().minNode(node.rightChild());
-        }
     }
 
 //------------------------------------------------------------------------------
@@ -357,10 +401,11 @@ public class BinarySearchTreeNode<T extends Comparable> extends ChainedDataStruc
         ArrayList<T> arrayList1;
 
         switch (traversalType) {
-            case IN_ORDER:   arrayList1 = this.toArrayListInOrder(node, arrayList);     break;
-            case PRE_ORDER:  arrayList1 = this.toArrayListPreOrder(node, arrayList);    break;
-            case POST_ORDER: arrayList1 = this.toArrayListPostOrder(node, arrayList);   break;
-            default: throw new IllegalArgumentException("traversalType: " + traversalType + " unrecognized");
+            case IN_ORDER:    arrayList1 = this.toArrayListInOrder(node, arrayList);         break;
+            case PRE_ORDER:   arrayList1 = this.toArrayListPreOrder(node, arrayList);        break;
+            case POST_ORDER:  arrayList1 = this.toArrayListPostOrder(node, arrayList);       break;
+            case LEVEL_ORDER: arrayList1 = this.toArrayListLevelOrder(node);                 break;
+            default:          arrayList1 = this.toArrayList(node, arrayList, DEFAULT_ORDER); break;
         }
 
         return arrayList1;
@@ -428,46 +473,52 @@ public class BinarySearchTreeNode<T extends Comparable> extends ChainedDataStruc
 
     /**
      *
-     * @param comparableValue
+     * @param node
      * @return
      */
-    public int compareTo(ComparableValue<T> comparableValue) {
-        return this.value().compareTo(comparableValue.value());
-    }
+    private ArrayList<T> toArrayListLevelOrder(BinarySearchTreeNode<T> node) {
+        ArrayList<T>arrayList;
+        Queue<BinarySearchTreeNode<T>> queue;
+        BinarySearchTreeNode<T> temp;
+        BinarySearchTreeNode<T> left;
+        BinarySearchTreeNode<T> right;
 
-    /**
-     *
-     * @param value
-     * @return
-     */
-    public boolean lessThan(ComparableValue<T> value) {
-        return this.compareTo(value) < 0;
-    }
+        // Initialize the list
+        arrayList = new ArrayList<>();
 
-    /**
-     *
-     * @param value
-     * @return
-     */
-    public boolean lessThanOrEqualTo(ComparableValue<T> value) {
-        return this.compareTo(value) <= 0;
-    }
+        // Empty tree
+        if (node == null) {
+            return arrayList;
+        }
 
-    /**
-     *
-     * @param value
-     * @return
-     */
-    public boolean greaterThan(ComparableValue<T> value) {
-        return this.compareTo(value) > 0;
-    }
+        // Create a Queue for level order traversal
+        queue = new Queue<>();
 
-    /**
-     *
-     * @param value
-     * @return
-     */
-    public boolean greaterThanOrEqualTo(ComparableValue<T> value) {
-        return this.compareTo(value) >= 0;
+        // Insert the first node to start
+        queue.insert(node);
+
+        // While the Queue is not empty (all nodes have not been seen)
+        while (!queue.empty()) {
+
+            // Remove from queue, and insert into ArrayList
+            temp = queue.remove();
+            arrayList.insert(temp.value());
+
+            // Get children
+            left = temp.leftChild();
+            right = temp.rightChild();
+
+            // Check left
+            if (left != null) {
+                queue.insert(left);
+            }
+
+            // Check right
+            if (right != null) {
+                queue.insert(right);
+            }
+        }
+
+        return arrayList;
     }
 }

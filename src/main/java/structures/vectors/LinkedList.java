@@ -183,7 +183,7 @@ public final class LinkedList<T> extends ChainedIndexedDataStructure<T> {
     } else {
 
       // TODO - abstract this to insert(int, int)
-      // TODO - only want 1 method incrementing the length
+      // TODO - only want 1 method incrementing the length if possible
       this.head().insert(value);
       this.incrementSize();
     }
