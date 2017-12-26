@@ -11,7 +11,7 @@ import structures.vectors.classes.DynamicallySizedArray;
 public final class ArrayList<T> extends DynamicallySizedArray<T> {
 
     /**
-     * Constructs empty list
+     * Constructs empty list.
      *
      * <br>
      * <br>
@@ -27,7 +27,7 @@ public final class ArrayList<T> extends DynamicallySizedArray<T> {
     }
 
     /**
-     * Constructs ArrayList from array of values
+     * Constructs ArrayList from array of values.
      *
      * <br>
      * <br>
@@ -46,7 +46,7 @@ public final class ArrayList<T> extends DynamicallySizedArray<T> {
 
     /**
      * Constructs LinkedList of specified length where
-     * all values have a specified default value
+     * all values have a specified default value.
      *
      * <br>
      * <br>
@@ -65,7 +65,7 @@ public final class ArrayList<T> extends DynamicallySizedArray<T> {
     }
 
     /**
-     * Returns the value at a specified index
+     * Returns the value at a specified index.
      *
      * <br>
      * <br>
@@ -86,7 +86,7 @@ public final class ArrayList<T> extends DynamicallySizedArray<T> {
     }
 
     /**
-     * Inserts a value at the end of the list
+     * Inserts a value at the end of the list.
      *
      * <br>
      * <br>
@@ -107,7 +107,7 @@ public final class ArrayList<T> extends DynamicallySizedArray<T> {
     }
 
     /**
-     * Inserts a value at a specified index
+     * Inserts a value at a specified index.
      *
      * <br>
      * <br>
@@ -192,7 +192,7 @@ public final class ArrayList<T> extends DynamicallySizedArray<T> {
     }
 
     /**
-     * Inserts a value into the front of the list
+     * Inserts a value into the front of the list.
      *
      * <br>
      * <br>
@@ -211,7 +211,7 @@ public final class ArrayList<T> extends DynamicallySizedArray<T> {
     }
 
     /**
-     * Inserts an element to the back of the list
+     * Inserts an element to the back of the list.
      *
      * <br>
      * <br>
@@ -230,7 +230,7 @@ public final class ArrayList<T> extends DynamicallySizedArray<T> {
     }
 
     /**
-     * Retrieves and removes the value at a specified index
+     * Retrieves and removes the value at a specified index.
      *
      * <br>
      * <br>
@@ -261,7 +261,7 @@ public final class ArrayList<T> extends DynamicallySizedArray<T> {
     }
 
     /**
-     * Retrieves and removes the first value in the list
+     * Retrieves and removes the first value in the list.
      *
      * <br>
      * <br>
@@ -281,7 +281,7 @@ public final class ArrayList<T> extends DynamicallySizedArray<T> {
     }
 
     /**
-     * Retrieves and removes the last value in the list
+     * Retrieves and removes the last value in the list.
      * <br>
      *
      * <br>
@@ -301,7 +301,7 @@ public final class ArrayList<T> extends DynamicallySizedArray<T> {
     }
 
     /**
-     * Retrieves and removes the last value in the list
+     * Retrieves and removes the last value in the list.
      *
      * <br>
      * <br>

@@ -1,4 +1,4 @@
 package structures.trees;
 
-public class AVLTree {
+public final class AVLTree {
 }

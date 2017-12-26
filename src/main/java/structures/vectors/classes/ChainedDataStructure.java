@@ -1,9 +1,8 @@
 package structures.vectors.classes;
 
+import structures.util.Util;
 import structures.util.interfaces.Value;
 import structures.vectors.interfaces.LinearDataStructure;
-
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.StringJoiner;
@@ -146,7 +145,7 @@ public abstract class ChainedDataStructure<T> extends DynamicallySizedDataStruct
     @SuppressWarnings("uncheck")
     public <T> T[] toArray(T[] array) {
 
-        array = (T[]) Arrays.copyOf(array, this.size(), array.getClass());
+        array = (T[]) Util.ArrayCopy(array, this.size(), array.getClass());
 
         int i = 0;
 
@@ -236,6 +235,13 @@ public abstract class ChainedDataStructure<T> extends DynamicallySizedDataStruct
             this.value(value);
             this.prev(prev);
             this.next(next);
+        }
+
+        /**
+         * Constructs empty Node
+         */
+        public Node() {
+
         }
 
 //------------------------------------------------------------------------------

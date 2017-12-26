@@ -14,7 +14,7 @@ import static structures.trees.BinarySearchTree.PRE_ORDER;
  * @author Jabari Dash
  * @param <T> Generic type
  */
-public final class BinarySearchTreeNode<T extends Comparable> extends ChainedDataStructure.Node<T> implements ComparableValue<T> {
+public class BinarySearchTreeNode<T extends Comparable> extends ChainedDataStructure.Node<T> implements ComparableValue<T> {
 
     /**
      * Initializes a new tree node with its value
@@ -26,6 +26,13 @@ public final class BinarySearchTreeNode<T extends Comparable> extends ChainedDat
      */
     public BinarySearchTreeNode(T value, BinarySearchTreeNode<T> leftChild, BinarySearchTreeNode<T> rightChild) {
         super(value, leftChild, rightChild);
+    }
+
+    /**
+     * Constructs empty Node
+     */
+    public BinarySearchTreeNode() {
+        super();
     }
 
 //------------------------------------------------------------------------------
@@ -42,20 +49,54 @@ public final class BinarySearchTreeNode<T extends Comparable> extends ChainedDat
 
 //------------------------------------------------------------------------------
 
+    /**
+     *
+     * @param node
+     * @param value
+     * @return
+     */
     protected boolean contains(BinarySearchTreeNode<T> node, T value) {
-        if (node == null) {
-            return false;
+        return !(this.find(node, value) == null);
+    }
+
+//------------------------------------------------------------------------------
+
+    /**
+     * Finds and returns a node by value via binary search.
+     *
+     * @param value
+     * @return
+     */
+    public BinarySearchTreeNode<T> find(T value) {
+        return this.find(this, value);
+    }
+
+//------------------------------------------------------------------------------
+
+    /**
+     * Finds a value via binary search.
+     *
+     * @param node
+     * @param value
+     * @return
+     */
+    private BinarySearchTreeNode<T> find(BinarySearchTreeNode<T> node, T value) {
+
+        if (node != null) {
+            if (node.value().equals(value)) {
+                return node;
+            }
+
+            else if (value.compareTo(node.value()) < 0) {
+                return find(node.leftChild(), value);
+            }
+
+            else {
+                return find(node.rightChild(), value);
+            }
         }
 
-        // TODO - Turn this into a binary search, because we dont have to check both right and left
-
-        // See if its in left subtree, right subtree, or in parent
-        boolean parent = node.value() == value;
-        boolean left = contains(node.leftChild(), value);
-        boolean right = contains(node.rightChild(), value);
-
-        // If its in any of the three, we found it
-        return left || right || parent;
+        return null;
     }
 
 //------------------------------------------------------------------------------
@@ -119,6 +160,21 @@ public final class BinarySearchTreeNode<T extends Comparable> extends ChainedDat
 
 //------------------------------------------------------------------------------
 
+
+    /**
+     *
+     * @return
+     */
+    public boolean isLeafNode() {
+        if (this.leftChild() == null && this.rightChild() == null) {
+            return true;
+        }
+
+        return false;
+    }
+
+//------------------------------------------------------------------------------
+
     /**
      *
      * @return
@@ -144,10 +200,22 @@ public final class BinarySearchTreeNode<T extends Comparable> extends ChainedDat
      * @return
      */
     private T minValue() {
-        if (this.leftChild() == null) {
-            return this.value();
+        return minNode(this).value();
+    }
+
+    protected BinarySearchTreeNode<T> minNode(BinarySearchTreeNode<T> node) {
+        if (node.leftChild() == null) {
+            return this;
         } else {
-            return this.leftChild().minValue();
+            return node.leftChild().minNode(node.leftChild());
+        }
+    }
+
+    protected BinarySearchTreeNode<T> maxNode(BinarySearchTreeNode<T> node) {
+        if (node.rightChild() == null) {
+            return this;
+        } else {
+            return node.rightChild().minNode(node.rightChild());
         }
     }
 
@@ -155,56 +223,60 @@ public final class BinarySearchTreeNode<T extends Comparable> extends ChainedDat
 
     /**
      *
+     * @param parent
+     * @param value
      * @return
      */
-    private T maxValue() {
-        if (this.rightChild() == null) {
-            return this.value();
-        } else {
-            return this.rightChild().maxValue();
-        }
-    }
+    public boolean remove(BinarySearchTreeNode<T> parent, T value) {
 
-//------------------------------------------------------------------------------
+        int comparison = value.compareTo(this.value());
 
-    public boolean remove(BinarySearchTreeNode<T> node, T value) {
-        if (value.compareTo(this.value()) < 0) {
+        // Look left
+        if (comparison < 0) {
 
-            if (this.leftChild() != null)
+            // If there is a left child
+            if (this.leftChild() != null) {
                 return this.leftChild().remove(this, value);
+            }
 
             else
                 return false;
 
-        } else if (value.compareTo(this.value()) > 0) {
+        // Look right
+        } else if (comparison > 0) {
 
-            if (this.rightChild() != null)
+            // If there is a right child
+            if (this.rightChild() != null) {
                 return this.rightChild().remove(this, value);
+            }
 
             else
                 return false;
 
+        // Found it
         } else {
 
+            // Two children
             if (this.leftChild() != null && this.rightChild() != null) {
 
                 this.value(this.rightChild().minValue());
                 this.rightChild().remove(this, this.value());
 
-            } else if (node.leftChild() == this) {
+            // Left child
+            } else if (parent.leftChild() == this) {
 
                 BinarySearchTreeNode<T> child = leftChild() != null ? leftChild() : rightChild();
 
-                node.leftChild(child);
+                parent.leftChild(child);
 
-            } else if (node.rightChild() == this) {
+            // Right child
+            } else if (parent.rightChild() == this) {
 
                 BinarySearchTreeNode<T> child = (leftChild() != null) ? leftChild() : rightChild();
-                node.rightChild(child);
+                parent.rightChild(child);
             }
 
             return true;
-
         }
     }
 
@@ -228,10 +300,48 @@ public final class BinarySearchTreeNode<T extends Comparable> extends ChainedDat
         this.next(rightChild);
     }
 
+    /**
+     *
+     * @return
+     */
+    public T[] toArray() {
+        return this.toArrayList().toArray();
+    }
+
+    /**
+     *
+     * @param array
+     * @param <T>
+     * @return
+     */
+    public <T> T[] toArray(T[] array) {
+        return this.toArrayList().toArray(array);
+    }
+
+    /**
+     *
+     * @param traversalType
+     * @param array
+     * @param <T>
+     * @return
+     */
+    public <T> T[] toArray(int traversalType, T[] array) {
+        return this.toArrayList(traversalType).toArray(array);
+    }
+
+    /**
+     *
+     * @return
+     */
     public ArrayList<T> toArrayList() {
         return this.toArrayList(this, new ArrayList<T>(), PRE_ORDER);
     }
 
+    /**
+     *
+     * @param traversalType
+     * @return
+     */
     public ArrayList<T> toArrayList(int traversalType) {
         return this.toArrayList(this, new ArrayList<>(), traversalType);
     }
@@ -258,6 +368,12 @@ public final class BinarySearchTreeNode<T extends Comparable> extends ChainedDat
 
 //------------------------------------------------------------------------------
 
+    /**
+     *
+     * @param node
+     * @param arrayList
+     * @return
+     */
     private ArrayList<T> toArrayListInOrder(BinarySearchTreeNode<T> node, ArrayList<T> arrayList) {
         if (node == null) {
             return arrayList;
@@ -272,6 +388,12 @@ public final class BinarySearchTreeNode<T extends Comparable> extends ChainedDat
 
 //------------------------------------------------------------------------------
 
+    /**
+     *
+     * @param node
+     * @param arrayList
+     * @return
+     */
     private ArrayList<T> toArrayListPreOrder(BinarySearchTreeNode<T> node, ArrayList<T> arrayList) {
         if (node == null) {
             return arrayList;
@@ -286,6 +408,12 @@ public final class BinarySearchTreeNode<T extends Comparable> extends ChainedDat
 
 //------------------------------------------------------------------------------
 
+    /**
+     *
+     * @param node
+     * @param arrayList
+     * @return
+     */
     private ArrayList<T> toArrayListPostOrder(BinarySearchTreeNode<T> node, ArrayList<T> arrayList) {
         if (node == null) {
             return arrayList;
@@ -307,19 +435,39 @@ public final class BinarySearchTreeNode<T extends Comparable> extends ChainedDat
         return this.value().compareTo(comparableValue.value());
     }
 
+    /**
+     *
+     * @param value
+     * @return
+     */
     public boolean lessThan(ComparableValue<T> value) {
-        return this.compareTo(value) < 0 ? true : false;
+        return this.compareTo(value) < 0;
     }
 
+    /**
+     *
+     * @param value
+     * @return
+     */
     public boolean lessThanOrEqualTo(ComparableValue<T> value) {
-        return this.compareTo(value) <= 0 ? true : false;
+        return this.compareTo(value) <= 0;
     }
 
+    /**
+     *
+     * @param value
+     * @return
+     */
     public boolean greaterThan(ComparableValue<T> value) {
-        return this.compareTo(value) > 0 ? true : false;
+        return this.compareTo(value) > 0;
     }
 
+    /**
+     *
+     * @param value
+     * @return
+     */
     public boolean greaterThanOrEqualTo(ComparableValue<T> value) {
-        return this.compareTo(value) >= 0 ? true : false;
+        return this.compareTo(value) >= 0;
     }
 }

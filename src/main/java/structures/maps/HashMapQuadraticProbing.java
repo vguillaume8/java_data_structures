@@ -1,4 +1,4 @@
 package structures.maps;
 
-public class HashMapQuadraticProbing {
+public final class HashMapQuadraticProbing {
 }

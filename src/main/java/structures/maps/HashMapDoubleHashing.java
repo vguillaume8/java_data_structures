@@ -1,4 +1,4 @@
 package structures.maps;
 
-public class HashMapDoubleHashing {
+public final class HashMapDoubleHashing {
 }

@@ -1,43 +1,46 @@
 import structures.trees.BinarySearchTree;
+import java.util.ArrayList;
 
-import structures.vectors.Stack;
-import structures.vectors.Queue;
-import structures.vectors.LinkedList;
-import structures.vectors.ArrayList;
-import structures.vectors.interfaces.LinearDataStructure;
-import java.util.Arrays;
+import static structures.trees.BinarySearchTree.IN_ORDER;
+import static structures.trees.BinarySearchTree.POST_ORDER;
+import static structures.trees.BinarySearchTree.PRE_ORDER;
 
-public final class Application<T> {
+public final class Application {
 
   public static void main(String[] args) {
     int size = 10;
 
-    Character[] letters = {'f', 'i', 'h', 'g', 'k', 'j', 'b', 'a', 'd', 'c', 'e'};
+    Character[] letters  = {'f', 'i', 'h', 'g', 'k', 'j', 'b', 'a', 'd', 'c', 'e'};
+    Character[] letters2 = {'f', 'i', 'h', 'g'};
     Integer[] numbers = {1, 2, 3, 4, 5, 6, 7};
     Double[] doubles = {1.1, 3.1, 10.1, 0.0001, 19.0, 2.11};
 
-//    BinarySearchTree<Comparable> tree = new BinarySearchTree<>(letters);
-//    tree.display();
+    BinarySearchTree<Comparable> tree = new BinarySearchTree<>(numbers);
+    display(tree);
+    System.out.println("\n");
 
-    Stack<Comparable>      stack      = new Stack<>(numbers);
-    Queue<Comparable>      queue      = new Queue<>(numbers);
-    LinkedList<Comparable> linkedList = new LinkedList<>(numbers);
-    ArrayList<Comparable>  arrayList  = new ArrayList<>(numbers);
-
-    ArrayList<LinearDataStructure<Comparable>> list = new ArrayList<>();
-
-    list.insert(stack);
-    list.insert(queue);
-    list.insert(linkedList);
-    list.insert(arrayList);
-
-    Object[] array;
-
-    for (LinearDataStructure<Comparable> structure : list) {
-      array = structure.toArray(new Integer[0]);
-      System.out.println(structure.getClass().getSimpleName() + "<" + ">" + ":\n" + structure);
-      System.out.println(Arrays.toString(array) + "\n");
+    for (Comparable object : numbers) {
+      display(tree);
+      System.out.println();
+      tree.remove(object);
     }
+  }
+
+  /**
+   * Display tree's important information to verify that
+   * it was build correctly. This method is for development purposes
+   */
+  @SuppressWarnings("unchecked")
+  public static <T extends Comparable> void display(BinarySearchTree<T> tree) {
+    int size   = tree.size();
+    int height = tree.height();
+
+    System.out.println(tree.getClass().getSimpleName());
+    System.out.println("Size: "      + size);
+    System.out.println("Height: "    + height);
+    System.out.println("inorder: "   + tree.toString(IN_ORDER));
+    System.out.println("preorder: "  + tree.toString(PRE_ORDER));
+    System.out.println("postorder: " + tree.toString(POST_ORDER));
   }
 
 }

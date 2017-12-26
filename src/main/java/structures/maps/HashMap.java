@@ -1,5 +1,5 @@
 package structures.maps;
 
-public class HashMap {
+public final class HashMap {
 
 }

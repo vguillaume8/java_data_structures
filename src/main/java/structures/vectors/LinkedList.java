@@ -28,7 +28,7 @@ import structures.vectors.classes.ChainedIndexedDataStructure;
 public final class LinkedList<T> extends ChainedIndexedDataStructure<T> {
 
   /**
-   * Constructs empty list
+   * Constructs empty list.
    *
    * <br>
    * <br>
@@ -47,7 +47,7 @@ public final class LinkedList<T> extends ChainedIndexedDataStructure<T> {
 
   /**
    * Constructs LinkedList of specified length where
-   * all nodes have a specified default value
+   * all nodes have a specified default value.
    *
    * <br>
    * <br>
@@ -68,7 +68,7 @@ public final class LinkedList<T> extends ChainedIndexedDataStructure<T> {
 //------------------------------------------------------------------------------
 
   /**
-   * Constructs DoubleLinkedList from array of values
+   * Constructs DoubleLinkedList from array of values.
    *
    * <br>
    * <br>
@@ -88,7 +88,7 @@ public final class LinkedList<T> extends ChainedIndexedDataStructure<T> {
 //------------------------------------------------------------------------------
 
   /**
-   * Returns the node at a specified index in the list
+   * Returns the node at a specified index in the list.
    *
    * <br>
    * <br>
@@ -136,7 +136,7 @@ public final class LinkedList<T> extends ChainedIndexedDataStructure<T> {
 //------------------------------------------------------------------------------
 
   /**
-   * Inserts a specified value at the front of the list
+   * Inserts a specified value at the front of the list.
    *
    * <br>
    * <br>
@@ -156,7 +156,7 @@ public final class LinkedList<T> extends ChainedIndexedDataStructure<T> {
 //------------------------------------------------------------------------------
 
   /**
-   * Inserts a specified value at the back of the list
+   * Inserts a specified value at the back of the list.
    *
    * TODO - Turn this into constant time by keeping track of the tail
    *
@@ -192,7 +192,7 @@ public final class LinkedList<T> extends ChainedIndexedDataStructure<T> {
 //------------------------------------------------------------------------------
 
   /**
-   * Insert specified value at specified index in list
+   * Insert specified value at specified index in list.
    *
    * <br>
    * <br>
@@ -243,7 +243,7 @@ public final class LinkedList<T> extends ChainedIndexedDataStructure<T> {
 //------------------------------------------------------------------------------
 
   /**
-   * Removes a node at a specified index from the list
+   * Removes a node at a specified index from the list.
    *
    * <br>
    * <br>
@@ -310,7 +310,7 @@ public final class LinkedList<T> extends ChainedIndexedDataStructure<T> {
 //------------------------------------------------------------------------------
 
   /**
-   * Removes the last value in the list
+   * Removes the last value in the list.
    *
    * <br>
    * <br>
@@ -330,7 +330,7 @@ public final class LinkedList<T> extends ChainedIndexedDataStructure<T> {
 //------------------------------------------------------------------------------
 
   /**
-   * Removes the first value in the list
+   * Removes the first value in the list.
    *
    * <br>
    * <br>
@@ -349,7 +349,7 @@ public final class LinkedList<T> extends ChainedIndexedDataStructure<T> {
 //------------------------------------------------------------------------------
 
   /**
-   * Removes the last value in the list
+   * Removes the last value in the list.
    *
    * <br>
    * <br>

@@ -1,4 +1,4 @@
 package structures.maps;
 
-public class HashMapChaining {
+public final class HashMapChaining {
 }
