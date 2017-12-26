@@ -3,7 +3,7 @@ package structures.vectors;
 import structures.vectors.classes.ChainedDataStructure;
 
 /**
- *  Basic implementation of a Stack class using a Linked List
+ *  Basic implementation of a Stack class using a Linked List.
  *
  *  All basic operations are O(n), except for
  *  contains() O(n), which we shouldn't be using with
@@ -33,7 +33,7 @@ public final class Stack<T>  extends ChainedDataStructure<T> {
 //------------------------------------------------------------------------------
 
     /**
-     * Constructs Queue from array of values
+     * Constructs Queue from array of values.
      *
      * <br>
      * <br>
@@ -54,7 +54,7 @@ public final class Stack<T>  extends ChainedDataStructure<T> {
 
     /**
      * Constructs Queue of specified length where
-     * all values have a specified default value
+     * all values have a specified default value.
      *
      * <br>
      * <br>
@@ -75,7 +75,7 @@ public final class Stack<T>  extends ChainedDataStructure<T> {
 //------------------------------------------------------------------------------
 
     /**
-     * Inserts value at top of Stack
+     * Inserts value at top of Stack.
      *
      * <br>
      * <br>
@@ -107,7 +107,7 @@ public final class Stack<T>  extends ChainedDataStructure<T> {
 //------------------------------------------------------------------------------
 
     /**
-     * Retrieves and removes top of Stack
+     * Retrieves and removes top of Stack.
      *
      * <br>
      * <br>
@@ -138,7 +138,7 @@ public final class Stack<T>  extends ChainedDataStructure<T> {
 //------------------------------------------------------------------------------
 
     /**
-     * Pushes a specified value onto the Stack
+     * Pushes a specified value onto the Stack.
      *
      * <br>
      * <br>
@@ -158,7 +158,7 @@ public final class Stack<T>  extends ChainedDataStructure<T> {
 //------------------------------------------------------------------------------
 
     /**
-     * Retrieves and removes the topmost value from the Stack
+     * Retrieves and removes the topmost value from the Stack.
      *
      * <br>
      * <br>
@@ -178,7 +178,7 @@ public final class Stack<T>  extends ChainedDataStructure<T> {
 //------------------------------------------------------------------------------
 
     /**
-     * Retrieves but does not remove the topmost value from the Stack
+     * Retrieves but does not remove the topmost value from the Stack.
      *
      * <br>
      * <br>

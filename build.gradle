@@ -19,10 +19,6 @@ jar {
   }
 }
 
-task publish(type: Exec) {
-  commandLine './publish/publish_artifact.sh'
-}
-
 repositories {
   mavenCentral()
 }
@@ -39,7 +35,7 @@ dependencies {
 
 javadoc {
   destinationDir = new File("${projectDir}/doc/javadoc")
-  options.memberLevel = JavadocMemberLevel.PRIVATE
+  options.memberLevel = JavadocMemberLevel.PUBLIC
   source = sourceSets.main.allJava
   classpath = configurations.compile
 }

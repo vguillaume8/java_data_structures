@@ -1,4 +1,4 @@
 package structures.maps;
 
-public class HashMapLinearProbing {
+public final class HashMapLinearProbing {
 }

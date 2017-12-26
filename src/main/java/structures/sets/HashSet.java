@@ -1,4 +1,4 @@
 package structures.sets;
 
-public class HashSet {
+public final class HashSet {
 }

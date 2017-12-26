@@ -4,6 +4,7 @@ structures.maps
 structures.matricies
 structures.sets
 structures.trees
+structures.trees.auxiliary
 structures.util
 structures.util.interfaces
 structures.vectors

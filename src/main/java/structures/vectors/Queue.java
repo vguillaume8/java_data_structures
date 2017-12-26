@@ -11,7 +11,7 @@ import structures.vectors.classes.ChainedDataStructure;
 public final class Queue<T> extends ChainedDataStructure<T> {
 
     /**
-     * Constructs empty Queue
+     * Constructs empty Queue.
      *
      * <br>
      * <br>
@@ -27,7 +27,7 @@ public final class Queue<T> extends ChainedDataStructure<T> {
     }
 
     /**
-     * Constructs Queue from array of values
+     * Constructs Queue from array of values.
      *
      * <br>
      * <br>
@@ -46,7 +46,7 @@ public final class Queue<T> extends ChainedDataStructure<T> {
 
     /**
      * Constructs Queue of specified length where
-     * all values have a specified default value
+     * all values have a specified default value.
      *
      * <br>
      * <br>
@@ -66,7 +66,7 @@ public final class Queue<T> extends ChainedDataStructure<T> {
 
     /**
      * Retrieves, but does not remove the front-most
-     * element in the Queue
+     * element in the Queue.
      *
      * <br>
      * <br>
@@ -88,7 +88,7 @@ public final class Queue<T> extends ChainedDataStructure<T> {
     }
 
     /**
-     * Inserts value at back of Queue
+     * Inserts value at back of Queue.
      *
      * <br>
      * <br>
@@ -116,7 +116,7 @@ public final class Queue<T> extends ChainedDataStructure<T> {
     }
 
     /**
-     * Retrieve and remove front-most value from Queue
+     * Retrieve and remove front-most value from Queue.
      *
      * <br>
      * <br>

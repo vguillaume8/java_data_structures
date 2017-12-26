@@ -1,8 +1,7 @@
 package structures.vectors.classes;
 
+import structures.util.Util;
 import structures.vectors.interfaces.IndexedDataStructure;
-
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.StringJoiner;
 
@@ -216,9 +215,24 @@ public abstract class DynamicallySizedArray<T> extends DynamicallySizedDataStruc
         return (T[]) this.toArray(new Object[0]);
     }
 
+    /**
+     *
+     * @param array
+     * @param <T>
+     * @return
+     */
     public <T> T[] toArray(T[] array) {
 
-        return (T[]) Arrays.copyOf(this.values, this.size(), array.getClass());
+
+        try {
+            array = (T[]) Util.ArrayCopy(this.values, this.size(), array.getClass());
+
+        } catch (ArrayStoreException exception) {
+
+            throw new IllegalArgumentException("Array type " + array.getClass().getSimpleName() + " is invalid");
+        }
+
+        return array;
     }
 
 //------------------------------------------------------------------------------

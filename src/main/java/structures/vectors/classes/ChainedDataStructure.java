@@ -1,9 +1,8 @@
 package structures.vectors.classes;
 
+import structures.util.Util;
 import structures.util.interfaces.Value;
 import structures.vectors.interfaces.LinearDataStructure;
-
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.StringJoiner;
@@ -19,16 +18,41 @@ import java.util.StringJoiner;
  */
 public abstract class ChainedDataStructure<T> extends DynamicallySizedDataStructure<T> implements LinearDataStructure<T> {
 
-    private Node<T> head;   // Pointer to the front of the list
+    /**
+     * Pointer to the first node in the chain
+     */
+    private Node<T> head;
 
+    /**
+     * Pointer to the last node in the chain
+     *
+     * TODO - Use the tail in implementing classes such as linkedlist so insert last is O(1)
+     */
+    private Node<T> tail;
+
+    /**
+     * Constructs an empty {@code ChainedDataStructure}
+     */
     public ChainedDataStructure() {
         super();
     }
 
+    /**
+     * Initializes the chain with a specified array of values;
+     *
+     * @param values Specified array of values from which the chain is initialized.
+     */
     public ChainedDataStructure(T[] values) {
         super(values);
     }
 
+    /**
+     * Initializes the chain to a specified length, with a specified default
+     * value in all positions.
+     *
+     * @param length Specified length of the chain.
+     * @param value specified default value.
+     */
     public ChainedDataStructure(int length, T value) {
         super(length, value);
     }
@@ -105,7 +129,13 @@ public abstract class ChainedDataStructure<T> extends DynamicallySizedDataStruct
         return this.head;
     }
 
+    /**
+     * Returns an iterator for the chain.
+     *
+     * @return Iterator for the {@code ChainedDataStructure}
+     */
     @Override
+    @SuppressWarnings("unchecked")
     public Iterator<T> iterator() {
         return new ChainedDataStructureIterator(this.head());
     }
@@ -114,6 +144,7 @@ public abstract class ChainedDataStructure<T> extends DynamicallySizedDataStruct
 
     /**
      * Returns a String representation of the list
+     *
      * @return String version of the list
      */
     @Override
@@ -136,17 +167,29 @@ public abstract class ChainedDataStructure<T> extends DynamicallySizedDataStruct
         return stringJoiner.toString();
     }
 
+    /**
+     * Returns array representation of the chain.
+     *
+     * @return Array version of the chain.
+     */
     @Override
     @SuppressWarnings("uncheck")
     public T[] toArray() {
+
         return (T[]) this.toArray(new Object[0]);
     }
 
+    /**
+     *
+     * @param array
+     * @param <T>
+     * @return
+     */
     @Override
     @SuppressWarnings("uncheck")
     public <T> T[] toArray(T[] array) {
 
-        array = (T[]) Arrays.copyOf(array, this.size(), array.getClass());
+        array = (T[]) Util.ArrayCopy(array, this.size(), array.getClass());
 
         int i = 0;
 
@@ -238,6 +281,13 @@ public abstract class ChainedDataStructure<T> extends DynamicallySizedDataStruct
             this.next(next);
         }
 
+        /**
+         * Constructs empty Node
+         */
+        public Node() {
+
+        }
+
 //------------------------------------------------------------------------------
 
         /**
@@ -246,16 +296,16 @@ public abstract class ChainedDataStructure<T> extends DynamicallySizedDataStruct
          * @param value
          * @return
          */
-        public boolean contains(T value) {
+        protected boolean contains(T value) {
             return this.contains(this, value);
         }
 
         /**
-         * Perform linear search for value
+         * Perform linear search for value.
          *
-         * @param node
-         * @param value
-         * @return
+         * @param node First node in the chain to start searching from.
+         * @param value Value to search for in the chain.
+         * @return True if and only if the specified value was found in the chain.
          */
         protected boolean contains(Node<T> node, T value) {
 
@@ -276,9 +326,15 @@ public abstract class ChainedDataStructure<T> extends DynamicallySizedDataStruct
 //------------------------------------------------------------------------------
 
         /**
-         * Inserts a data value into the chained nodes
+         * Recursively inserts a data value at the end of the chain.
+         * Note, this method should be override in extending classes,
+         * or pointers to the end of the chain should be used to make
+         * this operation a {@code O(1)} operation, rather than {@code O(n)}.
          *
-         * @param value Specified value to be inserted into the chain
+         * TODO - Make protected
+         *
+         * @param value Specified value to be inserted into the chain.
+         * @return True if and only if the value was successfully inserted.
          */
         public boolean insert(T value) {
 
@@ -340,9 +396,11 @@ public abstract class ChainedDataStructure<T> extends DynamicallySizedDataStruct
         }
 
         /**
+         * Determines whether or not two {@code Value} objects are equivalent
+         * to each other.
          *
-         * @param value Specified value to be compared to
-         * @return
+         * @param value Specified value to be compared to.
+         * @return True if and only if their internal values are equivalent.
          */
         @Override
         public boolean equals(Value<T> value) {
@@ -366,14 +424,16 @@ public abstract class ChainedDataStructure<T> extends DynamicallySizedDataStruct
         }
 
         /**
+         * Returns this internal value of the {@code Value} object.
          *
-         * @return
+         * @return Internal value.
          */
         public T value() {
             return this.value;
         }
 
         /**
+         * Sets the new internal value to a specified value.
          *
          * @param value New value of the node
          */

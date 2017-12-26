@@ -1,4 +1,4 @@
 package structures.matricies;
 
-public class Matrix {
+public final class Matrix {
 }
