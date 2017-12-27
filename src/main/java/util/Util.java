@@ -1,5 +1,7 @@
 package util;
 
+import structures.commons.IndexedDataStructure;
+
 import java.util.Arrays;
 
 /**
@@ -8,6 +10,54 @@ import java.util.Arrays;
  * @author Jabari Dash
  */
 public final class Util {
+
+    /**
+     * Determines whether or not an {@code IndexedDataStructure} is
+     * sorted in ascending order.
+     *
+     * @param vector Data structure to verify.
+     * @return True if and only if the above condition is met.
+     */
+    @SuppressWarnings("unused")
+    public static boolean isSorted(IndexedDataStructure<Comparable> vector) {
+
+        int size = vector.size();
+
+        for (int i = 0; i < size-1; i++) {
+            if (vector.get(i).compareTo(vector.get(i+1)) > 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+//------------------------------------------------------------------------------
+
+    /**
+     * Determines whether or not a {@code Comparable[]}  is sorted
+     * in ascending order.
+     *
+     * @param array Array to verify.
+     * @return True if and only if the above condition is met.
+     */
+    public static boolean isSorted(Comparable[] array) {
+
+        for (int i = 0; i < array.length-1; i++) {
+
+            // If ith value is greater than value at i+1,
+            // then the array is not in strictly ascending order
+            if (array[i].compareTo(array[i+1]) > 0) {
+                return false;
+            }
+        }
+
+        // If we got to the end,
+        // the array is sorted
+        return true;
+    }
+
+//------------------------------------------------------------------------------
 
     /**
      * Wrapper around Java library array copy function.
@@ -78,15 +128,17 @@ public final class Util {
 
         if (a.length == b.length) {
 
-            if (a.getClass().getSimpleName().equals(b.getClass().getSimpleName())) {
-                for (int i = 0; i < a.length; i++) {
-                    if (a[i] != b[i]) {
-                        return false;
-                    }
-                }
+            // check the values
+            for (int i = 0; i < a.length; i++) {
 
-                equals = true;
+                // If ith values in both arrays are unequal
+                if (!a[i].equals(b[i])) {
+                    return false;
+                }
             }
+
+            equals = true;
+
         }
 
         return equals;

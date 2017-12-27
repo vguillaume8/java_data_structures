@@ -2,6 +2,8 @@ package structures.vectors;
 
 import structures.commons.DynamicallySizedArray;
 
+import java.lang.reflect.Array;
+
 /**
  * Basic implementation of a generic ArrayList
  *
@@ -62,6 +64,22 @@ public final class ArrayList<T> extends DynamicallySizedArray<T> {
      */
     public ArrayList(int length, T value) {
         super(length, value);
+    }
+
+    /**
+     * Determines whether or not this ArrayList is equal to
+     * a provided object.
+     *
+     * @param object Object to compare this ArrayList with.
+     * @return True if and only if their types are the same,
+     * lengths are the same, and the contain all the same values.
+     */
+    @Override
+    public boolean equals(Object object) {
+
+        // Object must be an ArrayList, and all values must be equal, or object
+        // must be this ArrayList itself
+        return this == object || (object instanceof ArrayList && equivalentTo(object));
     }
 
     /**

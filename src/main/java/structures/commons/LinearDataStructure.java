@@ -1,9 +1,13 @@
 package structures.commons;
 
+/**
+ * Interface for all linear DataStructures such as {@code LinkedList}, {@code ArrayList},
+ * or any other vector-like data structure.
+ *
+ * @author Jabari Dash
+ * @param <T> Generic Type
+ */
 public interface LinearDataStructure<T> extends DataStructure<T>,  Iterable<T> {
-
-
-//------------------------------------------------------------------------------
 
     /**
      * Removes an element from the DataStructure. The order
@@ -17,14 +21,21 @@ public interface LinearDataStructure<T> extends DataStructure<T>,  Iterable<T> {
 //------------------------------------------------------------------------------
 
     /**
-     * Returns the data structure as an array
+     * Returns the data structure as an Object array.
      *
      * @return Array representation of DataStructure
      */
+    @SuppressWarnings("unused")
     T[] toArray();
 
 //------------------------------------------------------------------------------
 
+    /**
+     * Returns the data structure as an array of a specified type.
+     *
+     * @param array Array that specified the type.
+     * @return Array version of the data structure.
+     */
     T[] toArray(T[] array);
 
 //------------------------------------------------------------------------------
@@ -34,6 +45,8 @@ public interface LinearDataStructure<T> extends DataStructure<T>,  Iterable<T> {
      * this LinearDataStructure. Implementing classes can
      * override the java.lang.Object.equals() method, and
      * call this.
+     *
+     * useful: https://www.geeksforgeeks.org/overriding-equals-method-in-java/
      *
      * @param object Object to compare this object with.
      * @return True if the objects are of the same type, their
@@ -55,11 +68,6 @@ public interface LinearDataStructure<T> extends DataStructure<T>,  Iterable<T> {
 
         // Check length
         if (vector.size() != this.size()) {
-            return false;
-        }
-
-        // Check class name
-        if (!this.getClass().getSimpleName().equals(vector.getClass().getSimpleName())) {
             return false;
         }
 

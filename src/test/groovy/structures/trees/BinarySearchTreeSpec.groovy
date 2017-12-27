@@ -4,6 +4,7 @@ import spock.lang.Shared
 import structures.commons.Pair
 import spock.lang.Specification
 import spock.lang.Unroll
+import structures.vectors.ArrayList
 import util.Util
 
 class BinarySearchTreeSpec extends Specification {
@@ -476,11 +477,151 @@ class BinarySearchTreeSpec extends Specification {
         def p = tree.pairs(BinarySearchTree.IN_ORDER)
 
         then:
-        p.equivalentTo(arrayList);
+        p.equals(arrayList);
+    }
+
+    @Unroll
+    def "Remove by key from tree"() {
+        when:
+        BinarySearchTree<Integer, String> tree = new BinarySearchTree<>(keys);
 
         then:
-        1 == 1
+        tree.remove(key) == removed
 
+        where:
+        keys                                                               | key | removed
+        [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14] as Comparable[] | 15  | false
+        [7, 3, 1, 0, 2, 5, 4, 6, 11, 9, 8, 10, 13, 12, 14] as Comparable[] | -1  | false
+        [0, 2, 1, 4, 6, 5, 3, 8, 10, 9, 12, 14, 13, 11, 7] as Comparable[] | 0   | true
+        [7, 3, 11, 1, 5, 9, 13, 0, 2, 4, 6, 8, 10, 12, 14] as Comparable[] | 1   | true
+    }
 
+    @Unroll
+    def "Remove by value from tree"() {
+        setup:
+        BinarySearchTree<Integer, String> tree;
+
+        Pair<Integer, String>[] pairs = new Pair[8];
+        pairs[0] = new Pair<Integer, String>(1, "Jabari");
+        pairs[1] = new Pair<Integer, String>(2, "Jalia");
+        pairs[2] = new Pair<Integer, String>(3, "Jelani");
+        pairs[3] = new Pair<Integer, String>(4, "Vanessa");
+        pairs[4] = new Pair<Integer, String>(5, "Leonard");
+        pairs[5] = new Pair<Integer, String>(6, "Ceazar");
+        pairs[6] = new Pair<Integer, String>(7, "Jendaya");
+        pairs[7] = new Pair<Integer, String>(8, "Elijah");
+
+        tree = new BinarySearchTree<>(pairs);
+
+        expect:
+        tree.removeValue(value) == removed
+
+        where:
+        value    | removed
+        "Jabari" | true
+        "Jalia"  | true
+        "Jelani" | true
+        "Bob"    | false
+    }
+
+    @Unroll
+    def "Sort an array of keys"() {
+        setup:
+        Comparable[] array = BinarySearchTree.sort(keys);
+
+        expect:
+        Util.isSorted(array)
+
+        where:
+        keys                                                               | _
+        [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14] as Comparable[] | _
+        [7, 3, 1, 0, 2, 5, 4, 6, 11, 9, 8, 10, 13, 12, 14] as Comparable[] | _
+        [0, 2, 1, 4, 6, 5, 3, 8, 10, 9, 12, 14, 13, 11, 7] as Comparable[] | _
+        [7, 3, 11, 1, 5, 9, 13, 0, 2, 4, 6, 8, 10, 12, 14] as Comparable[] | _
+        [1] as Comparable[]                                                | _
+        [] as Comparable[]                                                 | _
+    }
+
+    @Unroll
+    def "Sort an Arraylist of pairs"() {
+        setup:
+        BinarySearchTree<Integer, String> tree
+        boolean ascendingOrder = true
+
+        Pair<Integer, String>[] pairs = new Pair[8];
+        pairs[0] = new Pair<Integer, String>(1, "Jabari");
+        pairs[1] = new Pair<Integer, String>(2, "Jalia");
+        pairs[2] = new Pair<Integer, String>(3, "Jelani");
+        pairs[3] = new Pair<Integer, String>(4, "Vanessa");
+        pairs[4] = new Pair<Integer, String>(5, "Leonard");
+        pairs[5] = new Pair<Integer, String>(6, "Ceazar");
+        pairs[6] = new Pair<Integer, String>(7, "Jendaya");
+        pairs[7] = new Pair<Integer, String>(8, "Elijah");
+
+        when:
+        tree = new BinarySearchTree<>(pairs)
+        ArrayList<Pair<Comparable, Object>> arrayList = BinarySearchTree.sort(tree.pairs());
+
+        int size = arrayList.size();
+
+        // Check that ith value is less than value at i+1
+        for (int i = 0; i < size-1; i++) {
+
+            if (arrayList.get(i).key().compareTo(arrayList.get(i+1).key()) > 0) {
+                ascendingOrder = false;
+                break;
+            }
+        }
+
+        then:
+        ascendingOrder
+
+    }
+
+    @Unroll
+    def "Test toString(traversalType) method"() {
+        setup:
+        BinarySearchTree<Comparable, Object> tree = new BinarySearchTree<>(values)
+
+        expect:
+        tree.toString(traversalType) == string
+
+        where:
+        values                 | traversalType                | string
+        balancedIncompleteFull | BinarySearchTree.IN_ORDER    | "[1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13]"
+        balancedIncompleteFull | BinarySearchTree.PRE_ORDER   | "[7, 3, 1, 5, 4, 6, 11, 9, 8, 10, 13]"
+        balancedIncompleteFull | BinarySearchTree.POST_ORDER  | "[1, 4, 6, 5, 3, 8, 10, 9, 13, 11, 7]"
+        balancedIncompleteFull | BinarySearchTree.LEVEL_ORDER | "[7, 3, 11, 1, 5, 9, 13, 4, 6, 8, 10]"
+    }
+
+    @Unroll
+    def "Get value[] from tree"() {
+        setup:
+        BinarySearchTree<Integer, String> tree;
+
+        Pair<Integer, String>[] pairs = new Pair[8];
+        pairs[0] = new Pair<Integer, String>(4, "Jabari");
+        pairs[1] = new Pair<Integer, String>(7, "Jalia");
+        pairs[2] = new Pair<Integer, String>(1, "Jelani");
+        pairs[3] = new Pair<Integer, String>(3, "Vanessa");
+        pairs[4] = new Pair<Integer, String>(5, "Leonard");
+        pairs[5] = new Pair<Integer, String>(6, "Ceazar");
+        pairs[6] = new Pair<Integer, String>(2, "Jendaya");
+        pairs[7] = new Pair<Integer, String>(8, "Elijah");
+
+        when:
+        tree = new BinarySearchTree<>(pairs);
+
+        System.out.println(tree.toTreeString())
+
+        then:
+        Util.equals(tree.values(traversalType), values);
+
+        where:
+        traversalType                | values
+        BinarySearchTree.IN_ORDER    | ["Jelani", "Jendaya", "Vanessa", "Jabari", "Leonard", "Ceazar", "Jalia", "Elijah"] as String[]
+        BinarySearchTree.PRE_ORDER   | ["Jabari", "Jelani", "Vanessa", "Jendaya", "Jalia", "Leonard", "Ceazar", "Elijah"] as String[]
+        BinarySearchTree.POST_ORDER  | ["Jendaya", "Vanessa", "Jelani", "Ceazar", "Leonard", "Elijah", "Jalia", "Jabari"] as String[]
+        BinarySearchTree.LEVEL_ORDER | ["Jabari", "Jelani", "Jalia", "Vanessa", "Leonard", "Elijah", "Jendaya", "Ceazar"] as String[]
     }
 }

@@ -14,7 +14,7 @@ import java.util.Iterator;
  * @param <K> Generic type for keys (must extend java.lang.Comparable)
  * @param <V> Generic type for values
  */
-public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedDataStructure<K> {
+public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedDataStructure<K> implements Iterable<Pair<K, V>> {
 
     /**
      * Integer code for in-order tree traversal.
@@ -208,7 +208,7 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
      * @param key Key to search for in tree.
      * @return True if and only if the tree contains a node with the specified key.
      */
-    protected boolean contains(BinarySearchTreeNode<K, V> node, K key) {
+    private boolean contains(BinarySearchTreeNode<K, V> node, K key) {
         return !(this.find(node, key) == null);
     }
 
@@ -411,6 +411,7 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
     public static <K extends Comparable, V>  BinarySearchTree<K,V> fromKeyList(LinearDataStructure<K> keys) {
         BinarySearchTree<K, V> tree = new BinarySearchTree<>();
 
+        // Insert all keys into tree
         for (K key : keys) {
             tree.insert(key);
         }
@@ -550,7 +551,7 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
      * @param node Node to start recursion from.
      * @return Number of levels in the Tree
      */
-    protected int height(BinarySearchTreeNode node) {
+    private int height(BinarySearchTreeNode node) {
         int leftHeight;
         int rightHeight;
 
@@ -1242,7 +1243,7 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
         } else {
 
             // If the key we want to remove is at the root
-            if (root.value().equals(key)) {
+            if (root.key().equals(key)) {
                 BinarySearchTreeNode<K, V> auxRoot = new BinarySearchTreeNode<K, V>();
 
                 auxRoot.leftChild(root);
@@ -1957,7 +1958,7 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
          * @param traversalType Order in which to return the pairs.
          */
         @SuppressWarnings("unused")
-        protected BinarySearchTreeIterator(BinarySearchTree<K, V> tree, int traversalType) {
+        private BinarySearchTreeIterator(BinarySearchTree<K, V> tree, int traversalType) {
             this.iterator = tree.pairs(traversalType).iterator();
         }
 
