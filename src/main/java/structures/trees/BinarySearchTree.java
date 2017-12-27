@@ -12,7 +12,7 @@ import structures.commons.DynamicallySizedDataStructure;
  * @param <K> Generic type for keys (must extend java.lang.Comparable)
  * @param <V> Generic type for values
  */
-public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedDataStructure<K> implements BinaryTree<K, V> {
+public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedDataStructure<K> implements Tree<K, V> {
 
     /**
      * Pointer to root node of the BinarySearchTree
@@ -48,49 +48,7 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
         }
     }
 
-//------------------------------------------------------------------------------
-
-    /**
-     * Returns an instance of a balanced tree that is made from a specified
-     * array of sorted keys. Note, if the keys that are passed are not sorted,
-     * then the returned tree will note be balanced.
-     *
-     * @param sortedKeys Sorted array of keys.
-     * @param <K> Generic type for key, must be Comparable
-     * @param <V> Generic type for value
-     * @return Balanced BinarySearchTree
-     */
-    @SuppressWarnings("unused")
-    public static <K extends Comparable, V> BinarySearchTree<K, V> balancedBinarySearchTree(K[] sortedKeys) {
-        BinarySearchTree<K, V> tree = new BinarySearchTree<>();
-
-        tree.createBST(sortedKeys, 0, sortedKeys.length-1);
-
-        return tree;
-    }
-
-//------------------------------------------------------------------------------
-
-    /**
-     * Returns an instance of a balanced tree that is made from a specified
-     * array of sorted pairs. Note, if the pairs that are passed are not sorted,
-     * then the returned tree will note be balanced.
-     *
-     * @param sortedPairs Sorted array of pairs.
-     * @param <K> Generic type for key, must be Comparable
-     * @param <V> Generic type for value
-     * @return Balanced BinarySearchTree
-     */
-    @SuppressWarnings("unused")
-    public static <K extends Comparable, V> BinarySearchTree<K, V> balancedBinarySearchTree(Pair<K, V>[] sortedPairs) {
-        BinarySearchTree<K, V> tree = new BinarySearchTree<>();
-
-        tree.createBST(sortedPairs, 0, sortedPairs.length-1);
-
-        return tree;
-    }
-
-//------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------
 
     /**
      * Constructs a tree from an array of Key-value pairs.
@@ -103,7 +61,7 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
 
         // Insert all the pairs into the tree
         for (Pair<K, V> pair : pairs) {
-            this.insert(pair);
+            insert(pair.key(), pair.value());
         }
     }
 
@@ -120,7 +78,7 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
 
         // Insert all the pairs into the tree
         for (Pair<K, V> pair : pairs) {
-            this.insert(pair);
+            this.insert(pair.key(), pair.value());
         }
     }
 
@@ -213,69 +171,6 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
         // if we got null back, we did not find it
         return getByValue(root, value) != null;
 
-    }
-
-//------------------------------------------------------------------------------
-
-    /**
-     * Builds a balanced tree from a sorted array of keys
-     *
-     * @param keys Array of sorted keys.
-     * @param left  Left bound of array to insert from.
-     * @param right Right bound of array to insert from.
-     */
-    @SuppressWarnings("unused")
-    private void createBST(K[] keys, int left, int right) {
-
-        // Compute middle index
-        int mid = (left + right) / 2;
-
-        // If its inbounds, insert, and make recursive call
-        // Otherwise, the left and right bounds have crossed
-        // and we are done inserting for range [left, right]
-        if (left <= right) {
-
-            // Insert the middle element
-            insert(keys[mid]);
-
-            // Make recursive calls to continue inserting
-            // into left and right subtrees
-            createBST(keys, left, mid-1);
-            createBST(keys, mid+1, right);
-
-        }
-    }
-
-//------------------------------------------------------------------------------
-
-    /**
-     *
-     * Builds a balanced tree from a sorted array of pairs
-     *
-     * @param pairs Array of sorted keys.
-     * @param left  Left bound of array to insert from.
-     * @param right Right bound of array to insert from.
-     */
-    @SuppressWarnings("uncheck")
-    private void createBST(Pair<K, V>[] pairs, int left, int right) {
-
-        // Compute middle index
-        int mid = (left + right) / 2;
-
-        // If its inbounds, insert, and make recursive call
-        // Otherwise, the left and right bounds have crossed
-        // and we are done inserting for range [left, right]
-        if (left <= right) {
-
-            // Insert the middle element
-            insert(pairs[mid]);
-
-            // Make recursive calls to continue inserting
-            // into left and right subtrees
-            createBST(pairs, left, mid-1);
-            createBST(pairs, mid+1, right);
-
-        }
     }
 
 //------------------------------------------------------------------------------
@@ -416,29 +311,6 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
         BinarySearchTreeNode<K, V> found = getByValue(root, value);
 
         return found == null ? null : found.key();
-    }
-
-//------------------------------------------------------------------------------
-
-    /**
-     * Retrieves and returns the pair that contains a specified key.
-     *
-     * @param key Specified key.
-     * @return Corresponding key-value pair if the key is found.
-     */
-    @SuppressWarnings("unused")
-    public Pair<K, V> getPair(K key) {
-
-        // Find the node
-        BinarySearchTreeNode<K, V> found = get(key, root);
-
-        // If it was null, convert it to a Pair
-        if (found != null) {
-            return found.toPair();
-        }
-
-        // If it wasn't found, return null
-        return null;
     }
 
 //------------------------------------------------------------------------------
