@@ -458,4 +458,29 @@ class BinarySearchTreeSpec extends Specification {
         [0, 2, 1, 4, 6, 5, 3, 8, 10, 9, 12, 14, 13, 11, 7] as Comparable[] | BinarySearchTree.POST_ORDER
         [7, 3, 11, 1, 5, 9, 13, 0, 2, 4, 6, 8, 10, 12, 14] as Comparable[] | BinarySearchTree.LEVEL_ORDER
     }
+
+    @Unroll
+    def "Get array of pairs specifying or order"() {
+        setup:
+        BinarySearchTree<Integer, String> tree
+        structures.vectors.ArrayList<Pair<Integer, String>> arrayList
+
+        Pair<Integer, String>[] pairs = new Pair[3];
+        pairs[0] = new Pair<Integer, String>(2, "Jalia")
+        pairs[1] = new Pair<Integer, String>(1, "Jabari")
+        pairs[2] = new Pair<Integer, String>(3, "Jelani")
+
+        when:
+        tree = new BinarySearchTree<>(pairs)
+        arrayList = new structures.vectors.ArrayList<Pair<Integer, String>>(pairs)
+        def p = tree.pairs(BinarySearchTree.IN_ORDER)
+
+        then:
+        p.equivalentTo(arrayList);
+
+        then:
+        1 == 1
+
+
+    }
 }

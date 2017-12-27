@@ -992,7 +992,7 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
      * @param arrayList ArrayList of keys post-order.
      * @return ArrayList of keys.
      */
-    ArrayList<K> keysToArrayListPostOrder(BinarySearchTreeNode<K, V> node, ArrayList<K> arrayList) {
+    private ArrayList<K> keysToArrayListPostOrder(BinarySearchTreeNode<K, V> node, ArrayList<K> arrayList) {
         if (node == null) {
             return arrayList;
         }
@@ -1063,6 +1063,7 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
      *
      * @return Key-value pairs in ArrayList.
      */
+    @SuppressWarnings("unused")
     public ArrayList<Pair<K, V>> pairs() {
         return pairs(DEFAULT_ORDER);
     }
