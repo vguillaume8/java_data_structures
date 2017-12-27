@@ -7,7 +7,7 @@ import java.util.Arrays;
  *
  * @author Jabari Dash
  */
-public final class Util<T> {
+public final class Util {
 
     /**
      * Wrapper around Java library array copy function.

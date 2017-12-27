@@ -1,0 +1,461 @@
+package structures.trees
+
+import spock.lang.Shared
+import structures.commons.Pair
+import spock.lang.Specification
+import spock.lang.Unroll
+import util.Util
+
+class BinarySearchTreeSpec extends Specification {
+
+    @Shared Integer[] sorted = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    @Shared Integer[] unbalanced = [1, 2, 3, 4, 5, 6];
+    @Shared Integer[] balancedIncompleteFull = [7, 3, 1, 5, 4, 6, 11, 9, 13, 8, 10];
+    @Shared Integer[] balancedIncompleteNotFull = [7, 3, 1, 5, 6, 11, 9, 13, 8, 10];
+    @Shared Integer[] fullAndIncomplete = [7, 3, 1, 5, 2, 0, 4, 6, 11, 9, 13, 8];
+    @Shared Integer[] fullAndComplete = [7, 3, 1, 5, 2, 0, 4, 6, 11, 9, 13];
+    @Shared Integer[] perfect = [7, 3, 1, 5, 0, 2, 4, 6, 11, 9, 13, 8, 10, 12, 14];
+
+    @Unroll
+    def "Construct empty BinarySearchTree"() {
+        when:
+        BinarySearchTree<Integer, String> tree = new BinarySearchTree<>();
+
+        then:
+        tree.size() == 0
+        tree.empty()
+    }
+
+    @Unroll
+    def "Construct BinarySearchTree from array of keys"() {
+        when:
+        BinarySearchTree<Integer, String> tree = new BinarySearchTree<>(keys);
+
+        then:
+        tree.size() == size
+        tree.empty() == empty
+
+        where:
+        keys                         | size | empty
+        [1, 2, 3, 4, 5] as Integer[] | 5    | false
+        [] as Integer[]              | 0    | true
+        [1] as Integer[]             | 1    | false
+    }
+
+    @Unroll
+    def "Construct BinarySearchTree from array of pairs"() {
+        setup:
+        BinarySearchTree<Integer, String> tree;
+
+        Pair<Integer, String>[] pairs = new Pair[6];
+        pairs[0] = new Pair<Integer, String>(1, "Jabari");
+        pairs[1] = new Pair<Integer, String>(2, "Jalia");
+        pairs[2] = new Pair<Integer, String>(3, "Jelani");
+        pairs[3] = new Pair<Integer, String>(4, "Vanessa");
+        pairs[4] = new Pair<Integer, String>(5, "Leonard");
+        pairs[5] = new Pair<Integer, String>(6, "Ceazar");
+
+        when:
+        tree = new BinarySearchTree<>(pairs);
+
+        then:
+        tree.size() == 6
+        !tree.empty()
+    }
+
+    @Unroll
+    def "Build balanced BinarySearchTree from ordered array of keys"() {
+        setup:
+        BinarySearchTree<Comparable, String> tree;
+
+        when:
+        tree = BinarySearchTree.balancedBinarySearchTree(array)
+
+        then:
+        tree.isBalanced()
+        tree.size() == size
+
+        where:
+        array                                    | size | height
+        [1, 2, 3, 4, 5, 6, 7] as Integer[]       | 7    | 3
+        ['a', 'b', 'c', 'd', 'e'] as Character[] | 5    | 3
+        [] as Double[]                           | 0    | 0
+        [1.0] as Float[]                         | 1    | 1
+    }
+
+    @Unroll
+    def "Build balanced BinarySearchTree from array of ordered pairs"() {
+        setup:
+        BinarySearchTree<Integer, String> tree;
+
+        Pair<Integer, String>[] pairs = new Pair[8];
+        pairs[0] = new Pair<Integer, String>(1, "Jabari");
+        pairs[1] = new Pair<Integer, String>(2, "Jalia");
+        pairs[2] = new Pair<Integer, String>(3, "Jelani");
+        pairs[3] = new Pair<Integer, String>(4, "Vanessa");
+        pairs[4] = new Pair<Integer, String>(5, "Leonard");
+        pairs[5] = new Pair<Integer, String>(6, "Ceazar");
+        pairs[6] = new Pair<Integer, String>(7, "Jendaya");
+        pairs[7] = new Pair<Integer, String>(8, "Elijah");
+
+        when:
+        tree = BinarySearchTree.balancedBinarySearchTree(pairs);
+
+        then:
+        tree.isBalanced()
+        tree.size() == 8
+        tree.height() == 4
+    }
+
+    @Unroll
+    def "Check if tree contains a key"() {
+        when:
+        BinarySearchTree<Comparable, String> tree = BinarySearchTree.balancedBinarySearchTree(array)
+
+        then:
+        tree.contains(value) == contains
+
+        where:
+        array                                    | value         | contains
+        [1, 2, 3, 4, 5, 6, 7] as Integer[]       | 7             | true
+        ['a', 'b', 'c', 'd', 'e'] as Character[] | 'm' as char   | false
+        [] as Double[]                           | 0.0           | false
+        [1.0] as Float[]                         | 1.0 as float  | true
+    }
+
+    @Unroll
+    def "Check if tree contains a key value pair"() {
+        when:
+        BinarySearchTree<Integer, String> tree;
+
+        Pair<Integer, String>[] pairs = new Pair[8];
+        pairs[0] = new Pair<Integer, String>(1, "Jabari");
+        pairs[1] = new Pair<Integer, String>(2, "Jalia");
+        pairs[2] = new Pair<Integer, String>(3, "Jelani");
+        pairs[3] = new Pair<Integer, String>(4, "Vanessa");
+        pairs[4] = new Pair<Integer, String>(5, "Leonard");
+        pairs[5] = new Pair<Integer, String>(6, "Ceazar");
+        pairs[6] = new Pair<Integer, String>(7, "Jendaya");
+        pairs[7] = new Pair<Integer, String>(8, "Elijah");
+
+        tree = new BinarySearchTree<>(pairs);
+
+        then:
+        tree.contains(key, value) == contains
+
+        where:
+        key | value     | contains
+        1   | "Jabari"  | true
+        2   | "Jalia"   | true
+        3   | "Vanessa" | false
+        4   | "Vanessa" | true
+    }
+
+    @Unroll
+    def "Check if tree is empty"() {
+        setup:
+        BinarySearchTree<Comparable, Object> tree
+
+        when:
+        if (array != null)
+            tree = BinarySearchTree.balancedBinarySearchTree(array)
+
+        else
+            tree = new BinarySearchTree<>();
+
+        then:
+        tree.empty() == empty
+
+        where:
+        array                                    | empty
+        [1, 2, 3, 4, 5, 6, 7] as Integer[]       | false
+        ['a', 'b', 'c', 'd', 'e'] as Character[] | false
+        [] as Double[]                           | true
+        [1.0] as Float[]                         | false
+        null                                     | true
+    }
+
+    @Unroll
+    def "Get a value from tree by key"() {
+        setup:
+        BinarySearchTree<Integer, String> tree;
+
+        Pair<Integer, String>[] pairs = new Pair[8];
+        pairs[0] = new Pair<Integer, String>(1, "Jabari");
+        pairs[1] = new Pair<Integer, String>(2, "Jalia");
+        pairs[2] = new Pair<Integer, String>(3, "Jelani");
+        pairs[3] = new Pair<Integer, String>(4, "Vanessa");
+        pairs[4] = new Pair<Integer, String>(5, "Leonard");
+        pairs[5] = new Pair<Integer, String>(6, "Ceazar");
+        pairs[6] = new Pair<Integer, String>(7, "Jendaya");
+        pairs[7] = new Pair<Integer, String>(8, "Elijah");
+
+        when:
+        tree = BinarySearchTree.balancedBinarySearchTree(pairs);
+
+        then:
+        tree.get(key) == value
+
+        where:
+        value     | key
+        "Jabari"  | 1
+        "Jalia"   | 2
+        "Jelani"  | 3
+        "Vanessa" | 4
+        "Leonard" | 5
+        "Ceazar"  | 6
+        "Jendaya" | 7
+        "Elijah"  | 8
+        null      | 9
+    }
+
+    @Unroll
+    def "Get a key from tree by value"() {
+        setup:
+        BinarySearchTree<Integer, String> tree;
+
+        Pair<Integer, String>[] pairs = new Pair[8];
+        pairs[0] = new Pair<Integer, String>(1, "Jabari");
+        pairs[1] = new Pair<Integer, String>(2, "Jalia");
+        pairs[2] = new Pair<Integer, String>(3, "Jelani");
+        pairs[3] = new Pair<Integer, String>(4, "Vanessa");
+        pairs[4] = new Pair<Integer, String>(5, "Leonard");
+        pairs[5] = new Pair<Integer, String>(6, "Ceazar");
+        pairs[6] = new Pair<Integer, String>(7, "Jendaya");
+        pairs[7] = new Pair<Integer, String>(8, "Elijah");
+
+        when:
+        tree = BinarySearchTree.balancedBinarySearchTree(pairs);
+
+        then:
+        tree.getKey(value) == key
+
+        where:
+        value     | key
+        "Jabari"  | 1
+        "Jalia"   | 2
+        "Jelani"  | 3
+        "Vanessa" | 4
+        "Leonard" | 5
+        "Ceazar"  | 6
+        "Jendaya" | 7
+        "Elijah"  | 8
+        "Jamaal"  | null;
+    }
+
+    @Unroll
+    def "Get a pair from tree by key"() {
+        setup:
+        BinarySearchTree<Integer, String> tree;
+
+        Pair<Integer, String>[] pairs = new Pair[8];
+        pairs[0] = new Pair<Integer, Double>(1, 1.0 as double);
+        pairs[1] = new Pair<Integer, Double>(2, 2.0 as double);
+        pairs[2] = new Pair<Integer, Double>(3, 3.0 as double);
+
+        when:
+        tree = BinarySearchTree.balancedBinarySearchTree(pairs);
+
+        Pair<Integer, Double> pair = tree.getPair(key);
+
+        then:
+        if (pair != null) {
+            pair.key() == key
+            pair.value() == value
+        } else {
+            pair == null
+        }
+
+        where:
+        key | value
+        1   | 1.0 as double
+        2   | 2.0 as double
+        3   | 3.0 as double
+        4   | _
+    }
+
+    @Unroll
+    def "Check height of tree"() {
+        when:
+        BinarySearchTree<Comparable, Object> tree = new BinarySearchTree<>(values)
+
+        then:
+        tree.height() == height
+
+        where:
+        values                                   | height
+        [1, 2, 3, 4, 5, 6] as Integer[]          | 6
+        ['c', 'a', 'b', 'd', 'e'] as Character[] | 3
+        [1] as Double[]                          | 1
+        [] as Float[]                            | 0
+    }
+
+    @Unroll
+    def "Insert a value into tree"() {
+        setup:
+        BinarySearchTree<Comparable, Object> tree = new BinarySearchTree<>(values)
+
+        when:
+        tree.insert(value)
+
+        then:
+        tree.contains(check) == contains
+
+        where:
+        values                                   | value         | check         | contains
+        [1, 2, 3, 4, 5, 6] as Integer[]          | 7 as int      | 8 as int      | false
+        ['c', 'a', 'b', 'd', 'e'] as Character[] | 'm' as char   | 'm' as char   | true
+        [1] as Double[]                          | 2.0 as double | 3.0 as double | false
+        [] as Float[]                            | 1 as float    | 1 as float    | true
+    }
+
+    @Unroll
+    def "Insert pair into tree"() {
+        setup:
+        BinarySearchTree<Integer, String> tree = new BinarySearchTree<>();
+
+        Pair<Integer, String>[] pairs = new Pair[8];
+        pairs[0] = new Pair<Integer, String>(1, "Jabari");
+        pairs[1] = new Pair<Integer, String>(2, "Jalia");
+        pairs[2] = new Pair<Integer, String>(3, "Jelani");
+        pairs[3] = new Pair<Integer, String>(4, "Vanessa");
+        pairs[4] = new Pair<Integer, String>(5, "Leonard");
+        pairs[5] = new Pair<Integer, String>(6, "Ceazar");
+        pairs[6] = new Pair<Integer, String>(7, "Jendaya");
+        pairs[7] = new Pair<Integer, String>(8, "Elijah");
+
+        when:
+        tree.insert(pairs[0]);  // Jabari, 1
+        tree.insert(pairs[2]);  // Jelani, 3
+        tree.insert(pairs[4]);  // Leonard, 5
+        tree.insert(pairs[6]);  // Jendaya, 7
+
+        then:
+        tree.contains(key, value) == contains
+
+        where:
+        key | value     | contains
+        1   | "Jabari"  | true
+        2   | "Jalia"   | false
+        3   | "Vanessa" | false
+        4   | "Vanessa" | false
+    }
+
+    @Unroll
+    def "Check that tree is balanced"() {
+        when:
+        BinarySearchTree<Integer, Object> tree = new BinarySearchTree<>(values)
+
+        then:
+        tree.isBalanced() == balanced
+
+        where:
+        values                    | balanced
+        sorted                    | false
+        unbalanced                | false
+        balancedIncompleteFull    | true
+        balancedIncompleteNotFull | true
+        fullAndIncomplete         | true
+        fullAndComplete           | true
+        perfect                   | true
+    }
+
+    @Unroll
+    def "Check that tree is complete"() {
+        when:
+        BinarySearchTree<Integer, Object> tree = new BinarySearchTree<>(values)
+
+        then:
+        tree.isComplete() == complete
+
+        where:
+        values                    | complete
+        sorted                    | false
+        unbalanced                | false
+        balancedIncompleteFull    | false
+        balancedIncompleteNotFull | false
+        fullAndIncomplete         | true
+        fullAndComplete           | true
+        perfect                   | true
+    }
+
+    @Unroll
+    def "Check that tree is full"() {
+        when:
+        BinarySearchTree<Integer, Object> tree = new BinarySearchTree<>(values)
+
+        then:
+        tree.isFull() == full
+
+        where:
+        values                    | full
+        sorted                    | false
+        unbalanced                | false
+        balancedIncompleteFull    | true
+        balancedIncompleteNotFull | false
+        fullAndIncomplete         | false
+        fullAndComplete           | true
+        perfect                   | true
+    }
+
+    @Unroll
+    def "Check that tree is perfect"() {
+        when:
+        BinarySearchTree<Integer, Object> tree = new BinarySearchTree<>(values)
+
+        then:
+        tree.isPerfect() == isPerfect
+
+        where:
+        values                    | isPerfect
+        sorted                    | false
+        unbalanced                | false
+        balancedIncompleteFull    | false
+        balancedIncompleteNotFull | false
+        fullAndIncomplete         | false
+        fullAndComplete           | false
+        perfect                   | true
+    }
+
+    @Unroll
+    def "Get array of keys without specifying array type, or order"() {
+        setup:
+        BinarySearchTree<Integer, String> tree;
+
+        Pair<Integer, String>[] pairs = new Pair[8];
+        pairs[0] = new Pair<Integer, String>(1, "Jabari");
+        pairs[1] = new Pair<Integer, String>(2, "Jalia");
+        pairs[2] = new Pair<Integer, String>(3, "Jelani");
+        pairs[3] = new Pair<Integer, String>(4, "Vanessa");
+        pairs[4] = new Pair<Integer, String>(5, "Leonard");
+        pairs[5] = new Pair<Integer, String>(6, "Ceazar");
+        pairs[6] = new Pair<Integer, String>(7, "Jendaya");
+        pairs[7] = new Pair<Integer, String>(8, "Elijah");
+
+        when:
+        tree = new BinarySearchTree<>(pairs);
+
+        then:
+        Util.equals(tree.keys(), keys);
+
+        where:
+        keys                                     | _
+        [1, 2, 3, 4, 5, 6, 7, 8] as Comparable[] | _
+    }
+
+    @Unroll
+    def "Get array of keys and specify order"() {
+        when:
+        BinarySearchTree<Integer, String> tree = new BinarySearchTree<>(perfect);
+
+        then:
+        Util.equals(tree.keys(order), output);
+
+        where:
+        output                                                             | order
+        [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14] as Comparable[] | BinarySearchTree.IN_ORDER
+        [7, 3, 1, 0, 2, 5, 4, 6, 11, 9, 8, 10, 13, 12, 14] as Comparable[] | BinarySearchTree.PRE_ORDER
+        [0, 2, 1, 4, 6, 5, 3, 8, 10, 9, 12, 14, 13, 11, 7] as Comparable[] | BinarySearchTree.POST_ORDER
+        [7, 3, 11, 1, 5, 9, 13, 0, 2, 4, 6, 8, 10, 12, 14] as Comparable[] | BinarySearchTree.LEVEL_ORDER
+    }
+}

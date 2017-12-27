@@ -1,5 +1,4 @@
 import structures.trees.BinarySearchTree;
-import structures.trees.BinarySearchTree.*;
 import structures.commons.Pair;
 
 /**
@@ -25,14 +24,9 @@ public final class Application {
     pairs[4] = new Pair<Integer, String>(5, "Leonard");
     pairs[5] = new Pair<Integer, String>(6, "Ceazar");
 
-    BinarySearchTree<Integer, String> tree = BinarySearchTree.balancedBinarySearchTree(pairs);
+    BinarySearchTree<Integer, String> tree = new BinarySearchTree<>(perfect);
 
     tree.display();
-
-    System.out.println(tree.pairs(BinarySearchTree.IN_ORDER));
-    System.out.println(tree.pairs(BinarySearchTree.PRE_ORDER));
-    System.out.println(tree.pairs(BinarySearchTree.POST_ORDER));
-    System.out.println(tree.pairs(BinarySearchTree.LEVEL_ORDER));
   }
 
 }

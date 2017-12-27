@@ -2,7 +2,8 @@ package structures.vectors
 
 import spock.lang.Unroll
 import spock.lang.Specification
-import structures.commons.DataStructure.EmptyDataStructureException;
+import structures.commons.DataStructure.EmptyDataStructureException
+import structures.vectors.Stack;
 
 class StackSpec extends Specification {
 
