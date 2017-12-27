@@ -1,6 +1,4 @@
-package structures.vectors.classes;
-
-import structures.vectors.interfaces.IndexedDataStructure;
+package structures.commons;
 
 import java.util.Iterator;
 

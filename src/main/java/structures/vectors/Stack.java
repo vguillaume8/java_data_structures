@@ -1,6 +1,6 @@
 package structures.vectors;
 
-import structures.vectors.classes.ChainedDataStructure;
+import structures.commons.ChainedDataStructure;
 
 /**
  *  Basic implementation of a Stack class using a Linked List.

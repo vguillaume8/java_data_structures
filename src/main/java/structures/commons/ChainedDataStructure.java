@@ -1,8 +1,7 @@
-package structures.vectors.classes;
+package structures.commons;
 
-import structures.util.Util;
-import structures.util.interfaces.Value;
-import structures.vectors.interfaces.LinearDataStructure;
+import util.Util;
+
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.StringJoiner;
@@ -176,18 +175,19 @@ public abstract class ChainedDataStructure<T> extends DynamicallySizedDataStruct
     @SuppressWarnings("uncheck")
     public T[] toArray() {
 
-        return (T[]) this.toArray(new Object[0]);
+        return (T[]) this.toArray((T[])new Object[0]);
     }
 
     /**
+     * Returns array representation of the data structure with
+     * a specified type.
      *
-     * @param array
-     * @param <T>
-     * @return
+     * @param array Array that specifies the type.
+     * @return Array representation of the data structure.
      */
     @Override
     @SuppressWarnings("uncheck")
-    public <T> T[] toArray(T[] array) {
+    public T[] toArray(T[] array) {
 
         array = (T[]) Util.ArrayCopy(array, this.size(), array.getClass());
 

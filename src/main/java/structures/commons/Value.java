@@ -1,4 +1,4 @@
-package structures.util.interfaces;
+package structures.commons;
 
 /**
  * Generic Value class to be extended from by classes
@@ -17,21 +17,21 @@ public interface Value<T> {
      * @param value Specified value to be compared to
      * @return True if and only if they gave the same internal value
      */
-    public abstract boolean equals(Value<T> value);
+    boolean equals(Value<T> value);
 
     /**
      * Returns the value of the node
      *
      * @return The value of the node
      */
-    public abstract T value();
+    T value();
 
     /**
      * Updates the value of the node with a specified value
      *
      * @param value New value of the node
      */
-    public abstract void value(T value);
+    void value(T value);
 }
 
 

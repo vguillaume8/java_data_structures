@@ -1,6 +1,6 @@
 package structures.vectors;
 
-import structures.vectors.classes.ChainedIndexedDataStructure;
+import structures.commons.ChainedIndexedDataStructure;
 
 /**
  * Basic implementation of Doubly Linked List
