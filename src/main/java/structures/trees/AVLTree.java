@@ -1,7 +1,5 @@
 package structures.trees;
 
-import util.Util;
-
 import static util.Util.max;
 
 /**
@@ -27,11 +25,7 @@ public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, 
      */
     @SuppressWarnings("unused")
     public AVLTree(K[] keys) {
-        this.root(null);
-
-        for (K key : keys) {
-            insert(key);
-        }
+        super(keys);
     }
 
     /**
@@ -42,7 +36,7 @@ public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, 
     private int balanceFactor(AVLTreeNode<K, V> node) {
 
         if (node != null)
-            return height(node.leftChild) - height(node.rightChild);
+            return height(node.leftChild()) - height(node.rightChild());
 
         return 0;
     }
@@ -54,7 +48,7 @@ public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, 
     @SuppressWarnings("unused")
     private int height(AVLTreeNode<K, V> node) {
         if (node != null)
-            return node.height;
+            return node.height();
 
         return 0;
     }
@@ -69,9 +63,14 @@ public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, 
     @Override
     public boolean insert(K key) {
 
+        // Store size before insertion
+        int size = size();
+
+        // Insert key
         root(insert(root(), key));
 
-        return true;
+        // Return true if the size changed
+        return size != size();
     }
 
     /**
@@ -83,10 +82,9 @@ public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, 
     @SuppressWarnings("unused")
     private AVLTreeNode insert(AVLTreeNode<K, V> node, K key) {
 
-        System.out.println("inserting " + key);
-
         // If we are at the bottom
         if (node == null) {
+            incrementSize();
             return new AVLTreeNode<K, V>(key, null, null, null);
         }
 
@@ -96,15 +94,15 @@ public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, 
 
         // Less than
         if (comparison > 0) {
-            node.leftChild = insert(node.leftChild, key);
+            node.leftChild(insert(node.leftChild(), key));
 
             // Greater than
         } else {
-            node.rightChild = insert(node.rightChild, key);
+            node.rightChild(insert(node.rightChild(), key));
         }
 
         // Set the height to the maximum height of left and right subtrees
-        node.height = Math.max(height(node.leftChild), height(node.rightChild)) + 1;
+        node.height(Math.max(height(node.leftChild()), height(node.rightChild())) + 1);
 
         // Get the balance factor
         int balance = balanceFactor(node);
@@ -133,8 +131,25 @@ public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, 
         return node;
     }
 
+    /**
+     * Determines whether the tree is height balanced. A height balanced
+     * tree is defined as...
+     *
+     * TODO - See why superclass isBalanced() returns false when this returns true
+     *
+     * @return True if and only if the above condition is true.
+     */
     @Override
-    public AVLTreeNode<K, V> root() {
+    public boolean isBalanced() {
+        return Math.abs(balanceFactor(root())) < 2;
+    }
+
+    /**
+     *
+     * @return
+     */
+    @Override
+    protected AVLTreeNode<K, V> root() {
         return (AVLTreeNode<K, V>) super.root();
     }
 
@@ -186,11 +201,11 @@ public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, 
         x.rightChild(T2);
 
         //  Update heights
-        x.height = max(height(x.leftChild()),
-                   height(x.rightChild())) + 1;
+        x.height(max(height(x.leftChild()),
+                   height(x.rightChild())) + 1);
 
-        y.height = max(height(y.leftChild()),
-                       height(y.rightChild())) + 1;
+        y.height(max(height(y.leftChild()),
+                       height(y.rightChild())) + 1);
 
         // Return new root
         return y;
@@ -239,44 +254,20 @@ public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, 
      */
     private static class AVLTreeNode<K extends Comparable, V> extends BinarySearchTreeNode<K, V> {
 
-        int height;
-        K key;
-        V value;
-        AVLTreeNode<K, V> leftChild;
-        AVLTreeNode<K, V> rightChild;
+        private int height;
 
+        /**
+         *
+         * @param key
+         * @param value
+         * @param leftChild
+         * @param rightChild
+         */
         public AVLTreeNode(K key, V value, AVLTreeNode<K, V> leftChild, AVLTreeNode<K, V> rightChild) {
-            this.key = key;
-            this.value = value;
+            super(key, value, leftChild, rightChild);
             this.leftChild(leftChild);
             this.rightChild(rightChild);
-            height = 1;
-        }
-
-        @SuppressWarnings("unused")
-        public int height() {
-            return this.height;
-        }
-
-        @SuppressWarnings("unused")
-        public void height(int height) {
-            this.height = height;
-        }
-
-        public K key() {
-            return this.key;
-        }
-
-        public void key(K key) {
-            this.key = key;
-        }
-
-        public V value() {
-            return this.value;
-        }
-
-        public void value(V value) {
-            this.value = value;
+            this.height(1);
         }
 
         /**
@@ -284,8 +275,28 @@ public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, 
          * @return
          */
         @SuppressWarnings("unused")
+        public int height() {
+            return this.height;
+        }
+
+        /**
+         *
+         * @param height
+         */
+        @SuppressWarnings("unused")
+        public void height(int height) {
+            this.height = height;
+        }
+
+        /**
+         *
+         * @return
+         */
+        @Override
+        @SuppressWarnings("unused")
         protected AVLTreeNode<K, V> leftChild() {
-            return this.leftChild;
+
+            return (AVLTreeNode<K, V>) super.leftChild();
         }
 
         /**
@@ -293,9 +304,9 @@ public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, 
          * @param leftChild
          */
         @SuppressWarnings("unused")
-        protected void leftChild(AVLTreeNode<K, V> leftChild) {
+        private void leftChild(AVLTreeNode<K, V> leftChild) {
 
-            this.leftChild = leftChild;
+            super.leftChild(leftChild);
         }
 
         /**
@@ -304,7 +315,7 @@ public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, 
          */
         @SuppressWarnings("unused")
         protected AVLTreeNode<K, V> rightChild() {
-            return this.rightChild;
+            return (AVLTreeNode<K, V>) super.rightChild();
         }
 
         /**
@@ -314,7 +325,7 @@ public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, 
         @SuppressWarnings("unused")
         protected void rightChild(AVLTreeNode<K, V>rightChild) {
 
-            this.rightChild = rightChild;
+            super.rightChild(rightChild);
         }
 
     }
