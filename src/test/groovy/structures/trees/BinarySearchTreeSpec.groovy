@@ -612,8 +612,6 @@ class BinarySearchTreeSpec extends Specification {
         when:
         tree = new BinarySearchTree<>(pairs);
 
-        System.out.println(tree.toTreeString())
-
         then:
         Util.equals(tree.values(traversalType), values);
 

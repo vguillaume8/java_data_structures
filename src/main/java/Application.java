@@ -1,12 +1,16 @@
 import structures.trees.BinarySearchTree;
 import structures.commons.Pair;
+import structures.trees.BinaryTree;
+import structures.vectors.ArrayList;
+
+import static java.lang.Class.forName;
 
 /**
  *
  */
 public final class Application {
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     Integer[] sorted = {1, 2, 3, 4, 5, 6, 7, 8, 9};
     Integer[] unbalanced = {1, 2, 3, 4, 5, 6};
@@ -24,7 +28,8 @@ public final class Application {
     pairs[4] = new Pair<Integer, String>(5, "Leonard");
     pairs[5] = new Pair<Integer, String>(6, "Ceazar");
 
-    BinarySearchTree<Integer, String> tree = new BinarySearchTree<>(perfect);
+    @SuppressWarnings("unchecked")
+    BinarySearchTree<Integer, String> tree = new BinarySearchTree<>(pairs);
 
     tree.display();
   }
