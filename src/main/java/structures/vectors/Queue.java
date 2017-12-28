@@ -41,7 +41,7 @@ public final class Queue<T> extends ChainedDataStructure<T> {
      * @param values Array of values to instatiate Queue from
      */
     public Queue(T[] values) {
-        super(values);
+        insert(values);
     }
 
     /**
@@ -64,7 +64,7 @@ public final class Queue<T> extends ChainedDataStructure<T> {
             throw new EmptyDataStructureException("Cannot peek() empty Queue");
         }
 
-        return this.head().value();
+        return this.head.value;
     }
 
     /**
@@ -85,9 +85,9 @@ public final class Queue<T> extends ChainedDataStructure<T> {
     @Override
     public boolean insert(T value) {
         if (this.empty()) {
-            this.head(new Node<T>(value, null, null));
+            this.head = new Node<>(value);
         } else {
-            this.head().insert(value);
+            this.head.insert(value);
         }
 
         this.size++;
@@ -115,8 +115,8 @@ public final class Queue<T> extends ChainedDataStructure<T> {
             throw new EmptyDataStructureException("Cannot remove() from empty Queue");
         }
 
-        T value = this.head().value();  // Get value from head
-        this.head(this.head().next());  // Set head equal to head's next
+        T value = this.head.value;  // Get value from head
+        this.head = this.head.next;  // Set head equal to head's next
         this.size--;           // Decrement size of Queue
 
         return value;

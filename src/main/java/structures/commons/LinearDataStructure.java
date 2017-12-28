@@ -1,5 +1,7 @@
 package structures.commons;
 
+import java.util.Arrays;
+
 /**
  * Interface for all linear DataStructures such as {@code LinkedList}, {@code ArrayList},
  * or any other vector-like data structure.
@@ -8,6 +10,41 @@ package structures.commons;
  * @param <T> Generic Type
  */
 public interface LinearDataStructure<T> extends DataStructure<T>,  Iterable<T> {
+
+    /**
+     *
+     * @return
+     */
+    default String asString() {
+        return Arrays.toString(this.toArray());
+    }
+
+    /**
+     * Determines whether or not a specified value is in the vector
+     *
+     * <br>
+     * <br>
+     * <strong>Time Complexity:</strong><br>
+     * <strong>Best: </strong>&Omega;(1)<br>
+     * <strong>Worst: </strong>O(n)<br>
+     *
+     * <br>
+     * <strong>Space Complexity:</strong><br>
+     * <strong>Avg: </strong>&Theta;(1)<br>
+     *
+     * @param value Specified value to search for
+     * @return True if and only if the specified value if in the vector
+     */
+    @Override
+    default boolean contains(T value) {
+
+        for (T v : this) {
+            if (v.equals(value))
+                return true;
+        }
+
+        return false;
+    }
 
     /**
      * Removes an element from the DataStructure. The order
@@ -26,7 +63,13 @@ public interface LinearDataStructure<T> extends DataStructure<T>,  Iterable<T> {
      * @return Array representation of DataStructure
      */
     @SuppressWarnings("unused")
-    T[] toArray();
+    default Object[] toArray() {
+        // All objects of type T extend java.lang.Object
+        @SuppressWarnings("unchecked")
+        Object[] objects = this.toArray((T[]) new Object[0]);
+
+        return objects;
+    }
 
 //------------------------------------------------------------------------------
 
@@ -36,7 +79,21 @@ public interface LinearDataStructure<T> extends DataStructure<T>,  Iterable<T> {
      * @param array Array that specified the type.
      * @return Array version of the data structure.
      */
-    T[] toArray(T[] array);
+    default T[] toArray(T[] array) {
+        // Cast is safe, because we passed a T[] in, so we
+        // get a T[] back out
+        @SuppressWarnings("unchecked")
+        T[] a = (T[]) Arrays.copyOf(array, this.size(), array.getClass());
+
+        int i = 0;
+
+        for (T value : this) {
+            a[i] = value;
+            i++;
+        }
+
+        return a;
+    }
 
 //------------------------------------------------------------------------------
 

@@ -40,6 +40,23 @@ public interface DataStructure<T> {
 //------------------------------------------------------------------------------
 
     /**
+     * Inserts an array into the data structure.
+     *
+     * @param values Values to insert.
+     * @return Returns true if and only if all values were successfully inserted.
+     */
+    default boolean insert(T[] values) {
+        boolean all = true;
+
+        for (T value : values)
+            all = all && insert(value);
+
+        return all;
+    }
+
+//------------------------------------------------------------------------------
+
+    /**
      * Returns the number of values in the data structure.
      *
      * @return Number of values in the DataStructure.

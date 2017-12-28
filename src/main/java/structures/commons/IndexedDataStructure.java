@@ -28,7 +28,15 @@ public interface IndexedDataStructure<T> extends LinearDataStructure<T> {
      * @param index Specified index
      * @return True if and only if the index is out of bound
      */
-    boolean indexOutOfBounds(int index);
+    /**
+     * Determines whether or not a specified index is within the bounds of the list
+     *
+     * @param index Specified index
+     * @return True if and only if the index is less then the length of the list, and positive
+     */
+    default boolean indexOutOfBounds(int index) {
+        return index < 0 || index >= this.size();
+    }
 
 //------------------------------------------------------------------------------
 

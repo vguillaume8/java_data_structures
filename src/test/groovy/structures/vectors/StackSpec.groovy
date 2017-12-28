@@ -158,9 +158,9 @@ class StackSpec extends Specification {
 
         where:
         values                  | string
-        [1, 2, 3] as Integer[]  | "3, 2, 1"
-        [1, 2] as Integer[]     | "2, 1"
-        [1] as Integer[]        | "1"
-        [] as Integer[]         | ""
+        [1, 2, 3] as Integer[]  | "[3, 2, 1]"
+        [1, 2] as Integer[]     | "[2, 1]"
+        [1] as Integer[]        | "[1]"
+        [] as Integer[]         | "[]"
     }
 }

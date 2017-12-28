@@ -40,15 +40,6 @@ public interface BinaryTree<K, V> extends DataStructure<K>, Iterable<Pair<K, V>>
      */
     int DEFAULT_ORDER = PRE_ORDER;
 
-    /**
-     * Integer code for printing tree horizontally.
-     */
-    int HORIZONTAL_TREE_STRING = 5;
-
-    /**
-     * Integer code for printing tree vertically.
-     */
-    int VERTICAL_TREE_STRING = 6;
 
     /**
      * Determines whether or not a specified key is present in the tree.
@@ -226,7 +217,7 @@ public interface BinaryTree<K, V> extends DataStructure<K>, Iterable<Pair<K, V>>
      * @return Array of keys in the tree.
      */
     @SuppressWarnings("unused")
-    default K[] keys() {
+    default <K> K[] keys() {
         return keys(DEFAULT_ORDER);
     }
 
@@ -236,7 +227,7 @@ public interface BinaryTree<K, V> extends DataStructure<K>, Iterable<Pair<K, V>>
      * @param traversalType Specified order.
      * @return Array of keys in the tree.
      */
-    K[] keys(int traversalType);
+    <K> K[] keys(int traversalType);
 
     /**
      * Returns an ArrayList of key-value pairs in the tree in pre-order.
@@ -315,46 +306,7 @@ public interface BinaryTree<K, V> extends DataStructure<K>, Iterable<Pair<K, V>>
      *
      * @return String representation of tree (vertical)
      */
-    default String toTreeString() {
-
-        return this.toTreeString(VERTICAL_TREE_STRING);
-    }
-
-    /**
-     * Returns the tree as a {@code String} in specified orientation.
-     *
-     * @param orientation Specified orientation.
-     * @return String of tree.
-     */
-    @SuppressWarnings("unused")
-    default String toTreeString(int orientation) {
-        String string;
-
-        switch (orientation) {
-            case HORIZONTAL_TREE_STRING: string = this.toTreeStringHorizontal();           break;
-            case VERTICAL_TREE_STRING:   string = this.toTreeStringVertical();             break;
-            default:                     string = this.toTreeStringVertical();             break;
-        }
-
-        return string;
-    }
-
-    /**
-     * Returns tree as String on it's side.
-     *
-     * @return String representation of tree.
-     */
-    @SuppressWarnings("unused")
-    String toTreeStringVertical();
-
-    /**
-     * Returns String representation of tree horizontally.
-     *
-     * @return BinaryTree string.
-     */
-    @SuppressWarnings("unused")
-    String toTreeStringHorizontal();
-
+    String toTreeString();
 
     /**
      * Returns an array of the values in the tree in pre-order.

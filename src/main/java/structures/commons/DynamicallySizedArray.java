@@ -18,14 +18,11 @@ public abstract class DynamicallySizedArray<T> implements IndexedDataStructure<T
     protected T[] values;
 
     public DynamicallySizedArray() {
-        super();
         values = (T[]) new Object[DEFAULT_SIZE];
     }
 
     public DynamicallySizedArray(T[] values) {
-        super();
-
-        this.values = (T[]) new Object[DEFAULT_SIZE];
+        this();
 
         for (T value : values) {
             this.insert(value);
@@ -38,26 +35,9 @@ public abstract class DynamicallySizedArray<T> implements IndexedDataStructure<T
      * @return True if the internal array has run out of space for new elements
      */
     protected boolean full() {
-        if (this.values == null) {
-            return true;
-        }
 
-        return this.size() < this.values.length;
+        return values == null || this.size() < this.values.length;
     }
-
-//------------------------------------------------------------------------------
-
-    /**
-     * Determines whether or not a specified index is within the bounds
-     * of the DataStructure
-     *
-     * @param index Specified index to check
-     * @return True if and only if the index is non-negative and less than the size of the structure
-     */
-    public boolean indexOutOfBounds(int index) {
-        return index < 0 || index >= this.size();
-    }
-
 
 //------------------------------------------------------------------------------
 
@@ -197,9 +177,12 @@ public abstract class DynamicallySizedArray<T> implements IndexedDataStructure<T
      *
      * @return Array version of this object.
      */
-    public T[] toArray() {
+    public Object[] toArray() {
 
-        return (T[]) this.toArray((T[]) new Object[0]);
+        @SuppressWarnings("unchecked")
+        Object[] objects = this.toArray((T[]) new Object[0]);
+
+        return objects;
     }
 
 //------------------------------------------------------------------------------

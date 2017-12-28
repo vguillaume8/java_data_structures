@@ -127,8 +127,6 @@ class LinkedListSpec extends Specification {
     value | check | contains
     1     | 1     | true
     1     | 2     | false
-    null  | 2     | false
-    null  | null  | true
     "1"   | 1     | false
     "1"   | "1"   | true
   }
@@ -368,8 +366,8 @@ class LinkedListSpec extends Specification {
 
     where:
     values                      | string
-    [1, 2, 3] as Integer[]      | "1, 2, 3"
-    ["1", "2", "3"] as String[] | "1, 2, 3"
-    [] as Object[]              | ""
+    [1, 2, 3] as Integer[]      | "[1, 2, 3]"
+    ["1", "2", "3"] as String[] | "[1, 2, 3]"
+    [] as Object[]              | "[]"
   }
 }

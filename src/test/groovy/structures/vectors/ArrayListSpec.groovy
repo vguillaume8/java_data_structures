@@ -130,8 +130,6 @@ class ArrayListSpec extends Specification {
         value | check | contains
         1     | 1     | true
         1     | 2     | false
-        null  | 2     | false
-        null  | null  | true
         "1"   | 1     | false
         "1"   | "1"   | true
     }

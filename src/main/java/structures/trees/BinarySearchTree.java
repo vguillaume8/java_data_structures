@@ -13,6 +13,9 @@ import structures.vectors.Queue;
  */
 public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, V> {
 
+    /**
+     *
+     */
     protected int size;
 
     /**
@@ -591,7 +594,11 @@ public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, 
     public K[] keys(int traversalType) {
         ArrayList<K> arrayList = keysToArrayList(root, traversalType);
 
-        return arrayList.toArray((K[]) new Comparable[0]);
+
+        @SuppressWarnings("unchecked")
+        K[] array = arrayList.toArray((K[]) new Comparable[0]);
+
+        return array;
     }
 
 //------------------------------------------------------------------------------
@@ -990,8 +997,8 @@ public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, 
      */
     @Override
     @SuppressWarnings("unused")
-    public String toTreeStringVertical() {
-        return this.toTreeStringVertical("", true, "", root);
+    public String toTreeString() {
+        return this.toTreeString("", true, "", root);
     }
 
 //------------------------------------------------------------------------------
@@ -1006,7 +1013,7 @@ public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, 
      * @param node Note to append to tree String.
      * @return Vertical String representation of the tree.
      */
-    private String toTreeStringVertical(String prefix, boolean top, String tree, BinarySearchTreeNode<K, V> node) {
+    private String toTreeString(String prefix, boolean top, String tree, BinarySearchTreeNode<K, V> node) {
         BinarySearchTreeNode<K, V> left;
         BinarySearchTreeNode<K, V> right;
         String temp;
@@ -1027,7 +1034,7 @@ public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, 
             temp = path(top, "" + prefix, "│   ", "    ");
 
             // Recursively append to right subtree
-            tree = toTreeStringVertical(temp, false, tree, right);
+            tree = toTreeString(temp, false, tree, right);
         }
 
         // Draw a path to this node
@@ -1043,7 +1050,7 @@ public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, 
             temp = path(top, "" + prefix, "    ", "│   ");
 
             // Recursively append left sub tree
-            tree = toTreeStringVertical(temp, true, tree, left);
+            tree = toTreeString(temp, true, tree, left);
         }
 
         return tree;
@@ -1080,18 +1087,6 @@ public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, 
     @Override
     public int size() {
         return this.size;
-    }
-
-//------------------------------------------------------------------------------
-
-    /**
-     * Returns String representation of tree horizontally.
-     *
-     * @return BinaryTree string.
-     */
-    @SuppressWarnings("unused")
-    public String toTreeStringHorizontal() {
-        return "";
     }
 
 //------------------------------------------------------------------------------
@@ -1380,10 +1375,18 @@ public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, 
             return asString();
         }
 
+        /**
+         *
+         * @return
+         */
         public V value() {
             return this.value;
         }
 
+        /**
+         *
+         * @param value The new value.
+         */
         public void value(V value) {
             this.value = value;
         }

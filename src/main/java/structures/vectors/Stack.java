@@ -47,7 +47,7 @@ public final class Stack<T>  extends ChainedDataStructure<T> {
      * @param values Array of values to instatiate Queue from
      */
     public Stack(T[] values) {
-        super(values);
+        insert(values);
     }
 
 //------------------------------------------------------------------------------
@@ -70,11 +70,11 @@ public final class Stack<T>  extends ChainedDataStructure<T> {
     @Override
     public boolean insert(T value) {
         if (this.empty()) {
-            this.head(new Node(value, null, null));
+            this.head = new Node<T>(value);
         } else {
-            Node node = new Node(value, null, this.head());
-            this.head().prev(node);
-            this.head(node);
+            Node<T> node = new Node<T>(value, null, this.head);
+            this.head.prev = node;
+            this.head = node;
         }
 
         this.size++;
@@ -106,8 +106,8 @@ public final class Stack<T>  extends ChainedDataStructure<T> {
             throw new EmptyDataStructureException("Cannot remove from an empty Stack");
         }
 
-        T value = this.head().value();  // Get value from head
-        this.head(this.head().next());  // Set head equal to head's next
+        T value = this.head.value;  // Get value from head
+        this.head = this.head.next;  // Set head equal to head's next
         this.size--;           // Decrement size of Queue
 
         return value;
@@ -174,6 +174,6 @@ public final class Stack<T>  extends ChainedDataStructure<T> {
             throw new EmptyDataStructureException("Cannot top() and empty Stack");
         }
 
-        return this.head().value();
+        return this.head.value;
     }
 }
