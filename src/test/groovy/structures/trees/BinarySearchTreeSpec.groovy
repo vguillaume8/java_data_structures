@@ -65,53 +65,9 @@ class BinarySearchTreeSpec extends Specification {
     }
 
     @Unroll
-    def "Build balanced BinarySearchTree from ordered array of keys"() {
-        setup:
-        BinarySearchTree<Comparable, String> tree;
-
-        when:
-        tree = BinarySearchTree.balancedBinarySearchTree(array)
-
-        then:
-        tree.isBalanced()
-        tree.size() == size
-
-        where:
-        array                                    | size | height
-        [1, 2, 3, 4, 5, 6, 7] as Integer[]       | 7    | 3
-        ['a', 'b', 'c', 'd', 'e'] as Character[] | 5    | 3
-        [] as Double[]                           | 0    | 0
-        [1.0] as Float[]                         | 1    | 1
-    }
-
-    @Unroll
-    def "Build balanced BinarySearchTree from array of ordered pairs"() {
-        setup:
-        BinarySearchTree<Integer, String> tree;
-
-        Pair<Integer, String>[] pairs = new Pair[8];
-        pairs[0] = new Pair<Integer, String>(1, "Jabari");
-        pairs[1] = new Pair<Integer, String>(2, "Jalia");
-        pairs[2] = new Pair<Integer, String>(3, "Jelani");
-        pairs[3] = new Pair<Integer, String>(4, "Vanessa");
-        pairs[4] = new Pair<Integer, String>(5, "Leonard");
-        pairs[5] = new Pair<Integer, String>(6, "Ceazar");
-        pairs[6] = new Pair<Integer, String>(7, "Jendaya");
-        pairs[7] = new Pair<Integer, String>(8, "Elijah");
-
-        when:
-        tree = BinarySearchTree.balancedBinarySearchTree(pairs);
-
-        then:
-        tree.isBalanced()
-        tree.size() == 8
-        tree.height() == 4
-    }
-
-    @Unroll
     def "Check if tree contains a key"() {
         when:
-        BinarySearchTree<Comparable, String> tree = BinarySearchTree.balancedBinarySearchTree(array)
+        BinarySearchTree<Comparable, String> tree = new BinarySearchTree<>(array)
 
         then:
         tree.contains(value) == contains
@@ -159,7 +115,7 @@ class BinarySearchTreeSpec extends Specification {
 
         when:
         if (array != null)
-            tree = BinarySearchTree.balancedBinarySearchTree(array)
+            tree = new BinarySearchTree<>(array)
 
         else
             tree = new BinarySearchTree<>();
@@ -192,7 +148,7 @@ class BinarySearchTreeSpec extends Specification {
         pairs[7] = new Pair<Integer, String>(8, "Elijah");
 
         when:
-        tree = BinarySearchTree.balancedBinarySearchTree(pairs);
+        tree = new BinarySearchTree<>(pairs);
 
         then:
         tree.get(key) == value
@@ -226,7 +182,7 @@ class BinarySearchTreeSpec extends Specification {
         pairs[7] = new Pair<Integer, String>(8, "Elijah");
 
         when:
-        tree = BinarySearchTree.balancedBinarySearchTree(pairs);
+        tree = new BinarySearchTree<>(pairs);
 
         then:
         tree.getKey(value) == key
@@ -242,37 +198,6 @@ class BinarySearchTreeSpec extends Specification {
         "Jendaya" | 7
         "Elijah"  | 8
         "Jamaal"  | null;
-    }
-
-    @Unroll
-    def "Get a pair from tree by key"() {
-        setup:
-        BinarySearchTree<Integer, String> tree;
-
-        Pair<Integer, String>[] pairs = new Pair[8];
-        pairs[0] = new Pair<Integer, Double>(1, 1.0 as double);
-        pairs[1] = new Pair<Integer, Double>(2, 2.0 as double);
-        pairs[2] = new Pair<Integer, Double>(3, 3.0 as double);
-
-        when:
-        tree = BinarySearchTree.balancedBinarySearchTree(pairs);
-
-        Pair<Integer, Double> pair = tree.getPair(key);
-
-        then:
-        if (pair != null) {
-            pair.key() == key
-            pair.value() == value
-        } else {
-            pair == null
-        }
-
-        where:
-        key | value
-        1   | 1.0 as double
-        2   | 2.0 as double
-        3   | 3.0 as double
-        4   | _
     }
 
     @Unroll
@@ -326,10 +251,10 @@ class BinarySearchTreeSpec extends Specification {
         pairs[7] = new Pair<Integer, String>(8, "Elijah");
 
         when:
-        tree.insert(pairs[0]);  // Jabari, 1
-        tree.insert(pairs[2]);  // Jelani, 3
-        tree.insert(pairs[4]);  // Leonard, 5
-        tree.insert(pairs[6]);  // Jendaya, 7
+        tree.insert(pairs[0].key(), pairs[0].value());  // Jabari, 1
+        tree.insert(pairs[2].key(), pairs[0].value());  // Jelani, 3
+        tree.insert(pairs[4].key(), pairs[0].value());  // Leonard, 5
+        tree.insert(pairs[6].key(), pairs[0].value());  // Jendaya, 7
 
         then:
         tree.contains(key, value) == contains
@@ -611,8 +536,6 @@ class BinarySearchTreeSpec extends Specification {
 
         when:
         tree = new BinarySearchTree<>(pairs);
-
-        System.out.println(tree.toTreeString())
 
         then:
         Util.equals(tree.values(traversalType), values);

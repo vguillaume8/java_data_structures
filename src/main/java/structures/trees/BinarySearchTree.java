@@ -1,12 +1,10 @@
 package structures.trees;
 
 import structures.commons.LinearDataStructure;
-import util.Util;
 import structures.commons.Pair;
 import structures.vectors.ArrayList;
 import structures.vectors.Queue;
 import structures.commons.DynamicallySizedDataStructure;
-import java.util.Iterator;
 
 /**
  * Implementation of Binary Search Tree.
@@ -14,42 +12,7 @@ import java.util.Iterator;
  * @param <K> Generic type for keys (must extend java.lang.Comparable)
  * @param <V> Generic type for values
  */
-public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedDataStructure<K> implements Iterable<Pair<K, V>> {
-
-    /**
-     * Integer code for in-order tree traversal.
-     */
-    public static final int IN_ORDER = 0;
-
-    /**
-     * Integer code for pre-order tree traversal.
-     */
-    public static final int PRE_ORDER = 1;
-
-    /**
-     * Integer code for post-order tree traversal.
-     */
-    public static final int POST_ORDER = 2;
-
-    /**
-     * Integer code for level-order tree traversal.
-     */
-    public static final int LEVEL_ORDER = 4;
-
-    /**
-     * Integer code for default tree traversal order.
-     */
-    public static final int DEFAULT_ORDER = PRE_ORDER;
-
-    /**
-     * Integer code for printing tree horizontally.
-     */
-    public static final int HORIZONTAL_TREE_STRING = 5;
-
-    /**
-     * Integer code for printing tree vertically.
-     */
-    public static final int VERTICAL_TREE_STRING = 6;
+public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedDataStructure<K> implements Tree<K, V> {
 
     /**
      * Pointer to root node of the BinarySearchTree
@@ -85,49 +48,7 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
         }
     }
 
-//------------------------------------------------------------------------------
-
-    /**
-     * Returns an instance of a balanced tree that is made from a specified
-     * array of sorted keys. Note, if the keys that are passed are not sorted,
-     * then the returned tree will note be balanced.
-     *
-     * @param sortedKeys Sorted array of keys.
-     * @param <K> Generic type for key, must be Comparable
-     * @param <V> Generic type for value
-     * @return Balanced BinarySearchTree
-     */
-    @SuppressWarnings("unused")
-    public static <K extends Comparable, V> BinarySearchTree<K, V> balancedBinarySearchTree(K[] sortedKeys) {
-        BinarySearchTree<K, V> tree = new BinarySearchTree<>();
-
-        tree.createBST(sortedKeys, 0, sortedKeys.length-1);
-
-        return tree;
-    }
-
-//------------------------------------------------------------------------------
-
-    /**
-     * Returns an instance of a balanced tree that is made from a specified
-     * array of sorted pairs. Note, if the pairs that are passed are not sorted,
-     * then the returned tree will note be balanced.
-     *
-     * @param sortedPairs Sorted array of pairs.
-     * @param <K> Generic type for key, must be Comparable
-     * @param <V> Generic type for value
-     * @return Balanced BinarySearchTree
-     */
-    @SuppressWarnings("unused")
-    public static <K extends Comparable, V> BinarySearchTree<K, V> balancedBinarySearchTree(Pair<K, V>[] sortedPairs) {
-        BinarySearchTree<K, V> tree = new BinarySearchTree<>();
-
-        tree.createBST(sortedPairs, 0, sortedPairs.length-1);
-
-        return tree;
-    }
-
-//------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------
 
     /**
      * Constructs a tree from an array of Key-value pairs.
@@ -140,7 +61,7 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
 
         // Insert all the pairs into the tree
         for (Pair<K, V> pair : pairs) {
-            this.insert(pair);
+            insert(pair.key(), pair.value());
         }
     }
 
@@ -157,7 +78,7 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
 
         // Insert all the pairs into the tree
         for (Pair<K, V> pair : pairs) {
-            this.insert(pair);
+            this.insert(pair.key(), pair.value());
         }
     }
 
@@ -255,97 +176,6 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
 //------------------------------------------------------------------------------
 
     /**
-     * Builds a balanced tree from a sorted array of keys
-     *
-     * @param keys Array of sorted keys.
-     * @param left  Left bound of array to insert from.
-     * @param right Right bound of array to insert from.
-     */
-    @SuppressWarnings("unused")
-    private void createBST(K[] keys, int left, int right) {
-
-        // Compute middle index
-        int mid = (left + right) / 2;
-
-        // If its inbounds, insert, and make recursive call
-        // Otherwise, the left and right bounds have crossed
-        // and we are done inserting for range [left, right]
-        if (left <= right) {
-
-            // Insert the middle element
-            insert(keys[mid]);
-
-            // Make recursive calls to continue inserting
-            // into left and right subtrees
-            createBST(keys, left, mid-1);
-            createBST(keys, mid+1, right);
-
-        }
-    }
-
-//------------------------------------------------------------------------------
-
-    /**
-     *
-     * Builds a balanced tree from a sorted array of pairs
-     *
-     * @param pairs Array of sorted keys.
-     * @param left  Left bound of array to insert from.
-     * @param right Right bound of array to insert from.
-     */
-    @SuppressWarnings("uncheck")
-    private void createBST(Pair<K, V>[] pairs, int left, int right) {
-
-        // Compute middle index
-        int mid = (left + right) / 2;
-
-        // If its inbounds, insert, and make recursive call
-        // Otherwise, the left and right bounds have crossed
-        // and we are done inserting for range [left, right]
-        if (left <= right) {
-
-            // Insert the middle element
-            insert(pairs[mid]);
-
-            // Make recursive calls to continue inserting
-            // into left and right subtrees
-            createBST(pairs, left, mid-1);
-            createBST(pairs, mid+1, right);
-
-        }
-    }
-
-
-//------------------------------------------------------------------------------
-
-    /**
-     * Display tree's important information to verify that
-     * it was built correctly. This method is for development purposes
-     */
-    @SuppressWarnings("unchecked")
-    public void display() {
-
-        System.out.println(this.getClass().getSimpleName());
-        System.out.println("Size: "         + this.size());
-        System.out.println("Height: "       + this.height());
-        System.out.println("Balanced: "     + this.isBalanced());
-        System.out.println("Full: "         + this.isFull());
-        System.out.println("Complete: "     + this.isComplete());
-        System.out.println("Perfect: "      + this.isPerfect());
-        System.out.println("Keys, In-order: "     + this.toString(IN_ORDER));
-        System.out.println("Keys, Pre-order: "    + this.toString(PRE_ORDER));
-        System.out.println("Keys, Post-order: "   + this.toString(POST_ORDER));
-        System.out.println("Keys, Level-order: "  + this.toString(LEVEL_ORDER));
-        System.out.println("Values, In-order: "     + Util.ArrayToString(this.values(IN_ORDER)));
-        System.out.println("Values, Pre-order: "    + Util.ArrayToString(this.values(PRE_ORDER)));
-        System.out.println("Values, Post-order: "   + Util.ArrayToString(this.values(POST_ORDER)));
-        System.out.println("Values, Level-order: "  + Util.ArrayToString(this.values(LEVEL_ORDER)));
-        System.out.println("Tree String:\n" + this.toTreeString());
-    }
-
-//------------------------------------------------------------------------------
-
-    /**
      * Determines whether or not the BinarySearchTree is empty.
      *
      * @return True if and only if there are no elements in the tree.
@@ -392,31 +222,6 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
         // Otherwise we did not
         // find the node
         return null;
-    }
-
-//------------------------------------------------------------------------------
-
-    /**
-     * Constructs a new BinarySearchTree from a {@code LinearDataStructure} of keys.
-     * This is useful if the data we are trying to sort by nature is comparable. We do
-     * not need to go as far as constructing a tree with pairs. Not, all nodes will be
-     * null, thus, searching by value with cause a {@code NullPointerException} to be thrown.
-     *
-     * @param keys List of keys to construct tee from.
-     * @param <K> Generic type for keys (must be comparable).
-     * @param <V> Generic type for values (not used)
-     * @return BinarySearchTree constructed from the provided list.
-     */
-    @SuppressWarnings("unused")
-    public static <K extends Comparable, V>  BinarySearchTree<K,V> fromKeyList(LinearDataStructure<K> keys) {
-        BinarySearchTree<K, V> tree = new BinarySearchTree<>();
-
-        // Insert all keys into tree
-        for (K key : keys) {
-            tree.insert(key);
-        }
-
-        return tree;
     }
 
 //------------------------------------------------------------------------------
@@ -511,29 +316,6 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
 //------------------------------------------------------------------------------
 
     /**
-     * Retrieves and returns the pair that contains a specified key.
-     *
-     * @param key Specified key.
-     * @return Corresponding key-value pair if the key is found.
-     */
-    @SuppressWarnings("unused")
-    public Pair<K, V> getPair(K key) {
-
-        // Find the node
-        BinarySearchTreeNode<K, V> found = get(key, root);
-
-        // If it was null, convert it to a Pair
-        if (found != null) {
-            return found.toPair();
-        }
-
-        // If it wasn't found, return null
-        return null;
-    }
-
-//------------------------------------------------------------------------------
-
-    /**
      * Returns the height of the tree.
      *
      * @return Max depth of the tree
@@ -573,20 +355,6 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
 //------------------------------------------------------------------------------
 
     /**
-     * Inserts a specified key into the tree with an empty value.
-     *
-     * @param key The specified key to insert
-     * @return True if the insertion was successful. An insertion is successful
-     * if the specified key is not already in the tree.
-     */
-    @Override
-    public boolean insert(K key) {
-        return this.insert(key, null);
-    }
-
-//------------------------------------------------------------------------------
-
-    /**
      * Inserts a specified key-value pair into the tree.
      *
      * @param key Key
@@ -613,47 +381,6 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
         }
 
         return result;
-    }
-
-//------------------------------------------------------------------------------
-
-    /**
-     * Inserts a key-value pair into the tree.
-     *
-     * @param pair Pair to be inserted
-     * @return True if and only if the insertion was successful
-     */
-    public boolean insert(Pair<K, V> pair) {
-
-        // If pair is null, automatically return false, otherwise
-        // proceed in insert the pair
-        return pair != null && insert(pair.key(), pair.value());
-
-    }
-
-//------------------------------------------------------------------------------
-
-    /**
-     * Returns iterator that iterate over pairs in pre-order.
-     *
-     * @return Iterator in pre-order
-     */
-    @SuppressWarnings("unused")
-    public Iterator<Pair<K, V>> iterator() {
-        return new BinarySearchTreeIterator<>(this, DEFAULT_ORDER);
-    }
-
-//------------------------------------------------------------------------------
-
-    /**
-     * Returns iterator that iterators over pairs in specified order.
-     *
-     * @param traversalType Specified order.
-     * @return Iterator in specified order.
-     */
-    @SuppressWarnings("unused")
-    public Iterator<Pair<K, V>> iterator(int traversalType) {
-        return new BinarySearchTreeIterator<>(this, traversalType);
     }
 
 //------------------------------------------------------------------------------
@@ -689,7 +416,7 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
         if (node == null)
             return 0;
 
-        // Get highers of subtrees
+        // Get heights of subtrees
         int h1 = isBalanced(node.leftChild());
         int h2 = isBalanced(node.rightChild());
 
@@ -895,18 +622,6 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
 //------------------------------------------------------------------------------
 
     /**
-     * Returns an array of the keys in the tree in pre-order.
-     *
-     * @return Array of keys in the tree.
-     */
-    @SuppressWarnings("unused")
-    public K[] keys() {
-        return keys(DEFAULT_ORDER);
-    }
-
-//------------------------------------------------------------------------------
-
-    /**
      * Returns an array of the keys in the tree in a specified order.
      *
      * @param traversalType Specified order.
@@ -1055,18 +770,6 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
         }
 
         return arrayList;
-    }
-
-//------------------------------------------------------------------------------
-
-    /**
-     * Returns an ArrayList of key-value pairs in the tree in pre-order.
-     *
-     * @return Key-value pairs in ArrayList.
-     */
-    @SuppressWarnings("unused")
-    public ArrayList<Pair<K, V>> pairs() {
-        return pairs(DEFAULT_ORDER);
     }
 
 //------------------------------------------------------------------------------
@@ -1268,30 +971,6 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
 //------------------------------------------------------------------------------
 
     /**
-     * Removes a value from the tree. Note, avoid removing by value
-     * if possible, as we must first find the node, then remove it.
-     * Finding the node by value requires a full traversal of the tree,
-     * whereas removing by key performs a binary search on the keys. The remove
-     * operation is still O(n) in the worst case though because a simple binary search tree
-     * may be linear.
-     *
-     * @param value Specified value to remove.
-     * @return True if the specified value was present and removed from the tree.
-     */
-    @SuppressWarnings("unused")
-    public boolean removeValue(V value) {
-
-        // Find key via tree traversal
-        K key = getKey(value);
-
-        // If the key was not found, return false,
-        // otherwise proceed to remove the key
-        return key != null && remove(key);
-    }
-
-//------------------------------------------------------------------------------
-
-    /**
      * Returns a pointer the root node of the tree.
      *
      * @return Pointer to root of tree
@@ -1366,69 +1045,13 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
 //------------------------------------------------------------------------------
 
     /**
-     * Returns a String representation of the tree
-     * in a specified order.
-     *
-     * @param traversalType Specified order to traverse the tree
-     * @return String representation of the tree
-     */
-    public String toString(int traversalType) {
-        K[] array;
-
-        switch (traversalType) {
-            case IN_ORDER:    array = this.keys(IN_ORDER);      break;
-            case PRE_ORDER:   array = this.keys(PRE_ORDER);     break;
-            case POST_ORDER:  array = this.keys(POST_ORDER);    break;
-            case LEVEL_ORDER: array = this.keys(LEVEL_ORDER);   break;
-            default:          array = this.keys(DEFAULT_ORDER); break;
-        }
-
-        return Util.ArrayToString(array);
-    }
-
-//------------------------------------------------------------------------------
-
-    /**
-     * Returns the tree as a {@code String} in tree format
-     * for visualization.
-     *
-     * @return String representation of tree (vertical)
-     */
-    public String toTreeString() {
-
-        return this.toTreeString(VERTICAL_TREE_STRING);
-    }
-
-//------------------------------------------------------------------------------
-
-    /**
-     * Returns the tree as a {@code String} in specified orientation.
-     *
-     * @param orientation Specified orientation.
-     * @return String of tree.
-     */
-    @SuppressWarnings("unused")
-    public String toTreeString(int orientation) {
-        String string;
-
-        switch (orientation) {
-            case HORIZONTAL_TREE_STRING: string = this.toTreeStringHorizontal();           break;
-            case VERTICAL_TREE_STRING:   string = this.toTreeStringVertical();             break;
-            default:                     string = this.toTreeStringVertical();             break;
-        }
-
-        return string;
-    }
-
-//------------------------------------------------------------------------------
-
-    /**
      * Returns tree as String on it's side.
      *
      * @return String representation of tree.
      */
+    @Override
     @SuppressWarnings("unused")
-    private String toTreeStringVertical() {
+    public String toTreeStringVertical() {
         return this.toTreeStringVertical("", true, "", root);
     }
 
@@ -1510,24 +1133,13 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
 //------------------------------------------------------------------------------
 
     /**
+     * Returns String representation of tree horizontally.
      *
-     * @return
+     * @return Tree string.
      */
     @SuppressWarnings("unused")
-    private String toTreeStringHorizontal() {
+    public String toTreeStringHorizontal() {
         return "";
-    }
-
-//------------------------------------------------------------------------------
-
-    /**
-     * Returns an array of the values in the tree in pre-order.
-     *
-     * @return Array of values in pre-order.
-     */
-    @SuppressWarnings("unused")
-    public V[] values() {
-        return this.values(DEFAULT_ORDER);
     }
 
 //------------------------------------------------------------------------------
@@ -1552,6 +1164,8 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
 
         return arrayList.toArray((V[]) new Object[0]);
     }
+
+//------------------------------------------------------------------------------
 
     /**
      *
@@ -1938,52 +1552,4 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
         }
     }
 
-//==============================================================================
-
-    /**
-     * Iterator for BinarySearchTrees.
-     *
-     * @author Jabari Dash
-     * @param <K> Generic type for keys that must be comparable
-     * @param <V> Generic type for values.
-     */
-    public static class BinarySearchTreeIterator<K extends Comparable, V> implements Iterator<Pair<K, V>> {
-        private Iterator<Pair<K, V>> iterator;
-
-        /**
-         * Initializes the iterator with a specified tree, and its ArrayLis of pairs in
-         * a specified order.
-         *
-         * @param tree Tree to instantiate iterator from.
-         * @param traversalType Order in which to return the pairs.
-         */
-        @SuppressWarnings("unused")
-        private BinarySearchTreeIterator(BinarySearchTree<K, V> tree, int traversalType) {
-            this.iterator = tree.pairs(traversalType).iterator();
-        }
-
-//------------------------------------------------------------------------------
-
-        /**
-         * Determines whether or not there are more pairs in traversal.
-         *
-         * @return True if all pairs have not been seen.
-         */
-        @Override
-        public boolean hasNext() {
-            return iterator.hasNext();
-        }
-
-//------------------------------------------------------------------------------
-
-        /**
-         * Returns next pair in traversal.
-         *
-         * @return Next pair, if any.
-         */
-        @Override
-        public Pair<K, V> next() {
-            return iterator.next();
-        }
-    }
 }

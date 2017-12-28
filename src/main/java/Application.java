@@ -1,14 +1,18 @@
-import structures.trees.BinarySearchTree;
+import structures.trees.AVLTree;
 import structures.commons.Pair;
+import structures.trees.BinarySearchTree;
+import structures.trees.Tree;
 
 /**
  *
  */
 public final class Application {
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
-    Integer[] sorted = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    Integer[] single = {1};
+    Integer[] two = {1, 2};
+    Integer[] sorted = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
     Integer[] unbalanced = {1, 2, 3, 4, 5, 6};
     Integer[] balancedIncompleteFull = {7, 3, 1, 5, 4, 6, 11, 9, 13, 8, 10};
     Integer[] balancedIncompleteNotFull = {7, 3, 1, 5, 6, 11, 9, 13, 8, 10};
@@ -24,9 +28,15 @@ public final class Application {
     pairs[4] = new Pair<Integer, String>(5, "Leonard");
     pairs[5] = new Pair<Integer, String>(6, "Ceazar");
 
-    BinarySearchTree<Integer, String> tree = new BinarySearchTree<>(perfect);
+    Integer[] data = perfect;
 
-    tree.display();
+    @SuppressWarnings("unchecked")
+    Tree<Integer, String> bstTree = new BinarySearchTree<>(data);
+    Tree<Integer, String> avlTree = new AVLTree<>(data);
+
+    avlTree.display();
+    bstTree.display();
+
   }
 
 }

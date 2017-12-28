@@ -1,6 +1,6 @@
 package structures.trees;
 
-public final class Heap {
+public final class Heap<K extends Comparable, V> {
 
 
     /**
@@ -52,5 +52,4 @@ public final class Heap {
 
         return true;
     }
-
 }
