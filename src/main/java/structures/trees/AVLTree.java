@@ -1,7 +1,5 @@
 package structures.trees;
 
-import static util.Util.max;
-
 /**
  * Self balanced AVL Tree.
  *
@@ -10,12 +8,6 @@ import static util.Util.max;
  * @param <V> Generic type for values.
  */
 public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, V> {
-
-    // Integer codes for rotation
-    private static final int LEFT_LEFT_ROTATION   = 0;
-    private static final int LEFT_RIGHT_ROTATION  = 1;
-    private static final int RIGHT_RIGHT_ROTATION = 2;
-    private static final int RIGHT_LEFT_ROTATION  = 3;
 
     /**
      * Initialize a BinarySearchTree with a specified
@@ -26,6 +18,24 @@ public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, 
     @SuppressWarnings("unused")
     public AVLTree(K[] keys) {
         super(keys);
+    }
+
+    /**
+     * Auxiliary function for calculating the
+     * balance factor of the tree. Note, though it
+     * does not technically override the balanceFactor() function
+     * in the superclass, this function computes balance factor
+     * in constant time because nodes are keeping track of their
+     * given heights. The balanceFactor() method in the superclass
+     * requires tree traversal, and thus takes linear time.
+     *
+     * @param node Pointer to node to start recursion from.
+     * @return Balance factor of tree that begins with the specified
+     * node as its root.
+     */
+    protected int balanceFactor(AVLTreeNode<K, V> node) {
+
+        return node == null ? 0 : height(node.leftChild()) - height(node.rightChild());
     }
 
     /**
@@ -88,16 +98,19 @@ public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, 
         }
 
         // Compare the keys
-        int comparison = node.key().compareTo(key);
-
+        int comparison = key.compareTo(node.key());
 
         // Less than
-        if (comparison > 0) {
+        if (comparison < 0) {
             node.leftChild(insert(node.leftChild(), key));
 
             // Greater than
-        } else {
+        } else if (comparison > 0) {
             node.rightChild(insert(node.rightChild(), key));
+
+        // No duplicates
+        } else {
+            return node;
         }
 
         // Set the height to the maximum height of left and right subtrees
@@ -110,20 +123,26 @@ public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, 
         // check four cases in which subtrees can be unbalanced
 
         // Left Left
-        if (balance > 1 && key.compareTo(node.leftChild().key()) < 0)
-            return rotate(node, LEFT_LEFT_ROTATION);
-
-        // Right Right
-        if (balance < -1 && key.compareTo(node.rightChild().key()) > 0)
-            return rotate(node, RIGHT_RIGHT_ROTATION);
+        if (balance > 1 && key.compareTo(node.leftChild().key()) < 0) {
+            return rotateRight(node);
+        }
 
         // Left Right
-        if (balance > 1 && key.compareTo(node.leftChild().key()) > 0)
-            return rotate(node, LEFT_RIGHT_ROTATION);
+        if (balance > 1 && key.compareTo(node.leftChild().key()) > 0) {
+            node.leftChild(rotateLeft(node.leftChild()));
+            return rotateRight(node);
+        }
+
+        // Right Right
+        if (balance < -1 && key.compareTo(node.rightChild().key()) > 0) {
+            return rotateLeft(node);
+        }
 
         // Right Left
-        if (balance < -1 && key.compareTo(node.rightChild().key()) < 0)
-            return rotate(node, RIGHT_LEFT_ROTATION);
+        if (balance < -1 && key.compareTo(node.rightChild().key()) < 0) {
+            node.rightChild(rotateRight(node.rightChild()));
+            return rotateLeft(node);
+        }
 
         // Return unchanged pointer
         // (it was already balanced)
@@ -153,38 +172,6 @@ public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, 
     }
 
     /**
-     *
-     * @param node
-     * @param rotationType
-     * @return
-     */
-    @SuppressWarnings("unused")
-    private AVLTreeNode<K, V> rotate(AVLTreeNode<K, V> node, int rotationType) {
-
-        switch (rotationType) {
-            case LEFT_LEFT_ROTATION:
-                node = rotateRight(node);
-                break;
-
-            case RIGHT_RIGHT_ROTATION:
-                node = rotateLeft(node);
-                break;
-
-            case LEFT_RIGHT_ROTATION:
-                node.leftChild(rotateLeft(node.leftChild()));
-                node = rotateRight(node);
-                break;
-
-            case RIGHT_LEFT_ROTATION:
-                node.rightChild(rotateRight(node.rightChild()));
-                node = rotateLeft(node);
-                break;
-        }
-
-        return node;
-    }
-
-    /**
      * Perform left left rotation on specified node.
      *
      * @param x Node to perform rotation on.
@@ -200,11 +187,11 @@ public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, 
         x.rightChild(T2);
 
         //  Update heights
-        x.height(max(height(x.leftChild()),
-                   height(x.rightChild())) + 1);
+        x.height = Math.max(height(x.leftChild()),
+                   height(x.rightChild())) + 1;
 
-        y.height(max(height(y.leftChild()),
-                       height(y.rightChild())) + 1);
+        y.height = Math.max(height(y.leftChild()),
+                       height(y.rightChild())) + 1;
 
         // Return new root
         return y;
@@ -218,27 +205,20 @@ public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, 
      */
     @SuppressWarnings("unused")
     private AVLTreeNode<K, V> rotateRight(AVLTreeNode<K, V> y) {
-        AVLTreeNode<K, V> x;
-        AVLTreeNode<K, V> T2;
-
-        // Get nodes
-        x = y.leftChild();
-        T2 = x.rightChild();
+        AVLTreeNode<K, V> x = y.leftChild();
+        AVLTreeNode<K, V> T2 = x.rightChild();
 
         // Perform rotation
         x.rightChild(y);
         y.leftChild(T2);
 
         // Calculate new heights
-        int hy = max(height(y.leftChild()),
-                     height(y.rightChild())) + 1;
-
-        int hx = max(height(x.leftChild()),
-                     height(x.rightChild())) + 1;
-
         // Update height
-        y.height(hy);
-        x.height(hx);
+        y.height = Math.max(height(y.leftChild()),
+                height(y.rightChild())) + 1;;
+
+        x.height = Math.max(height(x.leftChild()),
+                height(x.rightChild())) + 1;
 
         // Return root
         return x;

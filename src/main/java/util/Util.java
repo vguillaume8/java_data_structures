@@ -12,18 +12,6 @@ import java.util.Arrays;
 public final class Util {
 
     /**
-     * Returns the maximum between two integers.
-     *
-     * @param a First integer.
-     * @param b Second integer.
-     * @return The larger of the two.
-     */
-    @SuppressWarnings("unused")
-    public static int max(int a, int b) {
-        return a > b ? a : b;
-    }
-
-    /**
      * Determines whether or not an {@code IndexedDataStructure} is
      * sorted in ascending order.
      *

@@ -50,15 +50,6 @@ public interface Tree<K, V> extends DataStructure<K>, Iterable<Pair<K, V>> {
     int VERTICAL_TREE_STRING = 6;
 
     /**
-     * Returns the balance factor of the tree. The balance factor
-     * of a tree is the difference between the heights of the left
-     * subtree and the right subtree.
-     *
-     * @return Balance factor of the tree.
-     */
-    int balanceFactor();
-
-    /**
      * Determines whether or not a specified key is present in the tree.
      *
      * @param key Key to search for in tree.
@@ -107,7 +98,6 @@ public interface Tree<K, V> extends DataStructure<K>, Iterable<Pair<K, V>> {
         System.out.println(this.getClass().getSimpleName());
         System.out.println("Size: "           + this.size());
         System.out.println("Height: "         + this.height());
-        System.out.println("Balance factor: " + this.balanceFactor());
         System.out.println("Balanced: "     + this.isBalanced());
         System.out.println("Full: "         + this.isFull());
         System.out.println("Complete: "     + this.isComplete());

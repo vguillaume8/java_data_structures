@@ -12,6 +12,9 @@ public final class Application {
 
   public static void main(String[] args) throws Exception {
 
+    BinarySearchTree<Integer, Object> avlTree;
+    BinarySearchTree<Integer, Object> bstTree;
+
     Integer[] empty = {};
     Integer[] single = {1};
     Integer[] two = {1, 2};
@@ -22,6 +25,8 @@ public final class Application {
     Integer[] fullAndIncomplete = {7, 3, 1, 5, 2, 0, 4, 6, 11, 9, 13, 8};
     Integer[] fullAndComplete = {7, 3, 1, 5, 2, 0, 4, 6, 11, 9, 13};
     Integer[] perfect = {7, 3, 1, 5, 0, 2, 4, 6, 11, 9, 13, 8, 10, 12, 14};
+    Integer[] halfHalf = {5, 4, 3, 2, 1, 6, 7, 8, 9};
+    Integer[] example = {10, 20, 30, 40, 50, 25};
 
     ArrayList<Integer[]> arrayList = new ArrayList<>();
 
@@ -35,16 +40,18 @@ public final class Application {
     arrayList.insert(fullAndIncomplete);
     arrayList.insert(fullAndComplete);
     arrayList.insert(perfect);
+    arrayList.insert(halfHalf);
+    arrayList.insert(example);
 
     for (Integer[] intArray : arrayList) {
 
       System.out.println("Input array: " + Util.ArrayToString(intArray));
 
-      BinarySearchTree<Integer, Object> tree = new AVLTree<>(intArray);
+      avlTree = new AVLTree<>(intArray);
+      bstTree = new BinarySearchTree<>(intArray);
 
-      tree.display();
-
-
+//      bstTree.display();
+      avlTree.display();
     }
 
   }

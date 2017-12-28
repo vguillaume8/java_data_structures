@@ -82,33 +82,6 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
         }
     }
 
-    /**
-     * Auxiliary function for calculating the
-     * balance factor of the tree.
-     *
-     * @param node Pointer to node to start recursion from.
-     * @return Balance factor of tree that begins with the specified
-     * node as its root.
-     */
-    protected int balanceFactor(BinarySearchTreeNode<K, V> node) {
-
-        return node == null ? 0 : height(node.leftChild()) - height(node.rightChild());
-    }
-
-//------------------------------------------------------------------------------
-
-    /**
-     * Returns the balance factor of the tree. The balance factor
-     * of a tree is the difference between the heights of the left
-     * subtree and the right subtree.
-     *
-     * @return Balance factor of the tree.
-     */
-    @SuppressWarnings("unused")
-    public int balanceFactor() {
-        return balanceFactor(root);
-    }
-
 //------------------------------------------------------------------------------
 
     /**
@@ -413,7 +386,46 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
     @SuppressWarnings("unused")
     public boolean isBalanced() {
 
-        return empty() || Math.abs(balanceFactor(root)) < 2;
+        return empty() || isBalanced(root) > -1;
+    }
+
+    /**
+     * Returns true if the tree is balanced.
+     *
+     * @param node Node to start recursion from.
+     * @return True if the above condition is met.
+     */
+    private int isBalanced(BinarySearchTreeNode<K, V> node) {
+        if (node == null)
+            return 0;
+
+        // Get heights of subtrees
+        int h1 = isBalanced(node.leftChild());
+        int h2 = isBalanced(node.rightChild());
+
+        // If either or the subtrees are not
+        // height balanced, we propagate the
+        // -1 back up the tree because we kno
+        // if a subtree is not balanced, the whole
+        // tree is unbalanced, and thus we do not
+        // need to continue traversing the tree.
+        if (h1 == -1 || h2 == -1)
+            return -1;
+
+        // If they differ by more than 1,
+        // then we return -1, signalling
+        // that the tree at this node is not
+        // height balanced
+        if (Math.abs(h1 - h2) > 1)
+            return -1;
+
+        // Pick the max between left and right subtree
+        // heights, and add 1 to include the level that we
+        // are currently at.
+        if (h1 > h2)
+            return h1 + 1;
+        else
+            return h2 + 1;
     }
 
 //------------------------------------------------------------------------------
@@ -1316,6 +1328,7 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
          * @return True if the values was inserted, false otherwise
          */
         protected boolean insert(K key) {
+
             return this.insert(key, null);
         }
 
