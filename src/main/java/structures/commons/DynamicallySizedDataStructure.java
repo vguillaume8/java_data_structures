@@ -10,7 +10,7 @@ import structures.commons.DataStructure;
  */
 public abstract class DynamicallySizedDataStructure<T> implements DataStructure<T> {
 
-    private int size;   // Tracks the number of values in the structure
+    protected int size;   // Tracks the number of values in the structure
 
     public DynamicallySizedDataStructure() {
         this.size = 0;

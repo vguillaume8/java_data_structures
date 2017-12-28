@@ -1,7 +1,6 @@
 package structures.commons;
 
-import util.Util;
-
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.StringJoiner;
@@ -189,7 +188,7 @@ public abstract class ChainedDataStructure<T> extends DynamicallySizedDataStruct
     @SuppressWarnings("uncheck")
     public T[] toArray(T[] array) {
 
-        array = (T[]) Util.ArrayCopy(array, this.size(), array.getClass());
+        array = (T[]) Arrays.copyOf(array, this.size(), array.getClass());
 
         int i = 0;
 
@@ -345,6 +344,8 @@ public abstract class ChainedDataStructure<T> extends DynamicallySizedDataStruct
 
                 // Otherwise, we must recurse to the end
             } else {
+
+                // TODO - VERY VERY DANGEROUS GET RID OF THIS IMMEDIATELY
                 this.next().insert(value);
             }
 

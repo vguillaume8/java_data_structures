@@ -1,9 +1,8 @@
 import structures.trees.AVLTree;
-import structures.commons.Pair;
 import structures.trees.BinarySearchTree;
-import structures.trees.Tree;
 import structures.vectors.ArrayList;
-import util.Util;
+
+import java.util.Arrays;
 
 /**
  *
@@ -12,6 +11,7 @@ public final class Application {
 
   public static void main(String[] args) throws Exception {
 
+    BinarySearchTree<Integer, Object> tree;
     BinarySearchTree<Integer, Object> avlTree;
     BinarySearchTree<Integer, Object> bstTree;
 
@@ -45,13 +45,14 @@ public final class Application {
 
     for (Integer[] intArray : arrayList) {
 
-      System.out.println("Input array: " + Util.ArrayToString(intArray));
+      System.out.println("Input array: " + Arrays.toString(intArray));
 
       avlTree = new AVLTree<>(intArray);
-      bstTree = new BinarySearchTree<>(intArray);
 
-//      bstTree.display();
-      avlTree.display();
+      System.out.println(avlTree.toTreeString());
+
+      if (!avlTree.isBalanced())
+        System.exit(1);
     }
 
   }

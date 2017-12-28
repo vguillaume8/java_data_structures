@@ -7,17 +7,17 @@ import structures.vectors.Queue;
 import structures.commons.DynamicallySizedDataStructure;
 
 /**
- * Implementation of Binary Search Tree.
+ * Implementation of Binary Search BinaryTree.
  *
  * @param <K> Generic type for keys (must extend java.lang.Comparable)
  * @param <V> Generic type for values
  */
-public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedDataStructure<K> implements Tree<K, V> {
+public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedDataStructure<K> implements BinaryTree<K, V> {
 
     /**
      * Pointer to root node of the BinarySearchTree
      */
-    private BinarySearchTreeNode<K, V> root;
+    protected BinarySearchTreeNode<K, V> root;
 
 //------------------------------------------------------------------------------
 
@@ -27,7 +27,7 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
     @SuppressWarnings("unused")
     public BinarySearchTree() {
         super();
-        this.root(null);
+        this.root = null;
     }
 
 //------------------------------------------------------------------------------
@@ -117,7 +117,7 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
 
         // If we found the value, we must check that
         // their values are equal
-        return value.equals(found.value());
+        return value.equals(found.value);
     }
 
 //------------------------------------------------------------------------------
@@ -184,7 +184,7 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
     public boolean empty() {
 
         // Empty is defined as size 0, and root node is null
-        return this.size() == 0 && this.root() == null;
+        return this.size() == 0 && this.root == null;
     }
 
 //------------------------------------------------------------------------------
@@ -204,18 +204,18 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
         if (node != null) {
 
             // node.key == key
-            if (node.key().equals(key)) {
+            if (node.key.equals(key)) {
                 return node;
             }
 
             // If node.key < key
-            else if (key.compareTo(node.key()) < 0) {
-                return find(node.leftChild(), key);
+            else if (key.compareTo(node.key) < 0) {
+                return find(node.leftChild, key);
             }
 
             // If node.key > key
             else {
-                return find(node.rightChild(), key);
+                return find(node.rightChild, key);
             }
         }
 
@@ -235,43 +235,11 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
     public V get(K key) {
 
         // Get node by key
-        BinarySearchTreeNode<K, V> gotten = get(key, root);
+        BinarySearchTreeNode<K, V> gotten = find(root, key);
 
         // If its null, we did not find it, so return null,
         // otherwise, return we found it, and return its value.
-        return gotten == null ? null : gotten.value();
-    }
-
-//------------------------------------------------------------------------------
-
-    /**
-     * Find value by key via Binary search.
-     *
-     * @param key Key to search for.
-     * @param node Node to start recursion from.
-     * @return True if the key is found.
-     */
-    private BinarySearchTreeNode<K, V> get(K key, BinarySearchTreeNode<K, V> node) {
-        if (node == null) {
-            return null;
-        }
-
-        // Compare the keys
-        int comparison = key.compareTo(node.key());
-
-        // If this node the one we are looking for?
-        if (comparison == 0) {
-            return node;
-
-        // Go left
-        } else if (comparison < 0) {
-
-            return get(key, node.leftChild());
-
-        // Go right
-        } else {
-            return get(key, node.rightChild());
-        }
+        return gotten == null ? null : gotten.value;
     }
 
 //------------------------------------------------------------------------------
@@ -286,15 +254,15 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
     private BinarySearchTreeNode<K, V> getByValue(BinarySearchTreeNode<K, V> node, V value) {
 
         // Check this value
-        if (node == null || value.equals(node.value())) {
+        if (node == null || value.equals(node.value)) {
             return node;
         }
 
         // Check to see if we found it on the left
-        BinarySearchTreeNode<K, V> left = getByValue(node.leftChild(), value);
+        BinarySearchTreeNode<K, V> left = getByValue(node.leftChild, value);
 
         // If the we found it on the left, return it, otherwise, check right
-        return left != null ? left : getByValue(node.rightChild(), value);
+        return left != null ? left : getByValue(node.rightChild, value);
     }
 
 //------------------------------------------------------------------------------
@@ -310,7 +278,7 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
     public K getKey(V value) {
         BinarySearchTreeNode<K, V> found = getByValue(root, value);
 
-        return found == null ? null : found.key();
+        return found == null ? null : found.key;
     }
 
 //------------------------------------------------------------------------------
@@ -322,7 +290,7 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
      */
     public int height() {
 
-        return height(this.root());
+        return height(root);
     }
 
 //------------------------------------------------------------------------------
@@ -331,13 +299,13 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
      * Determines the maximum depth (number of levels) in the tree.
      *
      * @param node Node to start recursion from.
-     * @return Number of levels in the Tree
+     * @return Number of levels in the BinaryTree
      */
-    private int height(BinarySearchTreeNode<K, V> node) {
+    protected int height(BinarySearchTreeNode<K, V> node) {
 
         // Pick the larger of the two, and add one to account
         // for the level that we are currently at.
-        return node == null ? 0 : Math.max(height(node.leftChild()), height(node.rightChild())) + 1;
+        return node == null ? 0 : Math.max(height(node.leftChild), height(node.rightChild)) + 1;
     }
 
 //------------------------------------------------------------------------------
@@ -350,25 +318,34 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
      * @return True if and only if the key is not already in the tree.
      */
     public boolean insert(K key, V value) {
-        boolean result;
+        int oldSize = this.size;
 
-        // If tree is empty, instantiate the root.
-        if (this.empty()) {
-            this.root(new BinarySearchTreeNode<K, V>(key, value,null, null));
-            result = true;
+        root = insert(root, key, value);
 
-        // Otherwise recursively insert the node
-        } else {
+        return oldSize != this.size;
+    }
 
-            result = this.root().insert(key, value);
+    protected BinarySearchTreeNode<K, V> insert(BinarySearchTreeNode<K, V> node, K key, V value) {
+
+        if (node == null) {
+            this.size++;
+
+            return new BinarySearchTreeNode<>(key, value);
         }
 
-        // If the node was successfully inserted
-        if (result) {
-            this.incrementSize();
+        int comparison = key.compareTo(node.key);
+
+        if (comparison < 0) {
+
+            node.leftChild = insert(node.leftChild, key, value);
+
+        } else if (comparison > 0) {
+
+            node.rightChild = insert(node.rightChild, key, value);
         }
 
-        return result;
+
+        return node;
     }
 
 //------------------------------------------------------------------------------
@@ -400,8 +377,8 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
             return 0;
 
         // Get heights of subtrees
-        int h1 = isBalanced(node.leftChild());
-        int h2 = isBalanced(node.rightChild());
+        int h1 = isBalanced(node.leftChild);
+        int h2 = isBalanced(node.rightChild);
 
         // If either or the subtrees are not
         // height balanced, we propagate the
@@ -471,8 +448,8 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
             temp = queue.remove();
 
             // Get the children
-            left = temp.leftChild();
-            right = temp.rightChild();
+            left = temp.leftChild;
+            right = temp.rightChild;
 
             // Check if the node has a left child
             if (left != null) {
@@ -540,12 +517,12 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
         }
 
         // Get the left and right children
-        left = node.leftChild();
-        right = node.rightChild();
+        left = node.leftChild;
+        right = node.rightChild;
 
         // Either both must not be null
         if (left != null && right != null) {
-            return isFull(node.leftChild()) && isFull(node.rightChild());
+            return isFull(node.leftChild) && isFull(node.rightChild);
         }
 
         // Or both must be null
@@ -585,8 +562,8 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
         }
 
         // Get the left and right children
-        left = node.leftChild();
-        right = node.rightChild();
+        left = node.leftChild;
+        right = node.rightChild;
 
         // If both children are null, we just need
         // to make sure the levels are the same
@@ -654,9 +631,9 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
             return arrayList;
         }
 
-        arrayList = keysToArrayListInOrder(node.leftChild(), arrayList);
-        arrayList.insert(node.key());
-        arrayList = keysToArrayListInOrder(node.rightChild(), arrayList);
+        arrayList = keysToArrayListInOrder(node.leftChild, arrayList);
+        arrayList.insert(node.key);
+        arrayList = keysToArrayListInOrder(node.rightChild, arrayList);
 
         return arrayList;
     }
@@ -675,9 +652,9 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
             return arrayList;
         }
 
-        arrayList.insert(node.key());
-        arrayList = keysToArrayListPreOrder(node.leftChild(), arrayList);
-        arrayList = keysToArrayListPreOrder(node.rightChild(), arrayList);
+        arrayList.insert(node.key);
+        arrayList = keysToArrayListPreOrder(node.leftChild, arrayList);
+        arrayList = keysToArrayListPreOrder(node.rightChild, arrayList);
 
         return arrayList;
     }
@@ -696,9 +673,9 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
             return arrayList;
         }
 
-        arrayList = keysToArrayListPostOrder(node.leftChild(), arrayList);
-        arrayList = keysToArrayListPostOrder(node.rightChild(), arrayList);
-        arrayList.insert(node.key());
+        arrayList = keysToArrayListPostOrder(node.leftChild, arrayList);
+        arrayList = keysToArrayListPostOrder(node.rightChild, arrayList);
+        arrayList.insert(node.key);
 
         return arrayList;
     }
@@ -735,11 +712,11 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
 
             // Remove from queue, and insert into ArrayList
             temp = queue.remove();
-            arrayList.insert(temp.key());
+            arrayList.insert(temp.key);
 
             // Get children
-            left = temp.leftChild();
-            right = temp.rightChild();
+            left = temp.leftChild;
+            right = temp.rightChild;
 
             // Check left
             if (left != null) {
@@ -805,9 +782,9 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
             return arrayList;
         }
 
-        arrayList = pairsToArrayListInOrder(node.leftChild(), arrayList);
-        arrayList.insert(node.toPair());
-        arrayList = pairsToArrayListInOrder(node.rightChild(), arrayList);
+        arrayList = pairsToArrayListInOrder(node.leftChild, arrayList);
+        arrayList.insert(node);
+        arrayList = pairsToArrayListInOrder(node.rightChild, arrayList);
 
         return arrayList;
     }
@@ -826,9 +803,9 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
             return arrayList;
         }
 
-        arrayList.insert(node.toPair());
-        arrayList = pairsToArrayListPreOrder(node.leftChild(), arrayList);
-        arrayList = pairsToArrayListPreOrder(node.rightChild(), arrayList);
+        arrayList.insert(node);
+        arrayList = pairsToArrayListPreOrder(node.leftChild, arrayList);
+        arrayList = pairsToArrayListPreOrder(node.rightChild, arrayList);
 
         return arrayList;
     }
@@ -847,9 +824,9 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
             return arrayList;
         }
 
-        arrayList = pairsToArrayListPostOrder(node.leftChild(), arrayList);
-        arrayList = pairsToArrayListPostOrder(node.rightChild(), arrayList);
-        arrayList.insert(node.toPair());
+        arrayList = pairsToArrayListPostOrder(node.leftChild, arrayList);
+        arrayList = pairsToArrayListPostOrder(node.rightChild, arrayList);
+        arrayList.insert(node);
 
         return arrayList;
     }
@@ -888,11 +865,11 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
 
             // Remove from queue, and insert into ArrayList
             temp = queue.remove();
-            arrayList.insert(temp.toPair());
+            arrayList.insert(temp);
 
             // Get children
-            left = temp.leftChild();
-            right = temp.rightChild();
+            left = temp.leftChild;
+            right = temp.rightChild;
 
             // Check left
             if (left != null) {
@@ -929,12 +906,12 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
         } else {
 
             // If the key we want to remove is at the root
-            if (root.key().equals(key)) {
-                BinarySearchTreeNode<K, V> auxRoot = new BinarySearchTreeNode<K, V>();
+            if (root.key.equals(key)) {
+                BinarySearchTreeNode<K, V> auxRoot = new BinarySearchTreeNode<K, V>(null, null);
 
-                auxRoot.leftChild(root);
+                auxRoot.leftChild = root;
                 result = root.remove(auxRoot, key);
-                root = auxRoot.leftChild();
+                root = auxRoot.leftChild;
             }
 
             // If the key might be somewhere in the tree
@@ -949,28 +926,6 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
         }
 
         return result;
-    }
-
-//------------------------------------------------------------------------------
-
-    /**
-     * Returns a pointer the root node of the tree.
-     *
-     * @return Pointer to root of tree
-     */
-    protected BinarySearchTreeNode<K, V> root() {
-        return this.root;
-    }
-
-//------------------------------------------------------------------------------
-
-    /**
-     * Sets the root pointer to a specified node
-     *
-     * @param root New root
-     */
-    protected void root(BinarySearchTreeNode<K, V> root) {
-        this.root = root;
     }
 
 //------------------------------------------------------------------------------
@@ -1038,6 +993,8 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
         return this.toTreeStringVertical("", true, "", root);
     }
 
+//------------------------------------------------------------------------------
+
     /**
      * Auxiliary function to return tree as String on it's side.
      *
@@ -1059,8 +1016,8 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
         }
 
         // Get children nodes
-        left = node.leftChild();
-        right = node.rightChild();
+        left = node.leftChild;
+        right = node.rightChild;
 
         // If the right child is not null
         if (right != null) {
@@ -1076,7 +1033,7 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
         tree = path(top, tree + prefix, "└──", "┌──");
 
         // Append this node to the tree
-        tree += " " + node.key() + "\n";
+        tree += " " + node.key + "\n";
 
         // If the left child is not null
         if (left != null) {
@@ -1118,7 +1075,7 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
     /**
      * Returns String representation of tree horizontally.
      *
-     * @return Tree string.
+     * @return BinaryTree string.
      */
     @SuppressWarnings("unused")
     public String toTreeStringHorizontal() {
@@ -1162,12 +1119,14 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
             return arrayList;
         }
 
-        arrayList = valuesToArrayListInOrder(node.leftChild(), arrayList);
-        arrayList.insert(node.value());
-        arrayList = valuesToArrayListInOrder(node.rightChild(), arrayList);
+        arrayList = valuesToArrayListInOrder(node.leftChild, arrayList);
+        arrayList.insert(node.value);
+        arrayList = valuesToArrayListInOrder(node.rightChild, arrayList);
 
         return arrayList;
     }
+
+//------------------------------------------------------------------------------
 
     /**
      *
@@ -1181,12 +1140,14 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
             return arrayList;
         }
 
-        arrayList.insert(node.value());
-        arrayList = valuesToArrayListPreOrder(node.leftChild(), arrayList);
-        arrayList = valuesToArrayListPreOrder(node.rightChild(), arrayList);
+        arrayList.insert(node.value);
+        arrayList = valuesToArrayListPreOrder(node.leftChild, arrayList);
+        arrayList = valuesToArrayListPreOrder(node.rightChild, arrayList);
 
         return arrayList;
     }
+
+//------------------------------------------------------------------------------
 
     /**
      *
@@ -1200,12 +1161,14 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
             return arrayList;
         }
 
-        arrayList = valuesToArrayListPostOrder(node.leftChild(), arrayList);
-        arrayList = valuesToArrayListPostOrder(node.rightChild(), arrayList);
-        arrayList.insert(node.value());
+        arrayList = valuesToArrayListPostOrder(node.leftChild, arrayList);
+        arrayList = valuesToArrayListPostOrder(node.rightChild, arrayList);
+        arrayList.insert(node.value);
 
         return arrayList;
     }
+
+//------------------------------------------------------------------------------
 
     /**
      *
@@ -1239,11 +1202,11 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
 
             // Remove from queue, and insert into ArrayList
             temp = queue.remove();
-            arrayList.insert(temp.value());
+            arrayList.insert(temp.value);
 
             // Get children
-            left = temp.leftChild();
-            right = temp.rightChild();
+            left = temp.leftChild;
+            right = temp.rightChild;
 
             // Check left
             if (left != null) {
@@ -1268,177 +1231,66 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
     protected static class BinarySearchTreeNode<K extends Comparable, V> extends Pair<K, V> {
 
         /**
+         * Key of the node
+         */
+        K key;
+
+        /**
+         * Value of the node
+         */
+        V value;
+
+        /**
          * Pointer to left child
          */
-        private BinarySearchTreeNode<K, V> leftChild;
+        protected BinarySearchTreeNode<K, V> leftChild;
 
         /**
          * Pointer to right child
          */
-        private BinarySearchTreeNode<K, V> rightChild;
+        protected BinarySearchTreeNode<K, V> rightChild;
 
-//------------------------------------------------------------------------------
 
         /**
-         * Initializes a new tree node with its key
-         * and pointers to both its left and right child
-         *
-         * @param key Values of the node
-         * @param leftChild Left child of node
-         * @param rightChild Right child of node
+         * 
+         * @param key
+         * @param value
          */
         @SuppressWarnings("unused")
-        protected BinarySearchTreeNode(K key, BinarySearchTreeNode<K, V> leftChild, BinarySearchTreeNode<K, V> rightChild) {
-            this(key, null, leftChild, rightChild);
+        protected BinarySearchTreeNode(K key, V value) {
+            this.key = key;
+            this.value = value;
         }
-
-//------------------------------------------------------------------------------
-
-        /**
-         * Initializes a new tree node with its key, value,
-         * and pointers to both its left and right child.
-         *
-         * @param key Designated key.
-         * @param value Designated value.
-         * @param leftChild Designated left child.
-         * @param rightChild Designated right child.
-         */
-        protected BinarySearchTreeNode(K key, V value, BinarySearchTreeNode<K, V> leftChild, BinarySearchTreeNode<K, V> rightChild) {
-            super(key, value);
-            this.leftChild(leftChild);
-            this.rightChild(rightChild);
-        }
-
-//------------------------------------------------------------------------------
-
-        /**
-         * Constructs empty Node.
-         */
-        protected BinarySearchTreeNode() {
-            this(null, null, null, null);
-        }
-
-
-//------------------------------------------------------------------------------
-
-        /**
-         * Insert a key into the tree.
-         *
-         * @param key Value to insert into the tree
-         * @return True if the values was inserted, false otherwise
-         */
-        protected boolean insert(K key) {
-
-            return this.insert(key, null);
-        }
-
-//------------------------------------------------------------------------------
-
-        /**
-         * Inserts a node into the tree of nodes. This is an auxiliary function
-         * that is called by the {@code insert()} method in the actual tree object.
-         *
-         * @param key Designated key.
-         * @param value Designated value.
-         * @return True if and only if the insertion is successful. An insertion would fail if the key is
-         * already present in the tree.
-         */
-        protected boolean insert(K key, V value) {
-            boolean result = false;
-
-            // key < this.key
-            if (key.compareTo(this.key()) < 0) {
-
-                if (this.leftChild() == null) {
-                    this.leftChild(new BinarySearchTreeNode<K, V>(key, value,null, null));
-                    result = true;
-                } else {
-                    return this.leftChild().insert(key, value);
-                }
-
-                // key > this.key
-            } else if (key.compareTo(this.key()) > 0) {
-
-                if (this.rightChild() == null) {
-                    this.rightChild(new BinarySearchTreeNode<K, V>(key, value,null, null));
-                    result = true;
-                } else {
-                    return this.rightChild().insert(key, value);
-                }
-            }
-
-            return result;
-        }
-
-//------------------------------------------------------------------------------
-
-        /**
-         * Returns the pointer to the left child of this node.
-         *
-         * @return Left child pointer.
-         */
-        protected BinarySearchTreeNode<K, V> leftChild() {
-            return this.leftChild;
-        }
-
-//------------------------------------------------------------------------------
-
-        /**
-         * Sets the left child pointer of this node.
-         *
-         * @param leftChild New left child.
-         */
-        protected void leftChild(BinarySearchTreeNode<K, V> leftChild) {
-            this.leftChild = leftChild;
-        }
-
-//------------------------------------------------------------------------------
-
-        /**
-         * Returns a pointer to the node with the highest key in the tree.
-         *
-         * @param node Node to start traversing from.
-         * @return Pointer to node with highest key.
-         */
-        protected BinarySearchTreeNode<K, V> maxNode(BinarySearchTreeNode<K, V> node) {
-
-            // Go as far right as possible
-            return node.rightChild() == null ? this : node.rightChild().minNode(node.rightChild());
-        }
-
-//------------------------------------------------------------------------------
-
-        /**
-         * Returns the key of the node in the tree with with highest key.
-         *
-         * @return Highest key in the tree.
-         */
-        @SuppressWarnings("unused")
-        protected K  maxKey() {
-            return this.maxNode(this).key();
-        }
-
-//------------------------------------------------------------------------------
 
         /**
          *
-         * @param node
          * @return
          */
+        @Override
+        public K key() {
+            return this.key;
+        }
+
+        /**
+         *
+         * @param key The new key.
+         */
+        @Override
+        public void key (K key) {
+            this.key = key;
+        }
+
+//------------------------------------------------------------------------------
+
+        // TODO - Remove from node class, put in tree class
+
         protected BinarySearchTreeNode<K, V> minNode(BinarySearchTreeNode<K, V> node) {
 
+            if (node == null)
+                return null;
+
             // Go as far left as possible
-            return node.leftChild() == null ? this : node.leftChild().minNode(node.leftChild());
-        }
-
-//------------------------------------------------------------------------------
-
-        /**
-         *
-         * @return
-         */
-        protected K minKey() {
-            return minNode(this).key();
+            return node.leftChild == null ? node : minNode(node.leftChild);
         }
 
 //------------------------------------------------------------------------------
@@ -1451,89 +1303,60 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
          */
         protected boolean remove(BinarySearchTreeNode<K, V> parent, K key) {
 
-            int comparison = key.compareTo(this.key());
+            // Compare the key of current node in tree, and
+            // the key we would like to remove
+            int comparison = key.compareTo(this.key);
 
             // Look left
             if (comparison < 0) {
 
-                // If there is a left child
-                if (this.leftChild() != null) {
-                    return this.leftChild().remove(this, key);
-                }
-
-                else
-                    return false;
+                // If there is no left child, the key was not in the tree, return false, otherwise,
+                // continue to recurse down the tree looking to the remove the key
+                return this.leftChild != null && this.leftChild.remove(this, key);
 
                 // Look right
             } else if (comparison > 0) {
 
-                // If there is a right child
-                if (this.rightChild() != null) {
-                    return this.rightChild().remove(this, key);
-                }
+                // If there is no right child, the key was not in the tree, return false, otherwise,
+                // continue to recurse down the tree looking to the remove the key
+                return this.rightChild != null && this.rightChild.remove(this, key);
 
-                else
-                    return false;
-
-                // Found it
+            // Found it, now we need to account for different cases
             } else {
 
-                // Two children
-                if (this.leftChild() != null && this.rightChild() != null) {
+                // The node we want to remove has two children
+                if (this.leftChild != null && this.rightChild != null) {
 
-                    this.key(this.rightChild().minKey());
-                    this.rightChild().remove(this, this.key());
+                    // Bring the minimum value from the right subtree up
+                    // to the current level (overwriting the value we want to remove)
+                    this.key = rightChild.minNode(rightChild).key;
 
-                    // Left child
-                } else if (parent.leftChild() == this) {
+                    // Remove the key we just duplicated from its original position
+                    this.rightChild.remove(this, this.key);
 
-                    BinarySearchTreeNode<K, V> child = leftChild() != null ? leftChild() : rightChild();
+                    // The node we want to remove only has a left child
+                } else if (parent.leftChild == this) {
 
-                    parent.leftChild(child);
+                    parent.leftChild = leftChild != null ? leftChild : rightChild;
 
-                    // Right child
-                } else if (parent.rightChild() == this) {
+                    // The node we want to remove only has a right child
+                } else if (parent.rightChild == this) {
 
-                    BinarySearchTreeNode<K, V> child = (leftChild() != null) ? leftChild() : rightChild();
-                    parent.rightChild(child);
+                    parent.rightChild = (leftChild != null) ? leftChild : rightChild;
                 }
 
                 return true;
             }
         }
 
-//------------------------------------------------------------------------------
-
-        /**
-         * Returns the pointer to the right child.
-         *
-         * @return Right child pointer.
-         */
-        protected BinarySearchTreeNode<K, V> rightChild() {
-            return this.rightChild;
+        public V value() {
+            return this.value;
         }
 
-//------------------------------------------------------------------------------
-
-        /**
-         * Sets the right child pointer.
-         *
-         * @param rightChild New right child.
-         */
-        protected void rightChild(BinarySearchTreeNode<K, V> rightChild) {
-            this.rightChild = rightChild;
+        public void value(V value) {
+            this.value = value;
         }
 
-//------------------------------------------------------------------------------
-
-        /**
-         * Returns the node as a simple key-value pair.
-         *
-         * @return Key-value version of the node.
-         */
-        protected Pair<K, V> toPair() {
-            return new Pair<K, V>(this.key(), this.value());
-        }
     }
 
 }

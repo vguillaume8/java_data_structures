@@ -7,29 +7,8 @@ package structures.commons;
  * @param <K> Key parameter type.
  * @param <V> Value parameter type.
  */
-public class Pair<K, V> {
+public abstract class Pair<K, V> {
 
-    /**
-     * Key.
-     */
-    private K key;
-
-    /**
-     * Value.
-     */
-    private V value;
-
-    /**
-     * Constructs a new key-value pair.
-     *
-     * @param key Key
-     * @param value Value
-     */
-    @SuppressWarnings("unused")
-    public Pair(K key, V value) {
-        this.key(key);
-        this.value(value);
-    }
 
     /**
      * Override the equals() method, simple check that
@@ -64,9 +43,7 @@ public class Pair<K, V> {
      * @return The key.
      */
     @SuppressWarnings("unused")
-    public K key() {
-        return this.key;
-    }
+    public abstract K key();
 
     /**
      * Sets the key.
@@ -74,9 +51,7 @@ public class Pair<K, V> {
      * @param key The new key.
      */
     @SuppressWarnings("unused")
-    public void key(K key) {
-        this.key = key;
-    }
+    public abstract void key(K key);
 
     /**
      * Returns a JSON String representation of the pair.
@@ -88,8 +63,8 @@ public class Pair<K, V> {
         String k;
         String v;
 
-        k = key == null ? "null" : key.toString();
-        v = value == null ? "null" : value.toString();
+        k = key() == null ? "null" : key().toString();
+        v = value() == null ? "null" : value().toString();
 
         return "{key: " + k + ", value: " + v + "}";
     }
@@ -100,9 +75,7 @@ public class Pair<K, V> {
      * @return The value.
      */
     @SuppressWarnings("unused")
-    public V value() {
-        return this.value;
-    }
+    public abstract V value();
 
     /**
      * Sets the value.
@@ -110,7 +83,5 @@ public class Pair<K, V> {
      * @param value The new value.
      */
     @SuppressWarnings("unused")
-    public void value(V value) {
-        this.value = value;
-    }
+    public abstract void value(V value);
 }

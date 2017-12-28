@@ -1,7 +1,6 @@
 package structures.commons;
 
-import util.Util;
-
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.StringJoiner;
 
@@ -230,7 +229,7 @@ public abstract class DynamicallySizedArray<T> extends DynamicallySizedDataStruc
 
 
         try {
-            array = (T[]) Util.ArrayCopy(this.values, this.size(), array.getClass());
+            array = (T[]) Arrays.copyOf(this.values, this.size(), array.getClass());
 
         } catch (ArrayStoreException exception) {
 

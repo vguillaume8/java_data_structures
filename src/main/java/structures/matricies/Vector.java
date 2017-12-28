@@ -1,6 +1,6 @@
 package structures.matricies;
 
-import util.Util;
+import java.util.Arrays;
 
 public final class Vector<T> {
 
@@ -56,7 +56,7 @@ public final class Vector<T> {
     }
 
     public String toString() {
-        String string = Util.ArrayToString(this.toArray());
+        String string = Arrays.toString(this.toArray());
 
         string.replace('[', '<');
         string.replace(']', '>');
