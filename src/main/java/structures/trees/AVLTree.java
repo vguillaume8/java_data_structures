@@ -29,16 +29,17 @@ public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, 
     }
 
     /**
+     * Override the height function get height in {@code O(1)} time.
+     * We are taking advantage of the fact that nodes is AVL Trees
+     * store their heights, thus, we simply return the height value stored
+     * at the root value.
      *
-     * @param node
+     * @return Height of the tree.
      */
-    @SuppressWarnings("unused")
-    private int balanceFactor(AVLTreeNode<K, V> node) {
+    @Override
+    public int height() {
 
-        if (node != null)
-            return height(node.leftChild()) - height(node.rightChild());
-
-        return 0;
+      return height(root());
     }
 
     /**
@@ -46,11 +47,9 @@ public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, 
      * @param node
      */
     @SuppressWarnings("unused")
-    private int height(AVLTreeNode<K, V> node) {
-        if (node != null)
-            return node.height();
+    protected int height(AVLTreeNode<K, V> node) {
 
-        return 0;
+        return node == null ? 0 : node.height();
     }
 
     /**
@@ -102,7 +101,7 @@ public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, 
         }
 
         // Set the height to the maximum height of left and right subtrees
-        node.height(Math.max(height(node.leftChild()), height(node.rightChild())) + 1);
+        node.height = Math.max(height(node.leftChild()), height(node.rightChild())) + 1;
 
         // Get the balance factor
         int balance = balanceFactor(node);
@@ -129,19 +128,6 @@ public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, 
         // Return unchanged pointer
         // (it was already balanced)
         return node;
-    }
-
-    /**
-     * Determines whether the tree is height balanced. A height balanced
-     * tree is defined as...
-     *
-     * TODO - See why superclass isBalanced() returns false when this returns true
-     *
-     * @return True if and only if the above condition is true.
-     */
-    @Override
-    public boolean isBalanced() {
-        return Math.abs(balanceFactor(root())) < 2;
     }
 
     /**
@@ -276,7 +262,7 @@ public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, 
          * @param leftChild
          * @param rightChild
          */
-        public AVLTreeNode(K key, V value, AVLTreeNode<K, V> leftChild, AVLTreeNode<K, V> rightChild) {
+        private AVLTreeNode(K key, V value, AVLTreeNode<K, V> leftChild, AVLTreeNode<K, V> rightChild) {
             super(key, value, leftChild, rightChild);
             this.leftChild(leftChild);
             this.rightChild(rightChild);
@@ -288,7 +274,7 @@ public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, 
          * @return
          */
         @SuppressWarnings("unused")
-        public int height() {
+        private int height() {
             return this.height;
         }
 
@@ -297,7 +283,7 @@ public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, 
          * @param height
          */
         @SuppressWarnings("unused")
-        public void height(int height) {
+        private void height(int height) {
             this.height = height;
         }
 
@@ -317,7 +303,7 @@ public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, 
          * @param leftChild
          */
         @SuppressWarnings("unused")
-        private void leftChild(AVLTreeNode<K, V> leftChild) {
+        protected void leftChild(AVLTreeNode<K, V> leftChild) {
 
             super.leftChild(leftChild);
         }
@@ -326,6 +312,7 @@ public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, 
          *
          * @return
          */
+        @Override
         @SuppressWarnings("unused")
         protected AVLTreeNode<K, V> rightChild() {
             return (AVLTreeNode<K, V>) super.rightChild();

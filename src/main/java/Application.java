@@ -2,6 +2,8 @@ import structures.trees.AVLTree;
 import structures.commons.Pair;
 import structures.trees.BinarySearchTree;
 import structures.trees.Tree;
+import structures.vectors.ArrayList;
+import util.Util;
 
 /**
  *
@@ -10,6 +12,7 @@ public final class Application {
 
   public static void main(String[] args) throws Exception {
 
+    Integer[] empty = {};
     Integer[] single = {1};
     Integer[] two = {1, 2};
     Integer[] sorted = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
@@ -20,22 +23,29 @@ public final class Application {
     Integer[] fullAndComplete = {7, 3, 1, 5, 2, 0, 4, 6, 11, 9, 13};
     Integer[] perfect = {7, 3, 1, 5, 0, 2, 4, 6, 11, 9, 13, 8, 10, 12, 14};
 
-    Pair<Integer, String>[] pairs = new Pair[6];
-    pairs[0] = new Pair<Integer, String>(1, "Jabari");
-    pairs[1] = new Pair<Integer, String>(2, "Jalia");
-    pairs[2] = new Pair<Integer, String>(3, "Jelani");
-    pairs[3] = new Pair<Integer, String>(4, "Vanessa");
-    pairs[4] = new Pair<Integer, String>(5, "Leonard");
-    pairs[5] = new Pair<Integer, String>(6, "Ceazar");
+    ArrayList<Integer[]> arrayList = new ArrayList<>();
 
-    Integer[] data = perfect;
+    arrayList.insert(empty);
+    arrayList.insert(single);
+    arrayList.insert(two);
+    arrayList.insert(sorted);
+    arrayList.insert(unbalanced);
+    arrayList.insert(balancedIncompleteFull);
+    arrayList.insert(balancedIncompleteNotFull);
+    arrayList.insert(fullAndIncomplete);
+    arrayList.insert(fullAndComplete);
+    arrayList.insert(perfect);
 
-    @SuppressWarnings("unchecked")
-    Tree<Integer, String> bstTree = new BinarySearchTree<>(data);
-    Tree<Integer, String> avlTree = new AVLTree<>(data);
+    for (Integer[] intArray : arrayList) {
 
-    avlTree.display();
-    bstTree.display();
+      System.out.println("Input array: " + Util.ArrayToString(intArray));
+
+      BinarySearchTree<Integer, Object> tree = new AVLTree<>(intArray);
+
+      tree.display();
+
+
+    }
 
   }
 
