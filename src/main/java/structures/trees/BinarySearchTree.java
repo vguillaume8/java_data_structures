@@ -416,7 +416,7 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
         if (node == null)
             return 0;
 
-        // Get highers of subtrees
+        // Get heights of subtrees
         int h1 = isBalanced(node.leftChild());
         int h2 = isBalanced(node.rightChild());
 

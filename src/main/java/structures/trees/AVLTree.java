@@ -146,6 +146,19 @@ public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, 
 
     /**
      *
+     * @param key The specified key to remove from the tree.
+     * @return
+     */
+    @Override
+    public boolean remove(K key) {
+
+        // TODO - Implement
+
+        return super.remove(key);
+    }
+
+    /**
+     *
      * @return
      */
     @Override

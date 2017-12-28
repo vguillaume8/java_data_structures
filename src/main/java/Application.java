@@ -34,10 +34,8 @@ public final class Application {
     Tree<Integer, String> bstTree = new BinarySearchTree<>(data);
     Tree<Integer, String> avlTree = new AVLTree<>(data);
 
-    System.out.println(bstTree.toTreeString());
-    System.out.println(avlTree.toTreeString());
-
     avlTree.display();
+    bstTree.display();
 
   }
 
