@@ -12,10 +12,6 @@ public abstract class ChainedIndexedDataStructure<T> extends ChainedDataStructur
         super(values);
     }
 
-    public ChainedIndexedDataStructure(int length, T value) {
-        super(length, value);
-    }
-
     /**
      * Get Node at a specified index
      *
@@ -33,7 +29,7 @@ public abstract class ChainedIndexedDataStructure<T> extends ChainedDataStructur
      */
     @Override
     public Iterator<T> iterator() {
-        return new ChainedDataStructureIterator<T>(this.head());
+        return new ChainedDataStructureIterator<>(this.head());
     }
 
 //------------------------------------------------------------------------------
@@ -55,7 +51,7 @@ public abstract class ChainedIndexedDataStructure<T> extends ChainedDataStructur
      *
      * @param index Specified index
      */
-    public void verifyIndex(int index) {
+    protected void verifyIndex(int index) {
 
         // Throw an Exception if the index is out of bounds
         if (this.indexOutOfBounds(index)) {
@@ -116,6 +112,7 @@ public abstract class ChainedIndexedDataStructure<T> extends ChainedDataStructur
         return true;
     }
 
+    // TODO - Implement!
     public T remove(int index) {
         return null;
     }

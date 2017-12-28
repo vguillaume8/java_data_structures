@@ -23,7 +23,9 @@ public interface DataStructure<T> {
      *
      * @return True if and only if there are no elements in the structure.
      */
-    boolean empty();
+    default boolean empty() {
+        return this.size() == 0;
+    }
 
 //------------------------------------------------------------------------------
 

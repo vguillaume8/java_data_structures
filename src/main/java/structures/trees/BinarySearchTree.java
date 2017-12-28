@@ -4,7 +4,6 @@ import structures.commons.LinearDataStructure;
 import structures.commons.Pair;
 import structures.vectors.ArrayList;
 import structures.vectors.Queue;
-import structures.commons.DynamicallySizedDataStructure;
 
 /**
  * Implementation of Binary Search BinaryTree.
@@ -12,7 +11,9 @@ import structures.commons.DynamicallySizedDataStructure;
  * @param <K> Generic type for keys (must extend java.lang.Comparable)
  * @param <V> Generic type for values
  */
-public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedDataStructure<K> implements BinaryTree<K, V> {
+public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, V> {
+
+    protected int size;
 
     /**
      * Pointer to root node of the BinarySearchTree
@@ -184,7 +185,7 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
     public boolean empty() {
 
         // Empty is defined as size 0, and root node is null
-        return this.size() == 0 && this.root == null;
+        return this.size == 0 && this.root == null;
     }
 
 //------------------------------------------------------------------------------
@@ -922,7 +923,7 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
 
         // If the removal was successful
         if (result) {
-            this.decrementSize();
+            this.size--;
         }
 
         return result;
@@ -1068,6 +1069,17 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
         }
 
         return s;
+    }
+
+//------------------------------------------------------------------------------
+
+    /**
+     *
+     * @return
+     */
+    @Override
+    public int size() {
+        return this.size;
     }
 
 //------------------------------------------------------------------------------

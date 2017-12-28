@@ -10,6 +10,8 @@ import structures.commons.DynamicallySizedArray;
  */
 public final class ArrayList<T> extends DynamicallySizedArray<T> {
 
+    private int size;
+
     /**
      * Constructs empty list.
      *
@@ -44,25 +46,6 @@ public final class ArrayList<T> extends DynamicallySizedArray<T> {
         super(values);
     }
 
-    /**
-     * Constructs LinkedList of specified length where
-     * all values have a specified default value.
-     *
-     * <br>
-     * <br>
-     * <strong>Time Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(n)<br>
-     *
-     * <br>
-     * <strong>Space Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(1)<br>
-     *
-     * @param length Specified length of list
-     * @param value Specified default value
-     */
-    public ArrayList(int length, T value) {
-        super(length, value);
-    }
 
     /**
      * Determines whether or not this ArrayList is equal to
@@ -147,7 +130,7 @@ public final class ArrayList<T> extends DynamicallySizedArray<T> {
 
         this.alloc();                   // Potentially alloc the internal array before insertion
         this.values[index] = value;     // Insert the new value into the designated index
-        this.incrementSize();           // Increment size of list
+        this.size++;                    // Increment size of list
     }
 
     /**
@@ -272,7 +255,7 @@ public final class ArrayList<T> extends DynamicallySizedArray<T> {
         this.verifyIndex(index);        // Verify that the index is valid
         value = this.values[index];     // Store the value are the given index
         this.shiftLeft(index);          // Shift all values up from the right of index over one to the left
-        this.decrementSize();           // Decrement size of array
+        this.size--;           // Decrement size of array
         return value;                   // Return the stored value
     }
 
@@ -333,5 +316,14 @@ public final class ArrayList<T> extends DynamicallySizedArray<T> {
     @Override
     public T remove() {
         return this.removeLast();
+    }
+
+    /**
+     *
+     * @return
+     */
+    @Override
+    public int size() {
+        return this.size;
     }
 }

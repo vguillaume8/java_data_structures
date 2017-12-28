@@ -45,26 +45,6 @@ public final class Queue<T> extends ChainedDataStructure<T> {
     }
 
     /**
-     * Constructs Queue of specified length where
-     * all values have a specified default value.
-     *
-     * <br>
-     * <br>
-     * <strong>Time Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(n)<br>
-     *
-     * <br>
-     * <strong>Space Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(1)<br>
-     *
-     * @param length Specified length of list
-     * @param value Specified default value
-     */
-    public Queue(int length, T value) {
-        super(length, value);
-    }
-
-    /**
      * Retrieves, but does not remove the front-most
      * element in the Queue.
      *
@@ -110,7 +90,7 @@ public final class Queue<T> extends ChainedDataStructure<T> {
             this.head().insert(value);
         }
 
-        this.incrementSize();
+        this.size++;
 
         return true;
     }
@@ -137,7 +117,7 @@ public final class Queue<T> extends ChainedDataStructure<T> {
 
         T value = this.head().value();  // Get value from head
         this.head(this.head().next());  // Set head equal to head's next
-        this.decrementSize();           // Decrement size of Queue
+        this.size--;           // Decrement size of Queue
 
         return value;
     }

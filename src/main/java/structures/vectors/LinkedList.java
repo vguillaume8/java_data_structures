@@ -46,28 +46,6 @@ public final class LinkedList<T> extends ChainedIndexedDataStructure<T> {
 //------------------------------------------------------------------------------
 
   /**
-   * Constructs LinkedList of specified length where
-   * all nodes have a specified default value.
-   *
-   * <br>
-   * <br>
-   * <strong>Time Complexity:</strong><br>
-   * <strong>Avg: </strong>&Theta;(n)<br>
-   *
-   * <br>
-   * <strong>Space Complexity:</strong><br>
-   * <strong>Avg: </strong>&Theta;(n)<br>
-   *
-   * @param length Specified length of list
-   * @param value Specified default value
-   */
-  public LinkedList(int length, T value) {
-    super(length, value);
-  }
-
-//------------------------------------------------------------------------------
-
-  /**
    * Constructs DoubleLinkedList from array of values.
    *
    * <br>
@@ -185,7 +163,7 @@ public final class LinkedList<T> extends ChainedIndexedDataStructure<T> {
       // TODO - abstract this to insert(int, int)
       // TODO - only want 1 method incrementing the length if possible
       this.head().insert(value);
-      this.incrementSize();
+      this.size++;
     }
   }
 
@@ -236,7 +214,7 @@ public final class LinkedList<T> extends ChainedIndexedDataStructure<T> {
       node.prev(newNode);                                                // Set the old ith node's previous to the new node
     }
 
-    this.incrementSize();
+    this.size++;
 
   }
 
@@ -302,7 +280,7 @@ public final class LinkedList<T> extends ChainedIndexedDataStructure<T> {
 
     // After removing a node,
     // decrement length of list
-    this.decrementSize();
+    this.size--;
 
     return value;
   }

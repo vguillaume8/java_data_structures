@@ -53,28 +53,6 @@ public final class Stack<T>  extends ChainedDataStructure<T> {
 //------------------------------------------------------------------------------
 
     /**
-     * Constructs Queue of specified length where
-     * all values have a specified default value.
-     *
-     * <br>
-     * <br>
-     * <strong>Time Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(n)<br>
-     *
-     * <br>
-     * <strong>Space Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(1)<br>
-     *
-     * @param length Specified length of list
-     * @param value Specified default value
-     */
-    public Stack(int length, T value) {
-        super(length, value);
-    }
-
-//------------------------------------------------------------------------------
-
-    /**
      * Inserts value at top of Stack.
      *
      * <br>
@@ -99,7 +77,7 @@ public final class Stack<T>  extends ChainedDataStructure<T> {
             this.head(node);
         }
 
-        this.incrementSize();
+        this.size++;
 
         return true;
     }
@@ -130,7 +108,7 @@ public final class Stack<T>  extends ChainedDataStructure<T> {
 
         T value = this.head().value();  // Get value from head
         this.head(this.head().next());  // Set head equal to head's next
-        this.decrementSize();           // Decrement size of Queue
+        this.size--;           // Decrement size of Queue
 
         return value;
     }

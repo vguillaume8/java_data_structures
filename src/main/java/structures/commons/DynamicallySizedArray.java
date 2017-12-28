@@ -12,7 +12,7 @@ import java.util.StringJoiner;
  * @author Jabari Dash
  * @param <T> Generic type
  */
-public abstract class DynamicallySizedArray<T> extends DynamicallySizedDataStructure<T> implements IndexedDataStructure<T> {
+public abstract class DynamicallySizedArray<T> implements IndexedDataStructure<T> {
 
     private final int DEFAULT_SIZE = 4;
     protected T[] values;
@@ -28,20 +28,6 @@ public abstract class DynamicallySizedArray<T> extends DynamicallySizedDataStruc
         this.values = (T[]) new Object[DEFAULT_SIZE];
 
         for (T value : values) {
-            this.insert(value);
-        }
-    }
-
-    public DynamicallySizedArray(int length, T value) {
-        super();
-
-        this.values = (T[]) new Object[DEFAULT_SIZE];
-
-        if (length < 0) {
-            throw new IllegalArgumentException("Length must be at least 0");
-        }
-
-        for (int i = 0; i < length; i++) {
             this.insert(value);
         }
     }

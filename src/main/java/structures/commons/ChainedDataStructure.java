@@ -14,19 +14,21 @@ import java.util.StringJoiner;
  * @author Jabari Dash
  * @param <T> Generic type
  */
-public abstract class ChainedDataStructure<T> extends DynamicallySizedDataStructure<T> implements LinearDataStructure<T> {
+public abstract class ChainedDataStructure<T> implements LinearDataStructure<T> {
+
+    protected int size;
 
     /**
      * Pointer to the first node in the chain
      */
-    private Node<T> head;
+    protected Node<T> head;
 
     /**
      * Pointer to the last node in the chain
      *
-     * TODO - Use the tail in implementing classes such as linkedlist so insert last is O(1)
+     * TODO - Use the tail in implementing classes such as Linkedlist so insert last is O(1)
      */
-    private Node<T> tail;
+    protected Node<T> tail;
 
     /**
      * Constructs an empty {@code ChainedDataStructure}
@@ -41,18 +43,9 @@ public abstract class ChainedDataStructure<T> extends DynamicallySizedDataStruct
      * @param values Specified array of values from which the chain is initialized.
      */
     public ChainedDataStructure(T[] values) {
-        super(values);
-    }
-
-    /**
-     * Initializes the chain to a specified length, with a specified default
-     * value in all positions.
-     *
-     * @param length Specified length of the chain.
-     * @param value specified default value.
-     */
-    public ChainedDataStructure(int length, T value) {
-        super(length, value);
+        for (T value : values) {
+            this.insert(value);
+        }
     }
 
 //------------------------------------------------------------------------------
@@ -102,7 +95,7 @@ public abstract class ChainedDataStructure<T> extends DynamicallySizedDataStruct
      */
     public boolean contains(T value) {
 
-        return this.head.contains(value);
+        return this.head().contains(value);
     }
 
 //------------------------------------------------------------------------------
@@ -137,7 +130,16 @@ public abstract class ChainedDataStructure<T> extends DynamicallySizedDataStruct
         return new ChainedDataStructureIterator(this.head());
     }
 
-    //------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+
+    /**
+     *
+     * @return
+     */
+    @Override
+    public int size() {
+        return this.size;
+    }
 
     /**
      * Returns a String representation of the list
