@@ -2,6 +2,7 @@
 
 ## OOP Stuff
 - https://stackoverflow.com/questions/3164334/how-can-i-force-a-constructor-to-be-defined-in-all-subclass-of-my-abstract-class
+- https://www.geeksforgeeks.org/overriding-equals-method-in-java/
 
 ## Data Structure Stuff
 - http://discuss.fogcreek.com/joelonsoftware/default.asp?cmd=show&ixPost=22948

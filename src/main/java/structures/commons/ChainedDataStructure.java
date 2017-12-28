@@ -133,7 +133,6 @@ public abstract class ChainedDataStructure<T> extends DynamicallySizedDataStruct
      * @return Iterator for the {@code ChainedDataStructure}
      */
     @Override
-    @SuppressWarnings("unchecked")
     public Iterator<T> iterator() {
         return new ChainedDataStructureIterator(this.head());
     }

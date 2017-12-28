@@ -1228,7 +1228,7 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
      * @author Jabari Dash
      * @param <K> Generic type
      */
-    protected static class BinarySearchTreeNode<K extends Comparable, V> extends Pair<K, V> {
+    protected static class BinarySearchTreeNode<K extends Comparable, V> implements Pair<K, V> {
 
         /**
          * Key of the node
@@ -1252,7 +1252,7 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
 
 
         /**
-         * 
+         *
          * @param key
          * @param value
          */
@@ -1260,6 +1260,17 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
         protected BinarySearchTreeNode(K key, V value) {
             this.key = key;
             this.value = value;
+        }
+
+        /**
+         *
+         * @param object
+         * @return
+         */
+        @Override
+        public boolean equals(Object object) {
+
+            return equivalentTo(object);
         }
 
         /**
@@ -1347,6 +1358,14 @@ public class BinarySearchTree<K extends Comparable, V> extends DynamicallySizedD
 
                 return true;
             }
+        }
+
+        /**
+         *
+         * @return
+         */
+        public String toString() {
+            return asString();
         }
 
         public V value() {

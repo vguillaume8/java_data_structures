@@ -46,13 +46,10 @@ public interface LinearDataStructure<T> extends DataStructure<T>,  Iterable<T> {
      * override the java.lang.Object.equals() method, and
      * call this.
      *
-     * useful: https://www.geeksforgeeks.org/overriding-equals-method-in-java/
-     *
      * @param object Object to compare this object with.
      * @return True if the objects are of the same type, their
      * sizes are the same, and they contain all the same values.
      */
-    @SuppressWarnings("unchecked")
     default boolean equivalentTo(Object object) {
 
         // If object is compared to itself
@@ -63,19 +60,35 @@ public interface LinearDataStructure<T> extends DataStructure<T>,  Iterable<T> {
         if (!(object instanceof LinearDataStructure))
             return false;
 
-        // Cast to LinearDataStructure, and compare the values
-        LinearDataStructure vector = (IndexedDataStructure) object;
+        try {
 
-        // Check length
-        if (vector.size() != this.size()) {
-            return false;
-        }
+            // Cast to LinearDataStructure, and compare the values
+            @SuppressWarnings("unchecked")
+            LinearDataStructure<T> vector = (LinearDataStructure<T>) object;
 
-        // Check each value
-        for (T value : this) {
-            if (!vector.contains(value)) {
+            // Check length
+            if (vector.size() != this.size()) {
                 return false;
             }
+
+            // Check each value
+            for (T value : this) {
+                if (!vector.contains(value)) {
+                    return false;
+                }
+            }
+
+        // If a ClassCastException was thrown, then
+        // the object could not be casted to a LinearDataStructure,
+        // and thus, the objects cannot be equal to each other. Note,
+        // this is a double check, after we checked instance of LinearDataStructure.
+        // Also note, we do not want to catch all Exceptions because in the event
+        // that the code that implements size(), or contains(), or the iterator()
+        // used in the foreach loop throws an error, we want the developer to know.
+        // This indicated their is a bug in their code, and we do not want to
+        // handle those. We are only looking to handle Exceptions related to casting here.
+        } catch (ClassCastException exception) {
+            return false;
         }
 
         // If we made it to the bottom,

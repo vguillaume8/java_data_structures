@@ -7,8 +7,7 @@ package structures.commons;
  * @param <K> Key parameter type.
  * @param <V> Value parameter type.
  */
-public abstract class Pair<K, V> {
-
+public interface Pair<K, V> {
 
     /**
      * Override the equals() method, simple check that
@@ -17,8 +16,7 @@ public abstract class Pair<K, V> {
      * @param o Object that this Pair will be compared to.
      * @return True if and only if the above conditions are met.
      */
-    @Override
-    public boolean equals(Object o) {
+    default boolean equivalentTo(Object o) {
 
         // Is the object being compared to itself?
         if (o == this)
@@ -43,7 +41,7 @@ public abstract class Pair<K, V> {
      * @return The key.
      */
     @SuppressWarnings("unused")
-    public abstract K key();
+    K key();
 
     /**
      * Sets the key.
@@ -51,15 +49,19 @@ public abstract class Pair<K, V> {
      * @param key The new key.
      */
     @SuppressWarnings("unused")
-    public abstract void key(K key);
+    void key(K key);
 
     /**
-     * Returns a JSON String representation of the pair.
+     * Returns a JSON String representation of the pair. Note,
+     * this is a wrapper around the toString() method that
+     * will be called in implementing classes. The method cannot
+     * directly override it because it is a default method, and this
+     * is an interface.
      *
      * @return String version of the pair.
      */
     @SuppressWarnings("unused")
-    public String toString() {
+    default String asString() {
         String k;
         String v;
 
@@ -75,7 +77,7 @@ public abstract class Pair<K, V> {
      * @return The value.
      */
     @SuppressWarnings("unused")
-    public abstract V value();
+    V value();
 
     /**
      * Sets the value.
@@ -83,5 +85,5 @@ public abstract class Pair<K, V> {
      * @param value The new value.
      */
     @SuppressWarnings("unused")
-    public abstract void value(V value);
+    void value(V value);
 }

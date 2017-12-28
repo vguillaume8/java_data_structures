@@ -2,8 +2,6 @@ package structures.vectors;
 
 import structures.commons.DynamicallySizedArray;
 
-import java.lang.reflect.Array;
-
 /**
  * Basic implementation of a generic ArrayList
  *

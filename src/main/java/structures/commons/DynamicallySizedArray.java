@@ -115,7 +115,6 @@ public abstract class DynamicallySizedArray<T> extends DynamicallySizedDataStruc
      *
      * @param slots How many new slots to make
      */
-    @SuppressWarnings("unchecked")
     protected void alloc(int slots) {
         int length;
 

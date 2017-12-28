@@ -387,7 +387,7 @@ class BinarySearchTreeSpec extends Specification {
     }
 
     @Unroll
-    def "Get array of pairs specifying or order"() {
+    def "Get array of pairs specifying order"() {
         setup:
         BinarySearchTree<Integer, String> tree
         structures.vectors.ArrayList<Pair<Integer, String>> arrayList
@@ -400,7 +400,7 @@ class BinarySearchTreeSpec extends Specification {
         when:
         tree = new BinarySearchTree<>(pairs)
         arrayList = new structures.vectors.ArrayList<Pair<Integer, String>>(pairs)
-        def p = tree.pairs(BinarySearchTree.IN_ORDER)
+        def p = tree.pairs(BinarySearchTree.PRE_ORDER)
 
         then:
         p.equals(arrayList);

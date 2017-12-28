@@ -9,7 +9,7 @@ class Util {
      * @param array Array to verify.
      * @return True if and only if the above condition is met.
      */
-    public static boolean isSorted(Comparable[] array) {
+    static boolean isSorted(Comparable[] array) {
 
         for (int i = 0; i < array.length-1; i++) {
 
@@ -38,7 +38,7 @@ class Util {
      * @return True if and only if the above conditions are met
      */
     @SuppressWarnings("unchecked")
-    public static boolean equals(Object[] a, Object[] b) {
+    static boolean equals(Object[] a, Object[] b) {
         boolean equals = false;
 
         if (a.length == b.length) {

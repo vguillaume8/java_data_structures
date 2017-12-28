@@ -93,7 +93,7 @@ public interface BinaryTree<K, V> extends DataStructure<K>, Iterable<Pair<K, V>>
      * Display tree's important information to verify that
      * it was built correctly. This method is for development purposes
      */
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings("unused")
     default void display() {
 
         System.out.println(this.getClass().getSimpleName());
@@ -167,7 +167,7 @@ public interface BinaryTree<K, V> extends DataStructure<K>, Iterable<Pair<K, V>>
      */
     @SuppressWarnings("unused")
     default Iterator<Pair<K, V>> iterator() {
-        return new TreeIterator<K, V>(this, DEFAULT_ORDER);
+        return new TreeIterator<>(this, DEFAULT_ORDER);
     }
 
     /**
