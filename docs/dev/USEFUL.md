@@ -6,6 +6,7 @@
 
 ## Data Structure Stuff
 - http://discuss.fogcreek.com/joelonsoftware/default.asp?cmd=show&ixPost=22948
+- https://www.youtube.com/watch?v=v6eDztNiJwo
 
 ## Performance
 - https://stackoverflow.com/questions/1393486/error-java-lang-outofmemoryerror-gc-overhead-limit-exceeded
