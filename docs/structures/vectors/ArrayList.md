@@ -5,10 +5,13 @@ In other programming languages, it may be called something else, but most
 programming languages should have them. Array-lists are alternatives to arrays.
 
 **Basic ArrayList Operations:**
-* [insert()](#insert)
-* [remove()](#remove)
-* [search()](#search)
-* [update()](#update)
+
+| Operation             | Description                                                      | arguments    |
+| :-------------------: | :--------------------------------------------------------------  | :----------: |
+| [`search()`](#search) | Retrieves an element from a specified position in the array-list | index        |
+| [`update()`](#update) | Overwrites an element at a specified position in the array-list  | index, value |
+| [`insert()`](#insert) | Inserts an element into a specified position in the array-list   | index, value |
+| [`remove()`](#remove) | Removes an element from a specified position in the array-list   | index        |
 
 Arrays are statically sized. This means, the size of the array does not change.
 This is why we must pass the length of an array as a parameter upon instantiating
@@ -83,11 +86,11 @@ an array, and insert values into it normally. But, when the array becomes full, 
 make another array with more space, copy the old values into the new array, discard the old array,
 then begin inserting new values into the new array.
 
-**Definition:** An array-list is a data structure that stores values into an array, where
+**Definition:** *An array-list is a data structure that stores values into an array, where
 if the array becomes full, a new copy of the array is made with extra space at the end
-so that insertion can continue.
+so that insertion can continue.*
 
-### <a name="get"></a> Finding elements
+### <a name="search"></a> Finding elements
 
 Finding an element in an array-list is as simple as finding an element in an array.
 Remember, after all, the array-list is just a wrapper around an array. We can access
@@ -129,7 +132,43 @@ public T get(int index) {
 }
 ```
 
-Where `elements` is the internal array.
+Getting a value from a specified index does not require any additional function calls
+data swaps, or loop iterations, or data comparisons. Therefore, its runtime is constant for all cases.
+
+Time Complexity of `get()`:
+
+| Case         |  Runtime | Measured in      |
+| :----------: | :------: | :-------------:  |
+| Best Case    | Θ(1)     | Data comparisons |
+| Average Case | Θ(1)     | ''               |
+| Worst Case   | Θ(1)     | ''               |
+
+### <a name="update"></a> Updating a value at a given index
+
+Retrieving an element was simple enough. Luckily, updating a value is
+just as simple. Remember, after all, its an "array" list. The following
+code describes the simplicity of updating a value in an array-list.
+
+Snippet:
+
+```java
+T[] elements;
+
+public void update(int index, T value) {
+    elements[index] = value;
+}
+```
+
+This operation does not require any extra work to be done, function calls, or
+data swaps. Therefore this operation is completed in constant time.
+
+Time Complexity of `update()`:
+
+| Case         |  Runtime | Measured in                                  |
+| :----------: | :------: | :------------------------------------------: |
+| Best Case    | Θ(1)     | Method calls, data swaps, or loop iterations |
+| Average Case | Θ(1)     | ''                                           |
+| Worst Case   | Θ(1)     | ''                                           |
 
 ### <a name="insert"></a> (The essence of)  inserting elements into an ArrayList
 
@@ -277,7 +316,7 @@ class ArrayShift {
     
         // Overwrite value at first index (optional)
         // This is for illustration purposes
-        array[0] = 'x';
+        array[0] = '?';
     
         return array;
       }
@@ -288,7 +327,7 @@ Output:
 
 ```
 [a, b, c, d, e]
-[x, a, b, c, d]
+[?, a, b, c, d]
 ```
 
 We now have an open space to insert a value in the front. In fact, this
@@ -311,10 +350,99 @@ letters = ['a', 'b', 'c', 'd', 'e']
             0    1    2    3    4
 ```
 
-Let's say we want to remove the letter `b`. We can shift all the values
-that are to the right by one.
+Let's say we want to remove the letter `b`. Just as we perform a shift right, we
+can perform a shift left, this time effectively overwriting a value, rather than
+making space for a new one. We will omit the java code, and just show the result.
+
+```    
+letters = ['a', 'c', 'c', 'd', 'e']     // swap c to position 1
+
+letters = ['a', 'c', 'd', 'd', 'e']     // swap d to position 2
+           
+letters = ['a', 'c', 'd', 'e', '?']     // swap e to position 3
+            0    1    2    3    4
+```
+
+That was pretty simple. Note though, for an array of length `n`, we still performed
+roughly `n` data swaps. In this case, we performed `3` swaps. Had we wanted to remove
+`c`, it would have been `2` swaps, `d` requires `1` swap. See a pattern? It turns out
+that the amount of swaps necessary to remove an element can be expressed as a function `T(n)`
+in terms of index `i` and length `n`:
+
+```
+T(n) = n - 1 - i
+       5 - 1 - 1
+       3
+```
+
+*The number of swaps to remove an element from the ith position in the array is equal
+to the number of elements after the specified index that need to be shifted down.*
+
+After all, the rest of the array must be shifted down one. Because `T(n) = n - i - 1`, we see that,
+the worst case is when `i = 0`. This means, we want to remove a value from the front of
+the array, and we need to shift the entire rest of the array down one.
+
+***Note:** `remove()` in the worst case runs in linear time `O(n)`.*
+
+What about the best case? Well, this means we want to minimize `T(n) = n - i - 1`. 
+`T(n)`'s lower bound is `0` because we cannot have negative time. Thus, we set
+`T(n) = 0`, then solve for `i`. *Note: * We are treating `i` as a variable for
+algebraic purposes, but at runtime, `i` is a constant. This is why our time
+function is `T(n)` rather than `T(n, i)`.
+
+```
+T(n) = n - i - 1
+0 = n - i -1
+i = n - 1
+```
+
+We see that for `i = n - 1`, we do not need to perform any swaps. But, what does this
+case mean in words? Well, its when we want to remove the last value from the array.
+This makes sense in that there are no values that follow it to shift into place - 
+no addition work needs to be done.
+
+***Note:** `remove()` in the best case runs in constant time `Ω(1)`.*
+
+We now have upper and lower bounds for our runtime function `T(n)`. We will not do 
+an in-depth analysis about the average case, but as `T(n)`  is a linear function,
+and we have no data about the average index `i` that a user will remove from, we
+drop the constant `i` and say `T(n) ≈ n`. Notice how `T(n)` is still *proportional*
+to `n`, thus, the average case degrades to `O(n)`.
+
+Time Complexity of `remove()`:
+
+| Case         |  Runtime | Measured in |
+| :----------: | :------: | :---------: |
+| Best Case    | Ω(1)     | Data swaps  |
+| Average Case | O(n)     | ''          |
+| Worst Case   | O(n)     | ''          |
+
+This is the process to remove an element. But, we left one thing a mystery. Note
+the state of the array after the removal.
+
+```
+letters = ['a', 'c', 'd', 'e', '?']
+            0    1    2    3    4
+```
+
+What happens to the value at index `4`? We just removed an element from the list of
+size `5`, so it should now be of size `4`, right? That will be answered in the next
+section.
+
+## Dynamic memory allocation
+
 
 ## Performance
+
+Time-Complexity:
+
+| Operation             | Worst case | Average case | Best case | Measured in      |
+| :-------------------: | :--------: | :----------: | :-------: | :--------------: |
+| [`search()`](#search) | Θ(1)       | Θ(1)         | Θ(1)      | Data comparisons                          |
+| [`update()`](#update) | Θ(1)       | Θ(1)         | Θ(1)      | Method calls, data swaps, loop iterations |
+| [`insert()`](#insert) | O(n)       | O(n)         | Ω(1)      | Data swaps       |
+| [`remove()`](#remove) | O(n)       | O(n)         | Ω(1)      | Data swaps       |
+
 
 ## When / why use an ArrayList?
 
@@ -325,7 +453,6 @@ positions in the list. That being said, its good to use the array-list
 when we do not know how many elements that we will have in the list beforehand;
 but, over the course of time we will be doing more lookups and fetches than
 insertions and deletions.
-
 
 ### A practical application
 
@@ -347,22 +474,11 @@ is called that gives you the id number of the given user, and you must
 either add them to the list or remove them from the list - respectively.
 A better approach may be a [LinkedList][linked_list] or even a [Map][map].
 
-
 ### Conclusion
 
 The ArrayList is a dynamically sized data structure that solves the problem
 of not knowing how much space we will need beforehand, but still performs
 best when used for lookup, and update and its size is not changing often.
-
-Time-Complexity:
-
-| Operation           | Worst case | Average case | Best case | Measured in     |
-| :-----------------: | :--------: | :----------: | :-------: | :-------------: |
-| [insert()](#insert) | O(n)       | O(n)         | Ω(1)      | Data swaps      |
-| [remove()](#remove) | O(n)       | O(n)         | Ω(1)      | Data swaps      |
-| [search()](#search) | Θ(1)       | Θ(1)         | Θ(1)      | Loop iterations |
-| [update()](#update) | Θ(1)       | Θ(1)         | Θ(1)      | Loop iterations |
-
 
 [linked_list]: LinkedList.md
 [map]: ../maps/Map.md
