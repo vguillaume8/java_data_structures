@@ -1,6 +1,6 @@
 package structures.trees;
 
-import structures.commons.LinearDataStructure;
+import structures.vectors.Vector;
 import structures.commons.Pair;
 import structures.vectors.ArrayList;
 import structures.vectors.Queue;
@@ -77,7 +77,7 @@ public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, 
      * @param pairs Key-value pairs to construct tree from.
      */
     @SuppressWarnings("unused")
-    public BinarySearchTree(LinearDataStructure<Pair<K, V>> pairs) {
+    public BinarySearchTree(Vector<Pair<K, V>> pairs) {
         this();
 
         // Insert all the pairs into the tree

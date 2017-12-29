@@ -8,7 +8,7 @@ import java.util.Arrays;
  * @author Jabari Dash
  * @param <T> Generic type
  */
-public final class ArrayList<T> implements structures.commons.IndexedDataStructure<T> {
+public final class ArrayList<T> implements List<T> {
 
     private final int DEFAULT_SIZE = 4;
 
@@ -181,7 +181,7 @@ public final class ArrayList<T> implements structures.commons.IndexedDataStructu
      * @param index Specified index to insert value at
      */
     @Override
-    public void insert(T value, int index) {
+    public boolean insert(T value, int index) {
         if (!this.empty() && index < this.size()) {
             this.verifyIndex(index);    // Verify that the index is a valid index
             this.shiftRight(index);     // Shift all values up one index, starting at designated index
@@ -190,6 +190,8 @@ public final class ArrayList<T> implements structures.commons.IndexedDataStructu
         this.alloc();                   // Potentially alloc the internal array before insertion
         this.values[index] = value;     // Insert the new value into the designated index
         this.size++;                    // Increment size of list
+
+        return true;
     }
 
     /**
@@ -265,8 +267,8 @@ public final class ArrayList<T> implements structures.commons.IndexedDataStructu
      * @param value Specified value to insert
      */
     @Override
-    public void insertFirst(T value) {
-        this.insert(value, 0);
+    public boolean insertFirst(T value) {
+        return insert(value, 0);
     }
 
     /**
@@ -284,8 +286,8 @@ public final class ArrayList<T> implements structures.commons.IndexedDataStructu
      * @param value Specified value to insert
      */
     @Override
-    public void insertLast(T value) {
-        this.insert(value, this.size());
+    public boolean insertLast(T value) {
+        return insert(value, this.size());
     }
 
     /**

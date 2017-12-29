@@ -1,4 +1,6 @@
-package structures.commons;
+package structures.vectors;
+
+import structures.commons.DataStructure;
 
 import java.util.Arrays;
 
@@ -9,7 +11,7 @@ import java.util.Arrays;
  * @author Jabari Dash
  * @param <T> Generic Type
  */
-public interface LinearDataStructure<T> extends DataStructure<T>,  Iterable<T> {
+public interface Vector<T> extends DataStructure<T>,  Iterable<T> {
 
     /**
      *
@@ -99,7 +101,7 @@ public interface LinearDataStructure<T> extends DataStructure<T>,  Iterable<T> {
 
     /**
      * Determines whether or not an Object is equal to
-     * this LinearDataStructure. Implementing classes can
+     * this Vector. Implementing classes can
      * override the java.lang.Object.equals() method, and
      * call this.
      *
@@ -113,15 +115,15 @@ public interface LinearDataStructure<T> extends DataStructure<T>,  Iterable<T> {
         if (this == object)
             return true;
 
-        // Check that the object is an instance of LinearDataStructure
-        if (!(object instanceof LinearDataStructure))
+        // Check that the object is an instance of Vector
+        if (!(object instanceof Vector))
             return false;
 
         try {
 
-            // Cast to LinearDataStructure, and compare the values
+            // Cast to Vector, and compare the values
             @SuppressWarnings("unchecked")
-            LinearDataStructure<T> vector = (LinearDataStructure<T>) object;
+            Vector<T> vector = (Vector<T>) object;
 
             // Check length
             if (vector.size() != this.size()) {
@@ -136,9 +138,9 @@ public interface LinearDataStructure<T> extends DataStructure<T>,  Iterable<T> {
             }
 
         // If a ClassCastException was thrown, then
-        // the object could not be casted to a LinearDataStructure,
+        // the object could not be casted to a Vector,
         // and thus, the objects cannot be equal to each other. Note,
-        // this is a double check, after we checked instance of LinearDataStructure.
+        // this is a double check, after we checked instance of Vector.
         // Also note, we do not want to catch all Exceptions because in the event
         // that the code that implements size(), or contains(), or the iterator()
         // used in the foreach loop throws an error, we want the developer to know.

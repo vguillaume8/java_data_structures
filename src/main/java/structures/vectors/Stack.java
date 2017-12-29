@@ -1,6 +1,5 @@
 package structures.vectors;
 
-import structures.commons.LinearDataStructure;
 import structures.vectors.LinkedList.Node;
 import java.util.Iterator;
 
@@ -14,29 +13,20 @@ import java.util.Iterator;
  * @author Jabari Dash
  * @param <T> Generic type
  */
-public final class Stack<T>  implements LinearDataStructure<T> {
+public final class Stack<T>  implements Vector<T> {
 
     /**
      *
      */
-    protected int size;
+    private int size;
 
     /**
      * Pointer to the first node in the chain
      */
-    protected Node<T> head;
+    private Node<T> head;
 
     /**
      * Constructs empty Stack
-     *
-     * <br>
-     * <br>
-     * <strong>Time Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(1)<br>
-     *
-     * <br>
-     * <strong>Space Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(1)<br>
      */
     public Stack() {
         super();
@@ -46,15 +36,6 @@ public final class Stack<T>  implements LinearDataStructure<T> {
 
     /**
      * Constructs Queue from array of values.
-     *
-     * <br>
-     * <br>
-     * <strong>Time Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(n)<br>
-     *
-     * <br>
-     * <strong>Space Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(1)<br>
      *
      * @param values Array of values to instatiate Queue from
      */
@@ -75,26 +56,19 @@ public final class Stack<T>  implements LinearDataStructure<T> {
     /**
      * Inserts value at top of Stack.
      *
-     * <br>
-     * <br>
-     * <strong>Time Complexity:</strong><br>
-     * <strong>Best: </strong>&Omega;(1)<br>
-     * <strong>Worst: </strong>O(n)<br>
-     *
-     * <br>
-     * <strong>Space Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(1)<br>
-     *
      * @param value The specified value to insert
      */
     @Override
     public boolean insert(T value) {
+        Node<T> node = new Node<>(value);
+
         if (this.empty()) {
-            this.head = new Node<T>(value);
+            head = node;
+
         } else {
-            Node<T> node = new Node<T>(value, null, this.head);
-            this.head.prev = node;
-            this.head = node;
+            node.next = head;
+            head.prev = node;
+            head = node;
         }
 
         this.size++;
@@ -106,15 +80,6 @@ public final class Stack<T>  implements LinearDataStructure<T> {
 
     /**
      * Retrieves and removes top of Stack.
-     *
-     * <br>
-     * <br>
-     * <strong>Time Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(1)<br>
-     *
-     * <br>
-     * <strong>Space Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(1)<br>
      *
      * @return The topmost value on the Stack
      *
@@ -138,15 +103,6 @@ public final class Stack<T>  implements LinearDataStructure<T> {
     /**
      * Pushes a specified value onto the Stack.
      *
-     * <br>
-     * <br>
-     * <strong>Time Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(1)<br>
-     *
-     * <br>
-     * <strong>Space Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(1)<br>
-     *
      * @param value Specified value to be pushed onto the Stack
      */
     public void push(T value) {
@@ -157,15 +113,6 @@ public final class Stack<T>  implements LinearDataStructure<T> {
 
     /**
      * Retrieves and removes the topmost value from the Stack.
-     *
-     * <br>
-     * <br>
-     * <strong>Time Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(1)<br>
-     *
-     * <br>
-     * <strong>Space Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(1)<br>
      *
      * @return The topmost value on the Stack
      */
@@ -187,14 +134,6 @@ public final class Stack<T>  implements LinearDataStructure<T> {
     /**
      * Retrieves but does not remove the topmost value from the Stack.
      *
-     * <br>
-     * <br>
-     * <strong>Time Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(1)<br>
-     *
-     * <br>
-     * <strong>Space Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(1)<br>
      *
      * @return The topmost value on the Stack
      */

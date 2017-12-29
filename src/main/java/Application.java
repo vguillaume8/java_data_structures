@@ -1,6 +1,7 @@
 import structures.trees.AVLTree;
 import structures.trees.BinarySearchTree;
 import structures.vectors.ArrayList;
+import structures.vectors.Queue;
 
 import java.util.Arrays;
 
@@ -43,6 +44,14 @@ public final class Application {
     arrayList.insert(halfHalf);
     arrayList.insert(example);
 
+
+    Queue<Integer> queue = new Queue<>(example);
+
+    queue.insert(7);
+
+    for (Integer integer : queue) {
+      System.out.println(integer);
+    }
   }
 
 }

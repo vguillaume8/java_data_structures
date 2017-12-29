@@ -30,7 +30,7 @@ public interface DataStructure<T> {
 //------------------------------------------------------------------------------
 
     /**
-     * Inserts a specified value into the IndexedDataStructure.
+     * Inserts a specified value into the List.
      *
      * @param value The specified value to insert.
      * @return True if and only if the value was successfully inserted.
