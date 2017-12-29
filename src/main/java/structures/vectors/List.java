@@ -1,16 +1,16 @@
-package structures.commons;
+package structures.vectors;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- * Abstract IndexedDataStructure structure. All vector-like structures (linear structures)
+ * Abstract List structure. All vector-like structures (linear structures)
  * will extend this abstract class
  *
  * @author Jabari Dash
  * @param <T> Generic type
  */
-public interface IndexedDataStructure<T> extends LinearDataStructure<T> {
+public interface List<T> extends Vector<T> {
 
 //------------------------------------------------------------------------------
 
@@ -48,7 +48,7 @@ public interface IndexedDataStructure<T> extends LinearDataStructure<T> {
      * @param value Value to be inserted
      * @param index Specified index to insert value at
      */
-    void insert(T value, int index);
+    boolean insert(T value, int index);
 
 //------------------------------------------------------------------------------
 
@@ -67,7 +67,7 @@ public interface IndexedDataStructure<T> extends LinearDataStructure<T> {
      *
      * @param value Specified value to insert
      */
-    void insertFirst(T value);
+    boolean insertFirst(T value);
 
 //------------------------------------------------------------------------------
 
@@ -76,7 +76,7 @@ public interface IndexedDataStructure<T> extends LinearDataStructure<T> {
      *
      * @param value Specified value to insert
      */
-    void insertLast(T value);
+    boolean insertLast(T value);
 
 //------------------------------------------------------------------------------
 
@@ -93,7 +93,7 @@ public interface IndexedDataStructure<T> extends LinearDataStructure<T> {
 //------------------------------------------------------------------------------
 
     /**
-     * Removes first value from the IndexedDataStructure
+     * Removes first value from the List
      *
      * @return First element in DataStructure
      */
@@ -102,7 +102,7 @@ public interface IndexedDataStructure<T> extends LinearDataStructure<T> {
 //------------------------------------------------------------------------------
 
     /**
-     * Removes the last value from the IndexedDataStructure
+     * Removes the last value from the List
      *
      * @return Last element in DataStructure
      */
@@ -116,21 +116,21 @@ public interface IndexedDataStructure<T> extends LinearDataStructure<T> {
      * @throws IndexOutOfBoundsException Exception thrown if the index is invalid
      */
     default void verifyIndex(int index) {
-        if (this.indexOutOfBounds(index)) {
+        if (indexOutOfBounds(index)) {
             throw new IndexOutOfBoundsException("size: " + this.size() + " index: " + index);
         }
     }
 
 
     /**
-     * Static Iterator class so that the IndexedDataStructure can be iterated on via
+     * Static Iterator class so that the List can be iterated on via
      * the enhance for loop
      *
      * @author Jabari Dash
      * @param <T> Generic type
      */
     class IndexedDataStructureIterator<T> implements Iterator<T> {
-        private IndexedDataStructure<T> list;   // List to iterate over
+        private List<T> list;   // List to iterate over
         private int cursor;                     // Cursor to keep track of position in iteration
 
         /**
@@ -139,7 +139,7 @@ public interface IndexedDataStructure<T> extends LinearDataStructure<T> {
          *
          * @param list The list to be iterated on
          */
-        public IndexedDataStructureIterator(IndexedDataStructure<T> list) {
+        public IndexedDataStructureIterator(List<T> list) {
             this.list = list;
             this.cursor = 0;
         }
@@ -147,7 +147,7 @@ public interface IndexedDataStructure<T> extends LinearDataStructure<T> {
 //------------------------------------------------------------------------------
 
         /**
-         * Determines whether or not the iterator still has values left
+         * Determines whether or not the iterator still has keys left
          *
          * @return True if and only if the cursor has not reached the end of the list
          */
@@ -164,7 +164,7 @@ public interface IndexedDataStructure<T> extends LinearDataStructure<T> {
          */
         public T next() {
 
-            // If there are no more values left, throw an Exception
+            // If there are no more keys left, throw an Exception
             if (!hasNext()) {
                 throw new NoSuchElementException("No element");
             }

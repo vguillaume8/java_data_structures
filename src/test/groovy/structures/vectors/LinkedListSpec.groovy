@@ -3,7 +3,6 @@ package structures.vectors
 import spock.lang.Unroll
 import spock.lang.Specification
 import structures.commons.DataStructure.EmptyDataStructureException
-import structures.vectors.LinkedList;
 
 class LinkedListSpec extends Specification {
 
@@ -18,7 +17,6 @@ class LinkedListSpec extends Specification {
   }
 
 //------------------------------------------------------------------------------
-
 
   @Unroll
   def "#Construct a non-empty list from array"() {

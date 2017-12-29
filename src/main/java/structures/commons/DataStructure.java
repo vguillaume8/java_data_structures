@@ -4,17 +4,17 @@ package structures.commons;
  * Generic interface for any data structure in this library.
  *
  * @author Jabari Dash
- * @param <T> Generic type of data structure.
+ * @param <K> Generic type of data structure.
  */
-public interface DataStructure<T> {
+public interface DataStructure<K> {
 
     /**
-     * Determines whether or not the DataStructure has a contains a specified value.
+     * Determines whether or not the DataStructure has a contains a specified key.
      *
-     * @param value Specified value
-     * @return True if and only if the specified value is within the Structure
+     * @param key Specified key
+     * @return True if and only if the specified key is within the Structure
      */
-    boolean contains(T value);
+    boolean contains(K key);
 
 //------------------------------------------------------------------------------
 
@@ -24,32 +24,32 @@ public interface DataStructure<T> {
      * @return True if and only if there are no elements in the structure.
      */
     default boolean empty() {
-        return this.size() == 0;
+        return size() == 0;
     }
 
 //------------------------------------------------------------------------------
 
     /**
-     * Inserts a specified value into the IndexedDataStructure.
+     * Inserts a specified key into the List.
      *
-     * @param value The specified value to insert.
-     * @return True if and only if the value was successfully inserted.
+     * @param key The specified key to insert.
+     * @return True if and only if the key was successfully inserted.
      */
-    boolean insert(T value);
+    boolean insert(K key);
 
 //------------------------------------------------------------------------------
 
     /**
      * Inserts an array into the data structure.
      *
-     * @param values Values to insert.
-     * @return Returns true if and only if all values were successfully inserted.
+     * @param keys keys to insert.
+     * @return Returns true if and only if all keys were successfully inserted.
      */
-    default boolean insert(T[] values) {
+    default boolean insert(K[] keys) {
         boolean all = true;
 
-        for (T value : values)
-            all = all && insert(value);
+        for (K key : keys)
+            all = all && insert(key);
 
         return all;
     }
@@ -57,9 +57,9 @@ public interface DataStructure<T> {
 //------------------------------------------------------------------------------
 
     /**
-     * Returns the number of values in the data structure.
+     * Returns the number of keys in the data structure.
      *
-     * @return Number of values in the DataStructure.
+     * @return Number of keys in the DataStructure.
      */
     int size();
 

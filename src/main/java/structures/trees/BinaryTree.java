@@ -11,7 +11,7 @@ import java.util.Iterator;
  * All trees will implement this interface.
  *
  * @param <K> Generic type for keys
- * @param <V> Generic type for values
+ * @param <V> Generic type for keys
  */
 public interface BinaryTree<K, V> extends DataStructure<K>, Iterable<Pair<K, V>> {
 
@@ -178,7 +178,7 @@ public interface BinaryTree<K, V> extends DataStructure<K>, Iterable<Pair<K, V>>
      *
      * Determines whether or not the tree is complete. A complete tree is defined
      * as a tree where all levels are filled, except possibly the bottom (deepest) level.
-     * In the event that the last level is not filled, all values in tree are as left as possible.
+     * In the event that the last level is not filled, all keys in tree are as left as possible.
      * An example follows:
      *
      * TODO - Insert image of example
@@ -309,9 +309,9 @@ public interface BinaryTree<K, V> extends DataStructure<K>, Iterable<Pair<K, V>>
     String toTreeString();
 
     /**
-     * Returns an array of the values in the tree in pre-order.
+     * Returns an array of the keys in the tree in pre-order.
      *
-     * @return Array of values in pre-order.
+     * @return Array of keys in pre-order.
      */
     @SuppressWarnings("unused")
     default V[] values() {
@@ -319,10 +319,10 @@ public interface BinaryTree<K, V> extends DataStructure<K>, Iterable<Pair<K, V>>
     }
 
     /**
-     * Returns an array of the values in the tree in a specified order.
+     * Returns an array of the keys in the tree in a specified order.
      *
      * @param traversalType Specified order.
-     * @return Array of values in the tree.
+     * @return Array of keys in the tree.
      */
     @SuppressWarnings("unused")
     V[] values(int traversalType);
@@ -334,7 +334,7 @@ public interface BinaryTree<K, V> extends DataStructure<K>, Iterable<Pair<K, V>>
      *
      * @author Jabari Dash
      * @param <K> Generic type for keys that must be comparable
-     * @param <V> Generic type for values.
+     * @param <V> Generic type for keys.
      */
     class TreeIterator<K, V> implements Iterator<Pair<K, V>> {
         private Iterator<Pair<K, V>> iterator;

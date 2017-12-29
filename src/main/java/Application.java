@@ -1,7 +1,11 @@
+import structures.commons.DataStructure;
 import structures.trees.AVLTree;
 import structures.trees.BinarySearchTree;
 import structures.vectors.ArrayList;
+import structures.vectors.LinkedList;
+import structures.vectors.Queue;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 
 /**
@@ -42,6 +46,27 @@ public final class Application {
     arrayList.insert(perfect);
     arrayList.insert(halfHalf);
     arrayList.insert(example);
+
+    ArrayList<Integer> structure = new ArrayList<>(example);
+
+    java.util.ArrayList<Integer> al = new java.util.ArrayList<>();
+    structure = new ArrayList<>();
+
+
+    int n = 1000000;
+
+    for (int i = 0; i < n; i++) {
+      structure = new ArrayList<>();
+
+      for (int j = 0; j < i; j++) {
+        structure.insert(j);
+      }
+
+      System.out.print("size: " + structure.size());
+      System.out.println(", allocation: " + structure.allocations() + "\n");
+    }
+
+
 
   }
 
