@@ -45,9 +45,7 @@ public final class Heap<K extends Comparable, V> {
                 if (compR <= 0) {
                     return false;
                 }
-
             }
-
         }
 
         return true;
