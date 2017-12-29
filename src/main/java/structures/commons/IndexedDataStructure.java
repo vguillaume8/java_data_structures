@@ -12,6 +12,8 @@ import java.util.NoSuchElementException;
  */
 public interface IndexedDataStructure<T> extends LinearDataStructure<T> {
 
+//------------------------------------------------------------------------------
+
     /**
      * Returns the value located at a specified index
      *
@@ -79,6 +81,18 @@ public interface IndexedDataStructure<T> extends LinearDataStructure<T> {
 //------------------------------------------------------------------------------
 
     /**
+     * Returns iterator (allows use with enhanced forloop)
+     *
+     * @return Iterator for iterating over Structure by index
+     */
+    @Override
+    default Iterator<T> iterator() {
+        return new IndexedDataStructureIterator<>(this);
+    }
+
+//------------------------------------------------------------------------------
+
+    /**
      * Removes first value from the IndexedDataStructure
      *
      * @return First element in DataStructure
@@ -95,6 +109,18 @@ public interface IndexedDataStructure<T> extends LinearDataStructure<T> {
     T removeLast();
 
 //------------------------------------------------------------------------------
+    /**
+     * Verifies if a provided index is within the DataStructure or not
+     *
+     * @param index Specified index to verify
+     * @throws IndexOutOfBoundsException Exception thrown if the index is invalid
+     */
+    default void verifyIndex(int index) {
+        if (this.indexOutOfBounds(index)) {
+            throw new IndexOutOfBoundsException("size: " + this.size() + " index: " + index);
+        }
+    }
+
 
     /**
      * Static Iterator class so that the IndexedDataStructure can be iterated on via

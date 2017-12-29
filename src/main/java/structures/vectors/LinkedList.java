@@ -1,7 +1,9 @@
 package structures.vectors;
 
-import structures.commons.ChainedDataStructure;
 import structures.commons.IndexedDataStructure;
+import structures.commons.Node;
+
+import java.util.Iterator;
 
 /**
  * Basic implementation of Doubly Linked List
@@ -26,7 +28,32 @@ import structures.commons.IndexedDataStructure;
  * @author Jabari Dash
  * @param <T> Generic type
  */
-public final class LinkedList<T> extends ChainedDataStructure<T> implements IndexedDataStructure<T> {
+public final class LinkedList<T> implements IndexedDataStructure<T> {
+
+  @Override
+  public Iterator<T> iterator() {
+
+    // Need to get the head node
+
+    return new Node.NodeIterator<T>(head);
+  }
+
+  /**
+   *
+   */
+  protected int size;
+
+  /**
+   * Pointer to the first node in the chain
+   */
+  protected Node<T> head;
+
+  /**
+   * Pointer to the last node in the chain
+   *
+   * TODO - Use the tail in implementing classes such as Linkedlist so insert last is O(1)
+   */
+  protected Node<T> tail;
 
   /**
    * Constructs empty list.
@@ -62,6 +89,16 @@ public final class LinkedList<T> extends ChainedDataStructure<T> implements Inde
    */
   public LinkedList(T[] values) {
     insert(values);
+  }
+
+  /**
+   * Determines whether or not the list is empty
+   *
+   * @return True if and only if there are no elements in the list, otherwise false
+   */
+  public boolean empty() {
+
+    return size() == 0 && head == null;
   }
 
 //------------------------------------------------------------------------------
@@ -243,7 +280,7 @@ public final class LinkedList<T> extends ChainedDataStructure<T> implements Inde
 
     // If the list is empty
     if (this.empty()) {
-      head = new Node<>(value);
+      head = new Node<T>(value);
     }
 
     // Otherwise if its not empty, but we want to
@@ -261,7 +298,7 @@ public final class LinkedList<T> extends ChainedDataStructure<T> implements Inde
       // Find the ith node, and put
       // a node right in front of it
       node = getNode(index);                                        // Get the ith node
-      newNode = new Node<>(value, node.prev, node);  // Create a new node, setting its previous to the ith node's prev, and ith node as its next
+      newNode = new Node<T>(value, node.prev, node);  // Create a new node, setting its previous to the ith node's prev, and ith node as its next
       node.prev.next = newNode;                                         // Set the i-1th node's next to the new node
       node.prev = newNode;                                                // Set the old ith node's previous to the new node
     }
@@ -397,15 +434,21 @@ public final class LinkedList<T> extends ChainedDataStructure<T> implements Inde
   }
 
   /**
-   * Throws an Exception if a specified index is out of bounds
    *
-   * @param index Specified index
+   * @return
    */
-  protected void verifyIndex(int index) {
+  @Override
+  public int size() {
+    return this.size;
+  }
 
-    // Throw an Exception if the index is out of bounds
-    if (this.indexOutOfBounds(index)) {
-      throw new IndexOutOfBoundsException("size: " + this.size() + " index: " + index);
-    }
+  /**
+   * Returns a String representation of the list
+   *
+   * @return String version of the list
+   */
+  @Override
+  public String toString() {
+    return asString();
   }
 }

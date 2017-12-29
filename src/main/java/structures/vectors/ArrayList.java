@@ -2,15 +2,20 @@ package structures.vectors;
 
 import structures.commons.DynamicallySizedArray;
 
+import java.util.Arrays;
+
 /**
  * Basic implementation of a generic ArrayList
  *
  * @author Jabari Dash
  * @param <T> Generic type
  */
-public final class ArrayList<T> extends DynamicallySizedArray<T> {
+public final class ArrayList<T> implements DynamicallySizedArray<T> {
 
     private int size;
+
+    private final int DEFAULT_SIZE = 4;
+    protected T[] values;
 
     /**
      * Constructs empty list.
@@ -25,7 +30,7 @@ public final class ArrayList<T> extends DynamicallySizedArray<T> {
      * <strong>Avg: </strong>&Theta;(1)<br>
      */
     public ArrayList() {
-        super();
+        values = (T[]) new Object[DEFAULT_SIZE];
     }
 
     /**
@@ -43,7 +48,43 @@ public final class ArrayList<T> extends DynamicallySizedArray<T> {
      * @param values Array of values to construct the list from
      */
     public ArrayList(T[] values) {
+        this();
         insert(values);
+    }
+
+    /**
+     * Allocates (or de-allocates) space in the internal array
+     *
+     * @param slots How many new slots to make
+     */
+    public void alloc(int slots) {
+        int length;
+
+        length = values.length + slots;
+
+        // If the length of the internal
+        // array would become less than 0
+        if (length < 0) {
+            throw new RuntimeException("");
+        }
+
+        // If the new array is shorter, only copy
+        // up until the new array is full
+        // Otherwise, the new array is either the same
+        // length, or longer, so copy everything from the
+        // old array, but do not loop off the end
+
+        T[] temp = (T[]) new Object[length];
+
+
+        // TODO - Should not shrink smaller than the # of elements
+        int l = length < values.length ? temp.length : values.length;
+
+        System.arraycopy(values, 0, temp, 0, l);
+
+        this.values = temp;
+
+//        System.arraycopy(values, 0, temp,0, temp.length);
     }
 
 
@@ -61,6 +102,17 @@ public final class ArrayList<T> extends DynamicallySizedArray<T> {
         // Object must be an ArrayList, and all values must be equal, or object
         // must be this ArrayList itself
         return this == object || (object instanceof ArrayList && equivalentTo(object));
+    }
+
+    /**
+     * Determines whether or not the internal array is full
+     *
+     * @return True if the internal array has run out of space for new elements
+     */
+    public boolean full() {
+        T[] vals = values;
+
+        return vals == null || this.size() < vals.length;
     }
 
     /**
@@ -155,9 +207,7 @@ public final class ArrayList<T> extends DynamicallySizedArray<T> {
     private void shiftRight(int index) {
         this.verifyIndex(index);
 
-        for (int i = values.length-2; i >= index; i--) {
-            values[i+1] = values[i];
-        }
+        System.arraycopy(values, 0, values, 1, index);
     }
 
     /**
@@ -165,7 +215,7 @@ public final class ArrayList<T> extends DynamicallySizedArray<T> {
      * Values starting from to the end of the list,
      * and not including the index will be shifted
      * over to the left. The value at the specified
-     * index will be overriden by the value to its left.
+     * index will be overridden by the value to its left.
      * This essentially removes the value from that spot
      * from the array. This is an auxiliary function for
      * use with the remove functionality
@@ -188,6 +238,9 @@ public final class ArrayList<T> extends DynamicallySizedArray<T> {
         for (int i = index; i < this.size(); i++) {
             values[i] = values[i+1];
         }
+
+        // TODO - Use Java API to complete this shift left
+//        System.arraycopy(values, 1, values, 0, index);
     }
 
     /**
@@ -326,4 +379,35 @@ public final class ArrayList<T> extends DynamicallySizedArray<T> {
     public int size() {
         return this.size;
     }
+
+    /**
+     * Returns data structure as an array of specified type.
+     *
+     * @param array Array that specifies the type of the array to return.
+     * @return Array representation of the data structure.
+     */
+    public T[] toArray(T[] array) {
+
+        try {
+            array = (T[]) Arrays.copyOf(values, this.size(), array.getClass());
+
+        } catch (ArrayStoreException exception) {
+
+            throw new IllegalArgumentException("Array type " + array.getClass().getSimpleName() + " is invalid");
+        }
+
+        return array;
+    }
+
+    /**
+     * Returns a String representation of the list
+     *
+     * @return String version of the list
+     */
+    @Override
+    public String toString() {
+
+        return Arrays.toString(this.toArray());
+    }
+
 }

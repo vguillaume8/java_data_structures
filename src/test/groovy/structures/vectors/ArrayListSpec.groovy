@@ -369,8 +369,8 @@ class ArrayListSpec extends Specification {
 
         where:
         values                      | string
-        [1, 2, 3] as Integer[]      | "1, 2, 3"
-        ["1", "2", "3"] as String[] | "1, 2, 3"
-        [] as Object[]              | ""
+        [1, 2, 3] as Integer[]      | "[1, 2, 3]"
+        ["1", "2", "3"] as String[] | "[1, 2, 3]"
+        [] as Object[]              | "[]"
     }
 }

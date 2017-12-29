@@ -1,6 +1,9 @@
 package structures.vectors;
 
-import structures.commons.ChainedDataStructure;
+import structures.commons.LinearDataStructure;
+import structures.commons.Node;
+
+import java.util.Iterator;
 
 /**
  *  Basic implementation of a Stack class using a Linked List.
@@ -12,7 +15,17 @@ import structures.commons.ChainedDataStructure;
  * @author Jabari Dash
  * @param <T> Generic type
  */
-public final class Stack<T>  extends ChainedDataStructure<T> {
+public final class Stack<T>  implements LinearDataStructure<T> {
+
+    /**
+     *
+     */
+    protected int size;
+
+    /**
+     * Pointer to the first node in the chain
+     */
+    protected Node<T> head;
 
     /**
      * Constructs empty Stack
@@ -50,6 +63,14 @@ public final class Stack<T>  extends ChainedDataStructure<T> {
         insert(values);
     }
 
+
+    @Override
+    public Iterator<T> iterator() {
+
+        // Need to get the head node
+
+        return new Node.NodeIterator<T>(head);
+    }
 //------------------------------------------------------------------------------
 
     /**
@@ -156,6 +177,15 @@ public final class Stack<T>  extends ChainedDataStructure<T> {
 //------------------------------------------------------------------------------
 
     /**
+     *
+     * @return
+     */
+    @Override
+    public int size() {
+        return this.size;
+    }
+
+    /**
      * Retrieves but does not remove the topmost value from the Stack.
      *
      * <br>
@@ -175,5 +205,15 @@ public final class Stack<T>  extends ChainedDataStructure<T> {
         }
 
         return this.head.value;
+    }
+
+    /**
+     * Returns a String representation of the list
+     *
+     * @return String version of the list
+     */
+    @Override
+    public String toString() {
+        return asString();
     }
 }

@@ -43,18 +43,6 @@ public final class Application {
     arrayList.insert(halfHalf);
     arrayList.insert(example);
 
-    for (Integer[] intArray : arrayList) {
-
-      System.out.println("Input array: " + Arrays.toString(intArray));
-
-      avlTree = new AVLTree<>(intArray);
-
-      System.out.println(avlTree.toTreeString());
-
-      if (!avlTree.isBalanced())
-        System.exit(1);
-    }
-
   }
 
 }

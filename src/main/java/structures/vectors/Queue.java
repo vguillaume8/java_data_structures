@@ -1,6 +1,9 @@
 package structures.vectors;
 
-import structures.commons.ChainedDataStructure;
+import structures.commons.LinearDataStructure;
+import structures.commons.Node;
+
+import java.util.Iterator;
 
 /**
  * Basic FIFO Queue implementation
@@ -8,7 +11,24 @@ import structures.commons.ChainedDataStructure;
  * @author Jabari Dash
  * @param <T> Generic type
  */
-public final class Queue<T> extends ChainedDataStructure<T> {
+public final class Queue<T> implements LinearDataStructure<T> {
+
+    /**
+     *
+     */
+    protected int size;
+
+    /**
+     * Pointer to the first node in the chain
+     */
+    protected Node<T> head;
+
+    /**
+     * Pointer to the last node in the chain
+     *
+     * TODO - Use the tail in implementing classes such as Linkedlist so insert last is O(1)
+     */
+    protected Node<T> tail;
 
     /**
      * Constructs empty Queue.
@@ -120,5 +140,32 @@ public final class Queue<T> extends ChainedDataStructure<T> {
         this.size--;           // Decrement size of Queue
 
         return value;
+    }
+
+    /**
+     *
+     * @return
+     */
+    @Override
+    public int size() {
+        return this.size;
+    }
+
+    /**
+     * Returns a String representation of the list
+     *
+     * @return String version of the list
+     */
+    @Override
+    public String toString() {
+        return asString();
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+
+        // Need to get the head node
+
+        return new Node.NodeIterator<T>(head);
     }
 }
