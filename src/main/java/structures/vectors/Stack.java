@@ -1,8 +1,7 @@
 package structures.vectors;
 
 import structures.commons.LinearDataStructure;
-import structures.commons.Node;
-
+import structures.vectors.LinkedList.Node;
 import java.util.Iterator;
 
 /**
@@ -69,7 +68,7 @@ public final class Stack<T>  implements LinearDataStructure<T> {
 
         // Need to get the head node
 
-        return new Node.NodeIterator<T>(head);
+        return LinkedList.iterator(head);
     }
 //------------------------------------------------------------------------------
 
