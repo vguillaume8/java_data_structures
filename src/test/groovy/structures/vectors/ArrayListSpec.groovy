@@ -27,8 +27,6 @@ class ArrayListSpec extends Specification {
         when:
         if (value == null) {
             list = new ArrayList(value);
-        } else {
-            list = new ArrayList(value, "x")
         }
 
         then:
@@ -37,7 +35,6 @@ class ArrayListSpec extends Specification {
         where:
         value | exception
         null  | NullPointerException
-        -1    | IllegalArgumentException
 
     }
 
@@ -58,24 +55,6 @@ class ArrayListSpec extends Specification {
         [1, 2, 3] as Integer[] | 3      | false
         [1] as Integer[]       | 1      | false
         [] as Integer[]        | 0      | true
-    }
-
-//------------------------------------------------------------------------------
-
-    @Unroll
-    def "#Construct a non-empty list by length"() {
-        setup:
-        ArrayList list = new ArrayList(length, "x")
-
-        expect:
-        list.size() == length
-        list.empty() == empty
-
-        where:
-        length | empty
-        3      | false
-        1      | false
-        0      | true
     }
 
 //------------------------------------------------------------------------------
@@ -151,8 +130,6 @@ class ArrayListSpec extends Specification {
         value | check | contains
         1     | 1     | true
         1     | 2     | false
-        null  | 2     | false
-        null  | null  | true
         "1"   | 1     | false
         "1"   | "1"   | true
     }
@@ -236,22 +213,6 @@ class ArrayListSpec extends Specification {
         [] as Integer[]        | true
     }
 
-//------------------------------------------------------------------------------
-
-    @Unroll
-    def "#empty() when initializing with specified length"() {
-        setup:
-        ArrayList list = new ArrayList(length, "x");
-
-        expect:
-        list.empty() == empty
-
-        where:
-        length | empty
-        1      | false
-        10     | false
-        0      | true
-    }
 
 //------------------------------------------------------------------------------
 
@@ -408,8 +369,8 @@ class ArrayListSpec extends Specification {
 
         where:
         values                      | string
-        [1, 2, 3] as Integer[]      | "1, 2, 3"
-        ["1", "2", "3"] as String[] | "1, 2, 3"
-        [] as Object[]              | ""
+        [1, 2, 3] as Integer[]      | "[1, 2, 3]"
+        ["1", "2", "3"] as String[] | "[1, 2, 3]"
+        [] as Object[]              | "[]"
     }
 }

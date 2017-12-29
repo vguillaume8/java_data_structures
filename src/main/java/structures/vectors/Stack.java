@@ -1,6 +1,9 @@
 package structures.vectors;
 
-import structures.commons.ChainedDataStructure;
+import structures.commons.LinearDataStructure;
+import structures.commons.Node;
+
+import java.util.Iterator;
 
 /**
  *  Basic implementation of a Stack class using a Linked List.
@@ -12,7 +15,17 @@ import structures.commons.ChainedDataStructure;
  * @author Jabari Dash
  * @param <T> Generic type
  */
-public final class Stack<T>  extends ChainedDataStructure<T> {
+public final class Stack<T>  implements LinearDataStructure<T> {
+
+    /**
+     *
+     */
+    protected int size;
+
+    /**
+     * Pointer to the first node in the chain
+     */
+    protected Node<T> head;
 
     /**
      * Constructs empty Stack
@@ -47,31 +60,17 @@ public final class Stack<T>  extends ChainedDataStructure<T> {
      * @param values Array of values to instatiate Queue from
      */
     public Stack(T[] values) {
-        super(values);
+        insert(values);
     }
 
-//------------------------------------------------------------------------------
 
-    /**
-     * Constructs Queue of specified length where
-     * all values have a specified default value.
-     *
-     * <br>
-     * <br>
-     * <strong>Time Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(n)<br>
-     *
-     * <br>
-     * <strong>Space Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(1)<br>
-     *
-     * @param length Specified length of list
-     * @param value Specified default value
-     */
-    public Stack(int length, T value) {
-        super(length, value);
+    @Override
+    public Iterator<T> iterator() {
+
+        // Need to get the head node
+
+        return new Node.NodeIterator<T>(head);
     }
-
 //------------------------------------------------------------------------------
 
     /**
@@ -92,14 +91,14 @@ public final class Stack<T>  extends ChainedDataStructure<T> {
     @Override
     public boolean insert(T value) {
         if (this.empty()) {
-            this.head(new Node(value, null, null));
+            this.head = new Node<T>(value);
         } else {
-            Node node = new Node(value, null, this.head());
-            this.head().prev(node);
-            this.head(node);
+            Node<T> node = new Node<T>(value, null, this.head);
+            this.head.prev = node;
+            this.head = node;
         }
 
-        this.incrementSize();
+        this.size++;
 
         return true;
     }
@@ -128,9 +127,9 @@ public final class Stack<T>  extends ChainedDataStructure<T> {
             throw new EmptyDataStructureException("Cannot remove from an empty Stack");
         }
 
-        T value = this.head().value();  // Get value from head
-        this.head(this.head().next());  // Set head equal to head's next
-        this.decrementSize();           // Decrement size of Queue
+        T value = this.head.value;  // Get value from head
+        this.head = this.head.next;  // Set head equal to head's next
+        this.size--;           // Decrement size of Queue
 
         return value;
     }
@@ -178,6 +177,15 @@ public final class Stack<T>  extends ChainedDataStructure<T> {
 //------------------------------------------------------------------------------
 
     /**
+     *
+     * @return
+     */
+    @Override
+    public int size() {
+        return this.size;
+    }
+
+    /**
      * Retrieves but does not remove the topmost value from the Stack.
      *
      * <br>
@@ -196,6 +204,16 @@ public final class Stack<T>  extends ChainedDataStructure<T> {
             throw new EmptyDataStructureException("Cannot top() and empty Stack");
         }
 
-        return this.head().value();
+        return this.head.value;
+    }
+
+    /**
+     * Returns a String representation of the list
+     *
+     * @return String version of the list
+     */
+    @Override
+    public String toString() {
+        return asString();
     }
 }

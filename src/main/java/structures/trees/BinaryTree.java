@@ -3,7 +3,8 @@ package structures.trees;
 import structures.commons.DataStructure;
 import structures.commons.Pair;
 import structures.vectors.ArrayList;
-import util.Util;
+
+import java.util.Arrays;
 import java.util.Iterator;
 
 /**
@@ -12,7 +13,7 @@ import java.util.Iterator;
  * @param <K> Generic type for keys
  * @param <V> Generic type for values
  */
-public interface Tree<K, V> extends DataStructure<K>, Iterable<Pair<K, V>> {
+public interface BinaryTree<K, V> extends DataStructure<K>, Iterable<Pair<K, V>> {
 
     /**
      * Integer code for in-order tree traversal.
@@ -39,15 +40,6 @@ public interface Tree<K, V> extends DataStructure<K>, Iterable<Pair<K, V>> {
      */
     int DEFAULT_ORDER = PRE_ORDER;
 
-    /**
-     * Integer code for printing tree horizontally.
-     */
-    int HORIZONTAL_TREE_STRING = 5;
-
-    /**
-     * Integer code for printing tree vertically.
-     */
-    int VERTICAL_TREE_STRING = 6;
 
     /**
      * Determines whether or not a specified key is present in the tree.
@@ -92,12 +84,12 @@ public interface Tree<K, V> extends DataStructure<K>, Iterable<Pair<K, V>> {
      * Display tree's important information to verify that
      * it was built correctly. This method is for development purposes
      */
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings("unused")
     default void display() {
 
         System.out.println(this.getClass().getSimpleName());
-        System.out.println("Size: "         + this.size());
-        System.out.println("Height: "       + this.height());
+        System.out.println("Size: "           + this.size());
+        System.out.println("Height: "         + this.height());
         System.out.println("Balanced: "     + this.isBalanced());
         System.out.println("Full: "         + this.isFull());
         System.out.println("Complete: "     + this.isComplete());
@@ -106,11 +98,11 @@ public interface Tree<K, V> extends DataStructure<K>, Iterable<Pair<K, V>> {
         System.out.println("Keys, Pre-order: "    + this.toString(PRE_ORDER));
         System.out.println("Keys, Post-order: "   + this.toString(POST_ORDER));
         System.out.println("Keys, Level-order: "  + this.toString(LEVEL_ORDER));
-        System.out.println("Values, In-order: "     + Util.ArrayToString(this.values(IN_ORDER)));
-        System.out.println("Values, Pre-order: "    + Util.ArrayToString(this.values(PRE_ORDER)));
-        System.out.println("Values, Post-order: "   + Util.ArrayToString(this.values(POST_ORDER)));
-        System.out.println("Values, Level-order: "  + Util.ArrayToString(this.values(LEVEL_ORDER)));
-        System.out.println("Tree String:\n" + this.toTreeString());
+        System.out.println("Values, In-order: "     + Arrays.toString(this.values(IN_ORDER)));
+        System.out.println("Values, Pre-order: "    + Arrays.toString(this.values(PRE_ORDER)));
+        System.out.println("Values, Post-order: "   + Arrays.toString(this.values(POST_ORDER)));
+        System.out.println("Values, Level-order: "  + Arrays.toString(this.values(LEVEL_ORDER)));
+        System.out.println("BinaryTree String:\n"         + this.toTreeString());
     }
 
     /**
@@ -166,7 +158,7 @@ public interface Tree<K, V> extends DataStructure<K>, Iterable<Pair<K, V>> {
      */
     @SuppressWarnings("unused")
     default Iterator<Pair<K, V>> iterator() {
-        return new TreeIterator<K, V>(this, DEFAULT_ORDER);
+        return new TreeIterator<>(this, DEFAULT_ORDER);
     }
 
     /**
@@ -225,7 +217,7 @@ public interface Tree<K, V> extends DataStructure<K>, Iterable<Pair<K, V>> {
      * @return Array of keys in the tree.
      */
     @SuppressWarnings("unused")
-    default K[] keys() {
+    default <K> K[] keys() {
         return keys(DEFAULT_ORDER);
     }
 
@@ -235,7 +227,7 @@ public interface Tree<K, V> extends DataStructure<K>, Iterable<Pair<K, V>> {
      * @param traversalType Specified order.
      * @return Array of keys in the tree.
      */
-    K[] keys(int traversalType);
+    <K> K[] keys(int traversalType);
 
     /**
      * Returns an ArrayList of key-value pairs in the tree in pre-order.
@@ -305,7 +297,7 @@ public interface Tree<K, V> extends DataStructure<K>, Iterable<Pair<K, V>> {
             default:          array = this.keys(DEFAULT_ORDER); break;
         }
 
-        return Util.ArrayToString(array);
+        return Arrays.toString(array);
     }
 
     /**
@@ -314,46 +306,7 @@ public interface Tree<K, V> extends DataStructure<K>, Iterable<Pair<K, V>> {
      *
      * @return String representation of tree (vertical)
      */
-    default String toTreeString() {
-
-        return this.toTreeString(VERTICAL_TREE_STRING);
-    }
-
-    /**
-     * Returns the tree as a {@code String} in specified orientation.
-     *
-     * @param orientation Specified orientation.
-     * @return String of tree.
-     */
-    @SuppressWarnings("unused")
-    default String toTreeString(int orientation) {
-        String string;
-
-        switch (orientation) {
-            case HORIZONTAL_TREE_STRING: string = this.toTreeStringHorizontal();           break;
-            case VERTICAL_TREE_STRING:   string = this.toTreeStringVertical();             break;
-            default:                     string = this.toTreeStringVertical();             break;
-        }
-
-        return string;
-    }
-
-    /**
-     * Returns tree as String on it's side.
-     *
-     * @return String representation of tree.
-     */
-    @SuppressWarnings("unused")
-    String toTreeStringVertical();
-
-    /**
-     * Returns String representation of tree horizontally.
-     *
-     * @return Tree string.
-     */
-    @SuppressWarnings("unused")
-    String toTreeStringHorizontal();
-
+    String toTreeString();
 
     /**
      * Returns an array of the values in the tree in pre-order.
@@ -390,11 +343,11 @@ public interface Tree<K, V> extends DataStructure<K>, Iterable<Pair<K, V>> {
          * Initializes the iterator with a specified tree, and its ArrayLis of pairs in
          * a specified order.
          *
-         * @param tree Tree to instantiate iterator from.
+         * @param tree BinaryTree to instantiate iterator from.
          * @param traversalType Order in which to return the pairs.
          */
         @SuppressWarnings("unused")
-        private TreeIterator(Tree<K, V> tree, int traversalType) {
+        private TreeIterator(BinaryTree<K, V> tree, int traversalType) {
             this.iterator = tree.pairs(traversalType).iterator();
         }
 
@@ -422,4 +375,5 @@ public interface Tree<K, V> extends DataStructure<K>, Iterable<Pair<K, V>> {
             return iterator.next();
         }
     }
+
 }

@@ -157,9 +157,9 @@ class QueueSpec extends Specification {
 
         where:
         values                  | string
-        [1, 2, 3] as Integer[]  | "1, 2, 3"
-        [1, 2] as Integer[]     | "1, 2"
-        [1] as Integer[]        | "1"
-        [] as Integer[]         | ""
+        [1, 2, 3] as Integer[]  | "[1, 2, 3]"
+        [1, 2] as Integer[]     | "[1, 2]"
+        [1] as Integer[]        | "[1]"
+        [] as Integer[]         | "[]"
     }
 }

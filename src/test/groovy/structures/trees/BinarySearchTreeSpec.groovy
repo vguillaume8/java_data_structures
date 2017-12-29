@@ -5,7 +5,8 @@ import structures.commons.Pair
 import spock.lang.Specification
 import spock.lang.Unroll
 import structures.vectors.ArrayList
-import util.Util
+import structures.trees.BinarySearchTree.BinarySearchTreeNode
+import util.Util;
 
 class BinarySearchTreeSpec extends Specification {
 
@@ -48,13 +49,13 @@ class BinarySearchTreeSpec extends Specification {
         setup:
         BinarySearchTree<Integer, String> tree;
 
-        Pair<Integer, String>[] pairs = new Pair[6];
-        pairs[0] = new Pair<Integer, String>(1, "Jabari");
-        pairs[1] = new Pair<Integer, String>(2, "Jalia");
-        pairs[2] = new Pair<Integer, String>(3, "Jelani");
-        pairs[3] = new Pair<Integer, String>(4, "Vanessa");
-        pairs[4] = new Pair<Integer, String>(5, "Leonard");
-        pairs[5] = new Pair<Integer, String>(6, "Ceazar");
+        Pair<Integer, String>[] pairs = new BinarySearchTreeNode[6];
+        pairs[0] = new BinarySearchTreeNode<Integer, String>(1, "Jabari");
+        pairs[1] = new BinarySearchTreeNode<Integer, String>(2, "Jalia");
+        pairs[2] = new BinarySearchTreeNode<Integer, String>(3, "Jelani");
+        pairs[3] = new BinarySearchTreeNode<Integer, String>(4, "Vanessa");
+        pairs[4] = new BinarySearchTreeNode<Integer, String>(5, "Leonard");
+        pairs[5] = new BinarySearchTreeNode<Integer, String>(6, "Ceazar");
 
         when:
         tree = new BinarySearchTree<>(pairs);
@@ -85,15 +86,15 @@ class BinarySearchTreeSpec extends Specification {
         when:
         BinarySearchTree<Integer, String> tree;
 
-        Pair<Integer, String>[] pairs = new Pair[8];
-        pairs[0] = new Pair<Integer, String>(1, "Jabari");
-        pairs[1] = new Pair<Integer, String>(2, "Jalia");
-        pairs[2] = new Pair<Integer, String>(3, "Jelani");
-        pairs[3] = new Pair<Integer, String>(4, "Vanessa");
-        pairs[4] = new Pair<Integer, String>(5, "Leonard");
-        pairs[5] = new Pair<Integer, String>(6, "Ceazar");
-        pairs[6] = new Pair<Integer, String>(7, "Jendaya");
-        pairs[7] = new Pair<Integer, String>(8, "Elijah");
+        Pair<Integer, String>[] pairs = new BinarySearchTreeNode[8];
+        pairs[0] = new BinarySearchTreeNode<Integer, String>(1, "Jabari");
+        pairs[1] = new BinarySearchTreeNode<Integer, String>(2, "Jalia");
+        pairs[2] = new BinarySearchTreeNode<Integer, String>(3, "Jelani");
+        pairs[3] = new BinarySearchTreeNode<Integer, String>(4, "Vanessa");
+        pairs[4] = new BinarySearchTreeNode<Integer, String>(5, "Leonard");
+        pairs[5] = new BinarySearchTreeNode<Integer, String>(6, "Ceazar");
+        pairs[6] = new BinarySearchTreeNode<Integer, String>(7, "Jendaya");
+        pairs[7] = new BinarySearchTreeNode<Integer, String>(8, "Elijah");
 
         tree = new BinarySearchTree<>(pairs);
 
@@ -137,15 +138,15 @@ class BinarySearchTreeSpec extends Specification {
         setup:
         BinarySearchTree<Integer, String> tree;
 
-        Pair<Integer, String>[] pairs = new Pair[8];
-        pairs[0] = new Pair<Integer, String>(1, "Jabari");
-        pairs[1] = new Pair<Integer, String>(2, "Jalia");
-        pairs[2] = new Pair<Integer, String>(3, "Jelani");
-        pairs[3] = new Pair<Integer, String>(4, "Vanessa");
-        pairs[4] = new Pair<Integer, String>(5, "Leonard");
-        pairs[5] = new Pair<Integer, String>(6, "Ceazar");
-        pairs[6] = new Pair<Integer, String>(7, "Jendaya");
-        pairs[7] = new Pair<Integer, String>(8, "Elijah");
+        Pair<Integer, String>[] pairs = new BinarySearchTreeNode[8];
+        pairs[0] = new BinarySearchTreeNode<Integer, String>(1, "Jabari");
+        pairs[1] = new BinarySearchTreeNode<Integer, String>(2, "Jalia");
+        pairs[2] = new BinarySearchTreeNode<Integer, String>(3, "Jelani");
+        pairs[3] = new BinarySearchTreeNode<Integer, String>(4, "Vanessa");
+        pairs[4] = new BinarySearchTreeNode<Integer, String>(5, "Leonard");
+        pairs[5] = new BinarySearchTreeNode<Integer, String>(6, "Ceazar");
+        pairs[6] = new BinarySearchTreeNode<Integer, String>(7, "Jendaya");
+        pairs[7] = new BinarySearchTreeNode<Integer, String>(8, "Elijah");
 
         when:
         tree = new BinarySearchTree<>(pairs);
@@ -171,15 +172,15 @@ class BinarySearchTreeSpec extends Specification {
         setup:
         BinarySearchTree<Integer, String> tree;
 
-        Pair<Integer, String>[] pairs = new Pair[8];
-        pairs[0] = new Pair<Integer, String>(1, "Jabari");
-        pairs[1] = new Pair<Integer, String>(2, "Jalia");
-        pairs[2] = new Pair<Integer, String>(3, "Jelani");
-        pairs[3] = new Pair<Integer, String>(4, "Vanessa");
-        pairs[4] = new Pair<Integer, String>(5, "Leonard");
-        pairs[5] = new Pair<Integer, String>(6, "Ceazar");
-        pairs[6] = new Pair<Integer, String>(7, "Jendaya");
-        pairs[7] = new Pair<Integer, String>(8, "Elijah");
+        Pair<Integer, String>[] pairs = new BinarySearchTreeNode[8];
+        pairs[0] = new BinarySearchTreeNode<Integer, String>(1, "Jabari");
+        pairs[1] = new BinarySearchTreeNode<Integer, String>(2, "Jalia");
+        pairs[2] = new BinarySearchTreeNode<Integer, String>(3, "Jelani");
+        pairs[3] = new BinarySearchTreeNode<Integer, String>(4, "Vanessa");
+        pairs[4] = new BinarySearchTreeNode<Integer, String>(5, "Leonard");
+        pairs[5] = new BinarySearchTreeNode<Integer, String>(6, "Ceazar");
+        pairs[6] = new BinarySearchTreeNode<Integer, String>(7, "Jendaya");
+        pairs[7] = new BinarySearchTreeNode<Integer, String>(8, "Elijah");
 
         when:
         tree = new BinarySearchTree<>(pairs);
@@ -240,15 +241,15 @@ class BinarySearchTreeSpec extends Specification {
         setup:
         BinarySearchTree<Integer, String> tree = new BinarySearchTree<>();
 
-        Pair<Integer, String>[] pairs = new Pair[8];
-        pairs[0] = new Pair<Integer, String>(1, "Jabari");
-        pairs[1] = new Pair<Integer, String>(2, "Jalia");
-        pairs[2] = new Pair<Integer, String>(3, "Jelani");
-        pairs[3] = new Pair<Integer, String>(4, "Vanessa");
-        pairs[4] = new Pair<Integer, String>(5, "Leonard");
-        pairs[5] = new Pair<Integer, String>(6, "Ceazar");
-        pairs[6] = new Pair<Integer, String>(7, "Jendaya");
-        pairs[7] = new Pair<Integer, String>(8, "Elijah");
+        Pair<Integer, String>[] pairs = new BinarySearchTreeNode[8];
+        pairs[0] = new BinarySearchTreeNode<Integer, String>(1, "Jabari");
+        pairs[1] = new BinarySearchTreeNode<Integer, String>(2, "Jalia");
+        pairs[2] = new BinarySearchTreeNode<Integer, String>(3, "Jelani");
+        pairs[3] = new BinarySearchTreeNode<Integer, String>(4, "Vanessa");
+        pairs[4] = new BinarySearchTreeNode<Integer, String>(5, "Leonard");
+        pairs[5] = new BinarySearchTreeNode<Integer, String>(6, "Ceazar");
+        pairs[6] = new BinarySearchTreeNode<Integer, String>(7, "Jendaya");
+        pairs[7] = new BinarySearchTreeNode<Integer, String>(8, "Elijah");
 
         when:
         tree.insert(pairs[0].key(), pairs[0].value());  // Jabari, 1
@@ -348,15 +349,15 @@ class BinarySearchTreeSpec extends Specification {
         setup:
         BinarySearchTree<Integer, String> tree;
 
-        Pair<Integer, String>[] pairs = new Pair[8];
-        pairs[0] = new Pair<Integer, String>(1, "Jabari");
-        pairs[1] = new Pair<Integer, String>(2, "Jalia");
-        pairs[2] = new Pair<Integer, String>(3, "Jelani");
-        pairs[3] = new Pair<Integer, String>(4, "Vanessa");
-        pairs[4] = new Pair<Integer, String>(5, "Leonard");
-        pairs[5] = new Pair<Integer, String>(6, "Ceazar");
-        pairs[6] = new Pair<Integer, String>(7, "Jendaya");
-        pairs[7] = new Pair<Integer, String>(8, "Elijah");
+        Pair<Integer, String>[] pairs = new BinarySearchTreeNode[8];
+        pairs[0] = new BinarySearchTreeNode<Integer, String>(1, "Jabari");
+        pairs[1] = new BinarySearchTreeNode<Integer, String>(2, "Jalia");
+        pairs[2] = new BinarySearchTreeNode<Integer, String>(3, "Jelani");
+        pairs[3] = new BinarySearchTreeNode<Integer, String>(4, "Vanessa");
+        pairs[4] = new BinarySearchTreeNode<Integer, String>(5, "Leonard");
+        pairs[5] = new BinarySearchTreeNode<Integer, String>(6, "Ceazar");
+        pairs[6] = new BinarySearchTreeNode<Integer, String>(7, "Jendaya");
+        pairs[7] = new BinarySearchTreeNode<Integer, String>(8, "Elijah");
 
         when:
         tree = new BinarySearchTree<>(pairs);
@@ -386,20 +387,20 @@ class BinarySearchTreeSpec extends Specification {
     }
 
     @Unroll
-    def "Get array of pairs specifying or order"() {
+    def "Get array of pairs specifying order"() {
         setup:
         BinarySearchTree<Integer, String> tree
         structures.vectors.ArrayList<Pair<Integer, String>> arrayList
 
-        Pair<Integer, String>[] pairs = new Pair[3];
-        pairs[0] = new Pair<Integer, String>(2, "Jalia")
-        pairs[1] = new Pair<Integer, String>(1, "Jabari")
-        pairs[2] = new Pair<Integer, String>(3, "Jelani")
+        Pair<Integer, String>[] pairs = new BinarySearchTreeNode[3];
+        pairs[0] = new BinarySearchTreeNode<Integer, String>(2, "Jalia")
+        pairs[1] = new BinarySearchTreeNode<Integer, String>(1, "Jabari")
+        pairs[2] = new BinarySearchTreeNode<Integer, String>(3, "Jelani")
 
         when:
         tree = new BinarySearchTree<>(pairs)
         arrayList = new structures.vectors.ArrayList<Pair<Integer, String>>(pairs)
-        def p = tree.pairs(BinarySearchTree.IN_ORDER)
+        def p = tree.pairs(BinarySearchTree.PRE_ORDER)
 
         then:
         p.equals(arrayList);
@@ -426,15 +427,15 @@ class BinarySearchTreeSpec extends Specification {
         setup:
         BinarySearchTree<Integer, String> tree;
 
-        Pair<Integer, String>[] pairs = new Pair[8];
-        pairs[0] = new Pair<Integer, String>(1, "Jabari");
-        pairs[1] = new Pair<Integer, String>(2, "Jalia");
-        pairs[2] = new Pair<Integer, String>(3, "Jelani");
-        pairs[3] = new Pair<Integer, String>(4, "Vanessa");
-        pairs[4] = new Pair<Integer, String>(5, "Leonard");
-        pairs[5] = new Pair<Integer, String>(6, "Ceazar");
-        pairs[6] = new Pair<Integer, String>(7, "Jendaya");
-        pairs[7] = new Pair<Integer, String>(8, "Elijah");
+        Pair<Integer, String>[] pairs = new BinarySearchTreeNode[8];
+        pairs[0] = new BinarySearchTreeNode<Integer, String>(1, "Jabari");
+        pairs[1] = new BinarySearchTreeNode<Integer, String>(2, "Jalia");
+        pairs[2] = new BinarySearchTreeNode<Integer, String>(3, "Jelani");
+        pairs[3] = new BinarySearchTreeNode<Integer, String>(4, "Vanessa");
+        pairs[4] = new BinarySearchTreeNode<Integer, String>(5, "Leonard");
+        pairs[5] = new BinarySearchTreeNode<Integer, String>(6, "Ceazar");
+        pairs[6] = new BinarySearchTreeNode<Integer, String>(7, "Jendaya");
+        pairs[7] = new BinarySearchTreeNode<Integer, String>(8, "Elijah");
 
         tree = new BinarySearchTree<>(pairs);
 
@@ -473,15 +474,15 @@ class BinarySearchTreeSpec extends Specification {
         BinarySearchTree<Integer, String> tree
         boolean ascendingOrder = true
 
-        Pair<Integer, String>[] pairs = new Pair[8];
-        pairs[0] = new Pair<Integer, String>(1, "Jabari");
-        pairs[1] = new Pair<Integer, String>(2, "Jalia");
-        pairs[2] = new Pair<Integer, String>(3, "Jelani");
-        pairs[3] = new Pair<Integer, String>(4, "Vanessa");
-        pairs[4] = new Pair<Integer, String>(5, "Leonard");
-        pairs[5] = new Pair<Integer, String>(6, "Ceazar");
-        pairs[6] = new Pair<Integer, String>(7, "Jendaya");
-        pairs[7] = new Pair<Integer, String>(8, "Elijah");
+        Pair<Integer, String>[] pairs = new BinarySearchTreeNode[8];
+        pairs[0] = new BinarySearchTreeNode<Integer, String>(1, "Jabari");
+        pairs[1] = new BinarySearchTreeNode<Integer, String>(2, "Jalia");
+        pairs[2] = new BinarySearchTreeNode<Integer, String>(3, "Jelani");
+        pairs[3] = new BinarySearchTreeNode<Integer, String>(4, "Vanessa");
+        pairs[4] = new BinarySearchTreeNode<Integer, String>(5, "Leonard");
+        pairs[5] = new BinarySearchTreeNode<Integer, String>(6, "Ceazar");
+        pairs[6] = new BinarySearchTreeNode<Integer, String>(7, "Jendaya");
+        pairs[7] = new BinarySearchTreeNode<Integer, String>(8, "Elijah");
 
         when:
         tree = new BinarySearchTree<>(pairs)
@@ -524,15 +525,15 @@ class BinarySearchTreeSpec extends Specification {
         setup:
         BinarySearchTree<Integer, String> tree;
 
-        Pair<Integer, String>[] pairs = new Pair[8];
-        pairs[0] = new Pair<Integer, String>(4, "Jabari");
-        pairs[1] = new Pair<Integer, String>(7, "Jalia");
-        pairs[2] = new Pair<Integer, String>(1, "Jelani");
-        pairs[3] = new Pair<Integer, String>(3, "Vanessa");
-        pairs[4] = new Pair<Integer, String>(5, "Leonard");
-        pairs[5] = new Pair<Integer, String>(6, "Ceazar");
-        pairs[6] = new Pair<Integer, String>(2, "Jendaya");
-        pairs[7] = new Pair<Integer, String>(8, "Elijah");
+        Pair<Integer, String>[] pairs = new BinarySearchTreeNode[8];
+        pairs[0] = new BinarySearchTreeNode<Integer, String>(4, "Jabari");
+        pairs[1] = new BinarySearchTreeNode<Integer, String>(7, "Jalia");
+        pairs[2] = new BinarySearchTreeNode<Integer, String>(1, "Jelani");
+        pairs[3] = new BinarySearchTreeNode<Integer, String>(3, "Vanessa");
+        pairs[4] = new BinarySearchTreeNode<Integer, String>(5, "Leonard");
+        pairs[5] = new BinarySearchTreeNode<Integer, String>(6, "Ceazar");
+        pairs[6] = new BinarySearchTreeNode<Integer, String>(2, "Jendaya");
+        pairs[7] = new BinarySearchTreeNode<Integer, String>(8, "Elijah");
 
         when:
         tree = new BinarySearchTree<>(pairs);

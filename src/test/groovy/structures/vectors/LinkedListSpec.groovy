@@ -19,30 +19,6 @@ class LinkedListSpec extends Specification {
 
 //------------------------------------------------------------------------------
 
-  @Unroll
-  def "Constructing a list with bad values"() {
-    setup:
-    LinkedList list
-
-    when:
-    if (value == null) {
-      list = new LinkedList(value);
-    } else {
-      list = new LinkedList(value, "x")
-    }
-
-    then:
-    thrown exception
-
-    where:
-    value | exception
-    null  | NullPointerException
-    -1    | IllegalArgumentException
-
-  }
-
-//------------------------------------------------------------------------------
-
 
   @Unroll
   def "#Construct a non-empty list from array"() {
@@ -65,17 +41,17 @@ class LinkedListSpec extends Specification {
   @Unroll
   def "#Construct a non-empty list by length"() {
     setup:
-    LinkedList list = new LinkedList(length, "x")
+    LinkedList list = new LinkedList(values);
 
     expect:
     list.size() == length
     list.empty() == empty
 
     where:
-    length | empty
-    3      | false
-    1      | false
-    0      | true
+    length | empty | values
+    3      | false | [1, 2, 3] as Integer[]
+    1      | false | ['a'] as Character[]
+    0      | true  | [] as Double[]
   }
 
 //------------------------------------------------------------------------------
@@ -151,8 +127,6 @@ class LinkedListSpec extends Specification {
     value | check | contains
     1     | 1     | true
     1     | 2     | false
-    null  | 2     | false
-    null  | null  | true
     "1"   | 1     | false
     "1"   | "1"   | true
   }
@@ -236,22 +210,6 @@ class LinkedListSpec extends Specification {
     [] as Integer[]        | true
   }
 
-//------------------------------------------------------------------------------
-
-  @Unroll
-  def "#empty() when initializing with specified length"() {
-    setup:
-    LinkedList list = new LinkedList(length, "x");
-
-    expect:
-    list.empty() == empty
-
-    where:
-    length | empty
-    1      | false
-    10     | false
-    0      | true
-  }
 
 //------------------------------------------------------------------------------
 
@@ -408,8 +366,8 @@ class LinkedListSpec extends Specification {
 
     where:
     values                      | string
-    [1, 2, 3] as Integer[]      | "1, 2, 3"
-    ["1", "2", "3"] as String[] | "1, 2, 3"
-    [] as Object[]              | ""
+    [1, 2, 3] as Integer[]      | "[1, 2, 3]"
+    ["1", "2", "3"] as String[] | "[1, 2, 3]"
+    [] as Object[]              | "[]"
   }
 }

@@ -23,7 +23,9 @@ public interface DataStructure<T> {
      *
      * @return True if and only if there are no elements in the structure.
      */
-    boolean empty();
+    default boolean empty() {
+        return this.size() == 0;
+    }
 
 //------------------------------------------------------------------------------
 
@@ -34,6 +36,23 @@ public interface DataStructure<T> {
      * @return True if and only if the value was successfully inserted.
      */
     boolean insert(T value);
+
+//------------------------------------------------------------------------------
+
+    /**
+     * Inserts an array into the data structure.
+     *
+     * @param values Values to insert.
+     * @return Returns true if and only if all values were successfully inserted.
+     */
+    default boolean insert(T[] values) {
+        boolean all = true;
+
+        for (T value : values)
+            all = all && insert(value);
+
+        return all;
+    }
 
 //------------------------------------------------------------------------------
 

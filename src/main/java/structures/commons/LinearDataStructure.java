@@ -1,5 +1,7 @@
 package structures.commons;
 
+import java.util.Arrays;
+
 /**
  * Interface for all linear DataStructures such as {@code LinkedList}, {@code ArrayList},
  * or any other vector-like data structure.
@@ -8,6 +10,41 @@ package structures.commons;
  * @param <T> Generic Type
  */
 public interface LinearDataStructure<T> extends DataStructure<T>,  Iterable<T> {
+
+    /**
+     *
+     * @return
+     */
+    default String asString() {
+        return Arrays.toString(this.toArray());
+    }
+
+    /**
+     * Determines whether or not a specified value is in the vector
+     *
+     * <br>
+     * <br>
+     * <strong>Time Complexity:</strong><br>
+     * <strong>Best: </strong>&Omega;(1)<br>
+     * <strong>Worst: </strong>O(n)<br>
+     *
+     * <br>
+     * <strong>Space Complexity:</strong><br>
+     * <strong>Avg: </strong>&Theta;(1)<br>
+     *
+     * @param value Specified value to search for
+     * @return True if and only if the specified value if in the vector
+     */
+    @Override
+    default boolean contains(T value) {
+
+        for (T v : this) {
+            if (v.equals(value))
+                return true;
+        }
+
+        return false;
+    }
 
     /**
      * Removes an element from the DataStructure. The order
@@ -26,7 +63,13 @@ public interface LinearDataStructure<T> extends DataStructure<T>,  Iterable<T> {
      * @return Array representation of DataStructure
      */
     @SuppressWarnings("unused")
-    T[] toArray();
+    default Object[] toArray() {
+        // All objects of type T extend java.lang.Object
+        @SuppressWarnings("unchecked")
+        Object[] objects = this.toArray((T[]) new Object[0]);
+
+        return objects;
+    }
 
 //------------------------------------------------------------------------------
 
@@ -36,7 +79,21 @@ public interface LinearDataStructure<T> extends DataStructure<T>,  Iterable<T> {
      * @param array Array that specified the type.
      * @return Array version of the data structure.
      */
-    T[] toArray(T[] array);
+    default T[] toArray(T[] array) {
+        // Cast is safe, because we passed a T[] in, so we
+        // get a T[] back out
+        @SuppressWarnings("unchecked")
+        T[] a = (T[]) Arrays.copyOf(array, this.size(), array.getClass());
+
+        int i = 0;
+
+        for (T value : this) {
+            a[i] = value;
+            i++;
+        }
+
+        return a;
+    }
 
 //------------------------------------------------------------------------------
 
@@ -46,13 +103,10 @@ public interface LinearDataStructure<T> extends DataStructure<T>,  Iterable<T> {
      * override the java.lang.Object.equals() method, and
      * call this.
      *
-     * useful: https://www.geeksforgeeks.org/overriding-equals-method-in-java/
-     *
      * @param object Object to compare this object with.
      * @return True if the objects are of the same type, their
      * sizes are the same, and they contain all the same values.
      */
-    @SuppressWarnings("unchecked")
     default boolean equivalentTo(Object object) {
 
         // If object is compared to itself
@@ -63,19 +117,35 @@ public interface LinearDataStructure<T> extends DataStructure<T>,  Iterable<T> {
         if (!(object instanceof LinearDataStructure))
             return false;
 
-        // Cast to LinearDataStructure, and compare the values
-        LinearDataStructure vector = (IndexedDataStructure) object;
+        try {
 
-        // Check length
-        if (vector.size() != this.size()) {
-            return false;
-        }
+            // Cast to LinearDataStructure, and compare the values
+            @SuppressWarnings("unchecked")
+            LinearDataStructure<T> vector = (LinearDataStructure<T>) object;
 
-        // Check each value
-        for (T value : this) {
-            if (!vector.contains(value)) {
+            // Check length
+            if (vector.size() != this.size()) {
                 return false;
             }
+
+            // Check each value
+            for (T value : this) {
+                if (!vector.contains(value)) {
+                    return false;
+                }
+            }
+
+        // If a ClassCastException was thrown, then
+        // the object could not be casted to a LinearDataStructure,
+        // and thus, the objects cannot be equal to each other. Note,
+        // this is a double check, after we checked instance of LinearDataStructure.
+        // Also note, we do not want to catch all Exceptions because in the event
+        // that the code that implements size(), or contains(), or the iterator()
+        // used in the foreach loop throws an error, we want the developer to know.
+        // This indicated their is a bug in their code, and we do not want to
+        // handle those. We are only looking to handle Exceptions related to casting here.
+        } catch (ClassCastException exception) {
+            return false;
         }
 
         // If we made it to the bottom,

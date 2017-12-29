@@ -8,6 +8,10 @@ to a remote server or artifactory
 
 ## General
 - Make `DataStructure` objects `extend Clonable` (if not too expensive of a change)
+- Make instance variables on abstract classes protected rather than private. Provided that
+extending classes still have access to the setter and getter methods, the variables are just 
+as prone to being overwritten with bad values. However, adding extra function calls for getters
+and setters just increases the call stack to grow unnecessarily.
 
 ## Trees
 - Finish unit testing `BinarySearchTree`

@@ -1,6 +1,9 @@
 package structures.vectors;
 
-import structures.commons.ChainedIndexedDataStructure;
+import structures.commons.IndexedDataStructure;
+import structures.commons.Node;
+
+import java.util.Iterator;
 
 /**
  * Basic implementation of Doubly Linked List
@@ -25,7 +28,32 @@ import structures.commons.ChainedIndexedDataStructure;
  * @author Jabari Dash
  * @param <T> Generic type
  */
-public final class LinkedList<T> extends ChainedIndexedDataStructure<T> {
+public final class LinkedList<T> implements IndexedDataStructure<T> {
+
+  @Override
+  public Iterator<T> iterator() {
+
+    // Need to get the head node
+
+    return new Node.NodeIterator<T>(head);
+  }
+
+  /**
+   *
+   */
+  protected int size;
+
+  /**
+   * Pointer to the first node in the chain
+   */
+  protected Node<T> head;
+
+  /**
+   * Pointer to the last node in the chain
+   *
+   * TODO - Use the tail in implementing classes such as Linkedlist so insert last is O(1)
+   */
+  protected Node<T> tail;
 
   /**
    * Constructs empty list.
@@ -46,28 +74,6 @@ public final class LinkedList<T> extends ChainedIndexedDataStructure<T> {
 //------------------------------------------------------------------------------
 
   /**
-   * Constructs LinkedList of specified length where
-   * all nodes have a specified default value.
-   *
-   * <br>
-   * <br>
-   * <strong>Time Complexity:</strong><br>
-   * <strong>Avg: </strong>&Theta;(n)<br>
-   *
-   * <br>
-   * <strong>Space Complexity:</strong><br>
-   * <strong>Avg: </strong>&Theta;(n)<br>
-   *
-   * @param length Specified length of list
-   * @param value Specified default value
-   */
-  public LinkedList(int length, T value) {
-    super(length, value);
-  }
-
-//------------------------------------------------------------------------------
-
-  /**
    * Constructs DoubleLinkedList from array of values.
    *
    * <br>
@@ -82,10 +88,41 @@ public final class LinkedList<T> extends ChainedIndexedDataStructure<T> {
    * @param values Array of values to construct the list from
    */
   public LinkedList(T[] values) {
-    super(values);
+    insert(values);
+  }
+
+  /**
+   * Determines whether or not the list is empty
+   *
+   * @return True if and only if there are no elements in the list, otherwise false
+   */
+  public boolean empty() {
+
+    return size() == 0 && head == null;
   }
 
 //------------------------------------------------------------------------------
+
+  /**
+   * Returns the value at a specified index in the list
+   *
+   * <br>
+   * <br>
+   * <strong>Time Complexity:</strong><br>
+   * <strong>Best: </strong>&Omega;(1)<br>
+   * <strong>Worst: </strong>O(n)<br>
+   *
+   * <br>
+   * <strong>Space Complexity:</strong><br>
+   * <strong>Avg: </strong>&Theta;(1)<br>
+   *
+   * @param index The specified to retrieve the value from
+   * @return The value of the node at the specified index
+   */
+  @Override
+  public T get(int index) {
+    return this.getNode(index).value;
+  }
 
   /**
    * Returns the node at a specified index in the list.
@@ -113,12 +150,12 @@ public final class LinkedList<T> extends ChainedIndexedDataStructure<T> {
 
     // Get the head node,
     // and start indexing from 0
-    node = this.head();
+    node = this.head;
 
     // index up until the
     // specified index (inclusive)
     for (int i = 0; i < index; i++) {
-      node = node.next();
+      node = node.next;
     }
 
     // If we got to the ith node
@@ -131,6 +168,36 @@ public final class LinkedList<T> extends ChainedIndexedDataStructure<T> {
 
     // Otherwise, return the ith node
     return node;
+  }
+
+  /**
+   * Append a specified value  to the back of the list
+   *
+   * <br>
+   * <br>
+   * <strong>Time Complexity:</strong><br>
+   * <strong>Best: </strong>&Omega;(1)<br>
+   * <strong>Worst: </strong>O(n)<br>
+   *
+   * <br>
+   * <strong>Space Complexity:</strong><br>
+   * <strong>Avg: </strong>&Theta;(1)<br>
+   *
+   * @param value Specified value to be inserted into the list
+   */
+  @Override
+  public boolean insert(T value) {
+
+    // If the list is empty, insert in the front
+    if (this.empty()) {
+      this.insertFirst(value);
+
+      // Otherwise insert in the back
+    } else {
+      this.insertLast(value);
+    }
+
+    return true;
   }
 
 //------------------------------------------------------------------------------
@@ -184,8 +251,8 @@ public final class LinkedList<T> extends ChainedIndexedDataStructure<T> {
 
       // TODO - abstract this to insert(int, int)
       // TODO - only want 1 method incrementing the length if possible
-      this.head().insert(value);
-      this.incrementSize();
+      this.head.insert(value);
+      this.size++;
     }
   }
 
@@ -213,16 +280,16 @@ public final class LinkedList<T> extends ChainedIndexedDataStructure<T> {
 
     // If the list is empty
     if (this.empty()) {
-      this.head(new Node<T>(value, null, null));
+      head = new Node<T>(value);
     }
 
     // Otherwise if its not empty, but we want to
     // insert at the front of the list
     else if (index == 0) {
-      newNode = new Node<T>(value, null, this.head());
+      newNode = new Node<T>(value, null, head);
 
-      this.head().prev(newNode);
-      this.head(newNode);
+      head.prev = newNode;
+      head = newNode;
     }
 
     // If the index is somewhere in the middle
@@ -230,13 +297,13 @@ public final class LinkedList<T> extends ChainedIndexedDataStructure<T> {
 
       // Find the ith node, and put
       // a node right in front of it
-      node = this.getNode(index);                                        // Get the ith node
-      newNode = new Node<T>(value, node.prev(), node);  // Create a new node, setting its previous to the ith node's prev, and ith node as its next
-      node.prev().next(newNode);                                         // Set the i-1th node's next to the new node
-      node.prev(newNode);                                                // Set the old ith node's previous to the new node
+      node = getNode(index);                                        // Get the ith node
+      newNode = new Node<T>(value, node.prev, node);  // Create a new node, setting its previous to the ith node's prev, and ith node as its next
+      node.prev.next = newNode;                                         // Set the i-1th node's next to the new node
+      node.prev = newNode;                                                // Set the old ith node's previous to the new node
     }
 
-    this.incrementSize();
+    this.size++;
 
   }
 
@@ -268,41 +335,41 @@ public final class LinkedList<T> extends ChainedIndexedDataStructure<T> {
 
     T value;
 
-    if (this.size() == 1) {
-      value = this.head().value();
-      this.head(null);
+    if (this.size == 1) {
+      value = this.head.value;
+      this.head = null;
     }
 
     // If we are removing from the front of the list
     else if (index == 0) {
 
-      value = this.head().value();
-      this.head(this.head().next());
+      value = head.value;
+      head = head.next;
 
     } else {
 
       // Get the ith node and its value
       Node<T> node = this.getNode(index);
-      value = node.value();
+      value = node.value;
 
       // Set the node at i-1's next to node at i+1
       // Essentially skipping over the node at i
-      node.prev().next(node.next());
+      node.prev.next = node.next;
 
       // If node at i is not the end node
       // link the following nodes in the chain
-      if (node.next() != null) {
+      if (node.next != null) {
 
         // Set i+1's previous to i's previous, again
         // skipping right over the node at i itself
-        node.next().prev(node.prev());
+        node.next.prev = node.prev;
       }
 
     }
 
     // After removing a node,
     // decrement length of list
-    this.decrementSize();
+    this.size--;
 
     return value;
   }
@@ -364,5 +431,24 @@ public final class LinkedList<T> extends ChainedIndexedDataStructure<T> {
    */
   public T removeLast() {
     return this.remove();
+  }
+
+  /**
+   *
+   * @return
+   */
+  @Override
+  public int size() {
+    return this.size;
+  }
+
+  /**
+   * Returns a String representation of the list
+   *
+   * @return String version of the list
+   */
+  @Override
+  public String toString() {
+    return asString();
   }
 }

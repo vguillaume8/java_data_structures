@@ -12,6 +12,8 @@ import java.util.NoSuchElementException;
  */
 public interface IndexedDataStructure<T> extends LinearDataStructure<T> {
 
+//------------------------------------------------------------------------------
+
     /**
      * Returns the value located at a specified index
      *
@@ -28,7 +30,15 @@ public interface IndexedDataStructure<T> extends LinearDataStructure<T> {
      * @param index Specified index
      * @return True if and only if the index is out of bound
      */
-    boolean indexOutOfBounds(int index);
+    /**
+     * Determines whether or not a specified index is within the bounds of the list
+     *
+     * @param index Specified index
+     * @return True if and only if the index is less then the length of the list, and positive
+     */
+    default boolean indexOutOfBounds(int index) {
+        return index < 0 || index >= this.size();
+    }
 
 //------------------------------------------------------------------------------
 
@@ -71,6 +81,18 @@ public interface IndexedDataStructure<T> extends LinearDataStructure<T> {
 //------------------------------------------------------------------------------
 
     /**
+     * Returns iterator (allows use with enhanced forloop)
+     *
+     * @return Iterator for iterating over Structure by index
+     */
+    @Override
+    default Iterator<T> iterator() {
+        return new IndexedDataStructureIterator<>(this);
+    }
+
+//------------------------------------------------------------------------------
+
+    /**
      * Removes first value from the IndexedDataStructure
      *
      * @return First element in DataStructure
@@ -87,6 +109,18 @@ public interface IndexedDataStructure<T> extends LinearDataStructure<T> {
     T removeLast();
 
 //------------------------------------------------------------------------------
+    /**
+     * Verifies if a provided index is within the DataStructure or not
+     *
+     * @param index Specified index to verify
+     * @throws IndexOutOfBoundsException Exception thrown if the index is invalid
+     */
+    default void verifyIndex(int index) {
+        if (this.indexOutOfBounds(index)) {
+            throw new IndexOutOfBoundsException("size: " + this.size() + " index: " + index);
+        }
+    }
+
 
     /**
      * Static Iterator class so that the IndexedDataStructure can be iterated on via

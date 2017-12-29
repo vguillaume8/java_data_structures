@@ -7,29 +7,7 @@ package structures.commons;
  * @param <K> Key parameter type.
  * @param <V> Value parameter type.
  */
-public class Pair<K, V> {
-
-    /**
-     * Key.
-     */
-    private K key;
-
-    /**
-     * Value.
-     */
-    private V value;
-
-    /**
-     * Constructs a new key-value pair.
-     *
-     * @param key Key
-     * @param value Value
-     */
-    @SuppressWarnings("unused")
-    public Pair(K key, V value) {
-        this.key(key);
-        this.value(value);
-    }
+public interface Pair<K, V> {
 
     /**
      * Override the equals() method, simple check that
@@ -38,8 +16,7 @@ public class Pair<K, V> {
      * @param o Object that this Pair will be compared to.
      * @return True if and only if the above conditions are met.
      */
-    @Override
-    public boolean equals(Object o) {
+    default boolean equivalentTo(Object o) {
 
         // Is the object being compared to itself?
         if (o == this)
@@ -64,9 +41,7 @@ public class Pair<K, V> {
      * @return The key.
      */
     @SuppressWarnings("unused")
-    public K key() {
-        return this.key;
-    }
+    K key();
 
     /**
      * Sets the key.
@@ -74,22 +49,24 @@ public class Pair<K, V> {
      * @param key The new key.
      */
     @SuppressWarnings("unused")
-    public void key(K key) {
-        this.key = key;
-    }
+    void key(K key);
 
     /**
-     * Returns a JSON String representation of the pair.
+     * Returns a JSON String representation of the pair. Note,
+     * this is a wrapper around the toString() method that
+     * will be called in implementing classes. The method cannot
+     * directly override it because it is a default method, and this
+     * is an interface.
      *
      * @return String version of the pair.
      */
     @SuppressWarnings("unused")
-    public String toString() {
+    default String asString() {
         String k;
         String v;
 
-        k = key == null ? "null" : key.toString();
-        v = value == null ? "null" : value.toString();
+        k = key() == null ? "null" : key().toString();
+        v = value() == null ? "null" : value().toString();
 
         return "{key: " + k + ", value: " + v + "}";
     }
@@ -100,9 +77,7 @@ public class Pair<K, V> {
      * @return The value.
      */
     @SuppressWarnings("unused")
-    public V value() {
-        return this.value;
-    }
+    V value();
 
     /**
      * Sets the value.
@@ -110,7 +85,5 @@ public class Pair<K, V> {
      * @param value The new value.
      */
     @SuppressWarnings("unused")
-    public void value(V value) {
-        this.value = value;
-    }
+    void value(V value);
 }

@@ -1,6 +1,9 @@
 package structures.vectors;
 
-import structures.commons.ChainedDataStructure;
+import structures.commons.LinearDataStructure;
+import structures.commons.Node;
+
+import java.util.Iterator;
 
 /**
  * Basic FIFO Queue implementation
@@ -8,7 +11,24 @@ import structures.commons.ChainedDataStructure;
  * @author Jabari Dash
  * @param <T> Generic type
  */
-public final class Queue<T> extends ChainedDataStructure<T> {
+public final class Queue<T> implements LinearDataStructure<T> {
+
+    /**
+     *
+     */
+    protected int size;
+
+    /**
+     * Pointer to the first node in the chain
+     */
+    protected Node<T> head;
+
+    /**
+     * Pointer to the last node in the chain
+     *
+     * TODO - Use the tail in implementing classes such as Linkedlist so insert last is O(1)
+     */
+    protected Node<T> tail;
 
     /**
      * Constructs empty Queue.
@@ -41,27 +61,7 @@ public final class Queue<T> extends ChainedDataStructure<T> {
      * @param values Array of values to instatiate Queue from
      */
     public Queue(T[] values) {
-        super(values);
-    }
-
-    /**
-     * Constructs Queue of specified length where
-     * all values have a specified default value.
-     *
-     * <br>
-     * <br>
-     * <strong>Time Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(n)<br>
-     *
-     * <br>
-     * <strong>Space Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(1)<br>
-     *
-     * @param length Specified length of list
-     * @param value Specified default value
-     */
-    public Queue(int length, T value) {
-        super(length, value);
+        insert(values);
     }
 
     /**
@@ -84,7 +84,7 @@ public final class Queue<T> extends ChainedDataStructure<T> {
             throw new EmptyDataStructureException("Cannot peek() empty Queue");
         }
 
-        return this.head().value();
+        return this.head.value;
     }
 
     /**
@@ -105,12 +105,12 @@ public final class Queue<T> extends ChainedDataStructure<T> {
     @Override
     public boolean insert(T value) {
         if (this.empty()) {
-            this.head(new Node<T>(value, null, null));
+            this.head = new Node<>(value);
         } else {
-            this.head().insert(value);
+            this.head.insert(value);
         }
 
-        this.incrementSize();
+        this.size++;
 
         return true;
     }
@@ -135,10 +135,37 @@ public final class Queue<T> extends ChainedDataStructure<T> {
             throw new EmptyDataStructureException("Cannot remove() from empty Queue");
         }
 
-        T value = this.head().value();  // Get value from head
-        this.head(this.head().next());  // Set head equal to head's next
-        this.decrementSize();           // Decrement size of Queue
+        T value = this.head.value;  // Get value from head
+        this.head = this.head.next;  // Set head equal to head's next
+        this.size--;           // Decrement size of Queue
 
         return value;
+    }
+
+    /**
+     *
+     * @return
+     */
+    @Override
+    public int size() {
+        return this.size;
+    }
+
+    /**
+     * Returns a String representation of the list
+     *
+     * @return String version of the list
+     */
+    @Override
+    public String toString() {
+        return asString();
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+
+        // Need to get the head node
+
+        return new Node.NodeIterator<T>(head);
     }
 }
