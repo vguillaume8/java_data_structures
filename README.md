@@ -7,67 +7,86 @@ to the online tutorials, the data structures can be downloaded as a
 [Java 8 library][jar_file] for
 readers to test with their own code.
 
+## Prerequisites
+
+This tutorial assumes that the reader has either taken or is taking an introduction to
+programming course or has the equivalent knowledge. Knowing a the Java 
+programming language would be useful for reading code examples, but the
+idea behind the data structures are language agnostic.
+
+The core programming concepts that the reader should know include:
+
+* Arrays
+* Variables
+* Methods / Functions
+* Loops
+* Recursion
+
 ## What Will Be Covered
+
+The following categories will be covered by this project.
 
 ### Vectors
 
 Vectors are any data structure that takes a linear form. These are data 
 structures that are used to represent lists, sequences, or provide some 
-sort of ordering to data.
+sort of ordering to data. [Learn more about Vectors...][vector]
 
-##### Queue
+### Trees
 
-Queues are what's called a First in First Out (FIFO) type of data structure.
-That is, elements that pass through a queue are done sequentially. You can
-think of queues like lines in a grocery store, or songs in a playlist.
-[Learn more on Queues...][queue]
+Trees are non-linear data structures often used for keep data organized.
+We typically use trees when the data that we are working with can be 
+sorted / ordered. [Learn more about Trees...][tree]
 
-##### Stack
+### Sets
 
-A Stack is a First in Last Out (FILO) data structure. The name is
-self-explanatory. Imagine removing books from a book bag, and stacking
-them onto the table. If you were to now, remove each book one by one
-from the top down, and place them back into your book bag, the first book
-that you placed on the table would be the last book to come out the stack.
-[Learn more on Stacks...][stack]
+A Set is a dynamically sized group of unordered unique elements.
+Finding an application for a set may seem more challenging, 
+when we can just put them into some sort of list. The advantage 
+comes in the speed of lookup and insertion.
+[Learn more about Sets...][set]
 
-##### LinkedList
+### Maps
 
-The LinkedList is a more general combination of both the Stack and the Queue.
-The LinkedList allows for insertion and removal of elements from the
-front, the back, and anywhere in between. The idea of a linked-list really
-highlights the importance of pointers, and chaining elements. This is a very
-different idea of achieving similar results as the Array.
-[Learn more of LinkedLists...][linked_list]
+Maps are like dictionaries. They are unordered, dynamically sized
+groups of unique key to non-unique value mappings - hence the name, 
+Map. Maps have many applications, such as implementing dictionaries 
+(key is to word, as value is to definition).
+[Learn more about Maps][map]
 
+### Graphs
 
-##### ArrayList
+Graphs are an abstract data structure with tons of applications.
+In essence, a graph is a set of objects that are (potentially)
+connected to other objects in the set. A good application of a graph
+is to represent a highway system between cities.
+[Learn more about Maps...][map]
 
-ArrayLists are very similar to arrays. They are indexed data structures.
-The difference is that they grow. Unlike an array, which's length needs to
-be declared when the array is created, the ArrayList's length grows as elements
-are inserted. [Read more about ArrayLists...][array_list] 
-
-
-## Implementation
+## The Code
 
 All of the aforementioned data structures are implemented in the Java 
-programming language. The code is available on [GitHub][github_repo].
+programming language. The code is available as a library in the following formats:
 
+ * [Source code GitHub][github_repo].
+ * [Java Executable Binary][jar_file]
+ 
+ For more information on about the API, please
+ see the following links.
 
 [Setup and Installation][setup_md]
 
-[See Java Documentation][javadoc]
+[API Documentation][javadoc]
 
 
-[//]: Links
 [jar_file]: http://jabaridash.com:8085/build/java_data_structures.jar
-[setup_md]: docs/setup.md
+[setup_md]: docs/dev/setup/SETUP.md
 [javadoc]: docs/javadoc/index.html
 
-[queue]: docs/structures/vectors/Queue.md
-[stack]: docs/structures/vectors/Stack.md
-[linked_list]: docs/structures/vectors/LinkedList.md
-[array_list]: docs/structures/vectors/ArrayList.md
+[vector]: docs/structures/vectors/Vector.md
+[tree]: docs/structures/trees/Tree.md
+[graph]: docs/structures/graphs/Graph.md
+[map]: docs/structures/maps/Map.md
+[set]: docs/structures/sets/Set.md
 
 [github_repo]: https://github.com/N02870941/java_data_structures
+
