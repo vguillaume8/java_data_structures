@@ -35,7 +35,7 @@ dependencies {
 }
 
 javadoc {
-  destinationDir = new File("${projectDir}/doc/javadoc")
+  destinationDir = new File("${projectDir}/docs/javadoc")
   options.memberLevel = JavadocMemberLevel.PUBLIC
   source = sourceSets.main.allJava
   classpath = configurations.compile
