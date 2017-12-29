@@ -431,6 +431,67 @@ section.
 
 ## Dynamic memory allocation
 
+This is the bread and butter of the array-list. It is the on the fly resizing
+of the internal array that allows all of this to work. Consider the following array:
+
+```
+letters = ['a', 'c', 'd', 'e', '?']
+            0    1    2    3    4
+```
+
+Previously, at least in java, we accessed the length of the array with the 
+`letters.length`. However, with an array-list, we must keep track of the 
+length ourselves. We create an instance variable `size`, that we increment
+and decrement for each insertion and deletion respectively. So, now we 
+have two things to keep track of.
+
+Program:
+
+```java
+class ArrayList {
+    int size;
+    T[] elements;
+    
+    public void insert(int index, T value) {
+        elements[index] = value;
+        size++;
+    }
+    
+    public T remove(int index) {
+        size--;
+        return elements[index];
+    }
+}
+```
+
+Now, let's visualize out array-list as follows:
+
+```
+letters = ['a', 'c', 'd', 'e', '?'], size = 4
+            0    1    2    3    4
+                           ^
+```
+
+*Where `^` denotes the end of array.*
+
+Now, just like with arrays of size `n`, we do not care for indices
+`i` such that `i < 0` or `i >= n`. So, now that we have removed a value
+and `size = 4`, we don't care about the `?` that follows it. In fact, let's
+perform two more removals:
+
+```
+letters = ['a', 'c', 'd', 'e', '?'], size = 4
+            0    1    2    3    4
+                           ^
+                           
+letters = ['a', 'c', '?', '?', '?'], size = 3
+            0    1    2    3    4
+                   ^       
+                           
+letters = ['a', 'c', '?', '?', '?'], size = 1
+            0    1    2    3    4
+                 ^                                                                     
+``` 
 
 ## Performance
 
@@ -474,7 +535,7 @@ is called that gives you the id number of the given user, and you must
 either add them to the list or remove them from the list - respectively.
 A better approach may be a [LinkedList][linked_list] or even a [Map][map].
 
-### Conclusion
+## Conclusion
 
 The ArrayList is a dynamically sized data structure that solves the problem
 of not knowing how much space we will need beforehand, but still performs
