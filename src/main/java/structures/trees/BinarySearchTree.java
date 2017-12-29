@@ -9,7 +9,7 @@ import structures.vectors.Queue;
  * Implementation of Binary Search BinaryTree.
  *
  * @param <K> Generic type for keys (must extend java.lang.Comparable)
- * @param <V> Generic type for values
+ * @param <V> Generic type for keys
  */
 public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, V> {
 
@@ -120,7 +120,7 @@ public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, 
             return false;
 
         // If we found the value, we must check that
-        // their values are equal
+        // their keys are equal
         return value.equals(found.value);
     }
 
@@ -415,7 +415,7 @@ public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, 
      *
      * Determines whether or not the tree is complete. A complete tree is defined
      * as a tree where all levels are filled, except possibly the bottom (deepest) level.
-     * In the event that the last level is not filled, all values in tree are as left as possible.
+     * In the event that the last level is not filled, all keys in tree are as left as possible.
      * An example follows:
      *
      * TODO - Insert image of example
@@ -1092,10 +1092,10 @@ public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, 
 //------------------------------------------------------------------------------
 
     /**
-     * Returns an array of the values in the tree in a specified order.
+     * Returns an array of the keys in the tree in a specified order.
      *
      * @param traversalType Specified order.
-     * @return Array of values in the tree.
+     * @return Array of keys in the tree.
      */
     @SuppressWarnings("unused")
     public V[] values(int traversalType) {

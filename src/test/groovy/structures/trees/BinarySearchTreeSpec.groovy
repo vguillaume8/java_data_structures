@@ -1,12 +1,12 @@
 package structures.trees
 
+import commons.Util;
 import spock.lang.Shared
 import structures.commons.Pair
 import spock.lang.Specification
 import spock.lang.Unroll
 import structures.vectors.ArrayList
 import structures.trees.BinarySearchTree.BinarySearchTreeNode
-import util.Util;
 
 class BinarySearchTreeSpec extends Specification {
 

@@ -14,7 +14,7 @@ as prone to being overwritten with bad values. However, adding extra function ca
 and setters just increases the call stack to grow unnecessarily.
 
 ## Trees
-- Finish unit testing `BinarySearchTree`
+- Finish analytics testing `BinarySearchTree`
 - Put time-complexity comments in `BinarySearchTree` (for main operations)
 
 ## Vectors
@@ -27,8 +27,7 @@ because it is causing a `StackOverFlowException` to be thrown for small
 list sizes
 
 ## Testing
-- Unit test `Util`
 - Functional testing using JUnit? Just for learning purposes?
 
 ## Useful
-- http://etutorials.org/Programming/Java+performance+tuning/Chapter+2.+Profiling+Tools/2.3+Method+Calls/
+- http://etutorials.org/Programming/Java+analytics+tuning/Chapter+2.+Profiling+Tools/2.3+Method+Calls/

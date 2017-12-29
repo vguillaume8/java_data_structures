@@ -37,9 +37,9 @@ public final class Queue<T> implements Vector<T> {
     }
 
     /**
-     * Constructs Queue from array of values.
+     * Constructs Queue from array of keys.
      *
-     * @param values Array of values to instatiate Queue from
+     * @param values Array of keys to instatiate Queue from
      */
     public Queue(T[] values) {
         insert(values);

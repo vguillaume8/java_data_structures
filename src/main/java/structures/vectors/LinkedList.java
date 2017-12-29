@@ -25,9 +25,9 @@ public final class LinkedList<T> implements List<T> {
 //------------------------------------------------------------------------------
 
   /**
-   * Constructs {@code LinkedList} from array of values.
+   * Constructs {@code LinkedList} from array of keys.
    *
-   * @param values Array of values to construct the list from
+   * @param values Array of keys to construct the list from
    */
   public LinkedList(T[] values) {
     insert(values);
@@ -246,7 +246,7 @@ public final class LinkedList<T> implements List<T> {
        */
       @Override
       public T next() {
-        // If there are no more values left, throw an Exception
+        // If there are no more keys left, throw an Exception
         if (!hasNext()) {
           throw new NoSuchElementException("No element");
         }
@@ -268,6 +268,7 @@ public final class LinkedList<T> implements List<T> {
    * @return Value of node at specified index
    */
   public T remove(int index) {
+    T value;
 
     if (this.empty()) {
       throw new EmptyDataStructureException("Cannot remove from an empty LinkedList");
@@ -276,8 +277,6 @@ public final class LinkedList<T> implements List<T> {
     // Verify that the index is
     // within the bounds of the list
     verifyIndex(index);
-
-    T value;
 
     // Removing form the front
     if (index == 0 || size == 1) {
@@ -295,7 +294,7 @@ public final class LinkedList<T> implements List<T> {
     else {
 
       // Get the ith node and its value
-      Node<T> node = this.getNode(index);
+      Node<T> node = getNode(index);
       value = node.value;
 
       // Set the node at i-1's next to node at i+1
@@ -328,7 +327,7 @@ public final class LinkedList<T> implements List<T> {
    * @return Value of node at specified index
    */
   public T remove() {
-    return this.remove(this.size()-1);
+    return remove(size-1);
   }
 
 //------------------------------------------------------------------------------
@@ -343,7 +342,7 @@ public final class LinkedList<T> implements List<T> {
 
     }
 
-    return this.remove(0);
+    return remove(0);
   }
 
 //------------------------------------------------------------------------------
@@ -354,7 +353,7 @@ public final class LinkedList<T> implements List<T> {
    * @return Value of node at specified index
    */
   public T removeLast() {
-    return this.remove();
+    return remove();
   }
 
   /**
@@ -363,7 +362,7 @@ public final class LinkedList<T> implements List<T> {
    */
   @Override
   public int size() {
-    return this.size;
+    return size;
   }
 
   /**
@@ -377,7 +376,7 @@ public final class LinkedList<T> implements List<T> {
   }
 
   /**
-   * Node class for chaining together values in a LinkedList
+   * Node class for chaining together keys in a LinkedList
    *
    * @author Jabari Dash
    * @param <T> Generic type

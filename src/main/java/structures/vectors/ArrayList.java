@@ -6,46 +6,41 @@ import java.util.Arrays;
  * Basic implementation of a generic ArrayList
  *
  * @author Jabari Dash
- * @param <T> Generic type
+ * @param <K> Generic type
  */
-public final class ArrayList<T> implements List<T> {
+public final class ArrayList<K> implements List<K> {
 
-    private final int DEFAULT_SIZE = 4;
+    private static final double RESIZE_THRESHOLD = 0.9;
+    private static final int DEFAULT_SIZE = 10;
 
     private int size;
-    protected T[] values;
+    private K[] keys;
+    private int allocations;
 
     /**
-     * Constructs empty list.
      *
-     * <br>
-     * <br>
-     * <strong>Time Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(1)<br>
-     *
-     * <br>
-     * <strong>Space Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(1)<br>
+     * @param length
      */
-    public ArrayList() {
-        values = (T[]) new Object[DEFAULT_SIZE];
+    @SuppressWarnings("unchecked")
+    public ArrayList(int length) {
+
+        // Create a new array no smaller than the default size
+        keys = (K[]) new Object[length < DEFAULT_SIZE ? DEFAULT_SIZE : length];
     }
 
     /**
-     * Constructs ArrayList from array of values.
-     *
-     * <br>
-     * <br>
-     * <strong>Time Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(n)<br>
-     *
-     * <br>
-     * <strong>Space Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(1)<br>
-     *
-     * @param values Array of values to construct the list from
+     * Constructs empty list.
      */
-    public ArrayList(T[] values) {
+    public ArrayList() {
+        this(DEFAULT_SIZE);
+    }
+
+    /**
+     * Constructs ArrayList from array of keys.
+     *
+     * @param values Array of keys to construct the list from
+     */
+    public ArrayList(K[] values) {
         this();
         insert(values);
     }
@@ -53,10 +48,12 @@ public final class ArrayList<T> implements List<T> {
     /**
      * If the internal array is full, it's size will be doubled plus 1
      */
-    public  void alloc() {
-        if (this.full()) {
-            this.alloc(this.size() * 2 + 1);
-        }
+    private boolean alloc() {
+
+        // If the ratio of elements in the DataStructure exceeds the
+        // threshold (default 90%), then we need to allocate more space
+        // in the internal array
+        return (size / keys.length) > RESIZE_THRESHOLD && alloc(size * 2);
     }
 
     /**
@@ -64,10 +61,10 @@ public final class ArrayList<T> implements List<T> {
      *
      * @param slots How many new slots to make
      */
-    public void alloc(int slots) {
+    private boolean alloc(int slots) {
         int length;
 
-        length = values.length + slots;
+        length = keys.length + slots;
 
         // If the length of the internal
         // array would become less than 0
@@ -81,17 +78,32 @@ public final class ArrayList<T> implements List<T> {
         // length, or longer, so copy everything from the
         // old array, but do not loop off the end
 
-        T[] temp = (T[]) new Object[length];
+        // Cast is safe, all objects of type
+        // K extend java.lang.Object
+        @SuppressWarnings("unchecked")
+        K[] temp = (K[]) new Object[length];
 
+        // Pick the shorter of the two lengths
+        // to avoid running of the end and having
+        // an IndexOutOfBounds exception thrown
+        System.arraycopy(keys,
+                        0, temp,
+                        0,
+                        length < keys.length ? temp.length : keys.length);
 
-        // TODO - Should not shrink smaller than the # of elements
-        int l = length < values.length ? temp.length : values.length;
+        keys = temp;
 
-        System.arraycopy(values, 0, temp, 0, l);
+        allocations++;
 
-        this.values = temp;
+        return true;
+    }
 
-//        System.arraycopy(values, 0, temp,0, temp.length);
+    /**
+     *
+     * @return
+     */
+    public int allocations() {
+        return allocations;
     }
 
 
@@ -101,97 +113,65 @@ public final class ArrayList<T> implements List<T> {
      *
      * @param object Object to compare this ArrayList with.
      * @return True if and only if their types are the same,
-     * lengths are the same, and the contain all the same values.
+     * lengths are the same, and the contain all the same keys.
      */
     @Override
     public boolean equals(Object object) {
 
-        // Object must be an ArrayList, and all values must be equal, or object
+        // Object must be an ArrayList, and all keys must be equal, or object
         // must be this ArrayList itself
         return this == object || (object instanceof ArrayList && equivalentTo(object));
     }
 
     /**
-     * Determines whether or not the internal array is full
-     *
-     * @return True if the internal array has run out of space for new elements
-     */
-    public boolean full() {
-        T[] vals = values;
-
-        return vals == null || this.size() < vals.length;
-    }
-
-    /**
      * Returns the value at a specified index.
-     *
-     * <br>
-     * <br>
-     * <strong>Time Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(1)<br>
-     *
-     * <br>
-     * <strong>Space Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(1)<br>
      *
      * @param index Specified index
      * @return Value at specified index
      */
     @Override
-    public T get(int index) {
-       this.verifyIndex(index);
-       return this.values[index];
+    public K get(int index) {
+       verifyIndex(index);
+       return keys[index];
     }
 
     /**
-     * Inserts a value at the end of the list.
+     * Inserts a key at the end of the list.
      *
-     * <br>
-     * <br>
-     * <strong>Time Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(1)<br>
-     *
-     * <br>
-     * <strong>Space Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(1)<br>
-     *
-     * @param value The specified value to insert
+     * @param key The specified key to insert
      */
     @Override
-    public boolean insert(T value) {
-        this.insertLast(value);
+    public boolean insert(K key) {
+        return insertLast(key);
 
-        return true;
     }
 
     /**
      * Inserts a value at a specified index.
      *
-     * <br>
-     * <br>
-     * <strong>Time Complexity:</strong><br>
-     * <strong>Best: </strong>&Omega;(1)<br>
-     * <strong>Worst: </strong>O(n)<br>
-     *
-     * <br>
-     * <strong>Space Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(1)<br>
-     *
      * @param value Value to be inserted
      * @param index Specified index to insert value at
      */
     @Override
-    public boolean insert(T value, int index) {
-        if (!this.empty() && index < this.size()) {
-            this.verifyIndex(index);    // Verify that the index is a valid index
-            this.shiftRight(index);     // Shift all values up one index, starting at designated index
+    public boolean insert(K value, int index) {
+        if (!empty() && index < size) {
+            verifyIndex(index);    // Verify that the index is a valid index
+            shiftRight(index);     // Shift all keys up one index, starting at designated index
         }
 
-        this.alloc();                   // Potentially alloc the internal array before insertion
-        this.values[index] = value;     // Insert the new value into the designated index
-        this.size++;                    // Increment size of list
+        alloc();                   // Potentially alloc the internal array before insertion
+        keys[index] = value;     // Insert the new value into the designated index
+        size++;                    // Increment size of list
 
         return true;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public int internalSize() {
+        return keys.length;
     }
 
     /**
@@ -201,22 +181,12 @@ public final class ArrayList<T> implements List<T> {
      * spot for the purpose of making space for a new element
      * to be inserted. This is an auxiliary function
      *
-     * <br>
-     * <br>
-     * <strong>Time Complexity:</strong><br>
-     * <strong>Best: </strong>&Omega;(1)<br>
-     * <strong>Worst: </strong>O(n)<br>
-     *
-     * <br>
-     * <strong>Space Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(1)<br>
-     *
      * @param index Index to start shifting from
      */
     private void shiftRight(int index) {
-        this.verifyIndex(index);
+        verifyIndex(index);
 
-        System.arraycopy(values, 0, values, 1, index);
+        System.arraycopy(keys, 0, keys, 1, index);
     }
 
     /**
@@ -229,155 +199,88 @@ public final class ArrayList<T> implements List<T> {
      * from the array. This is an auxiliary function for
      * use with the remove functionality
      *
-     * <br>
-     * <br>
-     * <strong>Time Complexity:</strong><br>
-     * <strong>Best: </strong>&Omega;(1)<br>
-     * <strong>Worst: </strong>O(n)<br>
-     *
-     * <br>
-     * <strong>Space Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(1)<br>
-     *
      * @param index Specified index to shift left into
      */
     private void shiftLeft(int index) {
-        this.verifyIndex(index);
+        verifyIndex(index);
 
-        for (int i = index; i < this.size(); i++) {
-            values[i] = values[i+1];
+        // Partial rotation
+        for (int i = index; i < size; i++) {
+            keys[i] = keys[i+1];
         }
 
         // TODO - Use Java API to complete this shift left
-//        System.arraycopy(values, 1, values, 0, index);
+//        System.arraycopy(keys, index+1, keys, index+2, size);
     }
 
     /**
      * Inserts a value into the front of the list.
      *
-     * <br>
-     * <br>
-     * <strong>Time Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(1)<br>
-     *
-     * <br>
-     * <strong>Space Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(1)<br>
-     *
      * @param value Specified value to insert
      */
     @Override
-    public boolean insertFirst(T value) {
+    public boolean insertFirst(K value) {
         return insert(value, 0);
     }
 
     /**
      * Inserts an element to the back of the list.
-     *
-     * <br>
-     * <br>
-     * <strong>Time Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(1)<br>
-     *
-     * <br>
-     * <strong>Space Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(1)<br>
-     *
      * @param value Specified value to insert
      */
     @Override
-    public boolean insertLast(T value) {
-        return insert(value, this.size());
+    public boolean insertLast(K value) {
+        return insert(value, size);
     }
 
     /**
      * Retrieves and removes the value at a specified index.
      *
-     * <br>
-     * <br>
-     * <strong>Time Complexity:</strong><br>
-     * <strong>Best: </strong>&Omega;(1)<br>
-     * <strong>Worst: </strong>O(n)<br>
-     *
-     * <br>
-     * <strong>Space Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(1)<br>
-     *
      * @param index Index to remove value from
      * @return Value at specified index
      */
     @Override
-    public T remove(int index) {
-        T value;
+    public K remove(int index) {
+        K value;
 
-        if (this.empty()) {
+        if (empty()) {
             throw new EmptyDataStructureException("Cannot remove from an empty ArrayList");
         }
 
-        this.verifyIndex(index);        // Verify that the index is valid
-        value = this.values[index];     // Store the value are the given index
-        this.shiftLeft(index);          // Shift all values up from the right of index over one to the left
-        this.size--;           // Decrement size of array
-        return value;                   // Return the stored value
+        verifyIndex(index);   // Verify that the index is valid
+        value = keys[index];  // Store the value are the given index
+        shiftLeft(index);     // Shift all keys up from the right of index over one to the left
+        size--;               // Decrement size of array
+        return value;         // Return the stored value
     }
 
     /**
      * Retrieves and removes the first value in the list.
      *
-     * <br>
-     * <br>
-     * <strong>Time Complexity:</strong><br>
-     * <strong>Best: </strong>&Omega;(1)<br>
-     * <strong>Worst: </strong>O(n)<br>
-     *
-     * <br>
-     * <strong>Space Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(1)<br>
-     *
      * @return The first value in the list
      */
     @Override
-    public T removeFirst() {
-        return this.remove(0);
+    public K removeFirst() {
+        return remove(0);
     }
 
     /**
      * Retrieves and removes the last value in the list.
-     * <br>
-     *
-     * <br>
-     * <strong>Time Complexity:</strong><br>
-     * <strong>Best: </strong>&Omega;(1)<br>
-     * <strong>Worst: </strong>O(n)<br>
-     *
-     * <br>
-     * <strong>Space Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(1)<br>
      *
      * @return Last value in the list
      */
     @Override
-    public T removeLast() {
-        return this.remove(this.size() - 1);
+    public K removeLast() {
+        return remove(size - 1);
     }
 
     /**
      * Retrieves and removes the last value in the list.
      *
-     * <br>
-     * <br>
-     * <strong>Time Complexity:</strong><br>
-     * <strong>Best: </strong>&Omega;(1)<br>
-     * <strong>Worst: </strong>O(n)<br>
-     *
-     * <br>
-     * <strong>Space Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(1)<br>
      * @return The last value in the list
      */
     @Override
-    public T remove() {
-        return this.removeLast();
+    public K remove() {
+        return removeLast();
     }
 
     /**
@@ -386,7 +289,7 @@ public final class ArrayList<T> implements List<T> {
      */
     @Override
     public int size() {
-        return this.size;
+        return size;
     }
 
     /**
@@ -395,10 +298,10 @@ public final class ArrayList<T> implements List<T> {
      * @param array Array that specifies the type of the array to return.
      * @return Array representation of the data structure.
      */
-    public T[] toArray(T[] array) {
+    public K[] toArray(K[] array) {
 
         try {
-            array = (T[]) Arrays.copyOf(values, this.size(), array.getClass());
+            array = (K[]) Arrays.copyOf(keys, size(), array.getClass());
 
         } catch (ArrayStoreException exception) {
 
@@ -416,7 +319,7 @@ public final class ArrayList<T> implements List<T> {
     @Override
     public String toString() {
 
-        return Arrays.toString(this.toArray());
+        return Arrays.toString(toArray());
     }
 
 }

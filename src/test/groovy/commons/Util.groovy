@@ -1,6 +1,35 @@
-package util
+package commons
+
+import com.opencsv.CSVWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 class Util {
+
+    public static String testDirectory = "./src/test/groovy/";
+
+    @SuppressWarnings("unused")
+    static CSVWriter getCSVWriter(String fileName) {
+        CSVWriter csvWriter;
+        FileWriter fileWriter;
+        File file
+
+        file = new File(fileName)
+
+        file.createNewFile()
+
+        fileWriter = new FileWriter(file);
+
+        csvWriter = new CSVWriter(
+                fileWriter,
+                CSVWriter.DEFAULT_SEPARATOR,
+                CSVWriter.NO_QUOTE_CHARACTER,
+                CSVWriter.DEFAULT_ESCAPE_CHARACTER,
+                CSVWriter.DEFAULT_LINE_END
+        );
+
+        return csvWriter;
+    }
 
     /**
      * Determines whether or not a {@code Comparable[]}  is sorted
@@ -43,10 +72,10 @@ class Util {
 
         if (a.length == b.length) {
 
-            // check the values
+            // check the keys
             for (int i = 0; i < a.length; i++) {
 
-                // If ith values in both arrays are unequal
+                // If ith keys in both arrays are unequal
                 if (!a[i].equals(b[i])) {
                     return false;
                 }

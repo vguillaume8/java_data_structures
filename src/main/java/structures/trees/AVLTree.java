@@ -7,7 +7,7 @@ package structures.trees;
  *
  * @author Jabari Dash
  * @param <K> Generic type for keys.
- * @param <V> Generic type for values.
+ * @param <V> Generic type for keys.
  */
 public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, V> {
 
@@ -212,7 +212,7 @@ public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, 
      *
      * @author Jabari Dash
      * @param <K> Generic type for keys.
-     * @param <V> Generic type for values.
+     * @param <V> Generic type for keys.
      */
     private static class AVLTreeNode<K extends Comparable, V> extends BinarySearchTreeNode<K, V> {
 

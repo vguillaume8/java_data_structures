@@ -107,7 +107,7 @@ public interface Vector<T> extends DataStructure<T>,  Iterable<T> {
      *
      * @param object Object to compare this object with.
      * @return True if the objects are of the same type, their
-     * sizes are the same, and they contain all the same values.
+     * sizes are the same, and they contain all the same keys.
      */
     default boolean equivalentTo(Object object) {
 
@@ -121,7 +121,7 @@ public interface Vector<T> extends DataStructure<T>,  Iterable<T> {
 
         try {
 
-            // Cast to Vector, and compare the values
+            // Cast to Vector, and compare the keys
             @SuppressWarnings("unchecked")
             Vector<T> vector = (Vector<T>) object;
 

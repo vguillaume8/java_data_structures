@@ -116,7 +116,7 @@ public interface List<T> extends Vector<T> {
      * @throws IndexOutOfBoundsException Exception thrown if the index is invalid
      */
     default void verifyIndex(int index) {
-        if (this.indexOutOfBounds(index)) {
+        if (indexOutOfBounds(index)) {
             throw new IndexOutOfBoundsException("size: " + this.size() + " index: " + index);
         }
     }
@@ -147,7 +147,7 @@ public interface List<T> extends Vector<T> {
 //------------------------------------------------------------------------------
 
         /**
-         * Determines whether or not the iterator still has values left
+         * Determines whether or not the iterator still has keys left
          *
          * @return True if and only if the cursor has not reached the end of the list
          */
@@ -164,7 +164,7 @@ public interface List<T> extends Vector<T> {
          */
         public T next() {
 
-            // If there are no more values left, throw an Exception
+            // If there are no more keys left, throw an Exception
             if (!hasNext()) {
                 throw new NoSuchElementException("No element");
             }
