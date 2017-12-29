@@ -1,65 +1,73 @@
-# Java Data Structures
+# Data Structures
 
-[![Build Status](https://travis-ci.org/N02870941/java_data_structures.svg?branch=vectors)](https://travis-ci.org/N02870941/java_data_structures)
+This is project is a tutorial that covers common data structures that are
+seen in introductory and intermediate computer science courses. The site contains
+explanations, diagrams, and mathematical proofs for each data structure. In addition
+to the online tutorials, the data structures can be downloaded as a 
+[Java 8 library][jar_file] for
+readers to test with their own code.
 
-This is a small Java library that consists of common data structures that are
-seen in introductory level to intermediate programming courses. This library is
-for the purpose of educational and practicing purposes - not for production.
+## What Will Be Covered
 
-These data structures are well (borderline excessively) commented for the
-purpose of truly understanding the inner workings. They can be used for simply
-learning, as well as for solving some more complex problems, and implementing
-algorithms.
+### Vectors
 
-## Dependencies
-This project aims to have as feel third-party dependencies as possible.
+Vectors are any data structure that takes a linear form. These are data 
+structures that are used to represent lists, sequences, or provide some 
+sort of ordering to data.
 
-Click the below dependencies to figure out how to install them if they are
-not already installed.
+##### Queue
 
-#### Languages
+Queues are what's called a First in First Out (FIFO) type of data structure.
+That is, elements that pass through a queue are done sequentially. You can
+think of queues like lines in a grocery store, or songs in a playlist.
+[Learn more on Queues...][queue]
 
-This project uses two programming languages. The core data structures are
-implemented in Java, and the Unit and Functional tests are written in
-Groovy.
+##### Stack
 
-- Java 8 (development)
-- Groovy (gradle and testing)
+A Stack is a First in Last Out (FILO) data structure. The name is
+self-explanatory. Imagine removing books from a book bag, and stacking
+them onto the table. If you were to now, remove each book one by one
+from the top down, and place them back into your book bag, the first book
+that you placed on the table would be the last book to come out the stack.
+[Learn more on Stacks...][stack]
 
-#### Command Line Tools (CLI)
+##### LinkedList
 
-Build automation and compilation is handled by the gradle CLI.
+The LinkedList is a more general combination of both the Stack and the Queue.
+The LinkedList allows for insertion and removal of elements from the
+front, the back, and anywhere in between. The idea of a linked-list really
+highlights the importance of pointers, and chaining elements. This is a very
+different idea of achieving similar results as the Array.
+[Learn more of LinkedLists...][linked_list]
 
-- gradle (build automation)
 
-#### APIs / JARs
+##### ArrayList
 
-All other dependencies such as APIS and JARs will be automatically 
-downloaded by gradle when the project is built.
+ArrayLists are very similar to arrays. They are indexed data structures.
+The difference is that they grow. Unlike an array, which's length needs to
+be declared when the array is created, the ArrayList's length grows as elements
+are inserted. [Read more about ArrayLists...][array_list] 
 
-## Installation
 
-This project uses gradle as a build system; therefore, getting started on this
-project is as simple as cloning the repository, and opening the project with
-your favorite IDE or text editor.
+## Implementation
 
-To test it out on the command line, execute the following:
+All of the aforementioned data structures are implemented in the Java 
+programming language. The code is available on [GitHub][github_repo].
 
-```
-git clone https://github.com/N02870941/java_data_structures.git
-cd java_data_structures
-gradle build
-```
 
-## Un-installation
-You can simply delete the `java_data_structures` folder, as this is a self-contained
-project, and all dependencies will be deleted along with the folder. However, 
-Java 8, and Groovy must be uninstalled (and initially installed) separately.
+[Setup and Installation][setup_md]
 
-```
-# Maybe delete  the folder in Windows Explorer
-# or Finder, because the following command could be
-# dangerous and is irreversible
-rm -rf java_data_structures
-```
+[See Java Documentation][javadoc]
 
+
+[//]: Links
+[jar_file]: http://jabaridash.com:8085/build/java_data_structures.jar
+[setup_md]: docs/setup.md
+[javadoc]: docs/javadoc/index.html
+
+[queue]: docs/structures/vectors/Queue.md
+[stack]: docs/structures/vectors/Stack.md
+[linked_list]: docs/structures/vectors/LinkedList.md
+[array_list]: docs/structures/vectors/ArrayList.md
+
+[github_repo]: https://github.com/N02870941/java_data_structures
