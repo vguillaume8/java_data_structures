@@ -1,7 +1,5 @@
 package structures.vectors;
 
-import structures.commons.DynamicallySizedArray;
-
 import java.util.Arrays;
 
 /**
@@ -10,11 +8,11 @@ import java.util.Arrays;
  * @author Jabari Dash
  * @param <T> Generic type
  */
-public final class ArrayList<T> implements DynamicallySizedArray<T> {
-
-    private int size;
+public final class ArrayList<T> implements structures.commons.IndexedDataStructure<T> {
 
     private final int DEFAULT_SIZE = 4;
+
+    private int size;
     protected T[] values;
 
     /**
@@ -50,6 +48,15 @@ public final class ArrayList<T> implements DynamicallySizedArray<T> {
     public ArrayList(T[] values) {
         this();
         insert(values);
+    }
+
+    /**
+     * If the internal array is full, it's size will be doubled plus 1
+     */
+    public  void alloc() {
+        if (this.full()) {
+            this.alloc(this.size() * 2 + 1);
+        }
     }
 
     /**

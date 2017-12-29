@@ -30,6 +30,7 @@ public class Node<T> {
         this.next = next;
     }
 
+//------------------------------------------------------------------------------
 
     /**
      * @param value
@@ -69,7 +70,6 @@ public class Node<T> {
     }
 
 //------------------------------------------------------------------------------
-
 
     /**
      * Returns a String representation of the node
