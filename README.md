@@ -60,7 +60,7 @@ Graphs are an abstract data structure with tons of applications.
 In essence, a graph is a set of objects that are (potentially)
 connected to other objects in the set. A good application of a graph
 is to represent a highway system between cities.
-[Learn more about Maps...][map]
+[Learn more about Graphs...][graph]
 
 ## The Code
 
