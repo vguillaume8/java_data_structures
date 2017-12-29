@@ -4,6 +4,12 @@ An array list is a common data structure used in many programming languages.
 In other programming languages, it may be called something else, but most
 programming languages should have them. Array-lists are alternatives to arrays.
 
+**Basic ArrayList Operations:**
+* [insert()](#insert)
+* [remove()](#remove)
+* [search()](#search)
+* [update()](#update)
+
 Arrays are statically sized. This means, the size of the array does not change.
 This is why we must pass the length of an array as a parameter upon instantiating
 it. Otherwise, the computer does not know how much space to allocate.
@@ -81,14 +87,7 @@ then begin inserting new values into the new array.
 if the array becomes full, a new copy of the array is made with extra space at the end
 so that insertion can continue.
 
-## When / why use an ArrayList?
-
-
-## When / why not to use an ArrayList?
-
-Like this, like this
-
-### Finding elements
+### <a name="get"></a> Finding elements
 
 Finding an element in an array-list is as simple as finding an element in an array.
 Remember, after all, the array-list is just a wrapper around an array. We can access
@@ -132,9 +131,15 @@ public T get(int index) {
 
 Where `elements` is the internal array.
 
-### (The essence of)  inserting elements into an ArrayList
+### <a name="insert"></a> (The essence of)  inserting elements into an ArrayList
 
-Inserting an element is a little more difficult. Assume, we have an array-list `names` 
+Inserting an element is a little more difficult. First, we are going
+to explore the general idea of inserting an element into an array-list,
+and how it differs from any array. We will lay down some fundamental ideas,
+and then explore in greater detail how insertion into an array-list
+may be **implemented** when implementing an array-list data structure.
+
+Assume, we have an array-list `names` 
 that looks as follows:
 
 ```
@@ -223,10 +228,141 @@ We now have a way to insert an element at any position in the array. However, we
 a few details. How are we shifting the values? And most importantly, how is this
 added step impacting the performance of our insert operation?
 
-### Removing elements 
+### Shifting the array
 
-## Applications of ArrayLists
+The two main things that make array-lists possible, and different from
+an array is the shifting of elements, and the resizing of the internal array.
+Allocating a large enough array is simple enough, so we won't explore that
+any more. What's interesting is the shifting. But, what is shifting?
+
+Given an array (with labeled indices):
+
+```
+letters = ['a', 'b', 'c', 'd', 'e']
+            0    1    2    3    4
+```
+
+Shifting the array to the right (by 1) would produce the following:
+
+```
+letters = ['', 'a', 'b', 'c', 'd'] 'e'
+            0   1    2    3    4
+```
+
+We see that the `e` "fell off" the list. This is why we allocate space
+first. But, we will get back to that later. For the time being, let's
+figure out how this shifting takes place, and what are the "costs" of
+this operation.
+
+Program:
+
+```java
+import java.util.Arrays;
+class ArrayShift {
+    public static void main(String[] args) {
+        char[] letters = {'a', 'b', 'c', 'd', 'e'};
+        
+        System.out.println(Arrays.toString(letters));    // Display array first
+        letters = shiftRight(letters);                   // Shift right by one
+        System.out.println(Arrays.toString(letters));    // Display it again
+    }
+    
+    public static char[] shiftRight(char[] array) {
+        int n = array.length;
+    
+        // Move everything up
+        for (int i = n-1; i >= 1; i--) {
+          array[i] = array[i-1];
+        }
+    
+        // Overwrite value at first index (optional)
+        // This is for illustration purposes
+        array[0] = 'x';
+    
+        return array;
+      }
+}
+```
+
+Output:
+
+```
+[a, b, c, d, e]
+[x, a, b, c, d]
+```
+
+We now have an open space to insert a value in the front. In fact, this
+is what happened just before we inserted an element at the 
+front of the array-list. But, that was a lot of work. Notice how, for a 
+list of length `n`, in order to insert an element at the front, we needed
+to perform `n` data swaps. This means the runtime to shift an array is
+`O(n)`, where runtime is measured in number of data swaps with respected to
+to the elements in the array. Provided that this operation gets called once per insertion, the
+worst case of inserting into an array-list degrades to `O(n)` as well.
+What about deletion?
+
+### <a name="remove"></a> Removing elements 
+
+Removing an element from an array-list presents a similar problem.
+Consider the following array-list:
+
+```
+letters = ['a', 'b', 'c', 'd', 'e']
+            0    1    2    3    4
+```
+
+Let's say we want to remove the letter `b`. We can shift all the values
+that are to the right by one.
 
 ## Performance
 
+## When / why use an ArrayList?
 
+From the time-complexity analysis, we can see that the array-list does
+very well with its constant time lookup, and update. But, we see
+its behavior degrades quickly with insertions and deletions at arbitrary
+positions in the list. That being said, its good to use the array-list
+when we do not know how many elements that we will have in the list beforehand;
+but, over the course of time we will be doing more lookups and fetches than
+insertions and deletions.
+
+
+### A practical application
+
+Let's say you are tasked with writing an average GPA calculator, where a student
+can enter as many grades as they would like. How would you implement this?
+
+## When / why not to use an ArrayList?
+
+As mentioned, array-list do poorly with insertions and deletions. With that
+in mind, we probably should not use an array-list with a list that is
+changing often. If we have a list that is always growing, we will be doing
+lots of copying and memory allocation, same for always shrinking. 
+
+### A less practical application
+
+You are writing a messaging application, and you have a master list
+of everyone who is online. Every time a user logs in, or out, a function
+is called that gives you the id number of the given user, and you must
+either add them to the list or remove them from the list - respectively.
+A better approach may be a [LinkedList][linked_list] or even a [Map][map].
+
+
+### Conclusion
+
+The ArrayList is a dynamically sized data structure that solves the problem
+of not knowing how much space we will need beforehand, but still performs
+best when used for lookup, and update and its size is not changing often.
+
+Time-Complexity:
+
+| Operation           | Worst case | Average case | Best case | Measured in     |
+| :-----------------: | :--------: | :----------: | :-------: | :-------------: |
+| [insert()](#insert) | O(n)       | O(n)         | Ω(1)      | Data swaps      |
+| [remove()](#remove) | O(n)       | O(n)         | Ω(1)      | Data swaps      |
+| [search()](#search) | Θ(1)       | Θ(1)         | Θ(1)      | Loop iterations |
+| [update()](#update) | Θ(1)       | Θ(1)         | Θ(1)      | Loop iterations |
+
+
+[linked_list]: LinkedList.md
+[map]: ../maps/Map.md

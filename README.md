@@ -21,6 +21,7 @@ The core programming concepts that the reader should know include:
 * Methods / Functions
 * Loops
 * Recursion
+* Parameterized types
 
 ## What Will Be Covered
 
@@ -81,7 +82,6 @@ programming language. The code is available as a library in the following format
 [jar_file]: http://jabaridash.com:8085/build/java_data_structures.jar
 [setup_md]: docs/dev/setup/SETUP.md
 [javadoc]: docs/javadoc/index.html
-
 [vector]: docs/structures/vectors/Vector.md
 [tree]: docs/structures/trees/Tree.md
 [graph]: docs/structures/graphs/Graph.md

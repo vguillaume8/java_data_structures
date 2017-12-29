@@ -47,27 +47,26 @@ public final class Application {
     arrayList.insert(halfHalf);
     arrayList.insert(example);
 
-    ArrayList<Integer> structure = new ArrayList<>(example);
+    char[] letters = {'a', 'b', 'c', 'd', 'e'};
 
-    java.util.ArrayList<Integer> al = new java.util.ArrayList<>();
-    structure = new ArrayList<>();
+    System.out.println(Arrays.toString(letters));    // Display array first
+    letters = shiftRight(letters);                   // Shift right by one
+    System.out.println(Arrays.toString(letters));    // Display it again
 
+  }
 
-    int n = 1000000;
+  public static char[] shiftRight(char[] array) {
+    int n = array.length;
 
-    for (int i = 0; i < n; i++) {
-      structure = new ArrayList<>();
-
-      for (int j = 0; j < i; j++) {
-        structure.insert(j);
-      }
-
-      System.out.print("size: " + structure.size());
-      System.out.println(", allocation: " + structure.allocations() + "\n");
+    // Move everything up
+    for (int i = n-1; i >= 1; i--) {
+      array[i] = array[i-1];
     }
 
+    // Overwrite value at first index (optional)
+    array[0] = ' ';
 
-
+    return array;
   }
 
 }
