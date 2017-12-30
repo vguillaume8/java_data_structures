@@ -137,13 +137,13 @@ programming language. The code is available as a library in the following format
 
 
 [jar_file]: http://jabaridash.com:8085/build/java_data_structures.jar
-[setup_md]: docs/dev/setup/SETUP.md
-[javadoc]: docs/javadoc/index.html
-[vector]: docs/structures/vectors/Vector.md
-[tree]: docs/structures/trees/Tree.md
-[graph]: docs/structures/graphs/Graph.md
-[map]: docs/structures/maps/Map.md
-[set]: docs/structures/sets/Set.md
+[setup_md]: dev/setup/SETUP.md
+[javadoc]: javadoc/index.html
+[vector]: structures/vectors/Vector.md
+[tree]: structures/trees/Tree.md
+[graph]: structures/graphs/Graph.md
+[map]: structures/maps/Map.md
+[set]: structures/sets/Set.md
 
 [github_repo]: https://github.com/N02870941/java_data_structures
 
