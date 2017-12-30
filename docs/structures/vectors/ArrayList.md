@@ -32,6 +32,11 @@ This is where array-lists come in.
 
 ## What's an ArrayList?
 
+Let's now see what exactly an ArrayList is.
+
+<details>
+<summary>The general purpose:</summary>
+
 Array-lists are dynamically sized data structures. They are lists that grow with
 respect to the input. For example, if I need a list of `10` people, my array-list
 will be of size `10`. If I would like to list `1,000` people, then my array-list
@@ -57,6 +62,9 @@ to the implementation of the array-list.
 | [`shift()`](#shift) | Provided an array, shift each element up or down by one position | array              |
 | [`copy()`](#copy)   | Copy the values from one array to another                        | srcArray, dstArray | 
 
+
+<details>
+<summary>Simple program example:</summary>
 
 Program:
 
@@ -90,8 +98,12 @@ Output:
 1000
 2000
 ```
+</details>
 
-## How do they work?
+</details>
+
+<details>
+<summary>How the work:</summary>
 
 An ArrayList in essence is just an array, with a few rules. As mentioned an array
 has a fixed allocated size, so how can the array-list be an array? Well, who says we can't 
@@ -104,13 +116,20 @@ then begin inserting new values into the new array.
 if the array becomes full, a new copy of the array is made with extra space at the end
 so that insertion can continue.*
 
-### <a name="search"></a> Finding elements
+</details>
+
+## <a name="search"></a> Finding elements
 
 Finding an element in an array-list is as simple as finding an element in an array.
+
+<details>
+<summary>See more...</summary>
+
 Remember, after all, the array-list is just a wrapper around an array. We can access
 the elements by index as follows:
 
 Program:
+
 ```java
 import java.util.ArrayList;
 class GetAnElement {
@@ -157,10 +176,17 @@ Time Complexity of `get()`:
 | Average Case | Θ(1)     | ''               |
 | Worst Case   | Θ(1)     | ''               |
 
-### <a name="update"></a> Updating a value at a given index
+</details>
+
+## <a name="update"></a> Updating a value at a given index
 
 Retrieving an element was simple enough. Luckily, updating a value is
-just as simple. Remember, after all, its an "array" list. The following
+just as simple. Remember, after all, its an "array" list. 
+
+<details>
+<summary>See more...</summary>
+
+The following
 code describes the simplicity of updating a value in an array-list.
 
 Snippet:
@@ -184,13 +210,18 @@ Time Complexity of `update()`:
 | Average Case | Θ(1)     | ''                                           |
 | Worst Case   | Θ(1)     | ''                                           |
 
-### <a name="insert"></a> (The essence of)  inserting elements into an ArrayList
+</details>
+
+## <a name="insert"></a> Inserting elements into an ArrayList
 
 Inserting an element is a little more difficult. First, we are going
 to explore the general idea of inserting an element into an array-list,
 and how it differs from any array. We will lay down some fundamental ideas,
 and then explore in greater detail how insertion into an array-list
 may be **implemented** when implementing an array-list data structure.
+
+<details>
+<summary>See more...</summary>
 
 Assume, we have an array-list `names` 
 that looks as follows:
@@ -203,10 +234,8 @@ Let's say we wanted to insert an element `"Jamaal"` to into the array-list. Befo
 can do that, we need to make space for it. Whether we want to insert it at the front,
 the middle, or the back, we need to allocate a new spot.
 
-#### Inserting an element at the end
-
-Let's start with the back:
-
+<details>
+<summary>**Inserting an element at the end**</summary>
 1. Make a new array of with at least 4 spaces
 2. Copy the old values into the new array (in order)
 3. Place the new value in the next vacant spot
@@ -224,7 +253,11 @@ names = temp
 
 Easy enough, how about the front? 
 
-#### Inserting an element at the front
+</details>
+
+
+<details>
+<summary>**Inserting an element at the front**</summary>
 
 Let's say we want to insert a string `Jenelle` as
 the first element. How would we go about it?
@@ -248,7 +281,10 @@ names = temp
 
 Ok, now we will insert an element at some arbitrary position in the array-list.
 
-#### Inserting an element somewhere in the middle
+</details>
+
+<details>
+<summary>**Inserting an element somewhere in the middle**</summary>
 
 Our array-list `names` now looks as follows:
 
@@ -280,13 +316,20 @@ names = temp
 We now have a way to insert an element at any position in the array. However, we skipped
 a few details. How are we shifting the values? And most importantly, how is this
 added step impacting the performance of our insert operation?
+</details>
 
-### Shifting the array
+</details>
+
+
+## Shifting values in the array
 
 The two main things that make array-lists possible, and different from
 an array is the shifting of elements, and the resizing of the internal array.
 Allocating a large enough array is simple enough, so we won't explore that
 any more. What's interesting is the shifting. But, what is shifting?
+
+<details>
+<summary>See more...</summary>
 
 Given an array (with labeled indices):
 
@@ -354,9 +397,15 @@ to the elements in the array. Provided that this operation gets called once per 
 worst case of inserting into an array-list degrades to `O(n)` as well.
 What about deletion?
 
-### <a name="remove"></a> Removing elements 
+</details>
 
-Removing an element from an array-list presents a similar problem.
+## <a name="remove"></a> Removing elements 
+
+Removing an element from an array-list presents a similar problem as inserting.
+
+<details>
+<summary>See more...</summary>
+
 Consider the following array-list:
 
 ```
@@ -443,10 +492,17 @@ What happens to the value at index `4`? We just removed an element from the list
 size `5`, so it should now be of size `4`, right? That will be answered in the next
 section.
 
+</details>
+
 ## Dynamic memory allocation
 
 This is the bread and butter of the array-list. It is the on the fly resizing
-of the internal array that allows all of this to work. Consider the following array:
+of the internal array that allows all of this to work.
+<details>
+<summary>See more...</summary>
+
+ Consider the following array:
+
 
 ```
 letters = ['a', 'c', 'd', 'e', '?']
@@ -507,9 +563,14 @@ letters = ['a', 'c', '?', '?', '?'], size = 1
                  ^                                                                     
 ``` 
 
+</details>
+
 ## Performance
 
-Time-Complexity:
+Let's now look at the performance of the ArrayList.
+
+<details>
+<summary>Time-Complexity:</summary>
 
 | Operation             | Worst case | Average case | Best case | Measured in      |
 | :-------------------: | :--------: | :----------: | :-------: | :--------------: |
@@ -518,36 +579,7 @@ Time-Complexity:
 | [`insert()`](#insert) | O(n)       | O(n)         | Ω(1)      | Data swaps       |
 | [`remove()`](#remove) | O(n)       | O(n)         | Ω(1)      | Data swaps       |
 
-
-## When / why use an ArrayList?
-
-From the time-complexity analysis, we can see that the array-list does
-very well with its constant time lookup, and update. But, we see
-its behavior degrades quickly with insertions and deletions at arbitrary
-positions in the list. That being said, its good to use the array-list
-when we do not know how many elements that we will have in the list beforehand;
-but, over the course of time we will be doing more lookups and fetches than
-insertions and deletions.
-
-### A practical application
-
-Let's say you are tasked with writing an average GPA calculator, where a student
-can enter as many grades as they would like. How would you implement this?
-
-## When / why not to use an ArrayList?
-
-As mentioned, array-list do poorly with insertions and deletions. With that
-in mind, we probably should not use an array-list with a list that is
-changing often. If we have a list that is always growing, we will be doing
-lots of copying and memory allocation, same for always shrinking. 
-
-### A less practical application
-
-You are writing a messaging application, and you have a master list
-of everyone who is online. Every time a user logs in, or out, a function
-is called that gives you the id number of the given user, and you must
-either add them to the list or remove them from the list - respectively.
-A better approach may be a [LinkedList][linked_list] or even a [Map][map].
+</details>
 
 ## Conclusion
 
@@ -557,3 +589,55 @@ best when used for lookup, and update and its size is not changing often.
 
 [linked_list]: LinkedList.md
 [map]: ../maps/Map.md
+
+
+## ArrayLists in practice
+
+Now we will look at what arrays are used for, when is the best time to use them,
+and when not to use them.
+
+<details>
+<summary>**When to use ArrayLists:**</summary>
+
+<details>
+<summary>*Best time to use them:*</summary>
+	From the time-complexity analysis, we can see that the array-list does
+	very well with its constant time lookup, and update. But, we see
+	its behavior degrades quickly with insertions and deletions at arbitrary
+	positions in the list. That being said, its good to use the array-list
+	when we do not know how many elements that we will have in the list beforehand;
+	but, over the course of time we will be doing more lookups and fetches than
+	insertions and deletions.
+</details>
+
+<details>
+<summary>Practical application:</summary>
+	Let's say you are tasked with writing an average GPA calculator, where a student
+	can enter as many grades as they would like. How would you implement this?
+</details>
+
+</details>
+
+
+<details>
+<summary>**When *not* to use ArrayLists:**</summary>	
+<details>
+<summary>When to stray away:</summary>
+	As mentioned, array-list do poorly with insertions and deletions. With that
+	in mind, we probably should not use an array-list with a list that is
+	changing often. If we have a list that is always growing, we will be doing
+	lots of copying and memory allocation, same for always shrinking. 
+</details>
+
+<details>
+<summary>Not so good use case</summary>
+	You are writing a messaging application, and you have a master list
+	of everyone who is online. Every time a user logs in, or out, a function
+	is called that gives you the id number of the given user, and you must
+	either add them to the list or remove them from the list - respectively.
+	A better approach may be a [LinkedList][linked_list] or even a [Map][map].
+</details>
+	
+</details>
+
+
