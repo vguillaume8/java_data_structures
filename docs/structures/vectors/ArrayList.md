@@ -4,14 +4,8 @@ An array list is a common data structure used in many programming languages.
 In other programming languages, it may be called something else, but most
 programming languages should have them. Array-lists are alternatives to arrays.
 
-**Basic ArrayList Operations:**
-
-| Operation             | Description                                                      | arguments    |
-| :-------------------: | :--------------------------------------------------------------  | :----------: |
-| [`search()`](#search) | Retrieves an element from a specified position in the array-list | index        |
-| [`update()`](#update) | Overwrites an element at a specified position in the array-list  | index, value |
-| [`insert()`](#insert) | Inserts an element into a specified position in the array-list   | index, value |
-| [`remove()`](#remove) | Removes an element from a specified position in the array-list   | index        |
+These are basic operations that the use of the array-list will be executing
+to manage their data with an array-list.
 
 Arrays are statically sized. This means, the size of the array does not change.
 This is why we must pass the length of an array as a parameter upon instantiating
@@ -43,6 +37,26 @@ respect to the input. For example, if I need a list of `10` people, my array-lis
 will be of size `10`. If I would like to list `1,000` people, then my array-list
 wil be of size `1,000`. In fact, for integer number of `n` inputs, where `n >= 0`, 
 our array list will be of size `n`. 
+
+**Basic ArrayList Operations:**
+
+| Operation             | Description                                                      | Parameters   |
+| :-------------------: | :--------------------------------------------------------------  | :----------: |
+| [`search()`](#search) | Retrieves an element from a specified position in the array-list | index        |
+| [`update()`](#update) | Overwrites an element at a specified position in the array-list  | index, value |
+| [`insert()`](#insert) | Inserts an element into a specified position in the array-list   | index, value |
+| [`remove()`](#remove) | Removes an element from a specified position in the array-list   | index        |
+
+**Auxiliary Operations:**
+
+These are operations not directly exposed to the user (private methods in Java) that are integral
+to the implementation of the array-list.
+
+| Operation           | Description                                                      | Parameters         |
+| :---------:         | :--------------------------------------------------------------: | :----------------: |
+| [`shift()`](#shift) | Provided an array, shift each element up or down by one position | array              |
+| [`copy()`](#copy)   | Copy the values from one array to another                        | srcArray, dstArray | 
+
 
 Program:
 
