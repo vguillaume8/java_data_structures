@@ -236,7 +236,7 @@ can do that, we need to make space for it. Whether we want to insert it at the f
 the middle, or the back, we need to allocate a new spot.
 
 <details>
-<summary>**Inserting an element at the end**</summary>
+<summary>Inserting an element at the end</summary>
 1. Make a new array of with at least 4 spaces
 2. Copy the old values into the new array (in order)
 3. Place the new value in the next vacant spot
@@ -258,7 +258,7 @@ Easy enough, how about the front?
 
 
 <details>
-<summary>**Inserting an element at the front**</summary>
+<summary>Inserting an element at the front</summary>
 
 Let's say we want to insert a string `Jenelle` as
 the first element. How would we go about it?
@@ -285,7 +285,7 @@ Ok, now we will insert an element at some arbitrary position in the array-list.
 </details>
 
 <details>
-<summary>**Inserting an element somewhere in the middle**</summary>
+<summary>Inserting an element somewhere in the middle</summary>
 
 Our array-list `names` now looks as follows:
 
@@ -598,10 +598,10 @@ Now we will look at what arrays are used for, when is the best time to use them,
 and when not to use them.
 
 <details>
-<summary>**When to use ArrayLists:**</summary>
+<summary>When to use ArrayLists:</summary>
 
 <details>
-<summary>*Best time to use them:*</summary>
+<summary>Best time to use them:</summary>
 	From the time-complexity analysis, we can see that the array-list does
 	very well with its constant time lookup, and update. But, we see
 	its behavior degrades quickly with insertions and deletions at arbitrary
@@ -621,7 +621,7 @@ and when not to use them.
 
 
 <details>
-<summary>**When *not* to use ArrayLists:**</summary>	
+<summary>When not to use ArrayLists:</summary>	
 <details>
 <summary>When to stray away:</summary>
 	As mentioned, array-list do poorly with insertions and deletions. With that
