@@ -11,6 +11,7 @@ Arrays are statically sized. This means, the size of the array does not change.
 This is why we must pass the length of an array as a parameter upon instantiating
 it. Otherwise, the computer does not know how much space to allocate.
 
+
 Code Snippet:
 
 ```java
