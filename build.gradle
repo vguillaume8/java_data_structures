@@ -35,9 +35,12 @@ dependencies {
 }
 
 javadoc {
-  destinationDir = new File("${projectDir}/docs/")
+  outputs.upToDateWhen { false }
+  include 'structures/'
   options.memberLevel = JavadocMemberLevel.PUBLIC
+  options.overview = "src/overview.html"
   source = sourceSets.main.allJava
   classpath = configurations.compile
+  destinationDir = new File("${projectDir}/docs/")
 }
 
