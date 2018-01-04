@@ -53,7 +53,7 @@ public final class ArrayList<K> implements List<K> {
         // If the ratio of elements in the DataStructure exceeds the
         // threshold (default 90%), then we need to allocate more space
         // in the internal array
-        return (size / keys.length) > RESIZE_THRESHOLD && alloc(size * 2);
+        return (size / keys.length) > RESIZE_THRESHOLD && alloc(size/2);
     }
 
     /**

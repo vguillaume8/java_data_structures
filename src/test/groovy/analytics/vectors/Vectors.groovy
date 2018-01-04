@@ -2,14 +2,54 @@ package analytics.vectors
 
 import commons.Java8Util
 import commons.Util
-import spock.lang.Shared
 import spock.lang.Specification
-import spock.lang.Unroll
-import com.opencsv.CSVWriter;
-import java.util.ArrayList;
-import spock.lang.Ignore
+
 
 class Vectors extends Specification {
+
+    def "Size of internal array vs. size of input array"() {
+        setup:
+        structures.vectors.ArrayList<Object> arrayList
+        java.util.ArrayList<Number[]> points;
+        Number[] point
+
+        when:
+        points = new ArrayList<>()
+
+        // Insert n elements into the ArrayList
+        arrayList = new structures.vectors.ArrayList<Integer>()
+
+        for (int i = 1; i <= length; i++) {
+            arrayList.insert(i);
+
+            point = new Integer[2]
+            point[0] = arrayList.size()
+            point[1] = arrayList.internalSize()
+
+            points.add(point)
+        }
+
+        then:
+        Java8Util.generateCSV(experimentName, points)
+        Util.generatePlot(
+                experimentName,
+                plotTitle,
+                "Input_data",
+                "n",
+                "A(n)",
+                false,
+                false,
+                false,
+                false,
+                true,
+                false
+        )
+
+
+        where:
+        length    | experimentName                           | plotTitle
+        10000     | "internal_array_size_vs_actual_elements" | "internal_array_size_vs_actual_elements"
+    }
 
     def "How many memory allocations when building an ArrayList"() {
         setup:
