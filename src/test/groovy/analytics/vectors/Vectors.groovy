@@ -1,58 +1,61 @@
 package analytics.vectors
 
+import commons.Java8Util
 import commons.Util
 import spock.lang.Shared
 import spock.lang.Specification
 import spock.lang.Unroll
 import com.opencsv.CSVWriter;
 import java.util.ArrayList;
+import spock.lang.Ignore
 
 class Vectors extends Specification {
 
-
-    @Shared String csvDirectory = Util.testDirectory + "analytics/vectors/csv/"
-
-    @Unroll
     def "How many memory allocations when building an ArrayList"() {
         setup:
-        CSVWriter csvWriter
         structures.vectors.ArrayList<Object> arrayList
-        java.util.ArrayList<String[]> points;
-        String[] point
+        java.util.ArrayList<Number[]> points;
+        Number[] point
 
         when:
-        csvWriter = Util.getCSVWriter(csvDirectory + "AllocationsToBuildArrayList.csv");
         points = new ArrayList<>()
 
-        String[] header = ["Array size", "Number of memory allocations"]
-
-//        csvWriter.writeNext(header)
-
         // Insert n elements into the ArrayList
-        for (int i = 0; i < length; i++) {
+        for (int i = 1; i <= length; i++) {
             arrayList = new structures.vectors.ArrayList<Integer>()
 
-            for (int j = 0; j < i; j++) {
+            for (int j = 1; j <= i; j++) {
                 arrayList.insert(j);
             }
 
-            point = new String[2]
-            point[0] = Integer.toString(arrayList.size());
-            point[1] = Integer.toString(arrayList.allocations())
+            point = new Integer[2]
+            point[0] = arrayList.size()
+            point[1] = arrayList.allocations()
 
             points.add(point)
         }
 
-        csvWriter.writeAll(points)
-
-        csvWriter.close()
-
         then:
-        true
+        Java8Util.generateCSV(experimentName, points)
+        Util.generatePlot(
+                experimentName,
+                plotTitle,
+                "Input_data",
+                "n",
+                "A(n)",
+                false,
+                false,
+                false,
+                false,
+                true,
+                true
+        )
+
 
         where:
-        length | _
-        100000 | _
+        length    | experimentName                       | plotTitle
+        1000      | "memory_allocations_for_large_lists" | "memory_allocations_to_build_array_list_of_size_n"
+        500       | "memory_allocations_for_small_list"  | "memory_allocations_to_build_array_list_of_size_n"
     }
 
 }

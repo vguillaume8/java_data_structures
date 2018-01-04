@@ -9,3 +9,4 @@
 
 ## Performance
 - https://stackoverflow.com/questions/1393486/error-java-lang-outofmemoryerror-gc-overhead-limit-exceeded
+- https://stackoverflow.com/questions/18311909/how-do-i-annotate-with-power-of-ten-formatting
