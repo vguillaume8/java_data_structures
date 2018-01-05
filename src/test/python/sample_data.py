@@ -1,13 +1,22 @@
 from functions import *
+from file_io import write_csv
 import random
-import csv
 
+# Applies random noise to a data set
+# with a specified noise factor. Noise
+# factor is the largest offset that can be
+# applied to a point. We only use positive
+# numbers to avoid negative numbers and issues
+# with curve fitting functions that are
+# not defined <= 0, such as log.
 def apply_noise(y, noise_factor):
 
     # Add noise to the y-component of the evaluted function
     return [i + random.uniform(0, abs(noise_factor)) for i in y]
 
 
+# Returns a list of numbers between specified
+# upper and lower bounds
 def get_range(lower_bound, upper_bound):
     return list(range(lower_bound, upper_bound))
 
@@ -118,17 +127,6 @@ def linear_function_sample(lower_bound,
     return x, y
 
 
-def write_csv(output_name, x, y):
-    output_file_name = "sample_data/" + output_name + '.csv'
-
-    f = open(output_file_name, "w")
-
-    for i in xrange(len(x)):
-        f.write("{}, {}\n".format(x[i], y[i]))
-
-    f.close()
-
-
 def generate_sample_data(lower_bound,
                          upper_bound,
                          noise_factor = 0,
@@ -138,38 +136,42 @@ def generate_sample_data(lower_bound,
                          n_log_n_fit     = False,
                          logarithmic_fit = False,
                          linear_fit      = False):
+
+    # For testing
+    sample_data_directory = '../../../data/csv/'
+
     # Exponential
     if exponential_fit:
         x, y = exponential_function_sample(lower_bound, upper_bound, noise_factor = noise_factor)
-        write_csv("Exponential", x, y)
+        write_csv(sample_data_directory + "Exponential", x, y)
 
     # Cubic
     if cubic_fit:
         x, y = cubic_function_sample(lower_bound, upper_bound, noise_factor = noise_factor)
-        write_csv("Cubic", x, y)
+        write_csv(sample_data_directory + "Cubic", x, y)
 
     # Quadratic
     if quadratic_fit:
         x, y = quadratic_function_sample(lower_bound, upper_bound, noise_factor = noise_factor)
-        write_csv("Quadratic", x, y)
+        write_csv(sample_data_directory + "Quadratic", x, y)
 
     # n log n
     if n_log_n_fit:
         x, y = n_log_n_function_sample(lower_bound, upper_bound, noise_factor = noise_factor)
-        write_csv("n log n", x, y)
+        write_csv(sample_data_directory + "n log n", x, y)
 
     # Logarithmic
     if logarithmic_fit:
         x, y = logarithmic_function_sample(lower_bound, upper_bound, noise_factor = noise_factor)
-        write_csv("Logarithmic", x, y)
+        write_csv(sample_data_directory +"Logarithmic", x, y)
 
     # Linear
     if linear_fit:
         x, y = linear_function_sample(lower_bound, upper_bound, noise_factor = noise_factor)
-        write_csv("Linear", x, y)
+        write_csv(sample_data_directory + "Linear", x, y)
 
 
-def main():
+if __name__ == "__main__":
     lower_bound  = 1
     upper_bound  = 75
     noise_factor = 100
@@ -185,5 +187,4 @@ def main():
                          linear_fit       = False)
 
 
-if __name__ == "__main__":
-    main()
+

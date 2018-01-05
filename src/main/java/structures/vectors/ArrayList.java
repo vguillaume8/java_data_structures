@@ -5,21 +5,66 @@ import java.util.Arrays;
 /**
  * Basic implementation of a generic ArrayList
  *
+ *
+ *
  * @author Jabari Dash
  * @param <K> Generic type
  */
 public final class ArrayList<K> implements List<K> {
 
+    /**
+     * The threshold for resizing the internal array. If the
+     * internal array gets 90% full, we will allocate more space
+     * before adding elements. This variable sets that threshold
+     * for resizing. We don't want a threshold that's too small
+     * because at any point in execution, if we have k elements,
+     * we will also have at least k free spaces allocated.
+     *
+     */
     private static final double RESIZE_THRESHOLD = 0.9;
+
+    /**
+     * The default size of the internal array is 10.
+     */
     private static final int DEFAULT_SIZE = 10;
 
+    /**
+     * Number of elements present in the ArrayList.
+     */
     private int size;
+
+    /**
+     * The internal array containing the elements in the ArrayList.
+     */
     private K[] keys;
+
+    /**
+     * The amount of times the array needed to be resized.
+     * We use this value for analytic purposes. It has no
+     * effect on the performance or behavior of the ArrayList.
+     */
     private int allocations;
 
     /**
+     * The number of times an element has been shifted in the array.
+     * This goes for individual elements. So a shift left when the ArrayList
+     * of size 10 will increase shifts by 10. This variable is
+     * used for analytics purposes. It has not effect on
+     * the performance or behavior of the ArrayList.
+     */
+    private int shifts;
+
+    /**
+     * Instantiates an ArrayList with an internal array of
+     * a specified length. This constructor should be used
+     * when the number of elements that the ArrayList will
+     * contain is known beforehand. This avoids the dynamic memory
+     * re-allocations required to continuously make space for
+     * new elements. If a length smaller than the default
+     * capacity (10) is passed, the ArrayList's capacity will
+     * default to 10.
      *
-     * @param length
+     * @param length Specific initial capacity of ArrayList.
      */
     @SuppressWarnings("unchecked")
     public ArrayList(int length) {
@@ -29,7 +74,8 @@ public final class ArrayList<K> implements List<K> {
     }
 
     /**
-     * Constructs empty list.
+     * Constructs empty list. The default capacity
+     * of the ArrayList is 10.
      */
     public ArrayList() {
         this(DEFAULT_SIZE);
@@ -41,25 +87,39 @@ public final class ArrayList<K> implements List<K> {
      * @param values Array of keys to construct the list from
      */
     public ArrayList(K[] values) {
-        this();
+        this(values.length);
         insert(values);
     }
 
     /**
-     * If the internal array is full, it's size will be doubled plus 1
+     * If the internal array is 90% full, we will resize
+     * the internal array by 50% of its current length
      */
     private boolean alloc() {
+
+        // Convert size and length to doubles
+        // to perform division with decimals
+        double s = (double) size;
+        double l = (double) keys.length;
 
         // If the ratio of elements in the DataStructure exceeds the
         // threshold (default 90%), then we need to allocate more space
         // in the internal array
-        return (size / keys.length) > RESIZE_THRESHOLD && alloc(size/2);
+        return (s / l) > RESIZE_THRESHOLD && alloc(size / 2);
     }
 
     /**
-     * Allocates (or de-allocates) space in the internal array
+     * Allocates (or de-allocates) space in the internal array.
+     * If a positive integer is passed, that number of additional
+     * slots will be added to the ArrayList. If the number
+     * is negative, the ArrayList will shrink by that number of slots.
+     * Note, if the number is negative and its magnitude exceeds the
+     * the the number of free slots in the internal, the array will only be trimmed
+     * to the last contained element. This is so that we do not accidentally lose
+     * data by trimming by too many slots. The remove operation must be
+     * executed first to further trim the internal array.
      *
-     * @param slots How many new slots to make
+     * @param slots How many new slots to add or trim.
      */
     private boolean alloc(int slots) {
         int length;
@@ -99,13 +159,14 @@ public final class ArrayList<K> implements List<K> {
     }
 
     /**
+     * Returns the numbers of memory re-allocations that
+     * have occurred to create the ArrayList in its present state.
      *
-     * @return
+     * @return Number of re-allocations.
      */
     public int allocations() {
         return allocations;
     }
-
 
     /**
      * Determines whether or not this ArrayList is equal to
@@ -126,8 +187,8 @@ public final class ArrayList<K> implements List<K> {
     /**
      * Returns the value at a specified index.
      *
-     * @param index Specified index
-     * @return Value at specified index
+     * @param index Specified index.
+     * @return Value at specified index.
      */
     @Override
     public K get(int index) {
@@ -143,7 +204,6 @@ public final class ArrayList<K> implements List<K> {
     @Override
     public boolean insert(K key) {
         return insertLast(key);
-
     }
 
     /**
@@ -160,7 +220,7 @@ public final class ArrayList<K> implements List<K> {
         }
 
         alloc();                   // Potentially alloc the internal array before insertion
-        keys[index] = value;     // Insert the new value into the designated index
+        keys[index] = value;       // Insert the new value into the designated index
         size++;                    // Increment size of list
 
         return true;
@@ -235,8 +295,8 @@ public final class ArrayList<K> implements List<K> {
     /**
      * Retrieves and removes the value at a specified index.
      *
-     * @param index Index to remove value from
-     * @return Value at specified index
+     * @param index Index to remove value from.
+     * @return Value at specified index.
      */
     @Override
     public K remove(int index) {
@@ -284,8 +344,9 @@ public final class ArrayList<K> implements List<K> {
     }
 
     /**
+     * Returns the number of elements in the ArrayList.
      *
-     * @return
+     * @return Number of elements in the ArrayList.
      */
     @Override
     public int size() {
@@ -301,6 +362,7 @@ public final class ArrayList<K> implements List<K> {
     public K[] toArray(K[] array) {
 
         try {
+
             array = (K[]) Arrays.copyOf(keys, size(), array.getClass());
 
         } catch (ArrayStoreException exception) {
@@ -312,7 +374,7 @@ public final class ArrayList<K> implements List<K> {
     }
 
     /**
-     * Returns a String representation of the list
+     * Returns a String representation of the list.
      *
      * @return String version of the list
      */

@@ -4,3 +4,5 @@
 /out
 java_data_structures.iml
 /analytics
+
+*.pyc

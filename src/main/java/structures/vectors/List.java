@@ -87,7 +87,7 @@ public interface List<T> extends Vector<T> {
      */
     @Override
     default Iterator<T> iterator() {
-        return new IndexedDataStructureIterator<>(this);
+        return new ListIterator<>(this);
     }
 
 //------------------------------------------------------------------------------
@@ -124,14 +124,14 @@ public interface List<T> extends Vector<T> {
 
     /**
      * Static Iterator class so that the List can be iterated on via
-     * the enhance for loop
+     * the enhance for loop.
      *
      * @author Jabari Dash
      * @param <T> Generic type
      */
-    class IndexedDataStructureIterator<T> implements Iterator<T> {
+    class ListIterator<T> implements Iterator<T> {
         private List<T> list;   // List to iterate over
-        private int cursor;                     // Cursor to keep track of position in iteration
+        private int cursor;     // Cursor to keep track of position in iteration
 
         /**
          * Constructor, initialize cursor to index 0, and the list
@@ -139,7 +139,7 @@ public interface List<T> extends Vector<T> {
          *
          * @param list The list to be iterated on
          */
-        public IndexedDataStructureIterator(List<T> list) {
+        private ListIterator(List<T> list) {
             this.list = list;
             this.cursor = 0;
         }

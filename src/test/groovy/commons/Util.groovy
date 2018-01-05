@@ -14,8 +14,7 @@ class Util {
                                                "python" + File.separator;
 
 
-    public static String dataDirectory = pathToPlotGenerator +
-                                        "data" + File.separator
+    public static String dataDirectory = "." + File.separator + "data" + File.separator
 
     public static String csvDirectory = dataDirectory + "csv" + File.separator
     public static String pngDirectory = dataDirectory + "png" + File.separator

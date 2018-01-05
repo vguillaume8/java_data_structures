@@ -5,29 +5,28 @@ import structures.vectors.LinkedList.Node;
 import java.util.Iterator;
 
 /**
- * Basic FIFO Queue implementation
+ * Basic FIFO Queue implementation.
  *
  * @author Jabari Dash
- * @param <T> Generic type
+ * @param <K> Generic type
  */
-public final class Queue<T> implements Vector<T> {
+public final class Queue<K> implements Vector<K> {
 
     /**
-     *
+     * Number of elements in the Queue
      */
     private int size;
 
     /**
-     * Pointer to the first node in the chain
+     * Reference to the first node in the chain
      */
-    private Node<T> head;
+    private Node<K> head;
 
     /**
      * Pointer to the last node in the chain
      *
-     * TODO - Use the tail in implementing classes such as Linkedlist so insert last is O(1)
      */
-    private Node<T> tail;
+    private Node<K> tail;
 
     /**
      * Constructs empty Queue.
@@ -39,10 +38,10 @@ public final class Queue<T> implements Vector<T> {
     /**
      * Constructs Queue from array of keys.
      *
-     * @param values Array of keys to instatiate Queue from
+     * @param keys Array of keys to instatiate Queue from
      */
-    public Queue(T[] values) {
-        insert(values);
+    public Queue(K[] keys) {
+        insert(keys);
     }
 
     /**
@@ -61,7 +60,7 @@ public final class Queue<T> implements Vector<T> {
      *
      * @return Front-most value from Queue
      */
-    public T peek() {
+    public K peek() {
         if (this.empty()) {
             throw new EmptyDataStructureException("Cannot peek() empty Queue");
         }
@@ -70,13 +69,13 @@ public final class Queue<T> implements Vector<T> {
     }
 
     /**
-     * Inserts value at back of Queue.
+     * Inserts key at back of Queue.
      *
-     * @param value The specified value to insert
+     * @param key The specified key to insert
      */
     @Override
-    public boolean insert(T value) {
-        Node<T> node = new Node<>(value);
+    public boolean insert(K key) {
+        Node<K> node = new Node<>(key);
 
         if (empty()) {
             head = node;
@@ -99,12 +98,12 @@ public final class Queue<T> implements Vector<T> {
      * @return Front most value from Queue
      */
     @Override
-    public T remove() {
+    public K remove() {
         if (this.empty()) {
             throw new EmptyDataStructureException("Cannot remove() from empty Queue");
         }
 
-        T value = head.value;   // Get value from head
+        K value = head.value;   // Get value from head
         head = head.next;       // Set head equal to head's next
         size--;                 // Decrement size of Queue
 
@@ -131,7 +130,7 @@ public final class Queue<T> implements Vector<T> {
     }
 
     @Override
-    public Iterator<T> iterator() {
+    public Iterator<K> iterator() {
 
         return LinkedList.iterator(head);
     }

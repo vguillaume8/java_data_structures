@@ -4,7 +4,7 @@ from math import floor, log10
 
 
 # Converts list of coefficients
-# to their scientific notation representation
+# to power of 10  notation
 def to_latex(coeffs):
     latex_coeffs = [None] * len(coeffs)
 
@@ -14,6 +14,8 @@ def to_latex(coeffs):
     return latex_coeffs
     
 
+# Converts a number from scientific
+# notation to a power of 10 notation
 def sci_notation(num,
                  decimal_digits = 1,
                  precision      = None,
@@ -34,37 +36,57 @@ def sci_notation(num,
     if not precision:
         precision = decimal_digits
 
-    # Redundant to multiply to 0th power
-    if (exponent == 0):
+    # Redundant to multiply a coefficient by 10 to 0th power
+    if exponent == 0:
         return str(coeff)
 
+    # LateX string
     return "{0:.{2}f}\cdot10^{{{1:d}}}".format(coeff, exponent, precision)
 
 
+# f(x) = A * x^-B + C
 def exponential_function(x, A, B, C):
     return A * numpy.exp(-B * x) + C
 
 
+# f(x) = Ax^3 + Bx^2 + Cx + D
 def cubic_function(x, A, B, C, D):
     return A * numpy.power(x, 3) + B * numpy.power(x, 2) + C * numpy.power(x, 1) + D
 
 
+# f(x) = Ax^2 + Bx + C
 def quadratic_function(x, A, B, C):
     return A * numpy.power(x, 2) + B * numpy.power(x, 1) + C
 
 
+# f(x) = Ax * log_2(x) + B
 def n_log_n_function(x, A, B):
     return A * x * numpy.log2(x) + B
 
 
+# f(x) = A * log_2(x) + B
 def logarithmic_function(x, A, B):
-  return A * numpy.log2(x) + B
+    return A * numpy.log2(x) + B
 
 
+# f(x) = Ax + B
 def linear_function(x, A, B):
     return A * numpy.power(x, 1) + B
 
 
+'''
+         n
+        ____
+  100   \     | (actual_i - measured_i) |
+ _____   \    | _______________________ |
+         /    |                         | = Mean Absolute Percent Error
+   n    /___  |         actual_i        |
+ 
+        i = 1
+'''
+
+
+# Computes mean absolute percent error
 def mean_absolute_percent_error(measured, actual):
     s = 0
     n = len(measured)
@@ -72,9 +94,11 @@ def mean_absolute_percent_error(measured, actual):
     for i in xrange(n):
         s += abs((actual[i] - measured[i]) / actual[i])
 
-    return  (s * 100) / n
+    return (s * 100) / n
 
 
+# Given a dictionary of fits (also dictionaries)
+# return the fit with the lowest error
 def min_err(fits):
     min_fit = fits.itervalues().next()
 
@@ -83,3 +107,5 @@ def min_err(fits):
             min_fit = value
 
     return min_fit
+
+

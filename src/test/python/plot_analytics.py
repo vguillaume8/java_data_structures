@@ -10,18 +10,24 @@ from functions import *
 
 
 '''
+Given a data set of (x,y) points in the form of a .csv file, and
+optional parameters for fitting a curve to the data
+this program does the following:
+
 1. Reads in (x,y) points from a CSV
 
 2. Computes best fit functions for desired types
 
 3. Plots the input data
 
-3. Plots the best fit functions on same domain as input
+4. Plots the best fit functions on same domain as input
 
-3. Saves plot as image
-
-4. Displays the plot in a window
+5. Saves plot as image
 '''
+
+# Plots input data from a .csv file
+# and optionally fits and plot
+# various curves to fit the input data
 def plot_data(input_file_path,
               output_file_path,
               plot_title,
@@ -42,11 +48,11 @@ def plot_data(input_file_path,
     x = []
     y = []
 
-    # Dictionary of fits (also dictionaries)
+    # Dictionary of curve fits (also dictionaries)
     # JSON-like setup with nested dictionaries
     fits = {}
 
-    # Open a CSV file in read mode
+    # Open the .csv file in read mode
     with open(input_file_path,'r') as csvfile:
         plots = csv.reader(csvfile, delimiter=',')
 
@@ -60,18 +66,41 @@ def plot_data(input_file_path,
     if original_data:
         plt.scatter(x,y, marker='o', label=input_data_label)
 
+    '''
+    NOTE - All of the following "if" statements regarding
+    curve fit types all follow this pattern:
+    
+    0. Check if the user wants the given type of curve fit.
+    
+    1. If they want it, compute a curve fit using scipy 
+    
+    2. Get a set of y-values via the new function on the same domain as input data
+    
+    3. Store various attributes about the fit in a collection of curve fits
+    
+    4. Plot the new y-values on the same graph as the input data 
+    '''
+
     # Plot Exponential
     if exponential_fit:
         exp_coeffs, exp_extras = curve_fit(exponential_function, x, y)
         y_exp = exponential_function(x, exp_coeffs[0], exp_coeffs[1], exp_coeffs[2])
 
+        # Dictionary that contains various
+        # attributes about the curve fit
         exp = {
-            'fit_type' : 'Exponential Fit',
-            'equation' : "{}e^{}n+{}$".format(*to_latex(exp_coeffs)),
-            'error'    : mean_absolute_percent_error(y, y_exp)
+            'fit_type' : 'Exponential Fit',                              # Title that will go in the legend
+            'equation' : "{}e^{}n+{}$".format(*to_latex(exp_coeffs)),    # Create LateX string for the function
+            'error'    : mean_absolute_percent_error(y, y_exp)           # Compute the mean absolute error
         }
 
+        # Store this curve fit in the dictionary
+        # of curve fits
         fits['exponential'] = exp
+
+        # Plot the fit on the original x domain with the y-values that we
+        # computed via the curve fit. Label the curve in the legend with
+        # its type and equation string
         plt.plot(x, y_exp, label=exp['fit_type'] + ": " + exp['equation'])
 
     # Plot Cubic
@@ -149,12 +178,10 @@ def plot_data(input_file_path,
         fits['linear'] = lin
         plt.plot(x, y_lin, label=lin['fit_type'] + ": " + lin['equation'])
 
-
     # Get the curve with the minimum error
     if fits:
         best_fit = min_err(fits)
         print("Best fit " + str(best_fit))
-
 
     # Label and title the plot
     plt.xlabel('$' + x_label + '$')
@@ -168,28 +195,30 @@ def plot_data(input_file_path,
     # Save the plot as PNG then display it
     plt.savefig(output_file_path, bbox_inches='tight')
 
+    # Diagnostic purposes - open plot in window
     # plt.show()
 
 
 # -------------------------------------------------------------------------------
 
-
+# PROGRAM STARTS EXECUTION HERE
 if __name__ == "__main__":
 
+    # We use this to parse command line arguments
     parser = argparse.ArgumentParser()
 
-    # Required arguments
+    # Define equired arguments
     requiredNamed = parser.add_argument_group('required named arguments')
-    requiredNamed.add_argument('--input-file-name', help='Name of valid input CSV file', required=True)
+    requiredNamed.add_argument('--input-file-name', help='Name of the csv file', required=True)
     requiredNamed.add_argument('--data-directory', help='Path for CSV and PNG files', required=True)
 
-    # Optional arguments
+    # Define optional arguments to customize the plot
     parser.add_argument('--plot-title', help='Title of your plot')
     parser.add_argument('--input-data-label', help='The name that appears in the legend to label the original data')
     parser.add_argument('--x-axis-label', help='X-axis label')
     parser.add_argument('--y-axis-label', help='Y-axis label')
 
-    # Types of curve fits available
+    # Define optional arguments for fitting the data to different types of curves
     parser.add_argument('--exponential-fit', help='If you would like an exponential curve fit')
     parser.add_argument('--cubic-fit', help='If you would like an cubic curve fit')
     parser.add_argument('--quadratic-fit', help='If you would like an quadratic curve fit')
@@ -197,34 +226,34 @@ if __name__ == "__main__":
     parser.add_argument('--linear-fit', help='If you would like an linear curve fit')
     parser.add_argument('--logarithmic-fit', help='If you would like an logarithmic curve fit')
 
-    # Default parameters
+    # Set default configuration parameters
+    # and store them in a dictionary
+    # for easy lookup later
     params = {
-        'input_file_name' : '',
-        'csv_directory': 'data/csv/',
-        'png_directory': 'data/png/',
-        'plot_title': 'Title',
-        'input_data_label': 'Original Data',
-        'x_axis_label': 'n',
-        'y_axis_label': 'T(n)',
-        'original_data': True,
-        'exponential_fit': False,
-        'cubic_fit': False,
-        'quadratic_fit': False,
-        'n_log_n_fit': False,
-        'linear_fit': False,
-        'logarithmic_fit': False
+        'input_file_name':    '',
+        'csv_directory': '    data/csv/',
+        'png_directory':     'data/png/',
+        'plot_title':        'Title',
+        'input_data_label':  'Original Data',
+        'x_axis_label':      'n',
+        'y_axis_label':      'T(n)',
+        'original_data':     True,
+        'exponential_fit':   False,
+        'cubic_fit':         False,
+        'quadratic_fit':     False,
+        'n_log_n_fit':       False,
+        'linear_fit':        False,
+        'logarithmic_fit':   False
     }
 
     # Parse the command line arguments
-    # and update defaults
-
     args = parser.parse_args()
 
-    # Set mandatory params
+    # Set mandatory parameters
     params['input_file_name'] = args.input_file_name
-    params['data_directory'] = args.data_directory
-    params['csv_directory'] = params['data_directory'] + 'csv/'
-    params['png_directory'] = params['data_directory'] + 'png/'
+    params['data_directory']  = args.data_directory
+    params['csv_directory']   = params['data_directory'] + 'csv/'
+    params['png_directory']   = params['data_directory'] + 'png/'
 
     # Set optional params
     if args.plot_title:
@@ -257,9 +286,7 @@ if __name__ == "__main__":
     if args.logarithmic_fit == 'True':
         params['logarithmic_fit'] = bool(args.logarithmic_fit)
 
-
-    # Call main with valid arguments
-    # Run create the plot
+    # Plot the data with the updated configuration parameters
     plot_data(input_file_path    = params['csv_directory'] + params['input_file_name'] + '.csv',
               output_file_path   = params['png_directory'] + params['input_file_name'] + '.png',
               plot_title         = params['plot_title'],

@@ -5,8 +5,13 @@ import com.opencsv.CSVWriter;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Java8Util {
+
+    public static int rand(int min, int max) {
+        return ThreadLocalRandom.current().nextInt(min, max + 1);
+    }
 
     public static boolean generateCSV(String experimentName, List<Number[]> values) {
         CSVWriter csvWriter;
