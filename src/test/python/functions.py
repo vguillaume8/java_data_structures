@@ -9,18 +9,18 @@ from scipy.optimize import curve_fit
 # regarding the fit
 def fit_exponential(x,
                     y,
-                    name                 ='Exponential Fit',
-                    independent_variable ='n',
-                    dependent_variable   = 'T(n)'):
+                    dependent_variable,
+                    independent_variable,
+                    name='Exponential Fit'):
 
     # Perform curve fit, getting coefficients for general log base-2 function
     coefficients, exp_extras = curve_fit(exponential_function, x, y)
 
     # Evaluate new function on same domain as input data set
-    y_exp = exponential_function(x, coefficients[0], coefficients[1])
+    y_exp = exponential_function(x, coefficients[0], coefficients[1], coefficients[2])
 
     # Create the equation string
-    equation = "$%s={}e^{}%s+{}$" % (dependent_variable, independent_variable, independent_variable)
+    equation = "$%s={}e^{}%s+{}$" % (dependent_variable, independent_variable)
     equation = equation.format(*to_latex(coefficients))
 
     # Create dictionary, conveniently storing
@@ -43,9 +43,9 @@ def fit_exponential(x,
 # regarding the fit
 def fit_cubic(x,
               y,
-              name                 ='Cubic Fit',
-              independent_variable ='n',
-              dependent_variable   = 'T(n)'):
+              dependent_variable,
+              independent_variable,
+              name='Cubic Fit'):
 
     # Perform curve fit, getting coefficients for general log base-2 function
     coefficients, cub_extras = curve_fit(cubic_function, x, y)
@@ -76,10 +76,10 @@ def fit_cubic(x,
 # the curve fit and important information
 # regarding the fit
 def fit_quadratic(x,
-                 y,
-                 name                 ='Quadratic Fit',
-                 independent_variable ='n',
-                 dependent_variable   = 'T(n)'):
+                  y,
+                  dependent_variable,
+                  independent_variable,
+                  name='Quadratic Fit'):
 
     # Perform curve fit, getting coefficients for general log base-2 function
     coefficients, quad_extras = curve_fit(quadratic_function, x, y)
@@ -110,10 +110,10 @@ def fit_quadratic(x,
 # the curve fit and important information
 # regarding the fit
 def fit_n_log_n(x,
-               y,
-               name                 ='n log n Fit',
-               independent_variable ='n',
-               dependent_variable   = 'T(n)'):
+                y,
+                dependent_variable,
+                independent_variable,
+                name='n log n Fit'):
 
     # Perform curve fit, getting coefficients for general log base-2 function
     coefficients, n_log_extras = curve_fit(n_log_n_function, x, y)
@@ -145,9 +145,9 @@ def fit_n_log_n(x,
 # regarding the fit
 def fit_linear(x,
                y,
-               name                 ='Linear Fit',
-               independent_variable ='n',
-               dependent_variable   = 'T(n)'):
+               dependent_variable,
+               independent_variable,
+               name='Linear Fit'):
 
     # Perform curve fit, getting coefficients for general log base-2 function
     coefficients, lin_extras = curve_fit(linear_function, x, y)
@@ -179,9 +179,9 @@ def fit_linear(x,
 # regarding the fit
 def fit_logarithmic(x,
                     y,
-                    name                 ='Logarithmic Fit',
-                    independent_variable ='n',
-                    dependent_variable   = 'T(n)'):
+                    dependent_variable,
+                    independent_variable,
+                    name='Logarithmic Fit'):
 
     # Perform curve fit, getting coefficients for general log base-2 function
     coefficients, log_extras = curve_fit(logarithmic_function, x, y)
@@ -290,8 +290,8 @@ def linear_function(x, A, B):
          n
         ____
   100   \     | (actual_i - measured_i) |
- _____   \    | _______________________ |
-         /    |                         | = Mean Absolute Percent Error
+ _____   \    | _______________________ | = Mean Absolute Percent Error
+         /    |                         | 
    n    /___  |         actual_i        |
  
         i = 1
@@ -307,6 +307,29 @@ def mean_absolute_percent_error(measured, actual):
         s += abs((actual[i] - measured[i]) / actual[i])
 
     return (s * 100) / n
+
+
+'''
+         n
+        ____                           2
+   1    \      (actual_i - measured_i)
+ _____   \     _______________________   = Mean Suqared Error
+         /                              
+   n    /___             1         
+ 
+        i = 1
+'''
+
+
+# Computes mean absolute percent error
+def mean_squared_error(measured, actual):
+    s = 0
+    n = len(measured)
+
+    for i in xrange(n):
+        s += (actual[i] - measured[i])**2
+
+    return s / n
 
 
 # Given a dictionary of curve fits

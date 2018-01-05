@@ -247,6 +247,8 @@ public final class ArrayList<K> implements List<K> {
         verifyIndex(index);
 
         System.arraycopy(keys, 0, keys, 1, index);
+
+        shifts += size - index;
     }
 
     /**
@@ -267,6 +269,7 @@ public final class ArrayList<K> implements List<K> {
         // Partial rotation
         for (int i = index; i < size; i++) {
             keys[i] = keys[i+1];
+            shifts++;
         }
 
         // TODO - Use Java API to complete this shift left
@@ -311,6 +314,18 @@ public final class ArrayList<K> implements List<K> {
         shiftLeft(index);     // Shift all keys up from the right of index over one to the left
         size--;               // Decrement size of array
         return value;         // Return the stored value
+    }
+
+    /**
+     * Returns total number of values that
+     * have been shifted to the left or right
+     * such that the ArrayList is in its present state.
+     *
+     * @return Total number of shifts.
+     */
+    @SuppressWarnings("unused")
+    public int shifts() {
+        return shifts;
     }
 
     /**

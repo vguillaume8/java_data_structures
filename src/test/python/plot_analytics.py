@@ -27,8 +27,16 @@ this program does the following:
 '''
 
 
-# TODO - Comment
-def get_fits(desired_fits, x, y):
+# Gets a curve fit for all desired curves
+def get_fits(desired_fits,
+             x,
+             y,
+             dependent_variable,
+             independent_variable):
+
+    # This variable will hold
+    # the dictionaries that represent
+    # a curve fit and its associated information
     fits = {}
 
     # Loop through all the keys
@@ -37,42 +45,44 @@ def get_fits(desired_fits, x, y):
         # If the value is set to true,
         # perform the curve fit
         if desired_fits[key]:
-            fits[key] = curve_fit_functions[key](x, y)
+
+            # Get the associated function, and evaluate with data sets x and y as inputs
+            # with dependent and independent variable strings for the equation string
+            fits[key] = curve_fit_functions[key](x, y, dependent_variable, independent_variable)
 
     return fits
 
 
-# Plots input data from a .csv file
-# and optionally fits and plot
-# various curves to fit the input data
+# Plots x,y data and desired curve fits
 def plot_data(output_file_path,
               plot_title,
               input_data_label,
               x_label,
               y_label,
-              x,
-              y,
-              plot_original_data   = True,
-              desired_fits         = None):
+              x_data,
+              y_data,
+              dependent_variable,
+              independent_variable,
+              plot_original_data,
+              desired_fits):
 
-
-    # set up figure and axes
+    # Set up figure and axes
     f, ax = plt.subplots(1,1)
 
     # Dictionary of curve fits (also dictionaries)
     # JSON-like setup with nested dictionaries
-    fits = get_fits(desired_fits, x, y)
+    fits = get_fits(desired_fits, x_data, y_data, dependent_variable, independent_variable)
 
     # Plot the original input data
     if plot_original_data:
-        ax.scatter(x,y, marker='o', label=input_data_label)
+        ax.scatter(x_data, y_data, marker='o', label=input_data_label)
 
     # Get the curve with the minimum error
     if fits:
 
         # Plot the curve fits
         for key in fits:
-            ax.plot(x, fits[key]['y'], label=fits[key]['equation'])
+            ax.plot(x_data, fits[key]['y'], label=fits[key]['equation'])
 
         # Get the curve with the
         # minimum error
@@ -80,7 +90,7 @@ def plot_data(output_file_path,
 
         # Create text string for best fit annotation
         text = "Best fit: " + best_fit['fit_type'] + "\n" +\
-               "Error: ${0:.2f}\%$".format(best_fit['error'])
+               "Error: ${0:.3f}\%$".format(best_fit['error'])
 
         # Style it
         bbox_props = dict(boxstyle="round,pad=0.3", fc="white", ec="black", lw=2)
@@ -111,14 +121,16 @@ if __name__ == "__main__":
 
     # Define required arguments
     requiredNamed = parser.add_argument_group('required named arguments')
-    requiredNamed.add_argument('--input-file-name', help='Name of the csv file',       required=True)
-    requiredNamed.add_argument('--data-directory',  help='Path for CSV and PNG files', required=True)
+    requiredNamed.add_argument('--input-file-name', help='Name of the input.csv file',   required=True)
+    requiredNamed.add_argument('--data-directory',  help='Path for .csv and .png files', required=True)
 
     # Define optional arguments to customize the plot
-    parser.add_argument('--plot-title',       help='Title of your plot')
-    parser.add_argument('--input-data-label', help='The name that appears in the legend to label the original data')
-    parser.add_argument('--x-axis-label',     help='X-axis label')
-    parser.add_argument('--y-axis-label',     help='Y-axis label')
+    parser.add_argument('--plot-title',           help='Title of your plot')
+    parser.add_argument('--input-data-label',     help='The name that appears in the legend to label the original data')
+    parser.add_argument('--x-axis-label',         help='X-axis label')
+    parser.add_argument('--y-axis-label',         help='Y-axis label')
+    parser.add_argument('--dependent-variable',   help="Left side of equation string")
+    parser.add_argument('--independent-variable', help="Right side of equation string")
 
     # Define optional arguments for fitting the data to different types of curves
     parser.add_argument('--exponential-fit', help='If you would like an exponential curve fit')
@@ -132,20 +144,22 @@ if __name__ == "__main__":
     # and store them in a dictionary
     # for easy lookup later
     params = {
-        'input_file_name':    '',
-        'csv_directory': '    data/csv/',
-        'png_directory':     'data/png/',
-        'plot_title':        'Title',
-        'input_data_label':  'Original Data',
-        'x_axis_label':      'n',
-        'y_axis_label':      'T(n)',
-        'original_data':     True,
-        'exponential_fit':   False,
-        'cubic_fit':         False,
-        'quadratic_fit':     False,
-        'n_log_n_fit':       False,
-        'linear_fit':        False,
-        'logarithmic_fit':   False
+        'input_file_name':       '',
+        'csv_directory': '       data/csv/',
+        'png_directory':        'data/png/',
+        'plot_title':           'Title',
+        'input_data_label':     'Original Data',
+        'x_axis_label':         'n',
+        'y_axis_label':         'T(n)',
+        'dependent_variable':   'T(n)',
+        'independent_variable': 'n',
+        'original_data':        True,
+        'exponential_fit':      False,
+        'cubic_fit':            False,
+        'quadratic_fit':        False,
+        'n_log_n_fit':          False,
+        'linear_fit':           False,
+        'logarithmic_fit':      False
     }
 
     # Parse the command line arguments
@@ -170,6 +184,12 @@ if __name__ == "__main__":
     if args.y_axis_label:
         params['y_axis_label'] = args.y_axis_label
 
+    if args.dependent_variable:
+        params['dependent_variable'] = args.dependent_variable
+
+    if args.independent_variable:
+        params['independent_variable'] = args.independent_variable
+
     if args.exponential_fit == 'True':
         params['exponential_fit'] = bool(args.exponential_fit)
 
@@ -188,24 +208,25 @@ if __name__ == "__main__":
     if args.logarithmic_fit == 'True':
         params['logarithmic_fit'] = bool(args.logarithmic_fit)
 
-
     # Read the x and y components from the .csv file
-    x, y = read_csv(params['csv_directory'] + params['input_file_name'] + '.csv')
+    x_data, y_data = read_csv(params['csv_directory'] + params['input_file_name'] + '.csv')
 
     # Plot the data with the updated configuration parameters
-    plot_data(output_file_path   = params['png_directory'] + params['input_file_name'] + '.png',
-              plot_title         = params['plot_title'],
-              input_data_label   = params['input_data_label'],
-              x_label            = params['x_axis_label'],
-              y_label            = params['y_axis_label'],
-              x                  = x,
-              y                  = y,
-              plot_original_data= params['original_data'],
-              desired_fits       = {
+    plot_data(output_file_path     = params['png_directory'] + params['input_file_name'] + '.png',
+              plot_title           = params['plot_title'],
+              input_data_label     = params['input_data_label'],
+              x_label              = params['x_axis_label'],
+              y_label              = params['y_axis_label'],
+              x_data               = x_data,
+              y_data               = y_data,
+              dependent_variable   = params['dependent_variable'],
+              independent_variable = params['independent_variable'],
+              plot_original_data   = params['original_data'],
+              desired_fits         = {
                   "exponential": params['exponential_fit'],
                   "cubic":       params['cubic_fit'],
                   "quadratic":   params['quadratic_fit'],
                   "n_log_n":     params['n_log_n_fit'],
                   "linear":      params['linear_fit'],
                   "logarithmic": params['logarithmic_fit']
-              })
+    })

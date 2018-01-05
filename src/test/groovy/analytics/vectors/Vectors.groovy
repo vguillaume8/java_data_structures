@@ -3,9 +3,53 @@ package analytics.vectors
 import commons.Java8Util
 import commons.Util
 import spock.lang.Specification
+import structures.vectors.ArrayList
 
 
 class Vectors extends Specification {
+
+    def "number of shifts to create an ArrayList of size n"() {
+        setup:
+        java.util.ArrayList<Number[]> points = new java.util.ArrayList<Number[]>();
+        structures.vectors.ArrayList<Integer> arrayList = new structures.vectors.ArrayList<Integer>();
+        Integer[] point
+
+        when:
+
+        for (int i = 0; i < length; i++) {
+
+            arrayList.insert(i, 0);
+
+            point    = new Integer[2]
+            point[0] = arrayList.size()
+            point[1] = arrayList.shifts()
+
+            points.add(point)
+        }
+
+        then:
+        Java8Util.generateCSV(experimentName, points)
+        Util.generatePlot(
+                experimentName,
+                plotTitle,
+                "Input_data",
+                "",
+                "",
+                false,
+                false,
+                true,
+                false,
+                true,
+                false
+        )
+
+
+        where:
+
+        length | experimentName                                   | plotTitle
+        10000  | "number_of_shifts_to_create_arraylist_of_size_n" | "number_of_shifts_to_create_arraylist_of_size_n"
+
+    }
 
     def "Size of internal array vs. size of input array"() {
         setup:
@@ -14,7 +58,7 @@ class Vectors extends Specification {
         Number[] point
 
         when:
-        points = new ArrayList<>()
+        points = new java.util.ArrayList<Number[]>()
 
         // Insert n elements into the ArrayList
         arrayList = new structures.vectors.ArrayList<Integer>()
@@ -58,7 +102,7 @@ class Vectors extends Specification {
         Number[] point
 
         when:
-        points = new ArrayList<>()
+        points = new java.util.ArrayList<Number[]>()
 
         // Insert n elements into the ArrayList
         for (int i = 1; i <= length; i++) {

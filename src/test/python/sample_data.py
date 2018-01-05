@@ -3,6 +3,7 @@ from file_io import write_csv
 import random
 import os
 
+
 # Applies random noise to a data set
 # with a specified noise factor. Noise
 # factor is the largest offset that can be
@@ -14,8 +15,8 @@ def apply_noise(y, noise_factor):
 
     # TODO - Change noise to be percent error based
 
-    # Add noise to the y-component of the evaluted function
-    return [i + random.uniform(0, abs(noise_factor)) for i in y]
+    # Add noise to the y-component of the evaluated function
+    return [i * (1 + random.uniform(0, abs(noise_factor))) for i in y]
 
 
 # Returns a list of numbers between specified
@@ -34,7 +35,7 @@ def exponential_function_sample(lower_bound,
                                 C = 0):
 
     # Generate range from lower_bound to upper_bound
-    # Evalute the function on the full range
+    # Evaluate the function on the full range
     x = get_range(lower_bound, upper_bound)
     y = exponential_function(x, A, B, C)
 
@@ -56,7 +57,7 @@ def cubic_function_sample(lower_bound,
                           D = 0):
 
     # Generate range from lower_bound to upper_bound
-    # Evalute the function on the full range
+    # Evaluate the function on the full range
     x = get_range(lower_bound, upper_bound)
     y = cubic_function(x, A, B, C, D)
 
@@ -77,7 +78,7 @@ def quadratic_function_sample(lower_bound,
                               C = 0):
 
     # Generate range from lower_bound to upper_bound
-    # Evalute the function on the full range
+    # Evaluate the function on the full range
     x = get_range(lower_bound, upper_bound)
     y = quadratic_function(x, A, B, C)
 
@@ -97,7 +98,7 @@ def n_log_n_function_sample(lower_bound,
                             B = 0):
 
     # Generate range from lower_bound to upper_bound
-    # Evalute the function on the full range
+    # Evaluate the function on the full range
     x = get_range(lower_bound, upper_bound)
     y = n_log_n_function(x, A, B)
 
@@ -282,9 +283,9 @@ if __name__ == "__main__":
 
     # Parameters for data generation
     min     = 1
-    max     = 40
-    x_noise = 2
-    y_noise = 2
+    max     = 50
+    x_noise = 0.1
+    y_noise = 0.1
 
     # Execute function to generate the data
     generate_sample_data(min,
