@@ -11,7 +11,8 @@ import structures.trees.BinarySearchTree
 
 class Trees extends Specification {
 
-    @Shared numberOfKeys = 1000;
+    @Shared numberOfKeys = 10000;
+    @Shared interval     = 100;
 
     def "Height of AVL Tree vs. n sorted keys"() {
         setup:
@@ -20,7 +21,7 @@ class Trees extends Specification {
         Number[] point
 
         when:
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i < length; i+=interval) {
             tree.insert(i, "");
 
 
@@ -61,7 +62,7 @@ class Trees extends Specification {
         Number[] point
 
         when:
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i < length; i+=interval) {
             tree.insert(i, "");
 
 
@@ -102,7 +103,7 @@ class Trees extends Specification {
         Number[] point
 
         when:
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i < length; i+=interval) {
             tree.insert(Java8Util.rand(0, length), "");
 
 
@@ -145,7 +146,7 @@ class Trees extends Specification {
         Number[] point
 
         when:
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i < length; i+=interval) {
             tree.insert(Java8Util.rand(0, length), "");
 
 
