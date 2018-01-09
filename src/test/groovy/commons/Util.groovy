@@ -200,10 +200,10 @@ class Util {
 
         if (a.length == b.length) {
 
-            // check the keys
+            // check the elements
             for (int i = 0; i < a.length; i++) {
 
-                // If ith keys in both arrays are unequal
+                // If ith elements in both arrays are unequal
                 if (!a[i].equals(b[i])) {
                     return false;
                 }

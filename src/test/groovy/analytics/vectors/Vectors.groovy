@@ -9,10 +9,55 @@ import structures.vectors.ArrayList
 
 class Vectors extends Specification {
 
-    @Shared int numberOfKeys = 750000
+    @Shared int numberOfKeys = 75000
     @Shared int interval     = 100
 
-    def "number of shifts to create an ArrayList of size n"() {
+    def "number of shifts to create an ArrayList of size n when appending to the ArrayList"() {
+        setup:
+        java.util.ArrayList<Number[]> points = new java.util.ArrayList<Number[]>();
+        structures.vectors.ArrayList<Integer> arrayList = new structures.vectors.ArrayList<Integer>();
+        Integer[] point
+
+        when:
+        arrayList.insert(0);
+
+
+        for (int i = 0; i < length; i+=interval) {
+
+            arrayList.insert(i, arrayList.size()-1);
+
+            point    = new Integer[2]
+            point[0] = arrayList.size()
+            point[1] = arrayList.shifts()
+
+            points.add(point)
+        }
+
+        then:
+        Java8Util.generateCSV(experimentName, points)
+        Util.generatePlot(
+                experimentName,
+                plotTitle,
+                "Input_data",
+                "",
+                "",
+                false,
+                false,
+                true,
+                false,
+                true,
+                false
+        )
+
+
+        where:
+
+        length        | experimentName                                                  | plotTitle
+        numberOfKeys  | "number_of_shifts_to_create_arraylist_of_size_n_when_appending" | "number_of_shifts_to_create_arraylist_of_size_n_when_appending"
+
+    }
+
+    def "number of shifts to create an ArrayList of size n when inserting at random indicies"() {
         setup:
         java.util.ArrayList<Number[]> points = new java.util.ArrayList<Number[]>();
         structures.vectors.ArrayList<Integer> arrayList = new structures.vectors.ArrayList<Integer>();
@@ -52,8 +97,8 @@ class Vectors extends Specification {
 
         where:
 
-        length        | experimentName                                   | plotTitle
-        numberOfKeys  | "number_of_shifts_to_create_arraylist_of_size_n" | "number_of_shifts_to_create_arraylist_of_size_n"
+        length        | experimentName                                                                     | plotTitle
+        numberOfKeys  | "number_of_shifts_to_create_arraylist_of_size_n_when_inserting_at_random_indicies" | "number_of_shifts_to_create_arraylist_of_size_n_when_inserting_at_random_indicies"
 
     }
 

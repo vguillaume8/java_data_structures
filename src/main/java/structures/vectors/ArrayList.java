@@ -5,12 +5,10 @@ import java.util.Arrays;
 /**
  * Basic implementation of a generic ArrayList
  *
- *
- *
  * @author Jabari Dash
- * @param <K> Generic type
+ * @param <E> Generic type
  */
-public final class ArrayList<K> implements List<K> {
+public final class ArrayList<E> implements List<E> {
 
     /**
      * The threshold for resizing the internal array. If the
@@ -36,7 +34,7 @@ public final class ArrayList<K> implements List<K> {
     /**
      * The internal array containing the elements in the ArrayList.
      */
-    private K[] keys;
+    private E[] elements;
 
     /**
      * The amount of times the array needed to be resized.
@@ -70,7 +68,7 @@ public final class ArrayList<K> implements List<K> {
     public ArrayList(int length) {
 
         // Create a new array no smaller than the default size
-        keys = (K[]) new Object[length < DEFAULT_SIZE ? DEFAULT_SIZE : length];
+        elements = (E[]) new Object[length < DEFAULT_SIZE ? DEFAULT_SIZE : length];
     }
 
     /**
@@ -82,11 +80,11 @@ public final class ArrayList<K> implements List<K> {
     }
 
     /**
-     * Constructs ArrayList from array of keys.
+     * Constructs ArrayList from array of elements.
      *
-     * @param values Array of keys to construct the list from
+     * @param values Array of elements to construct the list from
      */
-    public ArrayList(K[] values) {
+    public ArrayList(E[] values) {
         this(values.length);
         insert(values);
     }
@@ -100,12 +98,12 @@ public final class ArrayList<K> implements List<K> {
         // Convert size and length to doubles
         // to perform division with decimals
         double s = (double) size;
-        double l = (double) keys.length;
+        double l = (double) elements.length;
 
         // If the ratio of elements in the DataStructure exceeds the
         // threshold (default 90%), then we need to allocate more space
         // in the internal array
-        return (s / l) > RESIZE_THRESHOLD && alloc(size / 2);
+        return (s / l) > RESIZE_THRESHOLD && alloc(size);
     }
 
     /**
@@ -124,7 +122,7 @@ public final class ArrayList<K> implements List<K> {
     private boolean alloc(int slots) {
         int length;
 
-        length = keys.length + slots;
+        length = elements.length + slots;
 
         // If the length of the internal
         // array would become less than 0
@@ -139,19 +137,19 @@ public final class ArrayList<K> implements List<K> {
         // old array, but do not loop off the end
 
         // Cast is safe, all objects of type
-        // K extend java.lang.Object
+        // E extend java.lang.Object
         @SuppressWarnings("unchecked")
-        K[] temp = (K[]) new Object[length];
+        E[] temp = (E[]) new Object[length];
 
         // Pick the shorter of the two lengths
         // to avoid running of the end and having
         // an IndexOutOfBounds exception thrown
-        System.arraycopy(keys,
+        System.arraycopy(elements,
                         0, temp,
                         0,
-                        length < keys.length ? temp.length : keys.length);
+                        length < elements.length ? temp.length : elements.length);
 
-        keys = temp;
+        elements = temp;
 
         allocations++;
 
@@ -174,12 +172,12 @@ public final class ArrayList<K> implements List<K> {
      *
      * @param object Object to compare this ArrayList with.
      * @return True if and only if their types are the same,
-     * lengths are the same, and the contain all the same keys.
+     * lengths are the same, and the contain all the same elements.
      */
     @Override
     public boolean equals(Object object) {
 
-        // Object must be an ArrayList, and all keys must be equal, or object
+        // Object must be an ArrayList, and all elements must be equal, or object
         // must be this ArrayList itself
         return this == object || (object instanceof ArrayList && equivalentTo(object));
     }
@@ -191,9 +189,9 @@ public final class ArrayList<K> implements List<K> {
      * @return Value at specified index.
      */
     @Override
-    public K get(int index) {
+    public E get(int index) {
        verifyIndex(index);
-       return keys[index];
+       return elements[index];
     }
 
     /**
@@ -202,7 +200,7 @@ public final class ArrayList<K> implements List<K> {
      * @param key The specified key to insert
      */
     @Override
-    public boolean insert(K key) {
+    public boolean insert(E key) {
         return insertLast(key);
     }
 
@@ -213,14 +211,22 @@ public final class ArrayList<K> implements List<K> {
      * @param index Specified index to insert value at
      */
     @Override
-    public boolean insert(K value, int index) {
+    public boolean insert(E value, int index) {
+
+        /*
+         * TODO - if a copy is required, copy up to index, insert, copy the rest
+         * this is to reduce the cost of the insert function, in the event that
+         * an allocation is required. Right now, we are repeating work by shifting,
+         * then allocating. We can take advantage of the copy function's offset parameter
+         * to copy and shift in one step.
+         */
         if (!empty() && index < size) {
             verifyIndex(index);    // Verify that the index is a valid index
-            shiftRight(index);     // Shift all keys up one index, starting at designated index
+            shiftRight(index);     // Shift all elements up one index, starting at designated index
         }
 
         alloc();                   // Potentially alloc the internal array before insertion
-        keys[index] = value;       // Insert the new value into the designated index
+        elements[index] = value;       // Insert the new value into the designated index
         size++;                    // Increment size of list
 
         return true;
@@ -231,7 +237,7 @@ public final class ArrayList<K> implements List<K> {
      * @return
      */
     public int internalSize() {
-        return keys.length;
+        return elements.length;
     }
 
     /**
@@ -246,7 +252,7 @@ public final class ArrayList<K> implements List<K> {
     private void shiftRight(int index) {
         verifyIndex(index);
 
-        System.arraycopy(keys, 0, keys, 1, index);
+        System.arraycopy(elements, 0, elements, 1, index);
 
         shifts += size - index;
     }
@@ -268,12 +274,9 @@ public final class ArrayList<K> implements List<K> {
 
         // Partial rotation
         for (int i = index; i < size; i++) {
-            keys[i] = keys[i+1];
+            elements[i] = elements[i+1];
             shifts++;
         }
-
-        // TODO - Use Java API to complete this shift left
-//        System.arraycopy(keys, index+1, keys, index+2, size);
     }
 
     /**
@@ -282,7 +285,8 @@ public final class ArrayList<K> implements List<K> {
      * @param value Specified value to insert
      */
     @Override
-    public boolean insertFirst(K value) {
+    public boolean insertFirst(E value) {
+
         return insert(value, 0);
     }
 
@@ -291,8 +295,15 @@ public final class ArrayList<K> implements List<K> {
      * @param value Specified value to insert
      */
     @Override
-    public boolean insertLast(K value) {
-        return insert(value, size);
+    public boolean insertLast(E value) {
+
+        alloc();
+
+        elements[size] = value;
+
+        size++;
+
+        return true;
     }
 
     /**
@@ -302,16 +313,16 @@ public final class ArrayList<K> implements List<K> {
      * @return Value at specified index.
      */
     @Override
-    public K remove(int index) {
-        K value;
+    public E remove(int index) {
+        E value;
 
         if (empty()) {
             throw new EmptyDataStructureException("Cannot remove from an empty ArrayList");
         }
 
         verifyIndex(index);   // Verify that the index is valid
-        value = keys[index];  // Store the value are the given index
-        shiftLeft(index);     // Shift all keys up from the right of index over one to the left
+        value = elements[index];  // Store the value are the given index
+        shiftLeft(index);     // Shift all elements up from the right of index over one to the left
         size--;               // Decrement size of array
         return value;         // Return the stored value
     }
@@ -334,7 +345,7 @@ public final class ArrayList<K> implements List<K> {
      * @return The first value in the list
      */
     @Override
-    public K removeFirst() {
+    public E removeFirst() {
         return remove(0);
     }
 
@@ -344,7 +355,7 @@ public final class ArrayList<K> implements List<K> {
      * @return Last value in the list
      */
     @Override
-    public K removeLast() {
+    public E removeLast() {
         return remove(size - 1);
     }
 
@@ -354,7 +365,7 @@ public final class ArrayList<K> implements List<K> {
      * @return The last value in the list
      */
     @Override
-    public K remove() {
+    public E remove() {
         return removeLast();
     }
 
@@ -374,11 +385,11 @@ public final class ArrayList<K> implements List<K> {
      * @param array Array that specifies the type of the array to return.
      * @return Array representation of the data structure.
      */
-    public K[] toArray(K[] array) {
+    public E[] toArray(E[] array) {
 
         try {
 
-            array = (K[]) Arrays.copyOf(keys, size(), array.getClass());
+            array = (E[]) Arrays.copyOf(elements, size(), array.getClass());
 
         } catch (ArrayStoreException exception) {
 
