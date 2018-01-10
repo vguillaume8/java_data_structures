@@ -9,10 +9,167 @@ import structures.vectors.ArrayList
 
 class Vectors extends Specification {
 
-    @Shared int numberOfKeys = 75000
-    @Shared int interval     = 100
+    @Shared int numberOfKeys = 7500
+    @Shared int interval     = 25
 
-    def "number of shifts to create an ArrayList of size n when appending to the ArrayList"() {
+    def "avg_cost_to_remove"() {
+        setup:
+        java.util.ArrayList<Number[]> points = new java.util.ArrayList<Number[]>();
+        structures.vectors.ArrayList<Integer> arrayList = new structures.vectors.ArrayList<Integer>();
+        Integer[] point
+        int s1
+        int s2
+
+        when:
+
+        // Build array list of size n
+        for (int i = 0; i < length; i+=interval) {
+            arrayList.insert(1);
+        }
+
+
+        while (arrayList.size() > 0) {
+
+            s1 = arrayList.shifts()
+
+            arrayList.remove(Java8Util.rand(0, arrayList.size()-1));
+
+            s2 = arrayList.shifts()
+
+            point    = new Integer[2]
+            point[0] = arrayList.size()
+            point[1] = Math.abs(s2-s1);
+
+            points.add(point)
+        }
+
+        then:
+        Java8Util.generateCSV(experimentName, points)
+        Util.generatePlot(
+                experimentName,
+                plotTitle,
+                "Input_data",
+                "n",
+                "S(n)",
+                "S(n)",
+                "n",
+                false,
+                false,
+                false,
+                false,
+                true,
+                false
+        )
+
+
+        where:
+
+        length        | experimentName      | plotTitle
+        numberOfKeys  | "avg_cost_to_remove_from_arraylist" | "avg_cost_to_remove_from_arraylist"
+
+    }
+
+    def "avg_cost_to_insert"() {
+        setup:
+        java.util.ArrayList<Number[]> points = new java.util.ArrayList<Number[]>();
+        structures.vectors.ArrayList<Integer> arrayList = new structures.vectors.ArrayList<Integer>();
+        Integer[] point
+        int s1
+        int s2
+
+        when:
+        arrayList.insert(0);
+
+
+        for (int i = 0; i < length; i+=interval) {
+
+            s1 = arrayList.shifts()
+
+            arrayList.insert(i, Java8Util.rand(0, arrayList.size()-1));
+
+            s2 = arrayList.shifts()
+
+            point    = new Integer[2]
+            point[0] = arrayList.size()
+            point[1] = Math.abs(s2-s1);
+
+            points.add(point)
+        }
+
+        then:
+        Java8Util.generateCSV(experimentName, points)
+        Util.generatePlot(
+                experimentName,
+                plotTitle,
+                "Input_data",
+                "n",
+                "S(n)",
+                "S(n)",
+                "n",
+                false,
+                false,
+                false,
+                false,
+                true,
+                false
+        )
+
+
+        where:
+
+        length        | experimentName      | plotTitle
+        numberOfKeys  | "avg_cost_to_insert_into_arraylist" | "avg_cost_to_insert_into_arraylist"
+
+    }
+
+    def "number of shifts to create an ArrayList of size n when prepending to the ArrayList"() {
+        setup:
+        java.util.ArrayList<Number[]> points = new java.util.ArrayList<Number[]>();
+        structures.vectors.ArrayList<Integer> arrayList = new structures.vectors.ArrayList<Integer>();
+        Integer[] point
+
+        when:
+        arrayList.insert(0);
+
+
+        for (int i = 0; i < length; i+=interval) {
+
+            arrayList.insert(i, 0);
+
+            point    = new Integer[2]
+            point[0] = arrayList.size()
+            point[1] = arrayList.shifts()
+
+            points.add(point)
+        }
+
+        then:
+        Java8Util.generateCSV(experimentName, points)
+        Util.generatePlot(
+                experimentName,
+                plotTitle,
+                "Input_data",
+                "n",
+                "S(n)",
+                "S(n)",
+                "n",
+                false,
+                false,
+                true,
+                false,
+                true,
+                false
+        )
+
+
+        where:
+
+        length        | experimentName                                                  | plotTitle
+        numberOfKeys  | "shifts_required_when_inserting_first_index" | "shifts_required_when_inserting_first_index"
+
+    }
+
+    def "number of shifts to create an ArrayList of size n when inserting at the back of the ArrayList"() {
         setup:
         java.util.ArrayList<Number[]> points = new java.util.ArrayList<Number[]>();
         structures.vectors.ArrayList<Integer> arrayList = new structures.vectors.ArrayList<Integer>();
@@ -39,8 +196,10 @@ class Vectors extends Specification {
                 experimentName,
                 plotTitle,
                 "Input_data",
-                "",
-                "",
+                "n",
+                "S(n)",
+                "S(n)",
+                "n",
                 false,
                 false,
                 true,
@@ -52,8 +211,8 @@ class Vectors extends Specification {
 
         where:
 
-        length        | experimentName                                                  | plotTitle
-        numberOfKeys  | "number_of_shifts_to_create_arraylist_of_size_n_when_appending" | "number_of_shifts_to_create_arraylist_of_size_n_when_appending"
+        length        | experimentName           | plotTitle
+        numberOfKeys  | "shifts_required_when_inserting_last_index" | "shifts_required_when_inserting_last_index"
 
     }
 
@@ -84,8 +243,10 @@ class Vectors extends Specification {
                 experimentName,
                 plotTitle,
                 "Input_data",
-                "",
-                "",
+                "n",
+                "S(n)",
+                "S(n)",
+                "n",
                 false,
                 false,
                 true,
@@ -98,7 +259,7 @@ class Vectors extends Specification {
         where:
 
         length        | experimentName                                                                     | plotTitle
-        numberOfKeys  | "number_of_shifts_to_create_arraylist_of_size_n_when_inserting_at_random_indicies" | "number_of_shifts_to_create_arraylist_of_size_n_when_inserting_at_random_indicies"
+        numberOfKeys  | "shifts_required_when_inserting_rand_index" | "shifts_required_when_inserting_rand_index"
 
     }
 
@@ -131,7 +292,9 @@ class Vectors extends Specification {
                 plotTitle,
                 "Input_data",
                 "n",
-                "A(n)",
+                "L(n)",
+                "L(n)",
+                "n",
                 false,
                 false,
                 false,
@@ -177,7 +340,9 @@ class Vectors extends Specification {
                 plotTitle,
                 "Input_data",
                 "n",
-                "A(n)",
+                "k",
+                "k",
+                "n",
                 false,
                 false,
                 false,

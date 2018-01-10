@@ -112,7 +112,7 @@ public final class LinkedList<T> implements List<T> {
    *
    * @param value The specified value to be inserted
    */
-  public boolean insertFirst(T value) {
+  public boolean prepend(T value) {
     Node<T> node = new Node<>(value);
 
     if (this.empty()) {
@@ -136,7 +136,7 @@ public final class LinkedList<T> implements List<T> {
    *
    * @param value The specified value to be inserted
    */
-  public boolean insertLast(T value) {
+  public boolean append(T value) {
     Node<T> node = new Node<>(value);
 
     if (empty()) {

@@ -47,6 +47,8 @@ class Util {
                         String inputDataLabel,
                         String xAxisLabel,
                         String yAxisLabel,
+                        String dependentVariable,
+                        String independentVariable,
                         boolean exponentialFit,
                         boolean cubicFit,
                         boolean quadraticFit,
@@ -56,19 +58,21 @@ class Util {
 
         String[] c = [
                 "python",
-                pathToPlotGenerator + "plot_analytics.py",
-                "--input-file-name="   + experimentName,
-                "--data-directory="    + dataDirectory,
-                "--plot-title="        + plotTitle,
-                "--input-data-label="  + inputDataLabel,
-                "--x-axis-label="      + xAxisLabel,
-                "--y-axis-label="      + yAxisLabel,
-                "--exponential-fit="   + toPythonBoolean(exponentialFit),
-                "--cubic-fit="         + toPythonBoolean(cubicFit),
-                "--quadratic-fit="     + toPythonBoolean(quadraticFit),
-                "--n-log-n-fit="       + toPythonBoolean(nLogNFit),
-                "--linear-fit="        + toPythonBoolean(linearFit),
-                "--logarithmic-fit="   + toPythonBoolean(logarithmicFit)
+                pathToPlotGenerator       + "plot_analytics.py",
+                "--input-file-name="      + experimentName,
+                "--data-directory="       + dataDirectory,
+                "--plot-title="           + plotTitle,
+                "--input-data-label="     + inputDataLabel,
+                "--x-axis-label="         + xAxisLabel,
+                "--y-axis-label="         + yAxisLabel,
+                "--dependent-variable="   + dependentVariable,
+                "--independent-variable=" + independentVariable,
+                "--exponential-fit="      + toPythonBoolean(exponentialFit),
+                "--cubic-fit="            + toPythonBoolean(cubicFit),
+                "--quadratic-fit="        + toPythonBoolean(quadraticFit),
+                "--n-log-n-fit="          + toPythonBoolean(nLogNFit),
+                "--linear-fit="           + toPythonBoolean(linearFit),
+                "--logarithmic-fit="      + toPythonBoolean(logarithmicFit)
             ];
 
         StringJoiner sj = new StringJoiner(" ");

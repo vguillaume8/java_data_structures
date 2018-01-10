@@ -1,5 +1,6 @@
 package structures.vectors;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 
 /**
@@ -53,6 +54,13 @@ public final class ArrayList<E> implements List<E> {
     private int shifts;
 
     /**
+     * The number of times any element has been copied from one
+     * array to another. This occurs when the {@code copy()} function is
+     * called. If n values are copied, this value increases by n.
+     */
+    private int copies;
+
+    /**
      * Instantiates an ArrayList with an internal array of
      * a specified length. This constructor should be used
      * when the number of elements that the ArrayList will
@@ -90,70 +98,55 @@ public final class ArrayList<E> implements List<E> {
     }
 
     /**
-     * If the internal array is 90% full, we will resize
-     * the internal array by 50% of its current length
+     * Returns the total numbers of values that
+     * have been copied from one array to another
+     * for the ArrayList to be in its current state.
+     *
+     * @return Number of data copies.
      */
-    private boolean alloc() {
-
-        // Convert size and length to doubles
-        // to perform division with decimals
-        double s = (double) size;
-        double l = (double) elements.length;
-
-        // If the ratio of elements in the DataStructure exceeds the
-        // threshold (default 90%), then we need to allocate more space
-        // in the internal array
-        return (s / l) > RESIZE_THRESHOLD && alloc(size);
+    @SuppressWarnings("unused")
+    public int copies() {
+        return copies;
     }
 
     /**
-     * Allocates (or de-allocates) space in the internal array.
-     * If a positive integer is passed, that number of additional
-     * slots will be added to the ArrayList. If the number
-     * is negative, the ArrayList will shrink by that number of slots.
-     * Note, if the number is negative and its magnitude exceeds the
-     * the the number of free slots in the internal, the array will only be trimmed
-     * to the last contained element. This is so that we do not accidentally lose
-     * data by trimming by too many slots. The remove operation must be
-     * executed first to further trim the internal array.
      *
-     * @param slots How many new slots to add or trim.
+     * @param start
+     * @param stop
+     * @param src
+     * @param dst
+     * @return
      */
-    private boolean alloc(int slots) {
-        int length;
+    private E[] copy(int start, int stop, int offset, E[] src, E[] dst) {
 
-        length = elements.length + slots;
-
-        // If the length of the internal
-        // array would become less than 0
-        if (length < 0) {
-            throw new RuntimeException("");
+        // Must be within bounds
+        if (start < 0 || start >= src.length) {
+            throw new IllegalArgumentException("Start index must be in bounds or source array");
         }
 
-        // If the new array is shorter, only copy
-        // up until the new array is full
-        // Otherwise, the new array is either the same
-        // length, or longer, so copy everything from the
-        // old array, but do not loop off the end
+        // If start index exceeds stop index
+        if (start > stop) {
+            throw new IllegalArgumentException("Start index must be less than or equal to stop index");
+        }
 
-        // Cast is safe, all objects of type
-        // E extend java.lang.Object
-        @SuppressWarnings("unchecked")
-        E[] temp = (E[]) new Object[length];
+        // Must be within bounds
+        if (stop < 0 || stop >= src.length) {
+            throw new IllegalArgumentException("Stop index must be in bounds or src array");
+        }
 
-        // Pick the shorter of the two lengths
-        // to avoid running of the end and having
-        // an IndexOutOfBounds exception thrown
-        System.arraycopy(elements,
-                        0, temp,
-                        0,
-                        length < elements.length ? temp.length : elements.length);
+        // destination array must be at least size of source
+        if (src.length >= dst.length) {
+            throw new IllegalArgumentException("Destination array must be at least the length of the source array");
+        }
 
-        elements = temp;
+        // Copy the array
+        for (int i = start; i <= stop; i++){
 
-        allocations++;
+            dst[i+offset] = src[i];
+            copies++;
+        }
 
-        return true;
+        return dst;
     }
 
     /**
@@ -183,6 +176,23 @@ public final class ArrayList<E> implements List<E> {
     }
 
     /**
+     *
+     * @return
+     */
+    public boolean full() {
+
+        // Convert size and length to doubles
+        // to perform division with decimals
+        double s = (double) size;
+        double l = (double) elements.length;
+
+        // If the ratio of elements in the DataStructure exceeds the
+        // threshold (default 90%), then we need to allocate more space
+        // in the internal array
+        return (s / l) > RESIZE_THRESHOLD;
+    }
+
+    /**
      * Returns the value at a specified index.
      *
      * @param index Specified index.
@@ -201,7 +211,7 @@ public final class ArrayList<E> implements List<E> {
      */
     @Override
     public boolean insert(E key) {
-        return insertLast(key);
+        return append(key);
     }
 
     /**
@@ -213,21 +223,58 @@ public final class ArrayList<E> implements List<E> {
     @Override
     public boolean insert(E value, int index) {
 
-        /*
-         * TODO - if a copy is required, copy up to index, insert, copy the rest
-         * this is to reduce the cost of the insert function, in the event that
-         * an allocation is required. Right now, we are repeating work by shifting,
-         * then allocating. We can take advantage of the copy function's offset parameter
-         * to copy and shift in one step.
-         */
-        if (!empty() && index < size) {
-            verifyIndex(index);    // Verify that the index is a valid index
-            shiftRight(index);     // Shift all elements up one index, starting at designated index
+        // If the ArrayList is empty, simply insert
+        // into the front of the internal array
+        if (empty()) {
+            elements[0] = value;
+            size++;
+            return true;
         }
 
-        alloc();                   // Potentially alloc the internal array before insertion
-        elements[index] = value;       // Insert the new value into the designated index
-        size++;                    // Increment size of list
+        // Make sure we are in bounds
+        verifyIndex(index);
+
+        if (full()) {
+
+            @SuppressWarnings("unchecked")
+            E[] temp = (E[]) new Object[size * 2];
+
+            // Copy the whole array with an offset of 1,
+            // then overwrite the first value
+            if (index == 0) {
+                copy(0, size-1, 1, elements, temp);
+                temp[0] = value;
+
+            // Copy up until the desired index, preserving index
+            // Place the new value in its designated location
+            // Copy the rest of the array with an offset of 1
+            } else {
+                copy(0, index, 0, elements, temp);
+                temp[index] = value;
+
+                // If we are not already at the end
+                // copy the remaining values over
+                if (index < size-1) {
+                    copy(index+1, size-1, 1, elements, temp);
+                }
+
+            }
+
+            // Use temp as our new elements array
+            elements = temp;
+
+        // There is space in the array
+        } else {
+
+            // Make room for new value
+            shiftRight(index);
+
+            // Insert into vacant spot
+            elements[index] = value;
+        }
+
+        size++;
+        allocations++;
 
         return true;
     }
@@ -241,51 +288,12 @@ public final class ArrayList<E> implements List<E> {
     }
 
     /**
-     * Performs a partial shift right on the array.
-     * All elements to right of the index, and the
-     * index itself will be shifted to the right one
-     * spot for the purpose of making space for a new element
-     * to be inserted. This is an auxiliary function
-     *
-     * @param index Index to start shifting from
-     */
-    private void shiftRight(int index) {
-        verifyIndex(index);
-
-        System.arraycopy(elements, 0, elements, 1, index);
-
-        shifts += size - index;
-    }
-
-    /**
-     * Performs a partial shift left on the array.
-     * Values starting from to the end of the list,
-     * and not including the index will be shifted
-     * over to the left. The value at the specified
-     * index will be overridden by the value to its left.
-     * This essentially removes the value from that spot
-     * from the array. This is an auxiliary function for
-     * use with the remove functionality
-     *
-     * @param index Specified index to shift left into
-     */
-    private void shiftLeft(int index) {
-        verifyIndex(index);
-
-        // Partial rotation
-        for (int i = index; i < size; i++) {
-            elements[i] = elements[i+1];
-            shifts++;
-        }
-    }
-
-    /**
      * Inserts a value into the front of the list.
      *
      * @param value Specified value to insert
      */
     @Override
-    public boolean insertFirst(E value) {
+    public boolean prepend(E value) {
 
         return insert(value, 0);
     }
@@ -295,11 +303,33 @@ public final class ArrayList<E> implements List<E> {
      * @param value Specified value to insert
      */
     @Override
-    public boolean insertLast(E value) {
+    public boolean append(E value) {
 
-        alloc();
+        if (empty()) {
+            elements[0] = value;
+            size++;
+            return true;
+        }
 
-        elements[size] = value;
+        // The internal array is full
+        if (full()) {
+
+            allocations++;
+
+            @SuppressWarnings("unchecked")
+            E[] temp = (E[]) new Object[size * 2];
+
+            copy(0, size-1, 0, elements, temp);
+
+            temp[size] = value;
+
+            elements = temp;
+
+        // There's space, so insert
+        } else {
+            elements[size] = value;
+        }
+
 
         size++;
 
@@ -320,23 +350,11 @@ public final class ArrayList<E> implements List<E> {
             throw new EmptyDataStructureException("Cannot remove from an empty ArrayList");
         }
 
-        verifyIndex(index);   // Verify that the index is valid
+        verifyIndex(index);       // Verify that the index is valid
         value = elements[index];  // Store the value are the given index
-        shiftLeft(index);     // Shift all elements up from the right of index over one to the left
-        size--;               // Decrement size of array
-        return value;         // Return the stored value
-    }
-
-    /**
-     * Returns total number of values that
-     * have been shifted to the left or right
-     * such that the ArrayList is in its present state.
-     *
-     * @return Total number of shifts.
-     */
-    @SuppressWarnings("unused")
-    public int shifts() {
-        return shifts;
+        shiftLeft(index);         // Shift all elements up from the right of index over one to the left
+        size--;                   // Decrement size of array
+        return value;             // Return the stored value
     }
 
     /**
@@ -367,6 +385,59 @@ public final class ArrayList<E> implements List<E> {
     @Override
     public E remove() {
         return removeLast();
+    }
+
+    /**
+     * Performs a partial shift right on the array.
+     * All elements to right of the index, and the
+     * index itself will be shifted to the right one
+     * spot for the purpose of making space for a new element
+     * to be inserted. This is an auxiliary function
+     *
+     * @param index Index to start shifting from
+     */
+    private void shiftRight(int index) {
+        verifyIndex(index);
+
+        for (int i = size; i > index; i--) {
+
+           elements[i] = elements[i-1];
+           shifts++;
+        }
+    }
+
+    /**
+     * Performs a partial shift left on the array.
+     * Values starting from to the end of the list,
+     * and not including the index will be shifted
+     * over to the left. The value at the specified
+     * index will be overridden by the value to its left.
+     * This essentially removes the value from that spot
+     * from the array. This is an auxiliary function for
+     * use with the remove functionality
+     *
+     * @param index Specified index to shift left into
+     */
+    private void shiftLeft(int index) {
+        verifyIndex(index);
+
+        // Partial rotation
+        for (int i = index; i < size; i++) {
+            elements[i] = elements[i+1];
+            shifts++;
+        }
+    }
+
+    /**
+     * Returns total number of values that
+     * have been shifted to the left or right
+     * such that the ArrayList is in its present state.
+     *
+     * @return Total number of shifts.
+     */
+    @SuppressWarnings("unused")
+    public int shifts() {
+        return shifts;
     }
 
     /**

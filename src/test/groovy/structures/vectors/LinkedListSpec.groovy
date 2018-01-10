@@ -137,7 +137,7 @@ class LinkedListSpec extends Specification {
     LinkedList list = new LinkedList(values);
 
     when:
-    list.insertFirst(value)
+    list.prepend(value)
 
     then:
     list.get(0) == value
@@ -158,7 +158,7 @@ class LinkedListSpec extends Specification {
     LinkedList list = new LinkedList(values);
 
     when:
-    list.insertLast(value)
+    list.append(value)
 
     then:
     list.get(list.size()-1) == value

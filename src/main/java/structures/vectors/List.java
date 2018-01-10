@@ -67,7 +67,7 @@ public interface List<T> extends Vector<T> {
      *
      * @param value Specified value to insert
      */
-    boolean insertFirst(T value);
+    boolean prepend(T value);
 
 //------------------------------------------------------------------------------
 
@@ -76,7 +76,7 @@ public interface List<T> extends Vector<T> {
      *
      * @param value Specified value to insert
      */
-    boolean insertLast(T value);
+    boolean append(T value);
 
 //------------------------------------------------------------------------------
 
