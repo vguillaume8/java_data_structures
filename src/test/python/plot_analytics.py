@@ -1,12 +1,5 @@
 import matplotlib.pyplot as plt
-from matplotlib.offsetbox import AnchoredText
-import csv
-import os
-import argparse, sys
-import json
-from matplotlib.font_manager import FontProperties
-from scipy.interpolate import spline
-from scipy.optimize import curve_fit
+import argparse
 from functions import *
 from file_io import read_csv
 
@@ -17,40 +10,14 @@ this program does the following:
 
 1. Reads in (x,y) points from a CSV
 
-2. Computes best fit functions for desired types
+2. Computes best fit functions for desired types (linear, quadratic, etc)
 
-3. Plots the input data
+3. Plots the original input data in the form of a scatter plot
 
-4. Plots the best fit functions on same domain as input
+4. Plots the best fit functions as smooth continuous curves through the scatter plot
 
-5. Saves plot as image
+5. Saves plot as a .png image
 '''
-
-
-# Gets a curve fit for all desired curves
-def get_fits(desired_fits,
-             x,
-             y,
-             dependent_variable,
-             independent_variable):
-
-    # This variable will hold
-    # the dictionaries that represent
-    # a curve fit and its associated information
-    fits = {}
-
-    # Loop through all the keys
-    for key in desired_fits:
-
-        # If the value is set to true,
-        # perform the curve fit
-        if desired_fits[key]:
-
-            # Get the associated function, and evaluate with data sets x and y as inputs
-            # with dependent and independent variable strings for the equation string
-            fits[key] = curve_fit_functions[key](x, y, dependent_variable, independent_variable)
-
-    return fits
 
 
 # Plots x,y data and desired curve fits
@@ -64,18 +31,27 @@ def plot_data(output_file_path,
               dependent_variable,
               independent_variable,
               plot_original_data,
-              desired_fits):
+              desired_fits,
+              upper_bound=False,
+              lower_bound=False):
 
     # Set up figure and axes
     f, ax = plt.subplots(1,1)
 
     # Dictionary of curve fits (also dictionaries)
     # JSON-like setup with nested dictionaries
-    fits = get_fits(desired_fits, x_data, y_data, dependent_variable, independent_variable)
+    fits = get_fits(desired_fits,
+                    x_data,
+                    y_data,
+                    dependent_variable,
+                    independent_variable)
 
     # Plot the original input data
     if plot_original_data:
-        ax.scatter(x_data, y_data, marker='o', label=input_data_label)
+        ax.scatter(x_data,
+                   y_data,
+                   marker='o',
+                   label=input_data_label)
 
     # Get the curve with the minimum error
     if fits:
@@ -98,16 +74,42 @@ def plot_data(output_file_path,
         # Annotate the plot at the top left corner
         ax.annotate(text, xy=(0.05, 0.85), xycoords='axes fraction', bbox=bbox_props)
 
-    # Label and title the plot
+    # If we want an upper bound function
+    if upper_bound:
+
+        # Go get it
+        upper_fit = upper_bound_fit(x_data,
+                                    y_data,
+                                    dependent_variable,
+                                    independent_variable)
+
+        # Plot it
+        ax.plot(upper_fit['x'], upper_fit['y'], label=upper_fit['equation'])
+
+    # If we want a lower bound function
+    if lower_bound:
+
+        # Go get it
+        lower_fit = lower_bound_fit(x_data,
+                                    y_data,
+                                    dependent_variable,
+                                    independent_variable)
+
+        # Plot it
+        ax.plot(lower_fit['x'], lower_fit['y'], label=lower_fit['equation'])
+
+    # Label and title the entire plot
     plt.xlabel('$' + x_label + '$')
     plt.ylabel('$' + y_label + '$')
     plt.title(plot_title)
 
-    # Create a legend and show the plot
+    # Create a legend with all the equations
     plt.legend(loc=9, bbox_to_anchor=(0.5, -0.1), ncol=1)
+
+    # Add grid lines to the plot
     plt.grid(True)
 
-    # Save the plot as PNG then display it
+    # Save the plot as .png image in specified output path
     plt.savefig(output_file_path, bbox_inches='tight')
 
 
@@ -116,15 +118,15 @@ def plot_data(output_file_path,
 # PROGRAM STARTS EXECUTION HERE
 if __name__ == "__main__":
 
-    # We use this to parse command line arguments
+    # We use this object to parse command line arguments
     parser = argparse.ArgumentParser()
 
-    # Define required arguments
+    # Define REQUIRED arguments
     requiredNamed = parser.add_argument_group('required named arguments')
     requiredNamed.add_argument('--input-file-name', help='Name of the input.csv file',   required=True)
     requiredNamed.add_argument('--data-directory',  help='Path for .csv and .png files', required=True)
 
-    # Define optional arguments to customize the plot
+    # Define OPTIONAL arguments to customize the plot
     parser.add_argument('--plot-title',           help='Title of your plot')
     parser.add_argument('--input-data-label',     help='The name that appears in the legend to label the original data')
     parser.add_argument('--x-axis-label',         help='X-axis label')
@@ -132,13 +134,15 @@ if __name__ == "__main__":
     parser.add_argument('--dependent-variable',   help="Left side of equation string")
     parser.add_argument('--independent-variable', help="Right side of equation string")
 
-    # Define optional arguments for fitting the data to different types of curves
+    # Define OPTIONAL arguments for fitting the data to different types of curves
     parser.add_argument('--exponential-fit', help='If you would like an exponential curve fit')
     parser.add_argument('--cubic-fit',       help='If you would like an cubic curve fit')
     parser.add_argument('--quadratic-fit',   help='If you would like an quadratic curve fit')
     parser.add_argument('--n-log-n-fit',     help='If you would like an n*log(n) curve fit')
     parser.add_argument('--linear-fit',      help='If you would like an linear curve fit')
     parser.add_argument('--logarithmic-fit', help='If you would like an logarithmic curve fit')
+    parser.add_argument('--upper-bound',     help='If you would like an upper bound curve fit')
+    parser.add_argument('--lower-bound',     help='If you would like an lower bound curve fit')
 
     # Set default configuration parameters
     # and store them in a dictionary
@@ -159,19 +163,21 @@ if __name__ == "__main__":
         'quadratic_fit':        False,
         'n_log_n_fit':          False,
         'linear_fit':           False,
-        'logarithmic_fit':      False
+        'logarithmic_fit':      False,
+        'upper_bound':          False,
+        "lower_bound":          False
     }
 
     # Parse the command line arguments
     args = parser.parse_args()
 
-    # Set mandatory parameters
+    # Set REQUIRED parameters
     params['input_file_name'] = args.input_file_name
     params['data_directory']  = args.data_directory
     params['csv_directory']   = params['data_directory'] + 'csv/'
     params['png_directory']   = params['data_directory'] + 'png/'
 
-    # Set optional parameters
+    # Set OPTIONAL parameters
     if args.plot_title:
         params['plot_title'] = args.plot_title
 
@@ -208,6 +214,12 @@ if __name__ == "__main__":
     if args.logarithmic_fit == 'True':
         params['logarithmic_fit'] = bool(args.logarithmic_fit)
 
+    if args.upper_bound == 'True':
+        params['upper_bound'] = bool(args.upper_bound)
+
+    if args.lower_bound == 'True':
+        params['lower_bound'] = bool(args.lower_bound)
+
     # Read the x and y components from the .csv file
     x_data, y_data = read_csv(params['csv_directory'] + params['input_file_name'] + '.csv')
 
@@ -229,4 +241,7 @@ if __name__ == "__main__":
                   "n_log_n":     params['n_log_n_fit'],
                   "linear":      params['linear_fit'],
                   "logarithmic": params['logarithmic_fit']
-    })
+              },
+              upper_bound=params['upper_bound'],
+              lower_bound=params['lower_bound']
+    )

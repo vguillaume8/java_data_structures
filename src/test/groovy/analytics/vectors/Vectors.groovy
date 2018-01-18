@@ -29,15 +29,16 @@ class Vectors extends Specification {
 
 
         while (arrayList.size() > 0) {
+            point    = new Integer[2]
 
             s1 = arrayList.shifts()
+
+            point[0] = arrayList.size()
 
             arrayList.remove(Java8Util.rand(0, arrayList.size()-1));
 
             s2 = arrayList.shifts()
 
-            point    = new Integer[2]
-            point[0] = arrayList.size()
             point[1] = Math.abs(s2-s1);
 
             points.add(point)

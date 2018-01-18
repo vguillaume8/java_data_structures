@@ -1,6 +1,5 @@
 package structures.vectors;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 /**
@@ -114,10 +113,9 @@ public final class ArrayList<E> implements List<E> {
      * @param start
      * @param stop
      * @param src
-     * @param dst
      * @return
      */
-    private E[] copy(int start, int stop, int offset, E[] src, E[] dst) {
+    private void copy(int start, int stop, int offset, E[] src, E[] dst) {
 
         // Must be within bounds
         if (start < 0 || start >= src.length) {
@@ -146,7 +144,6 @@ public final class ArrayList<E> implements List<E> {
             copies++;
         }
 
-        return dst;
     }
 
     /**
@@ -176,10 +173,12 @@ public final class ArrayList<E> implements List<E> {
     }
 
     /**
+     * If the number of elements in the ArrayList exceeds a specified
+     * threshold (90%), we consider the internal array "full".
      *
-     * @return
+     * @return True if and only if the capacity threshold is passed.
      */
-    public boolean full() {
+    private boolean full() {
 
         // Convert size and length to doubles
         // to perform division with decimals
@@ -319,10 +318,16 @@ public final class ArrayList<E> implements List<E> {
             @SuppressWarnings("unchecked")
             E[] temp = (E[]) new Object[size * 2];
 
+            // Copy the old array to a new array
             copy(0, size-1, 0, elements, temp);
 
+            // Place a new value at the back
+            // of the new array
             temp[size] = value;
 
+            // Use the new array as the
+            // internal array of this
+            // ArrayList
             elements = temp;
 
         // There's space, so insert
@@ -346,6 +351,7 @@ public final class ArrayList<E> implements List<E> {
     public E remove(int index) {
         E value;
 
+        // Cannot remove from nothing
         if (empty()) {
             throw new EmptyDataStructureException("Cannot remove from an empty ArrayList");
         }
@@ -479,6 +485,18 @@ public final class ArrayList<E> implements List<E> {
     public String toString() {
 
         return Arrays.toString(toArray());
+    }
+
+    /**
+     * Overwrites a value at a specified index
+     * with a new value.
+     *
+     * @param value New value.
+     * @param index Specified index.
+     */
+    public void update(E value, int index) {
+        verifyIndex(index);
+        elements[index] = value;
     }
 
 }

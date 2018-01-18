@@ -1,8 +1,199 @@
 import numpy
-from operator import itemgetter
 from math import floor, log10
+from operator import itemgetter
 from scipy.optimize import curve_fit
 
+
+# Returns an upper bound curve fit
+# for a scatter plot of x,y points
+def upper_bound_fit(x,
+                    y,
+                    dependent_variable,
+                    independent_variable,
+                    exponential = False,
+                    cubic       = True,
+                    quadratic   = True,
+                    n_log_n     = True,
+                    linear      = True,
+                    logarithmic = True):
+
+    # Get local max points
+    max_x, max_y = local_maxes(x, y)
+
+    desired_fits = {
+        "exponential": exponential,
+        "cubic":       cubic,
+        "quadratic":   quadratic,
+        "n_log_n":     n_log_n,
+        "linear":      linear,
+        "logarithmic": logarithmic
+    }
+
+    # Get the fits
+    fits = get_fits(desired_fits,
+                    max_x,
+                    max_y,
+                    dependent_variable,
+                    independent_variable)
+
+    # Return the one with minimum error
+    return min_err(fits)
+
+
+# Returns a lower bound curve fit
+# for a scatter plot of x,y points
+def lower_bound_fit(x,
+                    y,
+                    dependent_variable,
+                    independent_variable,
+                    exponential = False,
+                    cubic       = True,
+                    quadratic   = True,
+                    n_log_n     = True,
+                    linear      = True,
+                    logarithmic = True):
+
+    # Get local max points
+    min_x, min_y = local_mins(x, y)
+
+    desired_fits = {
+        "exponential": exponential,
+        "cubic":       cubic,
+        "quadratic":   quadratic,
+        "n_log_n":     n_log_n,
+        "linear":      linear,
+        "logarithmic": logarithmic
+    }
+
+    # Get the fits
+    fits = get_fits(desired_fits,
+                    min_x,
+                    min_y,
+                    dependent_variable,
+                    independent_variable)
+
+    # Return the one with minimum error
+    return min_err(fits)
+
+
+# Given a list of points on an increasing domain
+# Return all the x,y pairs where y is strictly
+# increasing
+def local_maxes(x, y):
+    y_upper = []
+    x_upper = []
+
+    # Ensure list of points match in length
+    if len(x) != len(y):
+        raise ValueError("List of values must be same length")
+
+    # Must be at least 1 point
+    if len(y) > 0:
+        points = []
+
+        # Turn the points into tuples
+        for i in range(len(x)):
+            tup = (x[i], y[i])
+
+            points.append(tup)
+
+        # Sort them in ascending order
+        points.sort()
+
+        max_val = points[0][0]
+
+        # Add the first point
+        y_upper.append(points[0][1])
+        x_upper.append(points[0][0])
+
+        # Loop through all the points
+        for point in points:
+
+            # If the current point is greater
+            # than the previous max, add it
+            # to the new list of strictly
+            # increasing points
+            if point[1] > max_val:
+                max_val = point[1]
+                y_upper.append(point[1])    # Append local max
+                x_upper.append(point[0])    # Append its corresponding x-value
+    else:
+        raise ValueError("Cannot get upper bound of empty list of values")
+
+    return x_upper, y_upper
+
+
+# Given a list of points on an increasing domain
+# Return all the x,y pairs where y is strictly
+# increasing
+def local_mins(x, y):
+    y_lower = []
+    x_lower = []
+
+    # Ensure list of points match in length
+    if len(x) != len(y):
+        raise ValueError("List of values must be same length")
+
+    # Must be at least 1 point
+    if len(y) > 0:
+        points = []
+
+        # Turn the points into tuples
+        for i in range(len(x)):
+            tup = (x[i], y[i])
+
+            points.append(tup)
+
+        # Sort them in descending order
+        points.sort(key=itemgetter(0),reverse=True)
+
+        min_val = points[0][0]
+
+        # Add the first point
+        y_lower.append(points[0][1])
+        x_lower.append(points[0][0])
+
+        # Loop through all the points
+        for point in points:
+
+            # If the current point is less
+            # than the previous max, add it
+            # to the new list of strictly
+            # increasing points
+            if point[1] < min_val:
+                min_val = point[1]
+                y_lower.append(point[1])    # Append local max
+                x_lower.append(point[0])    # Append its corresponding x-value
+    else:
+        raise ValueError("Cannot get lower bound of empty list of values")
+
+    return x_lower, y_lower
+
+
+# Gets a curve fit for all desired curves
+def get_fits(desired_fits,
+             x,
+             y,
+             dependent_variable,
+             independent_variable):
+
+    # This variable will hold
+    # the dictionaries that represent
+    # a curve fit and its associated information
+    fits = {}
+
+    # Loop through all the keys
+    for key in desired_fits:
+
+        # If the value is set to true,
+        # perform the curve fit
+        if desired_fits[key]:
+
+            # Get the associated function, and evaluate with data sets x and y as inputs
+            # with dependent and independent variable strings for the equation string
+            fits[key] = curve_fit_functions[key](x, y, dependent_variable, independent_variable)
+
+    return fits
 
 # Returns a dictionary that represents
 # the curve fit and important information

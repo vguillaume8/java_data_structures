@@ -12,6 +12,13 @@ import java.util.NoSuchElementException;
  */
 public interface List<T> extends Vector<T> {
 
+    /**
+     * Inserts a specified value onto the back of the list
+     *
+     * @param value Specified value to insert
+     */
+    boolean append(T value);
+
 //------------------------------------------------------------------------------
 
     /**
@@ -53,16 +60,6 @@ public interface List<T> extends Vector<T> {
 //------------------------------------------------------------------------------
 
     /**
-     * Retrieves and removes a value from a specified index
-     *
-     * @param index Index to remove value from
-     * @return The value at the specified index
-     */
-    T remove(int index);
-
-//------------------------------------------------------------------------------
-
-    /**
      * Inserts a specified value into the front of the list
      *
      * @param value Specified value to insert
@@ -72,11 +69,12 @@ public interface List<T> extends Vector<T> {
 //------------------------------------------------------------------------------
 
     /**
-     * Inserts a specified value onto the back of the list
+     * Retrieves and removes a value from a specified index
      *
-     * @param value Specified value to insert
+     * @param index Index to remove value from
+     * @return The value at the specified index
      */
-    boolean append(T value);
+    T remove(int index);
 
 //------------------------------------------------------------------------------
 
@@ -107,6 +105,18 @@ public interface List<T> extends Vector<T> {
      * @return Last element in DataStructure
      */
     T removeLast();
+
+//------------------------------------------------------------------------------
+
+    /**
+     * Overwrites a value at a specified index
+     * with a new value.
+     *
+     * @param value New value.
+     * @param index Specified index.
+     */
+    @SuppressWarnings("unused")
+    void update(T value, int index);
 
 //------------------------------------------------------------------------------
     /**
