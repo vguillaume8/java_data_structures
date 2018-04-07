@@ -2,6 +2,9 @@
 List of things to implement, so that I don't forget
 
 ## Build
+- Find some way to run `pip install -r requirements.txt` as well as 
+install the python package `python-tk` if the development system is
+linux based. Otherwise, `matplotlib` will fail
 - Implement deploy script to upload the `java_data_structures.jar`
 to a remote server or artifactory
 - Change `build.gradle` to only do `javadoc` for `structures` package
