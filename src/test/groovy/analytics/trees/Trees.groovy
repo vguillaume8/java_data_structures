@@ -144,7 +144,7 @@ class Trees extends Specification {
     }
 
     // TODO - getting null pointer, fix the class
-    @Ignore
+//    @Ignore
     def "Height of AVL Tree vs. Number of nodes"() {
         setup:
         BinarySearchTree<Integer, String> tree = new AVLTree<>();
