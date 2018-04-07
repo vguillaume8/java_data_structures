@@ -19,7 +19,7 @@ public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, 
     protected int size;
 
     /**
-     * Pointer to root node of the BinarySearchTree
+     * Pointer to root node of the BinarySearchTree.
      */
     protected BinarySearchTreeNode<K, V> root;
 

@@ -32,12 +32,6 @@ public interface List<T> extends Vector<T> {
 //------------------------------------------------------------------------------
 
     /**
-     * Checks if a specified index is out of bounds of the DataStructure
-     *
-     * @param index Specified index
-     * @return True if and only if the index is out of bound
-     */
-    /**
      * Determines whether or not a specified index is within the bounds of the list
      *
      * @param index Specified index
@@ -119,6 +113,7 @@ public interface List<T> extends Vector<T> {
     void update(T value, int index);
 
 //------------------------------------------------------------------------------
+
     /**
      * Verifies if a provided index is within the DataStructure or not
      *

@@ -52,11 +52,13 @@ public interface Pair<K, V> {
     void key(K key);
 
     /**
-     * Returns a JSON String representation of the pair. Note,
+     * Returns a JSON-like String representation of the pair. Note,
      * this is a wrapper around the toString() method that
      * will be called in implementing classes. The method cannot
      * directly override it because it is a default method, and this
-     * is an interface.
+     * is an interface. But, to avoid implementing {@code toString}
+     * in every concrete class that implements this interface, we
+     * have this auxiliary function.
      *
      * @return String version of the pair.
      */
@@ -65,6 +67,12 @@ public interface Pair<K, V> {
         String k;
         String v;
 
+        // TODO - Potential change?
+        // Convert null to string null. However, what
+        // if the string contains the value "null?" There
+        // will be no way to distinguish. Perhaps put the
+        // strings in quotes, but don't put null in quotes
+        // if it came from a null key or value
         k = key() == null ? "null" : key().toString();
         v = value() == null ? "null" : value().toString();
 

@@ -15,6 +15,11 @@ def write_csv(output_path, x, y):
 
 
 # TODO - Implement function that reads .csv with header and more than 2 columns
+# We could use this if we want to have multiple y-values per x-value. For example
+# comparing different types of structures or algorithms such as the different
+# types of hashing, or AVL tree vs Red-black tree. However, this feature has no impact
+# on the API or testing. It would just be convenient for better visualization in the
+# graphs.
 
 
 # Reads in and returns an x,y data

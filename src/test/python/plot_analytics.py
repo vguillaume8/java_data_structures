@@ -4,19 +4,19 @@ from functions import *
 from file_io import read_csv
 
 '''
-Given a data set of (x,y) points in the form of a .csv file, and
+Given a data set of (x,y) points in the form of a 2 column .csv file, and
 optional parameters for fitting a curve to the data
 this program does the following:
 
-1. Reads in (x,y) points from a CSV
+1. Reads in (x,y) points from the CSV
 
 2. Computes best fit functions for desired types (linear, quadratic, etc)
 
 3. Plots the original input data in the form of a scatter plot
 
-4. Plots the best fit functions as smooth continuous curves through the scatter plot
+4. Plots the best fit functions as smooth continuous curves on top of the scatter plot
 
-5. Saves plot as a .png image
+5. Saves plot as a .png image with a command line argument specified named
 '''
 
 
@@ -54,9 +54,10 @@ def plot_data(output_file_path,
                    label=input_data_label)
 
     # Get the curve with the minimum error
+    # if we have any fits to plot
     if fits:
 
-        # Plot the curve fits
+        # Plot each curve fit
         for key in fits:
             ax.plot(x_data, fits[key]['y'], label=fits[key]['equation'])
 
@@ -169,15 +170,21 @@ if __name__ == "__main__":
     }
 
     # Parse the command line arguments
+    # NOTE - If any required arguments are
+    # not found, execution stops here as
+    # parse_args() will throw an exception
     args = parser.parse_args()
 
-    # Set REQUIRED parameters
+    # Set REQUIRED arguments to runtime variables
     params['input_file_name'] = args.input_file_name
     params['data_directory']  = args.data_directory
     params['csv_directory']   = params['data_directory'] + 'csv/'
     params['png_directory']   = params['data_directory'] + 'png/'
 
-    # Set OPTIONAL parameters
+    # Set OPTIONAL arguments to runtime variables
+    # But, since tthey are optional, we must check
+    # if it is not None, otherwise we will get a null
+    # pointer exception.
     if args.plot_title:
         params['plot_title'] = args.plot_title
 

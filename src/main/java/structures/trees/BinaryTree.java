@@ -3,7 +3,6 @@ package structures.trees;
 import structures.commons.DataStructure;
 import structures.commons.Pair;
 import structures.vectors.ArrayList;
-
 import java.util.Arrays;
 import java.util.Iterator;
 
@@ -327,6 +326,7 @@ public interface BinaryTree<K, V> extends DataStructure<K>, Iterable<Pair<K, V>>
     @SuppressWarnings("unused")
     V[] values(int traversalType);
 
+//  TreeIterator clas starts here
 //==============================================================================
 
     /**

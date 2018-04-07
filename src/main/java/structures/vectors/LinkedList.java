@@ -11,15 +11,26 @@ import java.util.NoSuchElementException;
  */
 public final class LinkedList<T> implements List<T> {
 
+  /**
+   * Number of elements in linked list
+   */
   private int size;
+
+  /**
+   * Pointer to first node in list
+   */
   private Node<T> head;
+
+  /**
+   * Pointer to last node in list
+   */
   private Node<T> tail;
 
   /**
-   * Constructs empty list.
+   * Constructs empty list
    */
   public LinkedList() {
-
+    ;
   }
 
 //------------------------------------------------------------------------------
@@ -85,6 +96,7 @@ public final class LinkedList<T> implements List<T> {
    * Append a specified value  to the back of the list
    *
    * @param value Specified value to be inserted into the list
+   * @return True to indicate the insertion was successful.
    */
   @Override
   public boolean insert(T value) {
@@ -111,6 +123,7 @@ public final class LinkedList<T> implements List<T> {
    * Inserts a specified value at the front of the list.
    *
    * @param value The specified value to be inserted
+   * @return True to indicate the prepend was successful.
    */
   public boolean prepend(T value) {
     Node<T> node = new Node<>(value);
@@ -135,6 +148,7 @@ public final class LinkedList<T> implements List<T> {
    * Inserts a specified value at the back of the list.
    *
    * @param value The specified value to be inserted
+   * @return True to indicate the append was successful.
    */
   public boolean append(T value) {
     Node<T> node = new Node<>(value);
@@ -161,6 +175,7 @@ public final class LinkedList<T> implements List<T> {
    *
    * @param value Specified value to be inserted into the list
    * @param index Specified index
+   * @return True to indicate the insertion was successful.
    */
   public boolean insert(T value, int index) {
     Node<T> newNode;
@@ -208,6 +223,11 @@ public final class LinkedList<T> implements List<T> {
     return true;
   }
 
+  /**
+   * Returns an Iterator to iterate over the list.
+   *
+   * @return Iterator object.
+   */
   @Override
   public Iterator<T> iterator() {
 
@@ -215,9 +235,14 @@ public final class LinkedList<T> implements List<T> {
   }
 
   /**
+   * Provided the head node of any LinkedList,
+   * this method returns an Iterator. This method is used
+   * by instances of linked objects such as Queues, and Stacks.
+   * That a similar function does not need to be implemented
+   * multiple times.
    *
-   * @param head
-   * @return
+   * @param head The first node in the list.
+   * @return Iterator object.
    */
   protected static <T> Iterator<T> iterator(Node<T> head) {
 
@@ -285,6 +310,7 @@ public final class LinkedList<T> implements List<T> {
 
     }
 
+      // TODO - Figure out why I commented this out
 //    else if (index == size - 1) {
 //      value = tail.value;
 //      tail = tail.next;
@@ -338,10 +364,6 @@ public final class LinkedList<T> implements List<T> {
    * @return Value of node at specified index
    */
   public T removeFirst() {
-    if (empty()) {
-
-    }
-
     return remove(0);
   }
 
@@ -357,8 +379,9 @@ public final class LinkedList<T> implements List<T> {
   }
 
   /**
+   * Returns the number of elements in the list.
    *
-   * @return
+   * @return Number of elements in list
    */
   @Override
   public int size() {
@@ -379,8 +402,8 @@ public final class LinkedList<T> implements List<T> {
    * Overwrites a value at a specified index
    * with a new value.
    *
-   * @param value
-   * @param index
+   * @param value The value to be put in the list
+   * @param index Index into which teh value will be inserted
    */
   public void update(T value, int index) {
 

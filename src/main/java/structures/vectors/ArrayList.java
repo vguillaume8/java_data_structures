@@ -109,11 +109,13 @@ public final class ArrayList<E> implements List<E> {
     }
 
     /**
+     * Copy a specified range of elements from one
+     * array to another.
      *
-     * @param start
-     * @param stop
-     * @param src
-     * @return
+     * @param start First index in range from which to copy
+     * @param stop Last index in range from which to copy
+     * @param src Source array from which to copy
+     * @param dst Destination array to copy to
      */
     private void copy(int start, int stop, int offset, E[] src, E[] dst) {
 
@@ -207,6 +209,7 @@ public final class ArrayList<E> implements List<E> {
      * Inserts a key at the end of the list.
      *
      * @param key The specified key to insert
+     * @return True to indicate the insertion was successful.
      */
     @Override
     public boolean insert(E key) {
@@ -218,6 +221,7 @@ public final class ArrayList<E> implements List<E> {
      *
      * @param value Value to be inserted
      * @param index Specified index to insert value at
+     * @return True to indicate the insertion was successful.
      */
     @Override
     public boolean insert(E value, int index) {
@@ -279,8 +283,13 @@ public final class ArrayList<E> implements List<E> {
     }
 
     /**
+     * Returns the size of the internal list. Note, this
+     * does not specify the number of elements in the list,
+     * rather the number of spaces that the dynamically
+     * allocated array that is used to contain the elements
+     * has at a given point in time.
      *
-     * @return
+     * @return Length of internal array that contains the elements
      */
     public int internalSize() {
         return elements.length;
@@ -290,6 +299,7 @@ public final class ArrayList<E> implements List<E> {
      * Inserts a value into the front of the list.
      *
      * @param value Specified value to insert
+     * @return True to indicate the prepend was successful.
      */
     @Override
     public boolean prepend(E value) {
@@ -300,6 +310,7 @@ public final class ArrayList<E> implements List<E> {
     /**
      * Inserts an element to the back of the list.
      * @param value Specified value to insert
+     * @return True to indicate the append was successful.
      */
     @Override
     public boolean append(E value) {

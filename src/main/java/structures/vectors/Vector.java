@@ -1,7 +1,6 @@
 package structures.vectors;
 
 import structures.commons.DataStructure;
-
 import java.util.Arrays;
 
 /**
@@ -14,8 +13,18 @@ import java.util.Arrays;
 public interface Vector<T> extends DataStructure<T>,  Iterable<T> {
 
     /**
+     * Returns a String representation of the Vector.
+     * This function is named {@code asString()} rather than
+     * {@code toString()} because this is an interface, and thus
+     * it cannot be implemented as a default method
+     * because the superclass {@code Object} already implements it.
+     * Therefore, only a concrete class can override it.
+     * However, the implementation for all Vectors will be
+     * roughly the same. So we declare {@code asString()} as a wrapper
+     * around {@code toString()} so we avoid having to implement {@code toString()}
+     * in each subclass tht implements this interface.
      *
-     * @return
+     * @return String representation of the Vector
      */
     default String asString() {
         return Arrays.toString(this.toArray());
@@ -45,13 +54,14 @@ public interface Vector<T> extends DataStructure<T>,  Iterable<T> {
      * of implementing class
      *
      * @return Removed value from DataStructure
+     * @see structures.commons.DataStructure
      */
     T remove();
 
 //------------------------------------------------------------------------------
 
     /**
-     * Returns the data structure as an Object array.
+     * Returns the data structure as an {@code Object} array.
      *
      * @return Array representation of DataStructure
      */
@@ -92,7 +102,7 @@ public interface Vector<T> extends DataStructure<T>,  Iterable<T> {
 
     /**
      * Determines whether or not an Object is equal to
-     * this Vector. Implementing classes can
+     * this {@code Vector}. Implementing classes can
      * override the java.lang.Object.equals() method, and
      * call this.
      *
@@ -133,7 +143,7 @@ public interface Vector<T> extends DataStructure<T>,  Iterable<T> {
         // and thus, the objects cannot be equal to each other. Note,
         // this is a double check, after we checked instance of Vector.
         // Also note, we do not want to catch all Exceptions because in the event
-        // that the code that implements size(), or contains(), or the iterator()
+        // that the code that implements code size(), or contains(), or the iterator()
         // used in the foreach loop throws an error, we want the developer to know.
         // This indicated their is a bug in their code, and we do not want to
         // handle those. We are only looking to handle Exceptions related to casting here.
