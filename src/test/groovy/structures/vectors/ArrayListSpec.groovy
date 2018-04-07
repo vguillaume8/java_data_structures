@@ -13,7 +13,7 @@ class ArrayListSpec extends Specification {
 
         expect:
         list.size() == 0
-        list.empty() == true
+        list.empty()
     }
 
 //------------------------------------------------------------------------------

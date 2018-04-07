@@ -4,28 +4,53 @@ import com.opencsv.CSVWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Reusable methods throughout test modules.
+ *
+ * @author Jabari Dash
+ */
 class Util {
 
+    /**
+     * Directory in which all tests are held
+     */
     public static String testDirectory = "."    + File.separator +
                                          "src"  + File.separator +
                                          "test" + File.separator;
 
+    /**
+     * Directory in which the python plot generator scrips are held
+     */
     public static String pathToPlotGenerator = testDirectory +
                                                "python" + File.separator;
 
-
+    /**
+     * Directory in which all input and output data files are held
+     */
     public static String dataDirectory = "."    + File.separator +
                                          "data" + File.separator
 
+    /**
+     * Directory in which all CSV files are held
+     */
     public static String csvDirectory = dataDirectory + "csv" + File.separator
+
+    /**
+     * Directory in which all PNG files are held
+     */
     public static String pngDirectory = dataDirectory + "png" + File.separator
 
 //------------------------------------------------------------------------------
 
     /**
+     * Converts Java / Groovy boolean to
+     * their respective string values with
+     * the first letter capitalized. This makes
+     * them compatible with Python when we pass
+     * booleans to python via the command line.
      *
-     * @param bool
-     * @return
+     * @param bool A boolean value
+     * @return String representation of the boolean
      */
     @SuppressWarnings("unused")
     static String toPythonBoolean(boolean bool) {
@@ -35,12 +60,23 @@ class Util {
 //------------------------------------------------------------------------------
 
     /**
+     * Provided  an experiment name that points to
+     * csv date, we generate a plot via
+     * an external python script.
      *
-     * @param experimentName
-     * @param plotTitle
-     * @param inputDataLabel
-     * @param xAxisLabel
-     * @param yAxisLabel
+     * @param experimentName      Name of the experiment and input csv file name
+     * @param plotTitle           The title of the plot that will be on the image
+     * @param inputDataLabel      Label that appears on the legend of the plot
+     * @param xAxisLabel          X-axis label
+     * @param yAxisLabel          Y-axis label
+     * @param dependentVariable   The name (units) of the dependent variable (y-axis)
+     * @param independentVariable The name (units) of the independent variable (x-axis)
+     * @param exponentialFit      Boolean flag to decide whether or not to perform exponential fit
+     * @param cubicFit            Boolean flag to decide whether or not to perform cubic fit
+     * @param quadraticFit        Boolean flag to decide whether or not to perform quadratic fit
+     * @param nLogNFit            Boolean flag to decide whether or not to perform n*log(n) fit
+     * @param linearFit           Boolean flag to decide whether or not to perform linear fit
+     * @param logarithmicFit      Boolean flag to decide whether or not to perform logarithmic fit
      */
     @SuppressWarnings("unused")
     static boolean generatePlot(String experimentName,
@@ -57,6 +93,8 @@ class Util {
                         boolean linearFit,
                         boolean logarithmicFit) {
 
+        // Python command with
+        // arguments separated as an array
         String[] c = [
                 "python",
                 pathToPlotGenerator       + "plot_analytics.py",
@@ -78,12 +116,16 @@ class Util {
 
         StringJoiner sj = new StringJoiner(" ");
 
+        // Concatenate each argument
+        // using the string joined
         for (String s : c) {
             sj.add(s);
         }
 
+        // Convert the command to a string
         String command = sj.toString();
 
+        // Create a new process with the command
         final Process p = Runtime.getRuntime().exec(command);
 
         // Run python command
@@ -93,7 +135,7 @@ class Util {
                 String line = null;
 
                 try {
-                    // Show the output
+                    // Pipe output of process to stdout
                     while ((line = input.readLine()) != null) {
                         println(line);
                     }
@@ -105,9 +147,15 @@ class Util {
         }).start();
 
         try {
+
+            // Wait for process to end
+            // TODO - Why call twice?go
             p.waitFor();
+
+            // Get the exit value
             final int exitValue = p.waitFor();
 
+            // non-zero exit status indicates success
             if (exitValue != 0) {
 
                 System.out.println("Failed to execute the following command: " + command + " due to the following error(s):");
@@ -140,6 +188,13 @@ class Util {
 
 //------------------------------------------------------------------------------
 
+    /**
+     * Returns a CSVWriter object provided the path
+     * to a file to write to
+     *
+     * @param filePath Path to output file
+     * @return CSVWriter object
+     */
     @SuppressWarnings("unused")
     static CSVWriter getCSVWriter(String filePath) {
 
@@ -149,6 +204,9 @@ class Util {
 
         file = new File(csvDirectory + filePath + ".csv")
 
+        // NOTE - Do we want to check if the file
+        // exists already? Or, should we just continue
+        // to overwrite?
         file.createNewFile()
 
         fileWriter = new FileWriter(file);

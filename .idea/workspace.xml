@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fedb2063-1be3-4fe9-94aa-d8fc8c2af912" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/build.sh" afterPath="$PROJECT_DIR$/build.sh" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/data/csv/avg_cost_to_insert_into_arraylist.csv" afterPath="$PROJECT_DIR$/data/csv/avg_cost_to_insert_into_arraylist.csv" />
       <change beforePath="$PROJECT_DIR$/data/csv/avg_cost_to_remove_from_arraylist.csv" afterPath="$PROJECT_DIR$/data/csv/avg_cost_to_remove_from_arraylist.csv" />
       <change beforePath="$PROJECT_DIR$/data/csv/levels_in_avl_tree_vs_n_random_keys.csv" afterPath="$PROJECT_DIR$/data/csv/levels_in_avl_tree_vs_n_random_keys.csv" />
@@ -13,9 +13,12 @@
       <change beforePath="$PROJECT_DIR$/data/png/levels_in_avl_tree_vs_n_random_keys.png" afterPath="$PROJECT_DIR$/data/png/levels_in_avl_tree_vs_n_random_keys.png" />
       <change beforePath="$PROJECT_DIR$/data/png/levels_in_bst_tree_vs_n_random_keys.png" afterPath="$PROJECT_DIR$/data/png/levels_in_bst_tree_vs_n_random_keys.png" />
       <change beforePath="$PROJECT_DIR$/data/png/shifts_required_when_inserting_rand_index.png" afterPath="$PROJECT_DIR$/data/png/shifts_required_when_inserting_rand_index.png" />
-      <change beforePath="$PROJECT_DIR$/src/test/python/file_io.py" afterPath="$PROJECT_DIR$/src/test/python/file_io.py" />
-      <change beforePath="$PROJECT_DIR$/src/test/python/functions.py" afterPath="$PROJECT_DIR$/src/test/python/functions.py" />
-      <change beforePath="$PROJECT_DIR$/src/test/python/plot_analytics.py" afterPath="$PROJECT_DIR$/src/test/python/plot_analytics.py" />
+      <change beforePath="$PROJECT_DIR$/src/test/groovy/commons/Java8Util.java" afterPath="$PROJECT_DIR$/src/test/groovy/commons/Java8Util.java" />
+      <change beforePath="$PROJECT_DIR$/src/test/groovy/commons/Util.groovy" afterPath="$PROJECT_DIR$/src/test/groovy/commons/Util.groovy" />
+      <change beforePath="$PROJECT_DIR$/src/test/groovy/structures/vectors/ArrayListSpec.groovy" afterPath="$PROJECT_DIR$/src/test/groovy/structures/vectors/ArrayListSpec.groovy" />
+      <change beforePath="$PROJECT_DIR$/src/test/groovy/structures/vectors/LinkedListSpec.groovy" afterPath="$PROJECT_DIR$/src/test/groovy/structures/vectors/LinkedListSpec.groovy" />
+      <change beforePath="$PROJECT_DIR$/src/test/groovy/structures/vectors/QueueSpec.groovy" afterPath="$PROJECT_DIR$/src/test/groovy/structures/vectors/QueueSpec.groovy" />
+      <change beforePath="$PROJECT_DIR$/src/test/groovy/structures/vectors/StackSpec.groovy" afterPath="$PROJECT_DIR$/src/test/groovy/structures/vectors/StackSpec.groovy" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -40,6 +43,7 @@
       <find>igno</find>
       <find>curve_fit</find>
       <find>curve_fit_</find>
+      <find>data-la</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -401,12 +405,17 @@
         <option value="$PROJECT_DIR$/src/main/java/structures/vectors/ArrayList.java" />
         <option value="$PROJECT_DIR$/src/main/java/structures/commons/Pair.java" />
         <option value="$PROJECT_DIR$/src/main/java/structures/trees/BinarySearchTree.java" />
-        <option value="$PROJECT_DIR$/src/test/groovy/commons/Util.groovy" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/src/test/python/plot_analytics.py" />
         <option value="$PROJECT_DIR$/src/test/python/functions.py" />
         <option value="$PROJECT_DIR$/src/test/python/file_io.py" />
         <option value="$PROJECT_DIR$/build.sh" />
+        <option value="$PROJECT_DIR$/src/test/groovy/structures/vectors/StackSpec.groovy" />
+        <option value="$PROJECT_DIR$/src/test/groovy/structures/vectors/ArrayListSpec.groovy" />
+        <option value="$PROJECT_DIR$/src/test/groovy/structures/vectors/LinkedListSpec.groovy" />
+        <option value="$PROJECT_DIR$/src/test/groovy/structures/vectors/QueueSpec.groovy" />
+        <option value="$PROJECT_DIR$/src/test/groovy/commons/Util.groovy" />
+        <option value="$PROJECT_DIR$/src/test/groovy/commons/Java8Util.java" />
       </list>
     </option>
   </component>
@@ -454,12 +463,6 @@
               <item name="java_data_structures" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="java_data_structures" type="b2602c69:ProjectViewProjectNode" />
-              <item name="java_data_structures" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -484,7 +487,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.All in java_data_structures_test (1)">
+  <component name="RunManager" selected="JUnit.All in java_data_structures_test">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="WIDTH" value="400" />
       <option name="HEIGHT" value="300" />
@@ -525,45 +528,15 @@
       <envs />
       <patterns />
     </configuration>
-    <configuration name="LinkedListSpec" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="structures.vectors.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+    <configuration name="All in java_data_structures_test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="java_data_structures_test" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="structures.vectors" />
-      <option name="MAIN_CLASS_NAME" value="structures.vectors.LinkedListSpec" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" />
       <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-    </configuration>
-    <configuration name="Trees" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="analytics.trees.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="java_data_structures_test" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="analytics.trees" />
-      <option name="MAIN_CLASS_NAME" value="analytics.trees.Trees" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="package" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
@@ -645,6 +618,31 @@
       <envs />
       <patterns />
     </configuration>
+    <configuration name="structures.vectors in java_data_structures_test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="structures.vectors.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="java_data_structures_test" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="structures.vectors" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -687,18 +685,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="JUnit.analytics in java_data_structures_test" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.Trees" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.LinkedListSpec" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.structures in java_data_structures_test" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.All in java_data_structures_test (1)" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.structures in java_data_structures_test" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.All in java_data_structures_test (1)" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.structures.vectors in java_data_structures_test" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.All in java_data_structures_test" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.All in java_data_structures_test (1)" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.analytics in java_data_structures_test" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.structures in java_data_structures_test" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.LinkedListSpec" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.Trees" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.All in java_data_structures_test" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.All in java_data_structures_test (1)" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.structures.vectors in java_data_structures_test" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.analytics in java_data_structures_test" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.structures in java_data_structures_test" />
       </list>
     </recent_temporary>
   </component>
@@ -725,17 +723,14 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="All_in_java_data_structures_test - 2018.04.07 at 08h 02m 38s.xml">
-      <configuration name="All in java_data_structures_test" configurationId="JUnit" />
+    <history-entry file="All_in_java_data_structures_test_(1) - 2018.04.07 at 10h 00m 08s.xml">
+      <configuration name="All in java_data_structures_test (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_java_data_structures_test - 2018.04.07 at 08h 13m 45s.xml">
-      <configuration name="All in java_data_structures_test" configurationId="JUnit" />
+    <history-entry file="All_in_java_data_structures_test_(1) - 2018.04.07 at 10h 57m 18s.xml">
+      <configuration name="All in java_data_structures_test (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_java_data_structures_test - 2018.04.07 at 08h 16m 01s.xml">
-      <configuration name="All in java_data_structures_test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="LinkedListSpec - 2018.04.07 at 09h 05m 11s.xml">
-      <configuration name="LinkedListSpec" configurationId="JUnit" />
+    <history-entry file="All_in_java_data_structures_test_(1) - 2018.04.07 at 11h 00m 08s.xml">
+      <configuration name="All in java_data_structures_test (1)" configurationId="JUnit" />
     </history-entry>
     <history-entry file="LinkedListSpec - 2018.04.07 at 09h 06m 42s.xml">
       <configuration name="LinkedListSpec" configurationId="JUnit" />
@@ -754,6 +749,9 @@
     </history-entry>
     <history-entry file="structures_in_java_data_structures_test - 2018.04.07 at 09h 28m 53s.xml">
       <configuration name="structures in java_data_structures_test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="structures_vectors_in_java_data_structures_test - 2018.04.07 at 10h 08m 54s.xml">
+      <configuration name="structures.vectors in java_data_structures_test" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -828,21 +826,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <option name="time" value="4" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/structures/trees/BinarySearchTree.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="21" column="52" lean-forward="false" selection-start-line="21" selection-start-column="52" selection-end-line="21" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/groovy/commons/Util.groovy">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -940,6 +928,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1162">
           <caret line="189" column="1" lean-forward="false" selection-start-line="189" selection-start-column="1" selection-end-line="189" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -997,13 +986,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="850">
           <caret line="46" column="4" lean-forward="false" selection-start-line="46" selection-start-column="4" selection-end-line="50" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/groovy/structures/vectors/ArrayListSpec.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="10" column="14" lean-forward="true" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -1087,16 +1069,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/groovy/commons/Util.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding>
-            <element signature="e#17#45#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/structures/trees/BinarySearchTree.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1125,14 +1097,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/python/plot_analytics.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="7" column="39" lean-forward="false" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/python/file_io.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-77">
@@ -1153,6 +1117,137 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="6" column="26" lean-forward="false" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/USEFUL.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PULL_REQUEST_TEMPLATE.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LICENSE">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CONTRIBUTING.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CODE_OF_CONDUCT.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/overview.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/groovy/structures/vectors/StackSpec.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-240">
+          <caret line="42" column="28" lean-forward="false" selection-start-line="42" selection-start-column="28" selection-end-line="42" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/groovy/structures/vectors/ArrayListSpec.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="15" column="20" lean-forward="true" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
+          <folding>
+            <element signature="e#28#52#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/groovy/structures/vectors/LinkedListSpec.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="15" column="16" lean-forward="true" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/groovy/structures/vectors/QueueSpec.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="15" column="21" lean-forward="true" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/groovy/structures/trees/BinarySearchTreeSpec.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="10" column="6" lean-forward="false" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/groovy/commons/Util.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6565">
+          <caret line="69" column="46" lean-forward="true" selection-start-line="69" selection-start-column="46" selection-end-line="69" selection-end-column="46" />
+          <folding>
+            <element signature="e#17#45#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/groovy/commons/Java8Util.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2414">
+          <caret line="76" column="0" lean-forward="true" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+          <folding>
+            <element signature="e#807#808#0" expanded="true" />
+            <element signature="e#879#880#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/python/plot_analytics.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="131" column="40" lean-forward="false" selection-start-line="131" selection-start-column="33" selection-end-line="131" selection-end-column="40" />
           <folding />
         </state>
       </provider>

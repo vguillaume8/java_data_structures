@@ -13,7 +13,7 @@ class QueueSpec extends Specification {
 
         expect:
         queue.size() == 0
-        queue.empty() == true
+        queue.empty()
     }
 
     @Unroll

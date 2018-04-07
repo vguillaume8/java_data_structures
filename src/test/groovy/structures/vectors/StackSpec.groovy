@@ -14,7 +14,7 @@ class StackSpec extends Specification {
 
         expect:
         stack.size() == 0
-        stack.empty() == true
+        stack.empty()
     }
 
     @Unroll
@@ -41,9 +41,6 @@ class StackSpec extends Specification {
         then:
         stack.empty() == isEmpty
         stack.size() == size
-
-//        stack.size() == size
-//        stack.empty() == isEmpty
 
         where:
         values                 | size | isEmpty
