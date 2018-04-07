@@ -6,15 +6,16 @@ import java.util.List;
 
 class Util {
 
-    public static String testDirectory = "." + File.separator +
-                                         "src" + File.separator +
+    public static String testDirectory = "."    + File.separator +
+                                         "src"  + File.separator +
                                          "test" + File.separator;
 
     public static String pathToPlotGenerator = testDirectory +
                                                "python" + File.separator;
 
 
-    public static String dataDirectory = "." + File.separator + "data" + File.separator
+    public static String dataDirectory = "."    + File.separator +
+                                         "data" + File.separator
 
     public static String csvDirectory = dataDirectory + "csv" + File.separator
     public static String pngDirectory = dataDirectory + "png" + File.separator
