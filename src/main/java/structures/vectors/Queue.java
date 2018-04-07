@@ -1,7 +1,6 @@
 package structures.vectors;
 
 import structures.vectors.LinkedList.Node;
-
 import java.util.Iterator;
 
 /**
@@ -45,8 +44,9 @@ public final class Queue<K> implements Vector<K> {
     }
 
     /**
+     * Determines whether on not the queue is empty.
      *
-     * @return
+     * @return True if and only if the queue contains zero elements, otherwise false.
      */
     @Override
     public boolean empty() {
@@ -71,7 +71,7 @@ public final class Queue<K> implements Vector<K> {
     /**
      * Inserts key at back of Queue.
      *
-     * @param key The specified key to insert
+     * @param key The specified key to insert.
      */
     @Override
     public boolean insert(K key) {
@@ -111,8 +111,9 @@ public final class Queue<K> implements Vector<K> {
     }
 
     /**
+     * Returns the number of elements in the queue.
      *
-     * @return
+     * @return Number of element in queue.
      */
     @Override
     public int size() {
@@ -120,7 +121,7 @@ public final class Queue<K> implements Vector<K> {
     }
 
     /**
-     * Returns a String representation of the list
+     * Returns a String representation of the queue
      *
      * @return String version of the list
      */
@@ -129,6 +130,11 @@ public final class Queue<K> implements Vector<K> {
         return asString();
     }
 
+    /**
+     * Returns an Iterator for iterating over the Queue.
+     *
+     * @return Iterator object
+     */
     @Override
     public Iterator<K> iterator() {
 

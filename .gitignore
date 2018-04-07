@@ -1,9 +1,9 @@
-.gradle
+/.gradle
 /build
 /out
-java_data_structures.iml
 /analytics
 
 *.pyc
-
 .DS_Store
+
+java_data_structures.iml

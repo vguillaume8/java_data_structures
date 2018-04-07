@@ -16,7 +16,7 @@ import java.util.Iterator;
 public final class Stack<T>  implements Vector<T> {
 
     /**
-     *
+     * Number of elements on the Stack
      */
     private int size;
 
@@ -35,7 +35,7 @@ public final class Stack<T>  implements Vector<T> {
 //------------------------------------------------------------------------------
 
     /**
-     * Constructs Queue from array of keys.
+     * Constructs {@code Queue} from array of keys.
      *
      * @param values Array of keys to instatiate Queue from
      */
@@ -44,11 +44,15 @@ public final class Stack<T>  implements Vector<T> {
     }
 
 
+    /**
+     * Returns an Iterator for iterating over the Stack.
+     *
+     * @return Iterator object
+     */
     @Override
     public Iterator<T> iterator() {
 
         // Need to get the head node
-
         return LinkedList.iterator(head);
     }
 //------------------------------------------------------------------------------
@@ -81,8 +85,6 @@ public final class Stack<T>  implements Vector<T> {
     /**
      * Retrieves and removes top of Stack.
      *
-     * @return The topmost value on the Stack
-     *
      * @return Value form top of Stack
      */
     @Override
@@ -114,7 +116,7 @@ public final class Stack<T>  implements Vector<T> {
     /**
      * Retrieves and removes the topmost value from the Stack.
      *
-     * @return The topmost value on the Stack
+     * @return The topmost value on the Stack.
      */
     public T pop() {
         return this.remove();
@@ -123,8 +125,9 @@ public final class Stack<T>  implements Vector<T> {
 //------------------------------------------------------------------------------
 
     /**
+     * Returns number of elements on the stack.
      *
-     * @return
+     * @return Number of elements on stack.
      */
     @Override
     public int size() {
@@ -134,8 +137,7 @@ public final class Stack<T>  implements Vector<T> {
     /**
      * Retrieves but does not remove the topmost value from the Stack.
      *
-     *
-     * @return The topmost value on the Stack
+     * @return The topmost value on the Stack.
      */
     public T top() {
         if (this.empty()) {
