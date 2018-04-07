@@ -35,11 +35,11 @@ Build automation is handled by Gradle.
 The core API does not have any external dependencies. However, the
 tests and graph generator require the following frameworks / libraries:
 
-* [OpenCSV][open_csv]
-* [Spock Framework][spock_framework]
-* [Matplotlib][matplotlib]
-* [NumPy][numpy]
-* [SciPy Library][scipy]
+- [OpenCSV][open_csv]
+- [Spock Framework][spock_framework]
+- [Matplotlib][matplotlib]
+- [NumPy][numpy]
+- [SciPy Library][scipy]
 
 **Note:** *OpenCSV and Spock will be downloaded automatically upon building
 this project - no extra work is required.*
@@ -62,7 +62,6 @@ gradle run -q
 ```
 
 ## Uninstallation
-
 You can simply delete the `java_data_structures` folder, as this is a self-contained
 project. All external API dependencies will be deleted as well.
 
@@ -72,8 +71,12 @@ project. All external API dependencies will be deleted as well.
 rm -rf java_data_structures
 ```
 
-## Contributing
+## Development
+This project was developed using [IntelliJ][intellij], so it is already an IntelliJ project. Eclipse would work well too. However, note, provided that
+this project runs several languages, consider using an IDE that supports
+each of them.
 
+## Contributing
 If you would like to contribute or provide a bug fix,
 please see the [documentation for contributing][contributing].
 
@@ -88,4 +91,5 @@ please see the [documentation for contributing][contributing].
 [numpy]: https://pypi.python.org/pypi/numpy
 [scipy]: https://www.scipy.org/scipylib/index.html
 
+[intellij]: https://www.jetbrains.com/idea/
 [contributing]: CONTRIBUTING.md
