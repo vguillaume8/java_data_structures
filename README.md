@@ -5,7 +5,7 @@
 This is a code repository that contains implementations of
 common computer science data structures. However, if you are only
 interested using the data structures in another project, you may
-simply download the runnable binary `java_data_structures` from the `bin` directory and include it in your project. By default, a test application
+simply download the runnable binary `java_data_structures.jar` from the `/bin` directory and include it in your project. By default, a test application
 that tests the data structures is run. However, simply including the `.jar`
 file will allow you to import any data structure that the API offers.
 
