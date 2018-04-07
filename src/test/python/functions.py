@@ -542,7 +542,11 @@ def min_err(fits):
 
 # For use with deciding on
 # which curve fit function
-# to call on a data set
+# to call on a data set. The
+# keys (strings) map to pointers
+# to functions. So based on the string,
+# a different callable function
+# is returned (inspired by JavaScript).
 curve_fit_functions = {
     "exponential": fit_exponential,
     "cubic":       fit_cubic,
