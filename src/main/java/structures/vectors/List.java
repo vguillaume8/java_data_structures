@@ -12,6 +12,13 @@ import java.util.NoSuchElementException;
  */
 public interface List<T> extends Vector<T> {
 
+    /**
+     * Inserts a specified value onto the back of the list
+     *
+     * @param value Specified value to insert
+     */
+    boolean append(T value);
+
 //------------------------------------------------------------------------------
 
     /**
@@ -53,6 +60,15 @@ public interface List<T> extends Vector<T> {
 //------------------------------------------------------------------------------
 
     /**
+     * Inserts a specified value into the front of the list
+     *
+     * @param value Specified value to insert
+     */
+    boolean prepend(T value);
+
+//------------------------------------------------------------------------------
+
+    /**
      * Retrieves and removes a value from a specified index
      *
      * @param index Index to remove value from
@@ -63,31 +79,13 @@ public interface List<T> extends Vector<T> {
 //------------------------------------------------------------------------------
 
     /**
-     * Inserts a specified value into the front of the list
-     *
-     * @param value Specified value to insert
-     */
-    boolean insertFirst(T value);
-
-//------------------------------------------------------------------------------
-
-    /**
-     * Inserts a specified value onto the back of the list
-     *
-     * @param value Specified value to insert
-     */
-    boolean insertLast(T value);
-
-//------------------------------------------------------------------------------
-
-    /**
      * Returns iterator (allows use with enhanced forloop)
      *
      * @return Iterator for iterating over Structure by index
      */
     @Override
     default Iterator<T> iterator() {
-        return new IndexedDataStructureIterator<>(this);
+        return new ListIterator<>(this);
     }
 
 //------------------------------------------------------------------------------
@@ -109,6 +107,18 @@ public interface List<T> extends Vector<T> {
     T removeLast();
 
 //------------------------------------------------------------------------------
+
+    /**
+     * Overwrites a value at a specified index
+     * with a new value.
+     *
+     * @param value New value.
+     * @param index Specified index.
+     */
+    @SuppressWarnings("unused")
+    void update(T value, int index);
+
+//------------------------------------------------------------------------------
     /**
      * Verifies if a provided index is within the DataStructure or not
      *
@@ -124,14 +134,14 @@ public interface List<T> extends Vector<T> {
 
     /**
      * Static Iterator class so that the List can be iterated on via
-     * the enhance for loop
+     * the enhance for loop.
      *
      * @author Jabari Dash
      * @param <T> Generic type
      */
-    class IndexedDataStructureIterator<T> implements Iterator<T> {
+    class ListIterator<T> implements Iterator<T> {
         private List<T> list;   // List to iterate over
-        private int cursor;                     // Cursor to keep track of position in iteration
+        private int cursor;     // Cursor to keep track of position in iteration
 
         /**
          * Constructor, initialize cursor to index 0, and the list
@@ -139,7 +149,7 @@ public interface List<T> extends Vector<T> {
          *
          * @param list The list to be iterated on
          */
-        public IndexedDataStructureIterator(List<T> list) {
+        private ListIterator(List<T> list) {
             this.list = list;
             this.cursor = 0;
         }

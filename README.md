@@ -1,92 +1,95 @@
-# Data Structures
+# Java Data Structures
 
-This is project is a tutorial that covers common data structures that are
-seen in introductory and intermediate computer science courses. The site contains
-explanations, diagrams, and mathematical proofs for each data structure. In addition
-to the online tutorials, the data structures can be downloaded as a 
-[Java 8 library][jar_file] for
-readers to test with their own code.
+[![Build Status](https://travis-ci.org/N02870941/java_data_structures.svg?branch=vectors)](https://travis-ci.org/N02870941/java_data_structures)
 
-## Prerequisites
+This is a code repository that contains implementations of
+common computer science data structures. However, if you are only
+interested using the data structures in another project, you may
+simply download the runnable binary `java_data_structures.jar` from the `/bin` directory and include it in your project. By default, a test application
+that tests the data structures is run. However, simply including the `.jar`
+file will allow you to import any data structure that the API offers.
 
-This tutorial assumes that the reader has either taken or is taking an introduction to
-programming course or has the equivalent knowledge. Knowing a the Java 
-programming language would be useful for reading code examples, but the
-idea behind the data structures are language agnostic.
+## Dependencies
+This project aims to have as few third-party dependencies as possible. However,
+we are assuming that you have Java 8, Gradle, and Python 2.7 installed on
+your development machine. With this, you can build and run the code.
 
-The core programming concepts that the reader should know include:
+**Note:** *Python and Groovy are only necessary to run the tests, but Java 8
+and Gradle are required to build and run the API.*
 
-* Arrays
-* Variables
-* Methods / Functions
-* Loops
-* Recursion
-* Parameterized types
+#### Languages
+The API is implemented with the Java Standard Edition Development Kit 8
+(Java SDK 8), and the tests are written in Groovy. Graphs for used for tutorials
+are generated with Python and not pertinent to development in this project.
 
-## What Will Be Covered
+- [Java SDK 8][java]
+- [Groovy 2.4][groovy]
+- [Python 2.7][python]
 
-The following categories will be covered by this project.
+#### Build Tools
+Build automation is handled by Gradle.
 
-### Vectors
+- [Gradle 4.2.1][gradle]
 
-Vectors are any data structure that takes a linear form. These are data 
-structures that are used to represent lists, sequences, or provide some 
-sort of ordering to data. [Learn more about Vectors...][vector]
+#### External APIs / JARs
+The core API does not have any external dependencies. However, the
+tests and graph generator require the following frameworks / libraries:
 
-### Trees
+- [OpenCSV][open_csv]
+- [Spock Framework][spock_framework]
+- [Matplotlib][matplotlib]
+- [NumPy][numpy]
+- [SciPy Library][scipy]
 
-Trees are non-linear data structures often used for keep data organized.
-We typically use trees when the data that we are working with can be 
-sorted / ordered. [Learn more about Trees...][tree]
+**Note:** *OpenCSV and Spock will be downloaded automatically upon building
+this project - no extra work is required.*
 
-### Sets
+## Installation
+Getting started is as simple as cloning the repository,
+opening it with your favorite IDE or text editor,
+and building the code.
 
-A Set is a dynamically sized group of unordered unique elements.
-Finding an application for a set may seem more challenging, 
-when we can just put them into some sort of list. The advantage 
-comes in the speed of lookup and insertion.
-[Learn more about Sets...][set]
+To do this via command line, execute the following:
 
-### Maps
+```bash
+git clone https://github.com/N02870941/java_data_structures.git
 
-Maps are like dictionaries. They are unordered, dynamically sized
-groups of unique key to non-unique value mappings - hence the name, 
-Map. Maps have many applications, such as implementing dictionaries 
-(key is to word, as value is to definition).
-[Learn more about Maps][map]
+cd java_data_structures
 
-### Graphs
+gradle build
 
-Graphs are an abstract data structure with tons of applications.
-In essence, a graph is a set of objects that are (potentially)
-connected to other objects in the set. A good application of a graph
-is to represent a highway system between cities.
-[Learn more about Graphs...][graph]
+gradle run -q
+```
 
-## The Code
+## Uninstallation
+You can simply delete the `java_data_structures` folder, as this is a self-contained
+project. All external API dependencies will be deleted as well.
 
-All of the aforementioned data structures are implemented in the Java 
-programming language. The code is available as a library in the following formats:
+**Note:** *Be careful, as the following line is irreversible.*
 
- * [Source code GitHub][github_repo].
- * [Java Executable Binary][jar_file]
- 
- For more information on about the API, please
- see the following links.
+```bash
+rm -rf java_data_structures
+```
 
-[Setup and Installation][setup_md]
+## Development
+This project was developed using [IntelliJ][intellij], so it is already an IntelliJ project. Eclipse would work well too. However, note, provided that
+this project runs several languages, consider using an IDE that supports
+each of them.
 
-[API Documentation][javadoc]
+## Contributing
+If you would like to contribute or provide a bug fix,
+please see the [documentation for contributing][contributing].
 
+[java]: http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+[groovy]: http://groovy-lang.org/download.html
+[gradle]: https://gradle.org/releases/
+[python]: https://www.python.org/download/releases/2.7/
 
-[jar_file]: http://jabaridash.com:8085/build/java_data_structures.jar
-[setup_md]: docs/dev/setup/SETUP.md
-[javadoc]: docs/javadoc/index.html
-[vector]: docs/structures/vectors/Vector.md
-[tree]: docs/structures/trees/Tree.md
-[graph]: docs/structures/graphs/Graph.md
-[map]: docs/structures/maps/Map.md
-[set]: docs/structures/sets/Set.md
+[open_csv]: http://opencsv.sourceforge.net/
+[spock_framework]: http://spockframework.org/spock/docs/1.1/all_in_one.html
+[matplotlib]: https://matplotlib.org/index.html
+[numpy]: https://pypi.python.org/pypi/numpy
+[scipy]: https://www.scipy.org/scipylib/index.html
 
-[github_repo]: https://github.com/N02870941/java_data_structures
-
+[intellij]: https://www.jetbrains.com/idea/
+[contributing]: CONTRIBUTING.md

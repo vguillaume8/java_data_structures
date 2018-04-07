@@ -6,15 +6,147 @@ import java.util.List;
 
 class Util {
 
-    public static String testDirectory = "./src/test/groovy/";
+    public static String testDirectory = "." + File.separator +
+                                         "src" + File.separator +
+                                         "test" + File.separator;
+
+    public static String pathToPlotGenerator = testDirectory +
+                                               "python" + File.separator;
+
+
+    public static String dataDirectory = "." + File.separator + "data" + File.separator
+
+    public static String csvDirectory = dataDirectory + "csv" + File.separator
+    public static String pngDirectory = dataDirectory + "png" + File.separator
+
+//------------------------------------------------------------------------------
+
+    /**
+     *
+     * @param bool
+     * @return
+     */
+    @SuppressWarnings("unused")
+    static String toPythonBoolean(boolean bool) {
+        return bool ? "True" : "False"
+    }
+
+//------------------------------------------------------------------------------
+
+    /**
+     *
+     * @param experimentName
+     * @param plotTitle
+     * @param inputDataLabel
+     * @param xAxisLabel
+     * @param yAxisLabel
+     */
+    @SuppressWarnings("unused")
+    static boolean generatePlot(String experimentName,
+                        String plotTitle,
+                        String inputDataLabel,
+                        String xAxisLabel,
+                        String yAxisLabel,
+                        String dependentVariable,
+                        String independentVariable,
+                        boolean exponentialFit,
+                        boolean cubicFit,
+                        boolean quadraticFit,
+                        boolean nLogNFit,
+                        boolean linearFit,
+                        boolean logarithmicFit) {
+
+        String[] c = [
+                "python",
+                pathToPlotGenerator       + "plot_analytics.py",
+                "--input-file-name="      + experimentName,
+                "--data-directory="       + dataDirectory,
+                "--plot-title="           + plotTitle,
+                "--input-data-label="     + inputDataLabel,
+                "--x-axis-label="         + xAxisLabel,
+                "--y-axis-label="         + yAxisLabel,
+                "--dependent-variable="   + dependentVariable,
+                "--independent-variable=" + independentVariable,
+                "--exponential-fit="      + toPythonBoolean(exponentialFit),
+                "--cubic-fit="            + toPythonBoolean(cubicFit),
+                "--quadratic-fit="        + toPythonBoolean(quadraticFit),
+                "--n-log-n-fit="          + toPythonBoolean(nLogNFit),
+                "--linear-fit="           + toPythonBoolean(linearFit),
+                "--logarithmic-fit="      + toPythonBoolean(logarithmicFit)
+            ];
+
+        StringJoiner sj = new StringJoiner(" ");
+
+        for (String s : c) {
+            sj.add(s);
+        }
+
+        String command = sj.toString();
+
+        final Process p = Runtime.getRuntime().exec(command);
+
+        // Run python command
+        new Thread(new Runnable() {
+            void run() {
+                BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
+                String line = null;
+
+                try {
+                    // Show the output
+                    while ((line = input.readLine()) != null) {
+                        println(line);
+                    }
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+
+        try {
+            p.waitFor();
+            final int exitValue = p.waitFor();
+
+            if (exitValue != 0) {
+
+                System.out.println("Failed to execute the following command: " + command + " due to the following error(s):");
+
+                // Show error message
+                try {
+                    InputStream stream = p.getErrorStream()
+
+                    final BufferedReader b = new BufferedReader(new InputStreamReader(stream));
+
+
+                    String line;
+
+                    if ((line = b.readLine()) != null) {
+                        println(line);
+                    }
+
+                } catch (final IOException e) {
+                    e.printStackTrace();
+                }
+
+                throw new Exception("Plot creation was unsuccessful")
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return true
+    }
+
+//------------------------------------------------------------------------------
 
     @SuppressWarnings("unused")
-    static CSVWriter getCSVWriter(String fileName) {
+    static CSVWriter getCSVWriter(String filePath) {
+
         CSVWriter csvWriter;
         FileWriter fileWriter;
         File file
 
-        file = new File(fileName)
+        file = new File(csvDirectory + filePath + ".csv")
 
         file.createNewFile()
 
@@ -72,10 +204,10 @@ class Util {
 
         if (a.length == b.length) {
 
-            // check the keys
+            // check the elements
             for (int i = 0; i < a.length; i++) {
 
-                // If ith keys in both arrays are unequal
+                // If ith elements in both arrays are unequal
                 if (!a[i].equals(b[i])) {
                     return false;
                 }

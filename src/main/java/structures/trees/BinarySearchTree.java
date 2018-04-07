@@ -305,7 +305,7 @@ public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, 
      * @param node Node to start recursion from.
      * @return Number of levels in the BinaryTree
      */
-    protected int height(BinarySearchTreeNode<K, V> node) {
+    public int height(BinarySearchTreeNode<K, V> node) {
 
         // Pick the larger of the two, and add one to account
         // for the level that we are currently at.

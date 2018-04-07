@@ -23,19 +23,10 @@ public interface Vector<T> extends DataStructure<T>,  Iterable<T> {
 
     /**
      * Determines whether or not a specified value is in the vector
+     * via linear search.
      *
-     * <br>
-     * <br>
-     * <strong>Time Complexity:</strong><br>
-     * <strong>Best: </strong>&Omega;(1)<br>
-     * <strong>Worst: </strong>O(n)<br>
-     *
-     * <br>
-     * <strong>Space Complexity:</strong><br>
-     * <strong>Avg: </strong>&Theta;(1)<br>
-     *
-     * @param value Specified value to search for
-     * @return True if and only if the specified value if in the vector
+     * @param value Specified value to search for.
+     * @return True if and only if the specified value if in the vector.
      */
     @Override
     default boolean contains(T value) {

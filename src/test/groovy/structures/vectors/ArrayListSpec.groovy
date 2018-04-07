@@ -3,7 +3,6 @@ package structures.vectors
 import spock.lang.Unroll
 import spock.lang.Specification
 import structures.commons.DataStructure.EmptyDataStructureException
-import structures.vectors.ArrayList;
 
 class ArrayListSpec extends Specification {
 
@@ -137,12 +136,50 @@ class ArrayListSpec extends Specification {
 //------------------------------------------------------------------------------
 
     @Unroll
+    def "#insert() at first index"() {
+        setup:
+        ArrayList list = new ArrayList();
+
+        when:
+
+        for (int i = 0; i < 9; i++) {
+            list.insert(i, 0);
+        }
+
+        then:
+        list.get(list.size()-1) == 0
+        list.get(0) == 8
+    }
+
+//------------------------------------------------------------------------------
+
+    @Unroll
+    def "#insert() at back index"() {
+        setup:
+        ArrayList list = new ArrayList();
+
+        when:
+
+        for (int i = 0; i < 9; i++) {
+            list.insert(i, list.size()-1);
+        }
+
+        then:
+        list.get(list.size()-1) == 0
+        list.get(0) == 1
+
+    }
+
+//------------------------------------------------------------------------------
+
+    @Unroll
     def "#insertFirst()"() {
         setup:
         ArrayList list = new ArrayList(values);
 
         when:
-        list.insertFirst(value)
+        list.prepend(1)
+        list.prepend(value)
 
         then:
         list.get(0) == value
@@ -163,7 +200,7 @@ class ArrayListSpec extends Specification {
         ArrayList list = new ArrayList(values);
 
         when:
-        list.insertLast(value)
+        list.append(value)
 
         then:
         list.get(list.size()-1) == value

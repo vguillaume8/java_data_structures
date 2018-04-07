@@ -112,7 +112,7 @@ public final class LinkedList<T> implements List<T> {
    *
    * @param value The specified value to be inserted
    */
-  public boolean insertFirst(T value) {
+  public boolean prepend(T value) {
     Node<T> node = new Node<>(value);
 
     if (this.empty()) {
@@ -136,7 +136,7 @@ public final class LinkedList<T> implements List<T> {
    *
    * @param value The specified value to be inserted
    */
-  public boolean insertLast(T value) {
+  public boolean append(T value) {
     Node<T> node = new Node<>(value);
 
     if (empty()) {
@@ -376,6 +376,18 @@ public final class LinkedList<T> implements List<T> {
   }
 
   /**
+   * Overwrites a value at a specified index
+   * with a new value.
+   *
+   * @param value
+   * @param index
+   */
+  public void update(T value, int index) {
+
+    getNode(index).value = value;
+  }
+
+  /**
    * Node class for chaining together keys in a LinkedList
    *
    * @author Jabari Dash
@@ -407,5 +419,6 @@ public final class LinkedList<T> implements List<T> {
 
       return value == null ? "null" : value.toString();
     }
+
   }
 }
