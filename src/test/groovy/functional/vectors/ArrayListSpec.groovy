@@ -1,23 +1,111 @@
 package functional.vectors
 
+import spock.lang.Ignore
+import structures.vectors.ArrayList
 import spock.lang.Specification
 import spock.lang.Unroll
 
 class ArrayListSpec extends Specification{
 
+    @Ignore
     @Unroll
-    def "Merge two sorted lists"() {
+    def "Rotate matrix 90 degrees clockwise"() {
+        setup:
+        ArrayList< ArrayList<Integer> > matrix
+        int n
+        String temp
+        String before
+        String after
+        String m1 = "[[1, 2, 3, 4], " +
+                    "[1, 2, 3, 4], "  +
+                    "[1, 2, 3, 4], "  +
+                    "[1, 2, 3, 4]]"
 
-        // TODO - Implement
+        String m2 = "[[1, 1, 1, 1], " +
+                    "[2, 2, 2, 2], "  +
+                    "[3, 3, 3, 3], "  +
+                    "[4, 4, 4, 4]]"
+
+        when:
+        matrix = new ArrayList< ArrayList<Integer> >()
+        n = 4
+
+        for (int i = 0; i < n; i++) {
+
+            matrix.insert(new ArrayList<Integer>())
+
+            for (int j = 0; j < n; j++) {
+                matrix.get(i).insert(j + 1)
+            }
+        }
+
+        before = matrix.toString()
+
+        for (int i = 0; i < n; i++) {
+
+            for (int j = i+1; j < n; j++) {
+                temp = matrix.get(i).get(j)
+                matrix.get(j).update(matrix.get(j).get(i), j)
+                matrix.get(j).update(temp, i)
+            }
+
+            for (int j = 0; j < 4 / 2; j++) {
+                temp = matrix.get(i).get(j)
+                matrix.get(i).update(matrix.get(i).get(n-1-j), j)
+                matrix.get(i).update(temp, n-1-j)
+            }
+        }
+
+        after = matrix.toString()
+
+        then:
+        before == m1
+        after  == m2
     }
 
-    /**
-     * http://www.techiedelight.com/0-1-knapsack-problem/
-     */
     @Unroll
-    def "0-1 Knapsack problem"() {
+    def "Selection sort"() {
+        setup:
+        ArrayList<Integer> list
+        int len
+        int min
+        int temp
 
-        // TODO - Implement
+        when:
+        list = new ArrayList<Integer>()
+
+        for (Integer i : input) {
+            list.insert(i)
+        }
+
+        len = list.size()
+
+        for (int i = 0; i < len; i++) {
+            min = i
+
+            for (int j = i; j < len; j++) {
+                if (list.get(j) < list.get(min)) {
+                    min = j
+                }
+            }
+
+            if (min != i) {
+                temp = list.get(i)
+                list.update(list.get(min), i)
+                list.update(temp, min)
+            }
+        }
+
+        then:
+        list.toString() == string
+
+        where:
+        string               || input
+        "[1, 2, 3, 4, 5, 6]" || [2, 1, 3, 5, 6, 4]
+        "[1, 2]"             || [2, 1]
+        "[1, 2, 3]"          || [1, 2, 3]
+        "[1]"                || [1]
+        "[]"                 || []
     }
 
     @Unroll
@@ -41,17 +129,17 @@ class ArrayListSpec extends Specification{
         vprod = 0
 
         for (int i = 0; i < len; i++) {
-            v1.add(input1[i])
-            v2.add(input2[i])
+            v1.insert(input1[i])
+            v2.insert(input2[i])
         }
 
         for (int i = 0; i < len; i++) {
             op1 = v1.get(i)
             op2 = v2.get(i)
 
-            vsum.add(op1 + op2) // v1 + v2
-            vdif.add(op2 - op1) // v2 - v1
-            vprod += op1 * op2  // v1 * v2
+            vsum.insert(op1 + op2) // v1 + v2
+            vdif.insert(op2 - op1) // v2 - v1
+            vprod += op1 * op2     // v1 * v2
         }
 
         then:
