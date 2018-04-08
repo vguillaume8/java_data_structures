@@ -1,4 +1,4 @@
-package functional
+package functional.sets
 
 import spock.lang.Specification
 

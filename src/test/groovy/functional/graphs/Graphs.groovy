@@ -1,4 +1,4 @@
-package functional
+package functional.graphs
 
 import spock.lang.Specification
 

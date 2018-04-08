@@ -1,4 +1,4 @@
-package functional
+package functional.trees
 
 import spock.lang.Specification
 
