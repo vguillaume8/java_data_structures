@@ -120,7 +120,7 @@ public final class Queue<K> implements Vector<K> {
         }
 
         K value = head.value;   // Get value from head
-        head = head.next;       // Set head equal to head's next
+        head    = head.next;    // Set head equal to head's next
         size--;                 // Decrement size of Queue
 
         return value;

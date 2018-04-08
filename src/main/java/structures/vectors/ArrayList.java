@@ -130,6 +130,7 @@ public final class ArrayList<E> implements List<E> {
         }
 
         // Must be within bounds
+        // TODO - IntelliJ says stop always < 0, maybe if-else can be simplified
         if (stop < 0 || stop >= src.length) {
             throw new IllegalArgumentException("Stop index must be in bounds or src array");
         }
