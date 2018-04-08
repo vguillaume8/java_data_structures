@@ -7,13 +7,34 @@ import structures.commons.DataStructure.EmptyDataStructureException
 class LinkedListSpec extends Specification {
 
   @Unroll
+  def "#Check LinkedList equality"() {
+    setup:
+    LinkedList<Integer> list1
+    LinkedList<Integer> list2
+
+    when:
+    list1 = new LinkedList<Integer>(input1)
+    list2 = new LinkedList<Integer>(input2)
+
+    then:
+    list1.equals(list2) == equals
+
+    where:
+    equals || input1       || input2
+    true   || [1, 2, 3, 4] || [1, 2, 3, 4]
+    false  || [1, 2, 3, 4] || [1, 2, 3]
+    true   || []           || []
+    true   || [1]          || [1]
+  }
+
+  @Unroll
   def "#Construct an empty list"() {
     setup:
     LinkedList list = new LinkedList()
 
     expect:
     list.size() == 0
-    list.empty() == true
+    list.empty()
   }
 
 //------------------------------------------------------------------------------

@@ -1,4 +1,4 @@
-package functional
+package functional.maps
 
 import spock.lang.Specification
 
