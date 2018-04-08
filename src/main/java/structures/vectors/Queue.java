@@ -55,6 +55,22 @@ public final class Queue<K> implements Vector<K> {
     }
 
     /**
+     * Determines whether or not this Queue is equal to
+     * a provided object.
+     *
+     * @param object Object to compare this Queue with.
+     * @return True if and only if their types are the same,
+     * lengths are the same, and the contain all the same elements.
+     */
+    @Override
+    public boolean equals(Object object) {
+
+        // Object must be an Queue, and all elements must be equal, or object
+        // must be this Queue itself
+        return this == object || (object instanceof Queue && equivalentTo(object));
+    }
+
+    /**
      * Retrieves, but does not remove the front-most
      * element in the Queue.
      *

@@ -101,6 +101,9 @@ class LinkedListSpec extends Specification {
         then:
         map.size() == size
 
+        // TODO - Draw it out on paper, then manually expect string equals
+        // TODO - Complete this function once the missing equals() methods are implemented in all vectors
+
         where:
         size || input
         9    || [ [1:1], [2:1], [3:1], [4:1], [4:2], [5:1], [6:1], [7:1], [7:2], [7:1] ]

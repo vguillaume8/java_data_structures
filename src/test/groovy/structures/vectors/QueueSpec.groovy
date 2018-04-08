@@ -6,6 +6,28 @@ import structures.commons.DataStructure.EmptyDataStructureException
 import structures.vectors.Queue;
 
 class QueueSpec extends Specification {
+
+    @Unroll
+    def "#Check Queue equality"() {
+        setup:
+        Queue<Integer> list1
+        Queue<Integer> list2
+
+        when:
+        list1 = new Queue<Integer>(input1)
+        list2 = new Queue<Integer>(input2)
+
+        then:
+        list1.equals(list2) == equals
+
+        where:
+        equals || input1       || input2
+        true   || [1, 2, 3, 4] || [1, 2, 3, 4]
+        false  || [1, 2, 3, 4] || [1, 2, 3]
+        true   || []           || []
+        true   || [1]          || [1]
+    }
+
     @Unroll
     def "#Construct an empty Queue"() {
         setup:

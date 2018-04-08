@@ -83,6 +83,24 @@ public final class Stack<T>  implements Vector<T> {
 //------------------------------------------------------------------------------
 
     /**
+     * Determines whether or not this Stack is equal to
+     * a provided object.
+     *
+     * @param object Object to compare this Stack with.
+     * @return True if and only if their types are the same,
+     * lengths are the same, and the contain all the same elements.
+     */
+    @Override
+    public boolean equals(Object object) {
+
+        // Object must be an Stack, and all elements must be equal, or object
+        // must be this Stack itself
+        return this == object || (object instanceof Stack && equivalentTo(object));
+    }
+
+//------------------------------------------------------------------------------
+
+    /**
      * Retrieves and removes top of Stack.
      *
      * @return Value form top of Stack

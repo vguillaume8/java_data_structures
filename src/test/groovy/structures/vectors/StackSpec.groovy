@@ -8,6 +8,27 @@ import structures.vectors.Stack;
 class StackSpec extends Specification {
 
     @Unroll
+    def "#Check Stack equality"() {
+        setup:
+        Stack<Integer> list1
+        Stack<Integer> list2
+
+        when:
+        list1 = new Stack<Integer>(input1)
+        list2 = new Stack<Integer>(input2)
+
+        then:
+        list1.equals(list2) == equals
+
+        where:
+        equals || input1       || input2
+        true   || [1, 2, 3, 4] || [1, 2, 3, 4]
+        false  || [1, 2, 3, 4] || [1, 2, 3]
+        true   || []           || []
+        true   || [1]          || [1]
+    }
+
+    @Unroll
     def "#Construct an empty Stack"() {
         setup:
         Stack stack = new Stack()
