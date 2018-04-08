@@ -13,76 +13,7 @@
       <change beforePath="$PROJECT_DIR$/data/png/levels_in_avl_tree_vs_n_random_keys.png" afterPath="$PROJECT_DIR$/data/png/levels_in_avl_tree_vs_n_random_keys.png" />
       <change beforePath="$PROJECT_DIR$/data/png/levels_in_bst_tree_vs_n_random_keys.png" afterPath="$PROJECT_DIR$/data/png/levels_in_bst_tree_vs_n_random_keys.png" />
       <change beforePath="$PROJECT_DIR$/data/png/shifts_required_when_inserting_rand_index.png" afterPath="$PROJECT_DIR$/data/png/shifts_required_when_inserting_rand_index.png" />
-      <change beforePath="$PROJECT_DIR$/docs/allclasses-frame.html" afterPath="$PROJECT_DIR$/docs/allclasses-frame.html" />
-      <change beforePath="$PROJECT_DIR$/docs/allclasses-noframe.html" afterPath="$PROJECT_DIR$/docs/allclasses-noframe.html" />
-      <change beforePath="$PROJECT_DIR$/docs/constant-values.html" afterPath="$PROJECT_DIR$/docs/constant-values.html" />
-      <change beforePath="$PROJECT_DIR$/docs/deprecated-list.html" afterPath="$PROJECT_DIR$/docs/deprecated-list.html" />
-      <change beforePath="$PROJECT_DIR$/docs/help-doc.html" afterPath="$PROJECT_DIR$/docs/help-doc.html" />
-      <change beforePath="$PROJECT_DIR$/docs/index-all.html" afterPath="$PROJECT_DIR$/docs/index-all.html" />
-      <change beforePath="$PROJECT_DIR$/docs/index.html" afterPath="$PROJECT_DIR$/docs/index.html" />
-      <change beforePath="$PROJECT_DIR$/docs/overview-frame.html" afterPath="$PROJECT_DIR$/docs/overview-frame.html" />
-      <change beforePath="$PROJECT_DIR$/docs/overview-summary.html" afterPath="$PROJECT_DIR$/docs/overview-summary.html" />
-      <change beforePath="$PROJECT_DIR$/docs/overview-tree.html" afterPath="$PROJECT_DIR$/docs/overview-tree.html" />
-      <change beforePath="$PROJECT_DIR$/docs/serialized-form.html" afterPath="$PROJECT_DIR$/docs/serialized-form.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/commons/DataStructure.EmptyDataStructureException.html" afterPath="$PROJECT_DIR$/docs/structures/commons/DataStructure.EmptyDataStructureException.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/commons/DataStructure.html" afterPath="$PROJECT_DIR$/docs/structures/commons/DataStructure.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/commons/Pair.html" afterPath="$PROJECT_DIR$/docs/structures/commons/Pair.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/commons/package-frame.html" afterPath="$PROJECT_DIR$/docs/structures/commons/package-frame.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/commons/package-summary.html" afterPath="$PROJECT_DIR$/docs/structures/commons/package-summary.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/commons/package-tree.html" afterPath="$PROJECT_DIR$/docs/structures/commons/package-tree.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/graphs/Graph.html" afterPath="$PROJECT_DIR$/docs/structures/graphs/Graph.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/graphs/UnweightedDirectedGraph.html" afterPath="$PROJECT_DIR$/docs/structures/graphs/UnweightedDirectedGraph.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/graphs/UnweightedUndirectedGraph.html" afterPath="$PROJECT_DIR$/docs/structures/graphs/UnweightedUndirectedGraph.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/graphs/WeightedDirectedGraph.html" afterPath="$PROJECT_DIR$/docs/structures/graphs/WeightedDirectedGraph.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/graphs/WeightedUndirectedGraph.html" afterPath="$PROJECT_DIR$/docs/structures/graphs/WeightedUndirectedGraph.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/graphs/package-frame.html" afterPath="$PROJECT_DIR$/docs/structures/graphs/package-frame.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/graphs/package-summary.html" afterPath="$PROJECT_DIR$/docs/structures/graphs/package-summary.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/graphs/package-tree.html" afterPath="$PROJECT_DIR$/docs/structures/graphs/package-tree.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/maps/HashMap.html" afterPath="$PROJECT_DIR$/docs/structures/maps/HashMap.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/maps/HashMapChaining.html" afterPath="$PROJECT_DIR$/docs/structures/maps/HashMapChaining.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/maps/HashMapDoubleHashing.html" afterPath="$PROJECT_DIR$/docs/structures/maps/HashMapDoubleHashing.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/maps/HashMapLinearProbing.html" afterPath="$PROJECT_DIR$/docs/structures/maps/HashMapLinearProbing.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/maps/HashMapQuadraticProbing.html" afterPath="$PROJECT_DIR$/docs/structures/maps/HashMapQuadraticProbing.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/maps/Map.html" afterPath="$PROJECT_DIR$/docs/structures/maps/Map.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/maps/package-frame.html" afterPath="$PROJECT_DIR$/docs/structures/maps/package-frame.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/maps/package-summary.html" afterPath="$PROJECT_DIR$/docs/structures/maps/package-summary.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/maps/package-tree.html" afterPath="$PROJECT_DIR$/docs/structures/maps/package-tree.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/sets/HashSet.html" afterPath="$PROJECT_DIR$/docs/structures/sets/HashSet.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/sets/Set.html" afterPath="$PROJECT_DIR$/docs/structures/sets/Set.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/sets/TreeSet.html" afterPath="$PROJECT_DIR$/docs/structures/sets/TreeSet.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/sets/package-frame.html" afterPath="$PROJECT_DIR$/docs/structures/sets/package-frame.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/sets/package-summary.html" afterPath="$PROJECT_DIR$/docs/structures/sets/package-summary.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/sets/package-tree.html" afterPath="$PROJECT_DIR$/docs/structures/sets/package-tree.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/trees/AVLTree.html" afterPath="$PROJECT_DIR$/docs/structures/trees/AVLTree.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/trees/BinarySearchTree.html" afterPath="$PROJECT_DIR$/docs/structures/trees/BinarySearchTree.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/trees/BinaryTree.TreeIterator.html" afterPath="$PROJECT_DIR$/docs/structures/trees/BinaryTree.TreeIterator.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/trees/BinaryTree.html" afterPath="$PROJECT_DIR$/docs/structures/trees/BinaryTree.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/trees/Heap.html" afterPath="$PROJECT_DIR$/docs/structures/trees/Heap.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/trees/PrefixTree.html" afterPath="$PROJECT_DIR$/docs/structures/trees/PrefixTree.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/trees/RedBlackTree.html" afterPath="$PROJECT_DIR$/docs/structures/trees/RedBlackTree.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/trees/package-frame.html" afterPath="$PROJECT_DIR$/docs/structures/trees/package-frame.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/trees/package-summary.html" afterPath="$PROJECT_DIR$/docs/structures/trees/package-summary.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/trees/package-tree.html" afterPath="$PROJECT_DIR$/docs/structures/trees/package-tree.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/vectors/ArrayList.html" afterPath="$PROJECT_DIR$/docs/structures/vectors/ArrayList.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/vectors/LinkedList.Node.html" afterPath="$PROJECT_DIR$/docs/structures/vectors/LinkedList.Node.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/vectors/LinkedList.html" afterPath="$PROJECT_DIR$/docs/structures/vectors/LinkedList.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/vectors/List.ListIterator.html" afterPath="$PROJECT_DIR$/docs/structures/vectors/List.ListIterator.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/vectors/List.html" afterPath="$PROJECT_DIR$/docs/structures/vectors/List.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/vectors/Queue.html" afterPath="$PROJECT_DIR$/docs/structures/vectors/Queue.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/vectors/Stack.html" afterPath="$PROJECT_DIR$/docs/structures/vectors/Stack.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/vectors/Vector.html" afterPath="$PROJECT_DIR$/docs/structures/vectors/Vector.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/vectors/package-frame.html" afterPath="$PROJECT_DIR$/docs/structures/vectors/package-frame.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/vectors/package-summary.html" afterPath="$PROJECT_DIR$/docs/structures/vectors/package-summary.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/vectors/package-tree.html" afterPath="$PROJECT_DIR$/docs/structures/vectors/package-tree.html" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/structures/vectors/LinkedList.java" afterPath="$PROJECT_DIR$/src/main/java/structures/vectors/LinkedList.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/structures/vectors/Queue.java" afterPath="$PROJECT_DIR$/src/main/java/structures/vectors/Queue.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/structures/vectors/Stack.java" afterPath="$PROJECT_DIR$/src/main/java/structures/vectors/Stack.java" />
-      <change beforePath="$PROJECT_DIR$/src/test/groovy/functional/vectors/LinkedListSpec.groovy" afterPath="$PROJECT_DIR$/src/test/groovy/functional/vectors/LinkedListSpec.groovy" />
-      <change beforePath="$PROJECT_DIR$/src/test/groovy/structures/trees/BinarySearchTreeSpec.groovy" afterPath="$PROJECT_DIR$/src/test/groovy/structures/trees/BinarySearchTreeSpec.groovy" />
-      <change beforePath="$PROJECT_DIR$/src/test/groovy/structures/vectors/ArrayListSpec.groovy" afterPath="$PROJECT_DIR$/src/test/groovy/structures/vectors/ArrayListSpec.groovy" />
-      <change beforePath="$PROJECT_DIR$/src/test/groovy/structures/vectors/LinkedListSpec.groovy" afterPath="$PROJECT_DIR$/src/test/groovy/structures/vectors/LinkedListSpec.groovy" />
-      <change beforePath="$PROJECT_DIR$/src/test/groovy/structures/vectors/QueueSpec.groovy" afterPath="$PROJECT_DIR$/src/test/groovy/structures/vectors/QueueSpec.groovy" />
-      <change beforePath="$PROJECT_DIR$/src/test/groovy/structures/vectors/StackSpec.groovy" afterPath="$PROJECT_DIR$/src/test/groovy/structures/vectors/StackSpec.groovy" />
+      <change beforePath="$PROJECT_DIR$/src/test/groovy/functional/vectors/ArrayListSpec.groovy" afterPath="$PROJECT_DIR$/src/test/groovy/functional/vectors/ArrayListSpec.groovy" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -117,7 +48,30 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="600" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
+      <file leaf-file-name="ArrayListSpec.groovy" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/groovy/functional/vectors/ArrayListSpec.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="816">
+              <caret line="141" column="34" lean-forward="false" selection-start-line="141" selection-start-column="34" selection-end-line="141" selection-end-column="34" />
+              <folding>
+                <element signature="e#28#52#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ArrayList.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/structures/vectors/ArrayList.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="282">
+              <caret line="15" column="17" lean-forward="false" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -134,6 +88,7 @@
       <find>equals</find>
       <find>equ</find>
       <find>empty(</find>
+      <find>add</find>
     </findStrings>
     <replaceStrings>
       <replace>||</replace>
@@ -490,9 +445,7 @@
         <option value="$PROJECT_DIR$/TODO.md" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/main/java/structures/trees/BinaryTree.java" />
-        <option value="$PROJECT_DIR$/src/main/java/structures/vectors/Vector.java" />
         <option value="$PROJECT_DIR$/src/main/java/structures/vectors/List.java" />
-        <option value="$PROJECT_DIR$/src/main/java/structures/vectors/ArrayList.java" />
         <option value="$PROJECT_DIR$/src/main/java/structures/commons/Pair.java" />
         <option value="$PROJECT_DIR$/src/main/java/structures/trees/BinarySearchTree.java" />
         <option value="$PROJECT_DIR$/requirements.txt" />
@@ -500,7 +453,6 @@
         <option value="$PROJECT_DIR$/src/test/python/functions.py" />
         <option value="$PROJECT_DIR$/src/test/python/file_io.py" />
         <option value="$PROJECT_DIR$/build.sh" />
-        <option value="$PROJECT_DIR$/src/test/groovy/commons/Util.groovy" />
         <option value="$PROJECT_DIR$/src/test/groovy/commons/Java8Util.java" />
         <option value="$PROJECT_DIR$/src/test/groovy/functional/graphs/Graphs.groovy" />
         <option value="$PROJECT_DIR$/src/test/groovy/functional/maps/Maps.groovy" />
@@ -513,15 +465,19 @@
         <option value="$PROJECT_DIR$/src/test/groovy/functional/vectors/Stack.groovy" />
         <option value="$PROJECT_DIR$/src/test/groovy/functional/vectors/StackSpec.groovy" />
         <option value="$PROJECT_DIR$/src/test/groovy/functional/vectors/QueueSpec.groovy" />
-        <option value="$PROJECT_DIR$/src/test/groovy/functional/vectors/LinkedListSpec.groovy" />
         <option value="$PROJECT_DIR$/src/test/groovy/structures/trees/BinarySearchTreeSpec.groovy" />
         <option value="$PROJECT_DIR$/src/test/groovy/structures/vectors/LinkedListSpec.groovy" />
         <option value="$PROJECT_DIR$/src/test/groovy/structures/vectors/ArrayListSpec.groovy" />
         <option value="$PROJECT_DIR$/src/main/java/structures/vectors/LinkedList.java" />
         <option value="$PROJECT_DIR$/src/test/groovy/structures/vectors/QueueSpec.groovy" />
-        <option value="$PROJECT_DIR$/src/main/java/structures/vectors/Queue.java" />
         <option value="$PROJECT_DIR$/src/test/groovy/structures/vectors/StackSpec.groovy" />
         <option value="$PROJECT_DIR$/src/main/java/structures/vectors/Stack.java" />
+        <option value="$PROJECT_DIR$/src/main/java/structures/vectors/ArrayList.java" />
+        <option value="$PROJECT_DIR$/src/main/java/structures/vectors/Vector.java" />
+        <option value="$PROJECT_DIR$/src/main/java/structures/vectors/Queue.java" />
+        <option value="$PROJECT_DIR$/src/test/groovy/commons/Util.groovy" />
+        <option value="$PROJECT_DIR$/src/test/groovy/functional/vectors/LinkedListSpec.groovy" />
+        <option value="$PROJECT_DIR$/src/test/groovy/functional/vectors/ArrayListSpec.groovy" />
       </list>
     </option>
   </component>
@@ -575,27 +531,6 @@
               <item name="java_data_structures" type="b2602c69:ProjectViewProjectNode" />
               <item name="java_data_structures" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="java_data_structures" type="b2602c69:ProjectViewProjectNode" />
-              <item name="java_data_structures" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="java_data_structures" type="b2602c69:ProjectViewProjectNode" />
-              <item name="java_data_structures" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="structures" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="java_data_structures" type="b2602c69:ProjectViewProjectNode" />
-              <item name="java_data_structures" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
             <path>
@@ -604,6 +539,14 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="groovy" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="java_data_structures" type="b2602c69:ProjectViewProjectNode" />
+              <item name="java_data_structures" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="groovy" type="462c0819:PsiDirectoryNode" />
+              <item name="functional" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="java_data_structures" type="b2602c69:ProjectViewProjectNode" />
@@ -642,7 +585,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.All in java_data_structures_test">
+  <component name="RunManager" selected="JUnit.All in java_data_structures_test (2)">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="WIDTH" value="400" />
       <option name="HEIGHT" value="300" />
@@ -662,6 +605,26 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="" />
       <envs />
+    </configuration>
+    <configuration name="All in java_data_structures_test (2)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="java_data_structures_test" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
     </configuration>
     <configuration name="All in java_data_structures_test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
@@ -683,19 +646,19 @@
       <envs />
       <patterns />
     </configuration>
-    <configuration name="ArrayListSpec.#Check ArrayList equality" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ArrayListSpec.Rotate matrix 90 degrees clockwise" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="structures.vectors.*" />
+          <option name="PATTERN" value="functional.vectors.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <module name="java_data_structures_test" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="structures.vectors" />
-      <option name="MAIN_CLASS_NAME" value="structures.vectors.ArrayListSpec" />
-      <option name="METHOD_NAME" value="#Check ArrayList equality" />
+      <option name="PACKAGE_NAME" value="functional.vectors" />
+      <option name="MAIN_CLASS_NAME" value="functional.vectors.ArrayListSpec" />
+      <option name="METHOD_NAME" value="Rotate matrix 90 degrees clockwise" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -708,19 +671,19 @@
       <envs />
       <patterns />
     </configuration>
-    <configuration name="LinkedListSpec.#Check LinkedList equality" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ArrayListSpec.Selection sort" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="structures.vectors.*" />
+          <option name="PATTERN" value="functional.vectors.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <module name="java_data_structures_test" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="structures.vectors" />
-      <option name="MAIN_CLASS_NAME" value="structures.vectors.LinkedListSpec" />
-      <option name="METHOD_NAME" value="#Check LinkedList equality" />
+      <option name="PACKAGE_NAME" value="functional.vectors" />
+      <option name="MAIN_CLASS_NAME" value="functional.vectors.ArrayListSpec" />
+      <option name="METHOD_NAME" value="Selection sort" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -733,44 +696,19 @@
       <envs />
       <patterns />
     </configuration>
-    <configuration name="QueueSpec.#Check Queue equality" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ArrayListSpec.Vector addition, subtraction, and dot product" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="structures.vectors.*" />
+          <option name="PATTERN" value="functional.vectors.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <module name="java_data_structures_test" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="structures.vectors" />
-      <option name="MAIN_CLASS_NAME" value="structures.vectors.QueueSpec" />
-      <option name="METHOD_NAME" value="#Check Queue equality" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-    </configuration>
-    <configuration name="StackSpec.#Check Stack equality" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="structures.vectors.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="java_data_structures_test" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="structures.vectors" />
-      <option name="MAIN_CLASS_NAME" value="structures.vectors.StackSpec" />
-      <option name="METHOD_NAME" value="#Check Stack equality" />
+      <option name="PACKAGE_NAME" value="functional.vectors" />
+      <option name="MAIN_CLASS_NAME" value="functional.vectors.ArrayListSpec" />
+      <option name="METHOD_NAME" value="Vector addition, subtraction, and dot product" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -844,19 +782,19 @@
       <predefined_log_file id="idea.log" enabled="true" />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.All in java_data_structures_test" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.LinkedListSpec.#Check LinkedList equality" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.ArrayListSpec.#Check ArrayList equality" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.QueueSpec.#Check Queue equality" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.StackSpec.#Check Stack equality" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.All in java_data_structures_test (2)" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.ArrayListSpec.Vector addition, subtraction, and dot product" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.All in java_data_structures_test" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.ArrayListSpec.Selection sort" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.ArrayListSpec.Rotate matrix 90 degrees clockwise" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.All in java_data_structures_test" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.StackSpec.#Check Stack equality" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.QueueSpec.#Check Queue equality" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.LinkedListSpec.#Check LinkedList equality" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.ArrayListSpec.#Check ArrayList equality" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.All in java_data_structures_test (2)" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.ArrayListSpec.Vector addition, subtraction, and dot product" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.ArrayListSpec.Rotate matrix 90 degrees clockwise" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.ArrayListSpec.Selection sort" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.All in java_data_structures_test" />
       </list>
     </recent_temporary>
   </component>
@@ -883,39 +821,40 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ArrayListSpec_#Check_ArrayList_equality - 2018.04.08 at 04h 22m 17s.xml">
-      <configuration name="ArrayListSpec.#Check ArrayList equality" configurationId="JUnit" />
+    <history-entry file="All_in_java_data_structures_test_(2) - 2018.04.08 at 10h 37m 57s.xml">
+      <configuration name="All in java_data_structures_test (2)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LinkedListSpec_#Check_LinkedList_equality - 2018.04.08 at 04h 19m 30s.xml">
-      <configuration name="LinkedListSpec.#Check LinkedList equality" configurationId="JUnit" />
+    <history-entry file="All_in_java_data_structures_test_(2) - 2018.04.08 at 10h 39m 24s.xml">
+      <configuration name="All in java_data_structures_test (2)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LinkedListSpec_#Check_LinkedList_equality - 2018.04.08 at 04h 23m 00s.xml">
-      <configuration name="LinkedListSpec.#Check LinkedList equality" configurationId="JUnit" />
+    <history-entry file="ArrayListSpec_Rotate_matrix_90_degrees_clockwise - 2018.04.08 at 10h 05m 32s.xml">
+      <configuration name="ArrayListSpec.Rotate matrix 90 degrees clockwise" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LinkedListSpec_#Check_LinkedList_equality - 2018.04.08 at 04h 23m 10s.xml">
-      <configuration name="LinkedListSpec.#Check LinkedList equality" configurationId="JUnit" />
+    <history-entry file="ArrayListSpec_Rotate_matrix_90_degrees_clockwise - 2018.04.08 at 10h 09m 48s.xml">
+      <configuration name="ArrayListSpec.Rotate matrix 90 degrees clockwise" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="QueueSpec_#Check_Queue_equality - 2018.04.08 at 04h 24m 36s.xml">
-      <configuration name="QueueSpec.#Check Queue equality" configurationId="JUnit" />
+    <history-entry file="ArrayListSpec_Rotate_matrix_90_degrees_clockwise - 2018.04.08 at 10h 09m 55s.xml">
+      <configuration name="ArrayListSpec.Rotate matrix 90 degrees clockwise" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="QueueSpec_#Check_Queue_equality - 2018.04.08 at 04h 24m 50s.xml">
-      <configuration name="QueueSpec.#Check Queue equality" configurationId="JUnit" />
+    <history-entry file="ArrayListSpec_Rotate_matrix_90_degrees_clockwise - 2018.04.08 at 10h 14m 37s.xml">
+      <configuration name="ArrayListSpec.Rotate matrix 90 degrees clockwise" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="QueueSpec_#Check_Queue_equality - 2018.04.08 at 04h 24m 56s.xml">
-      <configuration name="QueueSpec.#Check Queue equality" configurationId="JUnit" />
+    <history-entry file="ArrayListSpec_Rotate_matrix_90_degrees_clockwise - 2018.04.08 at 10h 14m 51s.xml">
+      <configuration name="ArrayListSpec.Rotate matrix 90 degrees clockwise" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="StackSpec_#Check_Stack_equality - 2018.04.08 at 04h 26m 45s.xml">
-      <configuration name="StackSpec.#Check Stack equality" configurationId="JUnit" />
+    <history-entry file="ArrayListSpec_Rotate_matrix_90_degrees_clockwise - 2018.04.08 at 10h 14m 53s.xml">
+      <configuration name="ArrayListSpec.Rotate matrix 90 degrees clockwise" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="StackSpec_#Check_Stack_equality - 2018.04.08 at 04h 26m 54s.xml">
-      <configuration name="StackSpec.#Check Stack equality" configurationId="JUnit" />
+    <history-entry file="ArrayListSpec_Vector_addition,_subtraction,_and_dot_product - 2018.04.08 at 10h 39m 52s.xml">
+      <configuration name="ArrayListSpec.Vector addition, subtraction, and dot product" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="StackSpec_#Check_Stack_equality - 2018.04.08 at 04h 27m 01s.xml">
-      <configuration name="StackSpec.#Check Stack equality" configurationId="JUnit" />
+    <history-entry file="ArrayListSpec_Vector_addition,_subtraction,_and_dot_product - 2018.04.08 at 10h 40m 49s.xml">
+      <configuration name="ArrayListSpec.Vector addition, subtraction, and dot product" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="134" y="35" width="2746" height="1765" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -925,15 +864,15 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32994732" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32886806" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32886806" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33958474" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" x="134" y="632" width="2746" height="507" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33958474" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" x="134" y="632" width="2746" height="507" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26222724" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22799097" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294347" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32953784" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299611" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32994732" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -991,20 +930,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/structures/trees/Heap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="2" column="19" lean-forward="false" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/structures/trees/RedBlackTree.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="2" column="19" lean-forward="false" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/structures/commons/DataStructure.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1827">
@@ -1058,14 +983,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3026">
           <caret line="8" column="42" lean-forward="false" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1127,27 +1044,6 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/groovy/commons/Util.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6565">
-          <caret line="69" column="46" lean-forward="true" selection-start-line="69" selection-start-column="46" selection-end-line="69" selection-end-column="46" />
-          <folding>
-            <element signature="e#17#45#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/groovy/commons/Java8Util.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2414">
-          <caret line="76" column="0" lean-forward="true" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
-          <folding>
-            <element signature="e#807#808#0" expanded="false" />
-            <element signature="e#879#880#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1265,38 +1161,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/groovy/functional/vectors/StackSpec.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2405">
-          <caret line="52" column="43" lean-forward="false" selection-start-line="52" selection-start-column="43" selection-end-line="52" selection-end-column="43" />
-          <folding>
-            <element signature="e#28#59#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///usr/lib/jvm/default-java/jre/lib/rt.jar!/java/lang/Integer.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="6" column="19" lean-forward="false" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/groovy/functional/vectors/QueueSpec.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="9" column="84" lean-forward="false" selection-start-line="9" selection-start-column="84" selection-end-line="9" selection-end-column="84" />
-          <folding>
-            <element signature="e#28#59#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/structures/vectors/List.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="141" column="25" lean-forward="true" selection-start-line="141" selection-start-column="25" selection-end-line="141" selection-end-column="25" />
           <folding />
         </state>
       </provider>
@@ -1325,36 +1193,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/python/plot_analytics.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4352">
-          <caret line="131" column="40" lean-forward="false" selection-start-line="131" selection-start-column="33" selection-end-line="131" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/groovy/functional/vectors/LinkedListSpec.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="20" column="41" lean-forward="true" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
-          <folding>
-            <element signature="e#28#59#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/groovy/structures/trees/BinarySearchTreeSpec.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1031">
-          <caret line="544" column="38" lean-forward="false" selection-start-line="544" selection-start-column="37" selection-end-line="544" selection-end-column="38" />
           <folding />
         </state>
       </provider>
@@ -1364,35 +1206,6 @@
         <state relative-caret-position="229">
           <caret line="9" column="11" lean-forward="true" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/structures/vectors/ArrayList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="160" column="4" lean-forward="false" selection-start-line="160" selection-start-column="4" selection-end-line="174" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/structures/vectors/LinkedList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="55" column="0" lean-forward="true" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/structures/vectors/Vector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12">
-          <caret line="125" column="12" lean-forward="false" selection-start-line="125" selection-start-column="12" selection-end-line="125" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1090#1091#0" expanded="false" />
-            <element signature="e#1144#1145#0" expanded="false" />
-            <element signature="e#3806#3836#1" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1422,19 +1235,137 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/groovy/functional/vectors/QueueSpec.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1519">
+          <caret line="9" column="84" lean-forward="false" selection-start-line="9" selection-start-column="84" selection-end-line="9" selection-end-column="84" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/structures/vectors/Stack.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="745">
+        <state relative-caret-position="3128">
           <caret line="97" column="57" lean-forward="false" selection-start-line="97" selection-start-column="52" selection-end-line="97" selection-end-column="57" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/structures/vectors/Vector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="24" column="27" lean-forward="false" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
+          <folding>
+            <element signature="e#1107#1108#0" expanded="false" />
+            <element signature="e#1161#1162#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/structures/vectors/Queue.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="56" column="4" lean-forward="false" selection-start-line="56" selection-start-column="4" selection-end-line="70" selection-end-column="5" />
+        <state relative-caret-position="4012">
+          <caret line="122" column="31" lean-forward="false" selection-start-line="122" selection-start-column="31" selection-end-line="122" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#3198#3199#0" expanded="false" />
+            <element signature="e#3231#3232#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/groovy/commons/Util.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9248">
+          <caret line="274" column="26" lean-forward="false" selection-start-line="274" selection-start-column="26" selection-end-line="274" selection-end-column="26" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/groovy/commons/Java8Util.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2346">
+          <caret line="76" column="0" lean-forward="true" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/structures/vectors/LinkedList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/groovy/structures/trees/BinarySearchTreeSpec.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="872">
+          <caret line="544" column="38" lean-forward="false" selection-start-line="544" selection-start-column="37" selection-end-line="544" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/groovy/functional/vectors/StackSpec.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4599">
+          <caret line="35" column="20" lean-forward="true" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="986">
+          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/python/plot_analytics.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4352">
+          <caret line="131" column="40" lean-forward="false" selection-start-line="131" selection-start-column="33" selection-end-line="131" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/svg/trees_and_graphs.svg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/structures/vectors/List.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="124" column="0" lean-forward="false" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/groovy/functional/vectors/LinkedListSpec.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1462">
+          <caret line="45" column="35" lean-forward="true" selection-start-line="45" selection-start-column="35" selection-end-line="45" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/structures/vectors/ArrayList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="15" column="17" lean-forward="false" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/groovy/functional/vectors/ArrayListSpec.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="816">
+          <caret line="141" column="34" lean-forward="false" selection-start-line="141" selection-start-column="34" selection-end-line="141" selection-end-column="34" />
+          <folding>
+            <element signature="e#28#52#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -16,13 +16,13 @@ public interface Vector<T> extends DataStructure<T>,  Iterable<T> {
      * Returns a String representation of the Vector.
      * This function is named {@code asString()} rather than
      * {@code toString()} because this is an interface, and thus
-     * it cannot be implemented as a default method
+     * {@code toString()} cannot be implemented as a default method
      * because the superclass {@code Object} already implements it.
      * Therefore, only a concrete class can override it.
      * However, the implementation for all Vectors will be
      * roughly the same. So we declare {@code asString()} as a wrapper
      * around {@code toString()} so we avoid having to implement {@code toString()}
-     * in each subclass tht implements this interface.
+     * in each subclass that implements this interface.
      *
      * @return String representation of the Vector
      */

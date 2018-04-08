@@ -19,7 +19,7 @@ class Util {
                                          "test" + File.separator;
 
     /**
-     * Directory in which the python plot generator scrips are held
+     * Directory in which the python plot generator scripts are held
      */
     public static String pathToPlotGenerator = testDirectory +
                                                "python" + File.separator;
@@ -273,7 +273,6 @@ class Util {
             }
 
             equals = true;
-
         }
 
         return equals;
