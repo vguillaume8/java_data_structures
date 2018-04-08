@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fedb2063-1be3-4fe9-94aa-d8fc8c2af912" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/groovy/functional/vectors/QueueSpec.groovy" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/groovy/functional/vectors/StackSpec.groovy" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/data/csv/avg_cost_to_insert_into_arraylist.csv" afterPath="$PROJECT_DIR$/data/csv/avg_cost_to_insert_into_arraylist.csv" />
       <change beforePath="$PROJECT_DIR$/data/csv/avg_cost_to_remove_from_arraylist.csv" afterPath="$PROJECT_DIR$/data/csv/avg_cost_to_remove_from_arraylist.csv" />
@@ -16,11 +13,7 @@
       <change beforePath="$PROJECT_DIR$/data/png/levels_in_avl_tree_vs_n_random_keys.png" afterPath="$PROJECT_DIR$/data/png/levels_in_avl_tree_vs_n_random_keys.png" />
       <change beforePath="$PROJECT_DIR$/data/png/levels_in_bst_tree_vs_n_random_keys.png" afterPath="$PROJECT_DIR$/data/png/levels_in_bst_tree_vs_n_random_keys.png" />
       <change beforePath="$PROJECT_DIR$/data/png/shifts_required_when_inserting_rand_index.png" afterPath="$PROJECT_DIR$/data/png/shifts_required_when_inserting_rand_index.png" />
-      <change beforePath="$PROJECT_DIR$/src/test/groovy/functional/Graphs.groovy" afterPath="$PROJECT_DIR$/src/test/groovy/functional/graphs/Graphs.groovy" />
-      <change beforePath="$PROJECT_DIR$/src/test/groovy/functional/Maps.groovy" afterPath="$PROJECT_DIR$/src/test/groovy/functional/maps/Maps.groovy" />
-      <change beforePath="$PROJECT_DIR$/src/test/groovy/functional/Sets.groovy" afterPath="$PROJECT_DIR$/src/test/groovy/functional/sets/Sets.groovy" />
-      <change beforePath="$PROJECT_DIR$/src/test/groovy/functional/Trees.groovy" afterPath="$PROJECT_DIR$/src/test/groovy/functional/trees/Trees.groovy" />
-      <change beforePath="$PROJECT_DIR$/src/test/groovy/functional/Vectors.groovy" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/test/groovy/functional/vectors/QueueSpec.groovy" afterPath="$PROJECT_DIR$/src/test/groovy/functional/vectors/QueueSpec.groovy" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -37,13 +30,30 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="java_data_structures" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
-      <file leaf-file-name="StackSpec.groovy" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/groovy/functional/vectors/StackSpec.groovy">
+      <file leaf-file-name="QueueSpec.groovy" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/groovy/functional/vectors/QueueSpec.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1768">
-              <caret line="52" column="43" lean-forward="false" selection-start-line="52" selection-start-column="43" selection-end-line="52" selection-end-column="43" />
+            <state relative-caret-position="137">
+              <caret line="9" column="84" lean-forward="false" selection-start-line="9" selection-start-column="84" selection-end-line="9" selection-end-column="84" />
               <folding>
                 <element signature="e#28#59#0" expanded="true" />
               </folding>
@@ -440,8 +450,8 @@
         <option value="$PROJECT_DIR$/src/test/groovy/functional/vectors/Queue.groovy" />
         <option value="$PROJECT_DIR$/src/test/groovy/functional/vectors/ArrayList.groovy" />
         <option value="$PROJECT_DIR$/src/test/groovy/functional/vectors/Stack.groovy" />
-        <option value="$PROJECT_DIR$/src/test/groovy/functional/vectors/QueueSpec.groovy" />
         <option value="$PROJECT_DIR$/src/test/groovy/functional/vectors/StackSpec.groovy" />
+        <option value="$PROJECT_DIR$/src/test/groovy/functional/vectors/QueueSpec.groovy" />
       </list>
     </option>
   </component>
@@ -451,10 +461,10 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="4">
     <option name="x" value="134" />
     <option name="y" value="35" />
-    <option name="width" value="2746" />
+    <option name="width" value="1373" />
     <option name="height" value="1765" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -490,6 +500,27 @@
               <item name="java_data_structures" type="b2602c69:ProjectViewProjectNode" />
               <item name="java_data_structures" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="java_data_structures" type="b2602c69:ProjectViewProjectNode" />
+              <item name="java_data_structures" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="java_data_structures" type="b2602c69:ProjectViewProjectNode" />
+              <item name="java_data_structures" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="groovy" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="java_data_structures" type="b2602c69:ProjectViewProjectNode" />
+              <item name="java_data_structures" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="groovy" type="462c0819:PsiDirectoryNode" />
+              <item name="functional" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -541,26 +572,6 @@
       <module name="" />
       <envs />
     </configuration>
-    <configuration name="All in java_data_structures_test (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="java_data_structures_test" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="package" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-    </configuration>
     <configuration name="All in java_data_structures_test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="java_data_structures_test" />
@@ -595,6 +606,56 @@
       <option name="MAIN_CLASS_NAME" value="functional.vectors.QueueSpec" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration name="QueueSpec.Breadth First Search on a graph" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="functional.vectors.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="java_data_structures_test" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="functional.vectors" />
+      <option name="MAIN_CLASS_NAME" value="functional.vectors.QueueSpec" />
+      <option name="METHOD_NAME" value="Breadth First Search on a graph" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration name="QueueSpec.Height of Binary Search Tree iteratively" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="functional.vectors.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="java_data_structures_test" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="functional.vectors" />
+      <option name="MAIN_CLASS_NAME" value="functional.vectors.QueueSpec" />
+      <option name="METHOD_NAME" value="Height of Binary Search Tree iteratively" />
+      <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
@@ -651,31 +712,6 @@
       <envs />
       <patterns />
     </configuration>
-    <configuration name="analytics in java_data_structures_test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="analytics.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="java_data_structures_test" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="analytics" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="package" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -717,19 +753,19 @@
       <predefined_log_file id="idea.log" enabled="true" />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.All in java_data_structures_test (1)" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.analytics in java_data_structures_test" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.QueueSpec" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.StackSpec.Stock span problem" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.All in java_data_structures_test" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.QueueSpec" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.StackSpec.Stock span problem" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.All in java_data_structures_test" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.QueueSpec.Breadth First Search on a graph" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.QueueSpec.Height of Binary Search Tree iteratively" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="JUnit.All in java_data_structures_test" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.StackSpec.Stock span problem" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.QueueSpec.Height of Binary Search Tree iteratively" />
         <item index="2" class="java.lang.String" itemvalue="JUnit.QueueSpec" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.All in java_data_structures_test (1)" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.analytics in java_data_structures_test" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.QueueSpec.Breadth First Search on a graph" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.StackSpec.Stock span problem" />
       </list>
     </recent_temporary>
   </component>
@@ -756,39 +792,39 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="StackSpec_Stock_span_problem - 2018.04.08 at 00h 30m 35s.xml">
-      <configuration name="StackSpec.Stock span problem" configurationId="JUnit" />
+    <history-entry file="QueueSpec_Height_of_Binary_Search_Tree_iteratively - 2018.04.08 at 02h 25m 41s.xml">
+      <configuration name="QueueSpec.Height of Binary Search Tree iteratively" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="StackSpec_Stock_span_problem - 2018.04.08 at 00h 30m 40s.xml">
-      <configuration name="StackSpec.Stock span problem" configurationId="JUnit" />
+    <history-entry file="QueueSpec_Height_of_Binary_Search_Tree_iteratively - 2018.04.08 at 02h 30m 26s.xml">
+      <configuration name="QueueSpec.Height of Binary Search Tree iteratively" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="StackSpec_Stock_span_problem - 2018.04.08 at 00h 31m 26s.xml">
-      <configuration name="StackSpec.Stock span problem" configurationId="JUnit" />
+    <history-entry file="QueueSpec_Height_of_Binary_Search_Tree_iteratively - 2018.04.08 at 02h 31m 06s.xml">
+      <configuration name="QueueSpec.Height of Binary Search Tree iteratively" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="StackSpec_Stock_span_problem - 2018.04.08 at 00h 34m 05s.xml">
-      <configuration name="StackSpec.Stock span problem" configurationId="JUnit" />
+    <history-entry file="QueueSpec_Height_of_Binary_Search_Tree_iteratively - 2018.04.08 at 02h 32m 19s.xml">
+      <configuration name="QueueSpec.Height of Binary Search Tree iteratively" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="StackSpec_Stock_span_problem - 2018.04.08 at 00h 34m 25s.xml">
-      <configuration name="StackSpec.Stock span problem" configurationId="JUnit" />
+    <history-entry file="QueueSpec_Height_of_Binary_Search_Tree_iteratively - 2018.04.08 at 02h 33m 24s.xml">
+      <configuration name="QueueSpec.Height of Binary Search Tree iteratively" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="StackSpec_Stock_span_problem - 2018.04.08 at 00h 35m 06s.xml">
-      <configuration name="StackSpec.Stock span problem" configurationId="JUnit" />
+    <history-entry file="QueueSpec_Height_of_Binary_Search_Tree_iteratively - 2018.04.08 at 02h 34m 45s.xml">
+      <configuration name="QueueSpec.Height of Binary Search Tree iteratively" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="StackSpec_Stock_span_problem - 2018.04.08 at 00h 35m 18s.xml">
-      <configuration name="StackSpec.Stock span problem" configurationId="JUnit" />
+    <history-entry file="QueueSpec_Height_of_Binary_Search_Tree_iteratively - 2018.04.08 at 02h 35m 24s.xml">
+      <configuration name="QueueSpec.Height of Binary Search Tree iteratively" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="StackSpec_Stock_span_problem - 2018.04.08 at 00h 36m 17s.xml">
-      <configuration name="StackSpec.Stock span problem" configurationId="JUnit" />
+    <history-entry file="QueueSpec_Height_of_Binary_Search_Tree_iteratively - 2018.04.08 at 02h 35m 36s.xml">
+      <configuration name="QueueSpec.Height of Binary Search Tree iteratively" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="StackSpec_Stock_span_problem - 2018.04.08 at 00h 37m 34s.xml">
-      <configuration name="StackSpec.Stock span problem" configurationId="JUnit" />
+    <history-entry file="QueueSpec_Height_of_Binary_Search_Tree_iteratively - 2018.04.08 at 02h 35m 57s.xml">
+      <configuration name="QueueSpec.Height of Binary Search Tree iteratively" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="StackSpec_Stock_span_problem - 2018.04.08 at 00h 37m 57s.xml">
-      <configuration name="StackSpec.Stock span problem" configurationId="JUnit" />
+    <history-entry file="QueueSpec_Height_of_Binary_Search_Tree_iteratively - 2018.04.08 at 02h 36m 25s.xml">
+      <configuration name="QueueSpec.Height of Binary Search Tree iteratively" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="134" y="35" width="2746" height="1765" extended-state="6" />
+    <frame x="134" y="35" width="1373" height="1765" extended-state="4" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -803,19 +839,19 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33958474" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" x="134" y="632" width="2746" height="507" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26222724" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.54241246" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294347" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32953784" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299611" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="sbt" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="sbt" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -864,14 +900,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/structures/trees/package-info.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/structures/trees/BinaryTree.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -1256,7 +1284,7 @@
         <state relative-caret-position="-1394">
           <caret line="7" column="6" lean-forward="false" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
           <folding>
-            <element signature="e#28#52#0" expanded="true" />
+            <element signature="e#28#52#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1266,8 +1294,8 @@
         <state relative-caret-position="-3817">
           <caret line="15" column="19" lean-forward="false" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
           <folding>
-            <element signature="e#905#906#0" expanded="true" />
-            <element signature="e#935#936#0" expanded="true" />
+            <element signature="e#905#906#0" expanded="false" />
+            <element signature="e#935#936#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1277,7 +1305,7 @@
         <state relative-caret-position="318">
           <caret line="11" column="19" lean-forward="false" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1287,17 +1315,7 @@
         <state relative-caret-position="208">
           <caret line="12" column="19" lean-forward="false" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
           <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/groovy/functional/vectors/QueueSpec.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="10" column="7" lean-forward="false" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
-          <folding>
-            <element signature="e#28#59#0" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1312,8 +1330,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/groovy/functional/vectors/StackSpec.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1768">
+        <state relative-caret-position="-2405">
           <caret line="52" column="43" lean-forward="false" selection-start-line="52" selection-start-column="43" selection-end-line="52" selection-end-column="43" />
+          <folding>
+            <element signature="e#28#59#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/default-java/jre/lib/rt.jar!/java/lang/Integer.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="6" column="19" lean-forward="false" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/groovy/functional/vectors/QueueSpec.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="9" column="84" lean-forward="false" selection-start-line="9" selection-start-column="84" selection-end-line="9" selection-end-column="84" />
           <folding>
             <element signature="e#28#59#0" expanded="true" />
           </folding>
