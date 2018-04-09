@@ -8,6 +8,23 @@ import structures.vectors.Stack;
 class StackSpec extends Specification {
 
     @Unroll
+    def "Construct Stack from Java Collection"() {
+        when:
+        Stack<Integer> stack = new Stack<Integer>(input)
+
+        then:
+        stack.size()     == input.size()
+        stack.toString() == string
+
+        where:
+        input        | string
+        [1, 2, 3, 4] | "[4, 3, 2, 1]"
+        [1, 2]       | "[2, 1]"
+        [1]          | "[1]"
+        []           | "[]"
+    }
+
+    @Unroll
     def "#Check Stack equality"() {
         setup:
         Stack<Integer> list1

@@ -1,5 +1,6 @@
 package structures.vectors;
 
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -41,6 +42,16 @@ public final class LinkedList<T> implements List<T> {
    * @param values Array of keys to construct the list from
    */
   public LinkedList(T[] values) {
+    insert(values);
+  }
+
+  /**
+   * Construct linked list from Java Collection of values.
+   *
+   * @param values Collection of values to construct list from.
+   * @see java.util.Collection
+   */
+  public LinkedList(Collection<T> values) {
     insert(values);
   }
 

@@ -1,6 +1,7 @@
 package structures.vectors;
 
 import java.util.Arrays;
+import java.util.Collection;
 
 /**
  * Basic implementation of a generic ArrayList
@@ -93,6 +94,17 @@ public final class ArrayList<E> implements List<E> {
      */
     public ArrayList(E[] values) {
         this(values.length);
+        insert(values);
+    }
+
+    /**
+     * Construct array list from Java Collection of values.
+     *
+     * @param values Collection of values to construct list from.
+     * @see java.util.Collection
+     */
+    public ArrayList(Collection<E> values) {
+        this(values.size());
         insert(values);
     }
 

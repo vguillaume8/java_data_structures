@@ -8,6 +8,23 @@ import structures.vectors.ArrayList
 class ArrayListSpec extends Specification {
 
     @Unroll
+    def "Construct ArrayList from Java Collection"() {
+        when:
+        ArrayList<Integer> list = new ArrayList<Integer>(input)
+
+        then:
+        list.size()     == input.size()
+        list.toString() == input.toString()
+
+        where:
+        input        | _
+        [1, 2, 3, 4] | _
+        [1, 2]       | _
+        [1]          | _
+        []           | _
+    }
+
+    @Unroll
     def "#Check ArrayList equality"() {
         setup:
         ArrayList<Integer> list1

@@ -1,7 +1,6 @@
 package util;
 
 import com.opencsv.CSVWriter;
-import util.Util;
 
 import java.io.*;
 import java.util.Arrays;

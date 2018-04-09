@@ -8,6 +8,23 @@ import structures.vectors.Queue;
 class QueueSpec extends Specification {
 
     @Unroll
+    def "Construct Queue from Java Collection"() {
+        when:
+        Queue<Integer> list = new Queue<Integer>(input)
+
+        then:
+        list.size()     == input.size()
+        list.toString() == input.toString()
+
+        where:
+        input        | _
+        [1, 2, 3, 4] | _
+        [1, 2]       | _
+        [1]          | _
+        []           | _
+    }
+
+    @Unroll
     def "#Check Queue equality"() {
         setup:
         Queue<Integer> list1

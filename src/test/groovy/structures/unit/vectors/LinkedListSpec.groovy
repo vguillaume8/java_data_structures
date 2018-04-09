@@ -8,6 +8,23 @@ import structures.vectors.LinkedList
 class LinkedListSpec extends Specification {
 
   @Unroll
+  def "Construct LinkedList from Java Collection"() {
+    when:
+    LinkedList<Integer> list = new LinkedList<Integer>(input)
+
+    then:
+    list.size()     == input.size()
+    list.toString() == input.toString()
+
+    where:
+    input        | _
+    [1, 2, 3, 4] | _
+    [1, 2]       | _
+    [1]          | _
+    []           | _
+  }
+
+  @Unroll
   def "#Check LinkedList equality"() {
     setup:
     LinkedList<Integer> list1
