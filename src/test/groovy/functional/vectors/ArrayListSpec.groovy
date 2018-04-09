@@ -7,7 +7,6 @@ import spock.lang.Unroll
 
 class ArrayListSpec extends Specification{
 
-    @Ignore
     @Unroll
     def "Rotate matrix 90 degrees clockwise"() {
         setup:
@@ -16,26 +15,38 @@ class ArrayListSpec extends Specification{
         String temp
         String before
         String after
-        String m1 = "[[1, 2, 3, 4], " +
-                    "[1, 2, 3, 4], "  +
-                    "[1, 2, 3, 4], "  +
-                    "[1, 2, 3, 4]]"
+        String m1 = "[" +
+                        "[1, 2, 3, 4, 5], " +
+                        "[1, 2, 3, 4, 5], " +
+                        "[1, 2, 3, 4, 5], " +
+                        "[1, 2, 3, 4, 5], " +
+                        "[5, 4, 3, 2, 1]"   +
+                    "]"
 
-        String m2 = "[[1, 1, 1, 1], " +
-                    "[2, 2, 2, 2], "  +
-                    "[3, 3, 3, 3], "  +
-                    "[4, 4, 4, 4]]"
+        String m2 = "[" +
+                        "[5, 1, 1, 1, 1], " +
+                        "[4, 2, 2, 2, 2], " +
+                        "[3, 3, 3, 3, 3], " +
+                        "[2, 4, 4, 4, 4], " +
+                        "[1, 5, 5, 5, 5]"   +
+                    "]"
 
         when:
         matrix = new ArrayList< ArrayList<Integer> >()
-        n = 4
+        n = 5
 
         for (int i = 0; i < n; i++) {
 
             matrix.insert(new ArrayList<Integer>())
 
             for (int j = 0; j < n; j++) {
-                matrix.get(i).insert(j + 1)
+
+                if (i == n-1){
+                    matrix.get(i).insert(i - j + 1)
+                } else {
+                    matrix.get(i).insert(j + 1)
+                }
+
             }
         }
 
@@ -43,18 +54,23 @@ class ArrayListSpec extends Specification{
 
         for (int i = 0; i < n; i++) {
 
-            for (int j = i+1; j < n; j++) {
+            // Transpose
+            for (int j = i; j < n; j++) {
                 temp = matrix.get(i).get(j)
-                matrix.get(j).update(matrix.get(j).get(i), j)
+                matrix.get(i).update(matrix.get(j).get(i), j)
                 matrix.get(j).update(temp, i)
             }
+        }
 
-            for (int j = 0; j < 4 / 2; j++) {
+        for (int i = 0; i < n; i++) {
+            // Rotate each row
+            for (int j = 0; j < n / 2; j++) {
                 temp = matrix.get(i).get(j)
                 matrix.get(i).update(matrix.get(i).get(n-1-j), j)
                 matrix.get(i).update(temp, n-1-j)
             }
         }
+
 
         after = matrix.toString()
 
