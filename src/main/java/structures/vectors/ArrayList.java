@@ -39,7 +39,7 @@ public final class ArrayList<E> implements List<E> {
     /**
      * The amount of times the array needed to be resized.
      * We use this value for analytic purposes. It has no
-     * effect on the performance or behavior of the ArrayList.
+     * effect on the structures.performance or behavior of the ArrayList.
      */
     private int allocations;
 
@@ -48,7 +48,7 @@ public final class ArrayList<E> implements List<E> {
      * This goes for individual elements. So a shift left when the ArrayList
      * of size 10 will increase shifts by 10. This variable is
      * used for analytics purposes. It has not effect on
-     * the performance or behavior of the ArrayList.
+     * the structures.performance or behavior of the ArrayList.
      */
     private int shifts;
 
