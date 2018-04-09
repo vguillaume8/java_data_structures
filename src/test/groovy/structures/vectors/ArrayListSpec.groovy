@@ -21,9 +21,12 @@ class ArrayListSpec extends Specification {
 
         where:
         equals || input1       || input2
+        false  || [1, 1, 1, 1] || [1, 2, 3, 4]
+        false  || [1, 2, 3, 4] || [4, 3, 2, 1]
         true   || [1, 2, 3, 4] || [1, 2, 3, 4]
         false  || [1, 2, 3, 4] || [1, 2, 3]
         true   || []           || []
+        false  || []           || [1]
         true   || [1]          || [1]
     }
 

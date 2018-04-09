@@ -13,7 +13,7 @@ import java.util.Iterator;
  * @author Jabari Dash
  * @param <T> Generic type
  */
-public final class Stack<T>  implements Vector<T> {
+public final class Stack<T> implements Vector<T> {
 
     /**
      * Number of elements on the Stack

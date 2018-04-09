@@ -1,5 +1,7 @@
 package structures.commons;
 
+import java.util.Collection;
+
 /**
  * Generic interface for any data structure in this library.
  *
@@ -50,6 +52,23 @@ public interface DataStructure<K> {
 
         for (K key : keys)
             all = all && insert(key);
+
+        return all;
+    }
+
+//------------------------------------------------------------------------------
+
+    /**
+     * Inserts a Java Collection into the data structure.
+     *
+     * @param values values to insert.
+     * @return Returns true if and only if all values were successfully inserted.
+     */
+    default boolean insert(Collection<K> values) {
+        boolean all = true;
+
+        for (K value : values)
+            all = all && insert(value);
 
         return all;
     }

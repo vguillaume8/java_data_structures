@@ -4,8 +4,8 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- * Abstract List structure. All vector-like structures (linear structures)
- * will extend this abstract class
+ * Abstract List structure. All vector-like (linear) structures
+ * will implement this interface.
  *
  * @author Jabari Dash
  * @param <T> Generic type

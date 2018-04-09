@@ -2,6 +2,7 @@ package structures.vectors;
 
 import structures.commons.DataStructure;
 import java.util.Arrays;
+import java.util.Iterator;
 
 /**
  * Interface for all linear DataStructures such as {@code LinkedList}, {@code ArrayList},
@@ -100,6 +101,41 @@ public interface Vector<T> extends DataStructure<T>,  Iterable<T> {
 
 //------------------------------------------------------------------------------
 
+    // TODO -
+    // Might be able to abstract this to the DataStructure
+    // class. The same code can be user for Set, and potentially
+    // Maps, Trees, and Graphs. If we abstract it, the subclasses
+    // will only be responsible for checking the equality of things
+    // not covered by this function. As examples:
+
+    /*
+        The set class is fully compatible with this function. Just
+        the class type equality would be verified when calling this
+        function in the equals() method.
+
+        In terms of Maps, if we are checking for equality amongst
+        any type of map, then this function is also sufficient. Obviously
+        this means we are not taking into account the organization of
+        the data (internal structure, hashing method etc) and just the
+        entries in the table itself.
+
+        As for trees, this method is not sufficient. This method
+        utilized the iterator. Meaning we are only verifying the
+        presence of data. However, depending on how we define equal()
+        for a tree, this may not be sufficient. example, the tree
+        1 2 3 4 is not the same as 3 1 2 4, as the structure would be
+        different. We can however, still abstract this method, and just
+        not call it in the equals() method for trees.
+
+        In terms of graphs, it is a similar case as trees. Their equality
+        depends on both the presence of all elements, but also their
+        organization. However, depending on how we implement Graph, this
+        function may be sufficient. If we consider a Graph simply a list
+        of Verticies, merely looping through and checking the equality of
+        the list of verticies will verify the equality of the structure
+        as well.
+     */
+
     /**
      * Determines whether or not an Object is equal to
      * this {@code Vector}. Implementing classes can
@@ -111,6 +147,8 @@ public interface Vector<T> extends DataStructure<T>,  Iterable<T> {
      * sizes are the same, and they contain all the same keys.
      */
     default boolean equivalentTo(Object object) {
+        Iterator<T> thisIterator;
+        Iterator<T> thatIterator;
 
         // If object is compared to itself
         if (this == object)
@@ -131,11 +169,21 @@ public interface Vector<T> extends DataStructure<T>,  Iterable<T> {
                 return false;
             }
 
-            // Check each value
-            for (T value : this) {
-                if (!vector.contains(value)) {
+            // Iterate over both lists
+            // simultaneously
+            thisIterator = this.iterator();
+            thatIterator = vector.iterator();
+
+            while (thisIterator.hasNext() && thatIterator.hasNext()) {
+                if (!thisIterator.next().equals(thatIterator.next())) {
                     return false;
                 }
+            }
+
+            // Make sure they ran out at the same time just to be sure
+            // (even though we already checked size of the vector passed in)
+            if (thisIterator.hasNext() || thatIterator.hasNext()) {
+                return false;
             }
 
         // If a ClassCastException was thrown, then
