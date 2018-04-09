@@ -1,6 +1,8 @@
 package structures.vectors;
 
 import structures.vectors.LinkedList.Node;
+
+import java.util.Collection;
 import java.util.Iterator;
 
 /**
@@ -13,7 +15,7 @@ import java.util.Iterator;
  * @author Jabari Dash
  * @param <T> Generic type
  */
-public final class Stack<T>  implements Vector<T> {
+public final class Stack<T> implements Vector<T> {
 
     /**
      * Number of elements on the Stack
@@ -35,13 +37,27 @@ public final class Stack<T>  implements Vector<T> {
 //------------------------------------------------------------------------------
 
     /**
-     * Constructs {@code Queue} from array of keys.
+     * Constructs {@code Stack} from array of values.
      *
-     * @param values Array of keys to instatiate Queue from
+     * @param values Array of values to instantiate Stack from.
      */
     public Stack(T[] values) {
         insert(values);
     }
+
+//------------------------------------------------------------------------------
+
+    /**
+     * Construct stack from Java Collection of values.
+     *
+     * @param values Collection of values to construct Stack from.
+     * @see java.util.Collection
+     */
+    public Stack(Collection<T> values) {
+        insert(values);
+    }
+
+//------------------------------------------------------------------------------
 
 
     /**

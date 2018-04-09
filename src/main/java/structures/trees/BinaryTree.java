@@ -39,7 +39,6 @@ public interface BinaryTree<K, V> extends DataStructure<K>, Iterable<Pair<K, V>>
      */
     int DEFAULT_ORDER = PRE_ORDER;
 
-
     /**
      * Determines whether or not a specified key is present in the tree.
      *
@@ -326,7 +325,7 @@ public interface BinaryTree<K, V> extends DataStructure<K>, Iterable<Pair<K, V>>
     @SuppressWarnings("unused")
     V[] values(int traversalType);
 
-//  TreeIterator clas starts here
+//  TreeIterator class starts here
 //==============================================================================
 
     /**

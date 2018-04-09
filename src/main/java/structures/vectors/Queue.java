@@ -1,6 +1,8 @@
 package structures.vectors;
 
 import structures.vectors.LinkedList.Node;
+
+import java.util.Collection;
 import java.util.Iterator;
 
 /**
@@ -41,6 +43,18 @@ public final class Queue<K> implements Vector<K> {
      */
     public Queue(K[] keys) {
         insert(keys);
+    }
+
+    //------------------------------------------------------------------------------
+
+    /**
+     * Construct queue from Java Collection of values.
+     *
+     * @param values Collection of values to construct Queue from.
+     * @see java.util.Collection
+     */
+    public Queue(Collection<K> values) {
+        insert(values);
     }
 
     /**

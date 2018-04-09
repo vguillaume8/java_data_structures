@@ -22,12 +22,6 @@ and setters just increases the call stack to grow unnecessarily.
 
 ## Vectors
 - Unit test `toArray()` functions in vectors
-- Perhaps chains `ChainedDataStructure` or one of the other `abstract` 
-classes to be an `interface` now that we have realized that in Java 8
-interfaces support method implementations
-- Optimize `insert(T value)` for `ChainedDataStructure` by adding `Node tail` pointer
-because it is causing a `StackOverFlowException` to be thrown for small
-list sizes
 
 ## Testing
 - Functional testing using JUnit? Just for learning purposes?

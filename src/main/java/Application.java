@@ -1,11 +1,8 @@
-import structures.commons.DataStructure;
-import structures.trees.AVLTree;
-import structures.trees.BinarySearchTree;
-import structures.vectors.ArrayList;
-import structures.vectors.LinkedList;
-import structures.vectors.Queue;
-import java.util.Arrays;
-
+import structures.vectors.*;
+import structures.trees.*;
+import structures.graphs.*;
+import structures.sets.*;
+import structures.maps.*;
 
 /**
  *
@@ -14,15 +11,13 @@ public final class Application {
 
   public static void main(String[] args) throws Exception {
 
-    Integer[] src = {1, 2, 3, 4, 5, 6};
-    Integer[] dst = {0, 0, 0, 0, 0, 0, 0};
+    Integer[] a = {4, 3, 2, 1};
+    Integer[] b = {1, 2, 3, 4};
 
-//    dst = ArrayList.copy(2, 3, 1, src, dst);
+    ArrayList<Integer> one = new ArrayList<>(a);
+    ArrayList<Integer> two = new ArrayList<>(b);
 
-
-    String s = Arrays.toString(dst);
-
-    System.out.println(s);
+    System.out.println(one.equals(two));
   }
 
 }
