@@ -2,27 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fedb2063-1be3-4fe9-94aa-d8fc8c2af912" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/.travis.yml" afterPath="$PROJECT_DIR$/.travis.yml" />
-      <change beforePath="$PROJECT_DIR$/data/csv/avg_cost_to_insert_into_arraylist.csv" afterPath="$PROJECT_DIR$/data/csv/avg_cost_to_insert_into_arraylist.csv" />
-      <change beforePath="$PROJECT_DIR$/data/csv/avg_cost_to_remove_from_arraylist.csv" afterPath="$PROJECT_DIR$/data/csv/avg_cost_to_remove_from_arraylist.csv" />
-      <change beforePath="$PROJECT_DIR$/data/csv/levels_in_avl_tree_vs_n_random_keys.csv" afterPath="$PROJECT_DIR$/data/csv/levels_in_avl_tree_vs_n_random_keys.csv" />
-      <change beforePath="$PROJECT_DIR$/data/csv/levels_in_bst_tree_vs_n_random_keys.csv" afterPath="$PROJECT_DIR$/data/csv/levels_in_bst_tree_vs_n_random_keys.csv" />
-      <change beforePath="$PROJECT_DIR$/data/csv/shifts_required_when_inserting_rand_index.csv" afterPath="$PROJECT_DIR$/data/csv/shifts_required_when_inserting_rand_index.csv" />
-      <change beforePath="$PROJECT_DIR$/data/logs/avg_cost_to_insert_into_arraylist.log" afterPath="$PROJECT_DIR$/data/logs/avg_cost_to_insert_into_arraylist.log" />
-      <change beforePath="$PROJECT_DIR$/data/logs/avg_cost_to_remove_from_arraylist.log" afterPath="$PROJECT_DIR$/data/logs/avg_cost_to_remove_from_arraylist.log" />
-      <change beforePath="$PROJECT_DIR$/data/logs/internal_array_size_vs_actual_elements.log" afterPath="$PROJECT_DIR$/data/logs/internal_array_size_vs_actual_elements.log" />
-      <change beforePath="$PROJECT_DIR$/data/logs/levels_in_avl_tree_vs_n_random_keys.log" afterPath="$PROJECT_DIR$/data/logs/levels_in_avl_tree_vs_n_random_keys.log" />
-      <change beforePath="$PROJECT_DIR$/data/logs/levels_in_avl_tree_vs_n_sorted_keys.log" afterPath="$PROJECT_DIR$/data/logs/levels_in_avl_tree_vs_n_sorted_keys.log" />
-      <change beforePath="$PROJECT_DIR$/data/logs/levels_in_bst_tree_vs_n_random_keys.log" afterPath="$PROJECT_DIR$/data/logs/levels_in_bst_tree_vs_n_random_keys.log" />
-      <change beforePath="$PROJECT_DIR$/data/logs/levels_in_bst_tree_vs_n_sorted_keys.log" afterPath="$PROJECT_DIR$/data/logs/levels_in_bst_tree_vs_n_sorted_keys.log" />
-      <change beforePath="$PROJECT_DIR$/data/logs/memory_allocations_for_large_lists.log" afterPath="$PROJECT_DIR$/data/logs/memory_allocations_for_large_lists.log" />
-      <change beforePath="$PROJECT_DIR$/data/logs/shifts_required_when_inserting_first_index.log" afterPath="$PROJECT_DIR$/data/logs/shifts_required_when_inserting_first_index.log" />
-      <change beforePath="$PROJECT_DIR$/data/logs/shifts_required_when_inserting_last_index.log" afterPath="$PROJECT_DIR$/data/logs/shifts_required_when_inserting_last_index.log" />
-      <change beforePath="$PROJECT_DIR$/data/logs/shifts_required_when_inserting_rand_index.log" afterPath="$PROJECT_DIR$/data/logs/shifts_required_when_inserting_rand_index.log" />
-      <change beforePath="$PROJECT_DIR$/data/png/avg_cost_to_insert_into_arraylist.png" afterPath="$PROJECT_DIR$/data/png/avg_cost_to_insert_into_arraylist.png" />
-      <change beforePath="$PROJECT_DIR$/data/png/avg_cost_to_remove_from_arraylist.png" afterPath="$PROJECT_DIR$/data/png/avg_cost_to_remove_from_arraylist.png" />
-      <change beforePath="$PROJECT_DIR$/data/png/shifts_required_when_inserting_rand_index.png" afterPath="$PROJECT_DIR$/data/png/shifts_required_when_inserting_rand_index.png" />
       <change beforePath="$PROJECT_DIR$/src/test/python/plot_analytics.py" afterPath="$PROJECT_DIR$/src/test/python/plot_analytics.py" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -62,7 +41,7 @@
       <file leaf-file-name="Plot.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/groovy/util/Plot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="680">
+            <state relative-caret-position="782">
               <caret line="136" column="9" lean-forward="false" selection-start-line="136" selection-start-column="9" selection-end-line="136" selection-end-column="9" />
               <folding>
                 <element signature="e#5962#5963#0" expanded="true" />
@@ -72,27 +51,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LinkedListSpec.groovy" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/groovy/structures/functional/vectors/LinkedListSpec.groovy">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="514">
-              <caret line="109" column="0" lean-forward="false" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="plot_analytics.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="plot_analytics.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/python/plot_analytics.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="121" column="0" lean-forward="false" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
+            <state relative-caret-position="680">
+              <caret line="119" column="26" lean-forward="false" selection-start-line="119" selection-start-column="26" selection-end-line="119" selection-end-column="26" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".travis.yml" pinned="false" current-in-tab="true">
+      <file leaf-file-name=".travis.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.travis.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="408">
@@ -538,8 +507,8 @@
         <option value="$PROJECT_DIR$/install.sh" />
         <option value="$PROJECT_DIR$/src/test/groovy/util/Plot.java" />
         <option value="$PROJECT_DIR$/src/test/groovy/structures/functional/vectors/LinkedListSpec.groovy" />
-        <option value="$PROJECT_DIR$/src/test/python/plot_analytics.py" />
         <option value="$PROJECT_DIR$/.travis.yml" />
+        <option value="$PROJECT_DIR$/src/test/python/plot_analytics.py" />
       </list>
     </option>
   </component>
@@ -1412,14 +1381,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/groovy/util/Plot.java">
+    <entry file="file://$PROJECT_DIR$/.travis.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="136" column="9" lean-forward="false" selection-start-line="136" selection-start-column="9" selection-end-line="136" selection-end-column="9" />
-          <folding>
-            <element signature="e#5962#5963#0" expanded="true" />
-            <element signature="e#6008#6009#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="408">
+          <caret line="12" column="7" lean-forward="true" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1431,18 +1397,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/python/plot_analytics.py">
+    <entry file="file://$PROJECT_DIR$/src/test/groovy/util/Plot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="121" column="0" lean-forward="false" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="782">
+          <caret line="136" column="9" lean-forward="false" selection-start-line="136" selection-start-column="9" selection-end-line="136" selection-end-column="9" />
+          <folding>
+            <element signature="e#5962#5963#0" expanded="true" />
+            <element signature="e#6008#6009#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.travis.yml">
+    <entry file="file://$PROJECT_DIR$/src/test/python/plot_analytics.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="12" column="7" lean-forward="true" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+        <state relative-caret-position="680">
+          <caret line="119" column="26" lean-forward="false" selection-start-line="119" selection-start-column="26" selection-end-line="119" selection-end-column="26" />
           <folding />
         </state>
       </provider>
