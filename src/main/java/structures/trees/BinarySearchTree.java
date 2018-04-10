@@ -14,7 +14,7 @@ import structures.vectors.Queue;
 public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, V> {
 
     /**
-     *
+     * Number of nodes in the tree.
      */
     protected int size;
 
@@ -329,6 +329,19 @@ public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, 
         return oldSize != this.size;
     }
 
+    /**
+     * Insert a specified key-value pair into
+     * the tree. This is a recursive auxiliary
+     * method that is called by the public
+     * insert(K key, V value) method. We pass the node
+     * pointer of subsequent levels so we insert
+     * in the right location.
+     *
+     * @param node Root node of subtree to insert from.
+     * @param key Key.
+     * @param value Value.
+     * @return Root node pointer.
+     */
     protected BinarySearchTreeNode<K, V> insert(BinarySearchTreeNode<K, V> node, K key, V value) {
 
         if (node == null) {
@@ -347,7 +360,6 @@ public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, 
 
             node.rightChild = insert(node.rightChild, key, value);
         }
-
 
         return node;
     }
@@ -412,14 +424,60 @@ public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, 
 //------------------------------------------------------------------------------
 
     /**
+     * Determines whether or not an array represents a complete binary search tree.
      *
+     * TODO - Maybe I could use this?
+     *
+     * @param keys Array representation of complete binary tree with keys in level order
+     * @param <K> Key type (Comparable)
+     * @return True if and only if the above condition is met.
+     */
+    public static <K extends Comparable> boolean isBinarySearchTree(K[] keys) {
+        int left;
+        int right;
+        int compL;
+        int compR;
+
+        // Loop through array, checking that
+        // all left children are less than parent,
+        // and all right children are greater than parent
+        for (int i = 0; i < keys.length; i++) {
+
+            // Compute children indexes
+            left = (2 * i) + 1;
+            right = (2 * i) + 2;
+
+            // Make sure left child is less than ith key
+            if (left >= 0 && left < keys.length) {
+
+                compL = keys[left].compareTo(keys[i]);
+
+                if (compL >= 0) {
+                    return false;
+                }
+            }
+
+            // Make sure right child is greater than ith key
+            if (right >= 0 && right < keys.length) {
+
+                compR = keys[right].compareTo(keys[i]);
+
+                if (compR <= 0) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    /**
      * Determines whether or not the tree is complete. A complete tree is defined
      * as a tree where all levels are filled, except possibly the bottom (deepest) level.
      * In the event that the last level is not filled, all keys in tree are as left as possible.
      * An example follows:
      *
      * TODO - Insert image of example
-     *
      *
      * @return True if and only if the above conditions are met.
      */
@@ -1059,13 +1117,14 @@ public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, 
 //------------------------------------------------------------------------------
 
     /**
-     * Auxiliary function for printing the tree as a vertical String.
+     * Auxiliary function for printing the tree
+     * in it's tree form.
      *
-     * @param condition
-     * @param s
-     * @param choice1
-     * @param choice2
-     * @return
+     * @param condition Boolean condition for determining which string to append.
+     * @param s The running string that represents the tree.
+     * @param choice1 First choice
+     * @param choice2 Second Choice
+     * @return Running String
      */
     private String path(boolean condition, String s, String choice1, String choice2) {
 
@@ -1081,8 +1140,9 @@ public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, 
 //------------------------------------------------------------------------------
 
     /**
+     * Returns number of nodes in tree.
      *
-     * @return
+     * @return Number of nodes in tree.
      */
     @Override
     public int size() {
@@ -1115,10 +1175,11 @@ public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, 
 //------------------------------------------------------------------------------
 
     /**
+     * Returns the tree as an ArrayList in ascending order.
      *
-     * @param node
-     * @param arrayList
-     * @return
+     * @param node Node to print from. This is an recursive auxiliary method.
+     * @param arrayList Array list that the nodes will be inserted into.
+     * @return The completed ArrayList.
      */
     @SuppressWarnings("unused")
     private ArrayList<V> valuesToArrayListInOrder(BinarySearchTreeNode<K, V> node, ArrayList<V> arrayList) {
@@ -1136,10 +1197,11 @@ public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, 
 //------------------------------------------------------------------------------
 
     /**
+     * Returns the tree as an ArrayList in ascending pre-order.
      *
-     * @param node
-     * @param arrayList
-     * @return
+     * @param node Node to print from. This is an recursive auxiliary method.
+     * @param arrayList Array list that the nodes will be inserted into.
+     * @return The completed ArrayList.
      */
     @SuppressWarnings("unused")
     private ArrayList<V> valuesToArrayListPreOrder(BinarySearchTreeNode<K, V> node, ArrayList<V> arrayList) {
@@ -1157,10 +1219,11 @@ public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, 
 //------------------------------------------------------------------------------
 
     /**
+     * Returns the tree as an ArrayList in ascending post-order.
      *
-     * @param node
-     * @param arrayList
-     * @return
+     * @param node Node to print from. This is an recursive auxiliary method.
+     * @param arrayList Array list that the nodes will be inserted into.
+     * @return The completed ArrayList.
      */
     @SuppressWarnings("unused")
     private ArrayList<V> valuesToArrayListPostOrder(BinarySearchTreeNode<K, V> node, ArrayList<V> arrayList) {
@@ -1178,9 +1241,11 @@ public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, 
 //------------------------------------------------------------------------------
 
     /**
+     * Returns the tree as an ArrayList in ascending level-order.
      *
-     * @param node
-     * @return
+     * @param node Node to print from. This is an recursive auxiliary method.
+     * @param arrayList Array list that the nodes will be inserted into.
+     * @return The completed ArrayList.
      */
     @SuppressWarnings("unused")
     private ArrayList<V> valuesToArrayListLevelOrder(BinarySearchTreeNode<K, V> node) {
@@ -1240,12 +1305,12 @@ public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, 
         /**
          * Key of the node
          */
-        K key;
+        public K key;
 
         /**
          * Value of the node
          */
-        V value;
+        public V value;
 
         /**
          * Pointer to left child
@@ -1259,9 +1324,11 @@ public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, 
 
 
         /**
+         * Constructs a new node
+         * with a specified key and value.
          *
-         * @param key
-         * @param value
+         * @param key Key
+         * @param value Value
          */
         @SuppressWarnings("unused")
         protected BinarySearchTreeNode(K key, V value) {
@@ -1270,19 +1337,22 @@ public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, 
         }
 
         /**
+         * Checks equality between this node
+         * and another Object.
          *
-         * @param object
-         * @return
+         * @param object Object to check equality with.
+         * @return True if and only if both objects are equal
          */
         @Override
         public boolean equals(Object object) {
 
-            return equivalentTo(object);
+            return this == object || (object instanceof BinarySearchTreeNode && equivalentTo(object));
         }
 
         /**
+         * Returns the key of this node.
          *
-         * @return
+         * @return Key
          */
         @Override
         public K key() {
@@ -1290,6 +1360,7 @@ public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, 
         }
 
         /**
+         * Sets the key to a specified value.
          *
          * @param key The new key.
          */
@@ -1302,6 +1373,12 @@ public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, 
 
         // TODO - Remove from node class, put in tree class
 
+        /**
+         * Returns the node with the minimum value in the tree.
+         *
+         * @param node Current not in tree to check.
+         * @return Pointer to node with the minimum value.
+         */
         protected BinarySearchTreeNode<K, V> minNode(BinarySearchTreeNode<K, V> node) {
 
             if (node == null)
@@ -1314,10 +1391,13 @@ public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, 
 //------------------------------------------------------------------------------
 
         /**
+         * Removes a node by it's associate key. This is an
+         * recursive auxiliary method called by remove(K key)
+         * that starts at the root.
          *
-         * @param parent
-         * @param key
-         * @return
+         * @param parent Node to check
+         * @param key Associated key
+         * @return True if and only if removing the node is successful.
          */
         protected boolean remove(BinarySearchTreeNode<K, V> parent, K key) {
 
@@ -1368,22 +1448,26 @@ public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, 
         }
 
         /**
+         * Returns JSON-like string representation
+         * of the node.
          *
-         * @return
+         * @return String representation of node.
          */
         public String toString() {
             return asString();
         }
 
         /**
+         * Get the value of the node.
          *
-         * @return
+         * @return Value of node.
          */
         public V value() {
             return this.value;
         }
 
         /**
+         * Set the value of the node.
          *
          * @param value The new value.
          */
