@@ -8,22 +8,12 @@
       <change beforePath="$PROJECT_DIR$/data/csv/levels_in_avl_tree_vs_n_random_keys.csv" afterPath="$PROJECT_DIR$/data/csv/levels_in_avl_tree_vs_n_random_keys.csv" />
       <change beforePath="$PROJECT_DIR$/data/csv/levels_in_bst_tree_vs_n_random_keys.csv" afterPath="$PROJECT_DIR$/data/csv/levels_in_bst_tree_vs_n_random_keys.csv" />
       <change beforePath="$PROJECT_DIR$/data/csv/shifts_required_when_inserting_rand_index.csv" afterPath="$PROJECT_DIR$/data/csv/shifts_required_when_inserting_rand_index.csv" />
-      <change beforePath="$PROJECT_DIR$/data/logs/avg_cost_to_insert_into_arraylist.log" afterPath="$PROJECT_DIR$/data/logs/avg_cost_to_insert_into_arraylist.log" />
-      <change beforePath="$PROJECT_DIR$/data/logs/avg_cost_to_remove_from_arraylist.log" afterPath="$PROJECT_DIR$/data/logs/avg_cost_to_remove_from_arraylist.log" />
-      <change beforePath="$PROJECT_DIR$/data/logs/internal_array_size_vs_actual_elements.log" afterPath="$PROJECT_DIR$/data/logs/internal_array_size_vs_actual_elements.log" />
-      <change beforePath="$PROJECT_DIR$/data/logs/levels_in_avl_tree_vs_n_random_keys.log" afterPath="$PROJECT_DIR$/data/logs/levels_in_avl_tree_vs_n_random_keys.log" />
-      <change beforePath="$PROJECT_DIR$/data/logs/levels_in_avl_tree_vs_n_sorted_keys.log" afterPath="$PROJECT_DIR$/data/logs/levels_in_avl_tree_vs_n_sorted_keys.log" />
-      <change beforePath="$PROJECT_DIR$/data/logs/levels_in_bst_tree_vs_n_random_keys.log" afterPath="$PROJECT_DIR$/data/logs/levels_in_bst_tree_vs_n_random_keys.log" />
-      <change beforePath="$PROJECT_DIR$/data/logs/levels_in_bst_tree_vs_n_sorted_keys.log" afterPath="$PROJECT_DIR$/data/logs/levels_in_bst_tree_vs_n_sorted_keys.log" />
-      <change beforePath="$PROJECT_DIR$/data/logs/memory_allocations_for_large_lists.log" afterPath="$PROJECT_DIR$/data/logs/memory_allocations_for_large_lists.log" />
-      <change beforePath="$PROJECT_DIR$/data/logs/shifts_required_when_inserting_first_index.log" afterPath="$PROJECT_DIR$/data/logs/shifts_required_when_inserting_first_index.log" />
-      <change beforePath="$PROJECT_DIR$/data/logs/shifts_required_when_inserting_last_index.log" afterPath="$PROJECT_DIR$/data/logs/shifts_required_when_inserting_last_index.log" />
-      <change beforePath="$PROJECT_DIR$/data/logs/shifts_required_when_inserting_rand_index.log" afterPath="$PROJECT_DIR$/data/logs/shifts_required_when_inserting_rand_index.log" />
       <change beforePath="$PROJECT_DIR$/data/png/avg_cost_to_insert_into_arraylist.png" afterPath="$PROJECT_DIR$/data/png/avg_cost_to_insert_into_arraylist.png" />
       <change beforePath="$PROJECT_DIR$/data/png/avg_cost_to_remove_from_arraylist.png" afterPath="$PROJECT_DIR$/data/png/avg_cost_to_remove_from_arraylist.png" />
       <change beforePath="$PROJECT_DIR$/data/png/levels_in_avl_tree_vs_n_random_keys.png" afterPath="$PROJECT_DIR$/data/png/levels_in_avl_tree_vs_n_random_keys.png" />
       <change beforePath="$PROJECT_DIR$/data/png/levels_in_bst_tree_vs_n_random_keys.png" afterPath="$PROJECT_DIR$/data/png/levels_in_bst_tree_vs_n_random_keys.png" />
       <change beforePath="$PROJECT_DIR$/data/png/shifts_required_when_inserting_rand_index.png" afterPath="$PROJECT_DIR$/data/png/shifts_required_when_inserting_rand_index.png" />
+      <change beforePath="$PROJECT_DIR$/src/test/groovy/util/Plot.java" afterPath="$PROJECT_DIR$/src/test/groovy/util/Plot.java" />
       <change beforePath="$PROJECT_DIR$/src/test/python/plot_analytics.py" afterPath="$PROJECT_DIR$/src/test/python/plot_analytics.py" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -59,41 +49,7 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
-      <file leaf-file-name="Plot.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/groovy/util/Plot.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="782">
-              <caret line="136" column="9" lean-forward="false" selection-start-line="136" selection-start-column="9" selection-end-line="136" selection-end-column="9" />
-              <folding>
-                <element signature="e#5962#5963#0" expanded="true" />
-                <element signature="e#6008#6009#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="plot_analytics.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/python/plot_analytics.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="1" column="30" lean-forward="false" selection-start-line="1" selection-start-column="30" selection-end-line="1" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".travis.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.travis.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="12" column="7" lean-forward="false" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="600" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -527,9 +483,9 @@
         <option value="$PROJECT_DIR$/src/test/groovy/util/Util.java" />
         <option value="$PROJECT_DIR$/build.sh" />
         <option value="$PROJECT_DIR$/install.sh" />
-        <option value="$PROJECT_DIR$/src/test/groovy/util/Plot.java" />
         <option value="$PROJECT_DIR$/src/test/groovy/structures/functional/vectors/LinkedListSpec.groovy" />
         <option value="$PROJECT_DIR$/.travis.yml" />
+        <option value="$PROJECT_DIR$/src/test/groovy/util/Plot.java" />
         <option value="$PROJECT_DIR$/src/test/python/plot_analytics.py" />
       </list>
     </option>
@@ -540,7 +496,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="4">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="134" />
     <option name="y" value="35" />
     <option name="width" value="1373" />
@@ -574,18 +530,7 @@
             <path>
               <item name="java_data_structures" type="b2602c69:ProjectViewProjectNode" />
               <item name="java_data_structures" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="java_data_structures" type="b2602c69:ProjectViewProjectNode" />
-              <item name="java_data_structures" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="java_data_structures" type="b2602c69:ProjectViewProjectNode" />
-              <item name="java_data_structures" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -859,23 +804,23 @@
     <history-entry file="All_in_java_data_structures_test_(1) - 2018.04.10 at 08h 46m 21s.xml">
       <configuration name="All in java_data_structures_test (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="Vectors_avg_cost_to_remove - 2018.04.10 at 08h 25m 32s.xml">
-      <configuration name="Vectors.avg_cost_to_remove" configurationId="JUnit" />
+    <history-entry file="All_in_java_data_structures_test_(1) - 2018.04.10 at 09h 02m 41s.xml">
+      <configuration name="All in java_data_structures_test (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="Vectors_avg_cost_to_remove - 2018.04.10 at 08h 26m 26s.xml">
-      <configuration name="Vectors.avg_cost_to_remove" configurationId="JUnit" />
+    <history-entry file="All_in_java_data_structures_test_(1) - 2018.04.10 at 09h 04m 05s.xml">
+      <configuration name="All in java_data_structures_test (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="Vectors_avg_cost_to_remove - 2018.04.10 at 08h 26m 46s.xml">
-      <configuration name="Vectors.avg_cost_to_remove" configurationId="JUnit" />
+    <history-entry file="All_in_java_data_structures_test_(1) - 2018.04.10 at 09h 08m 48s.xml">
+      <configuration name="All in java_data_structures_test (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="Vectors_avg_cost_to_remove - 2018.04.10 at 08h 27m 45s.xml">
-      <configuration name="Vectors.avg_cost_to_remove" configurationId="JUnit" />
+    <history-entry file="All_in_java_data_structures_test_(1) - 2018.04.10 at 09h 09m 30s.xml">
+      <configuration name="All in java_data_structures_test (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="Vectors_avg_cost_to_remove - 2018.04.10 at 08h 28m 39s.xml">
-      <configuration name="Vectors.avg_cost_to_remove" configurationId="JUnit" />
+    <history-entry file="All_in_java_data_structures_test_(1) - 2018.04.10 at 09h 10m 29s.xml">
+      <configuration name="All in java_data_structures_test (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="Vectors_avg_cost_to_remove - 2018.04.10 at 08h 30m 11s.xml">
-      <configuration name="Vectors.avg_cost_to_remove" configurationId="JUnit" />
+    <history-entry file="All_in_java_data_structures_test_(1) - 2018.04.10 at 09h 13m 47s.xml">
+      <configuration name="All in java_data_structures_test (1)" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -888,8 +833,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="134" y="35" width="1373" height="1765" extended-state="4" />
-    <editor active="true" />
+    <frame x="134" y="35" width="2746" height="1765" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32953784" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -899,12 +843,12 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32994732" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32886806" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32886806" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33958474" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" x="134" y="632" width="2746" height="507" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.47937742" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2317532" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24981189" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294347" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32953784" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -968,14 +912,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/groovy/structures/functional/vectors/StackSpec.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4599">
-          <caret line="35" column="20" lean-forward="true" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data/svg/trees_and_graphs.svg">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1355,22 +1291,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/python/file_io.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="26" column="16" lean-forward="false" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/python/functions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="112" column="25" lean-forward="false" selection-start-line="112" selection-start-column="25" selection-end-line="112" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data/logs/avg_cost_to_remove_from_arraylist.log">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1403,14 +1323,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.travis.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="12" column="7" lean-forward="false" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/groovy/structures/functional/vectors/LinkedListSpec.groovy">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="514">
@@ -1419,21 +1331,53 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.travis.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="12" column="7" lean-forward="false" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/logs/avg_cost_to_insert_into_arraylist.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/groovy/util/Plot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="136" column="9" lean-forward="false" selection-start-line="136" selection-start-column="9" selection-end-line="136" selection-end-column="9" />
+        <state relative-caret-position="93">
+          <caret line="117" column="51" lean-forward="false" selection-start-line="117" selection-start-column="51" selection-end-line="117" selection-end-column="51" />
           <folding>
-            <element signature="e#5962#5963#0" expanded="true" />
-            <element signature="e#6008#6009#0" expanded="true" />
+            <element signature="e#6768#6769#0" expanded="true" />
+            <element signature="e#6814#6815#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/python/functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5168">
+          <caret line="112" column="25" lean-forward="false" selection-start-line="112" selection-start-column="25" selection-end-line="112" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/python/plot_analytics.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="1" column="30" lean-forward="false" selection-start-line="1" selection-start-column="30" selection-end-line="1" selection-end-column="30" />
+        <state relative-caret-position="-7449">
+          <caret line="17" column="59" lean-forward="false" selection-start-line="17" selection-start-column="59" selection-end-line="17" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/python/file_io.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="26" column="16" lean-forward="false" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
           <folding />
         </state>
       </provider>
