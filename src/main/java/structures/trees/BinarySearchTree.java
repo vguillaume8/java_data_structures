@@ -6,7 +6,7 @@ import structures.vectors.ArrayList;
 import structures.vectors.Queue;
 
 /**
- * Implementation of Binary Search BinaryTree.
+ * Implementation of BinarySearchTree.
  *
  * @param <K> Generic type for keys (must extend java.lang.Comparable)
  * @param <V> Generic type for keys
@@ -1242,9 +1242,9 @@ public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, 
 
     /**
      * Returns the tree as an ArrayList in ascending level-order.
+     * Modified Breadth First Search
      *
      * @param node Node to print from. This is an recursive auxiliary method.
-     * @param arrayList Array list that the nodes will be inserted into.
      * @return The completed ArrayList.
      */
     @SuppressWarnings("unused")

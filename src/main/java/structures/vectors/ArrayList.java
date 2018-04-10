@@ -1,5 +1,7 @@
 package structures.vectors;
 
+import structures.commons.DynamicArray;
+
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -9,7 +11,7 @@ import java.util.Collection;
  * @author Jabari Dash
  * @param <E> Generic type
  */
-public final class ArrayList<E> implements List<E> {
+public final class ArrayList<E> implements DynamicArray<E>, List<E> {
 
     /**
      * The threshold for resizing the internal array. If the

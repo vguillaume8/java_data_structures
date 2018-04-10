@@ -11,18 +11,18 @@ file will allow you to import any data structure that the API offers.
 
 ## Dependencies
 This project aims to have as few third-party dependencies as possible. However,
-we are assuming that you have Java 8, Gradle, and Python 2.7 installed on
+we are assuming that you have Java 9, Gradle, and Python 2.7 installed on
 your development machine. With this, you can build and run the code.
 
-**Note:** *Python and Groovy are only necessary to run the tests, but Java 8
+**Note:** *Python and Groovy are only necessary to run the tests, but Java 9
 and Gradle are required to build and run the API.*
 
 #### Languages
-The API is implemented with the Java Standard Edition Development Kit 8
-(Java SDK 8), and the tests are written in Groovy. Graphs for used for tutorials
+The API is implemented with the Java Standard Edition Development Kit 9
+(Java SDK 9), and the tests are written in Groovy. Graphs for used for tutorials
 are generated with Python and not pertinent to development in this project.
 
-- [Java SDK 8][java]
+- [Java SDK 9][java]
 - [Groovy 2.4][groovy]
 - [Python 2.7][python]
 
@@ -80,7 +80,7 @@ each of them.
 If you would like to contribute or provide a bug fix,
 please see the [documentation for contributing][contributing].
 
-[java]: http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+[java]: http://www.oracle.com/technetwork/java/javase/downloads/jdk9-downloads-3848520.html
 [groovy]: http://groovy-lang.org/download.html
 [gradle]: https://gradle.org/releases/
 [python]: https://www.python.org/download/releases/2.7/
