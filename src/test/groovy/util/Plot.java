@@ -5,6 +5,7 @@ import com.opencsv.CSVWriter;
 import java.io.*;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 import java.util.StringJoiner;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -108,78 +109,31 @@ public class Plot {
                 "--logarithmic-fit="      + toPythonBoolean(logarithmicFit)
         };
 
-        StringJoiner sj = new StringJoiner(" ");
+        // File to redirect output to
+        File logFile = new File(
+                dataDirectory +
+                        "logs" +
+                        File.separator +
+                        experimentName +
+                        ".log"
+        );
 
-        // Concatenate each argument
-        // using the string joined
-        for (String s : c) {
-            sj.add(s);
-        }
+        final Process p = new ProcessBuilder(c)
+                              .redirectError(logFile)
+                              .redirectOutput(logFile)
+                              .start();
 
-        // Convert the command to a string
-        String command = sj.toString();
+        // If exit code is not 0
+        if (p.waitFor() != 0) {
 
-        // Create a new process with the command
-        final Process p = Runtime.getRuntime()
-                                 .exec(command);
+            Scanner scanner = new Scanner(logFile);
 
-        Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-                BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
-                String line = null;
-
-                try {
-                    // Pipe output of process to stdout
-                    while ((line = input.readLine()) != null) {
-                        System.out.println(line);
-                    }
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            // Print log to console
+            while (scanner.hasNextLine()) {
+                System.out.println(scanner.nextLine());
             }
-        };
 
-        // Create new thread
-        Thread thread = new Thread(runnable);
-
-        // Start the new thread
-        thread.start();
-
-        try {
-
-            // Wait for process to end
-            // and get the exit status code
-            final int exitValue = p.waitFor();
-
-            // non-zero exit status indicates success
-            if (exitValue != 0) {
-
-                System.out.println("Failed to execute the following command: " +
-                                    command + " due to the following error(s):");
-
-                // Show error message
-                try {
-                    InputStream stream = p.getErrorStream();
-
-                    final BufferedReader b = new BufferedReader(new InputStreamReader(stream));
-
-
-                    String line;
-
-                    if ((line = b.readLine()) != null) {
-                        System.out.println(line);
-                    }
-
-                } catch (final IOException e) {
-                    e.printStackTrace();
-                }
-
-                throw new Exception("Plot creation was unsuccessful");
-            }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+            return false;
         }
 
         return true;

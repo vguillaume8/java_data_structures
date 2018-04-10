@@ -13,6 +13,8 @@ install:
 script:
   - ./gradlew test
 
+# TODO - Cache python and java third party libraries?
+
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
   - rm -rf $HOME/.gradle/caches/*/plugin-resolution/
