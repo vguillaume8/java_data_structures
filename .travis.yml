@@ -8,14 +8,10 @@ jdk:
 python: 2.7
 
 install:
-  - sudo apt-get install -y python-tk
-  - sudo pip     install --upgrade pip
-  - sudo pip     install -r requirements.txt
+  - ./install.sh
 
 script:
-  - cd src/test/python/
-  - python functions.py
-#  - ./gradlew test
+  - ./gradlew test
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
