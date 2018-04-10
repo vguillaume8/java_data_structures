@@ -1,4 +1,2 @@
-Traceback (most recent call last):
-  File "./src/test/python/plot_analytics.py", line 122, in <module>
-    a
-NameError: name 'a' is not defined
+/home/jabari/.local/lib/python2.7/site-packages/scipy/optimize/minpack.py:785: OptimizeWarning: Covariance of the parameters could not be estimated
+  category=OptimizeWarning)
