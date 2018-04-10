@@ -3,6 +3,8 @@ language: java
 jdk:
   - oraclejdk9
 
+python: 2.7
+
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
   - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
@@ -11,7 +13,8 @@ cache:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
 
+before_script:
+  - pip install -r requirements.txtx
+
 script:
   - ./gradlew test
-  - ./gradlew build
-  - ./gradlew jar
