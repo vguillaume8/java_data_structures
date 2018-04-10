@@ -51,8 +51,8 @@
       <file leaf-file-name=".travis.yml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.travis.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="3" column="14" lean-forward="false" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+            <state relative-caret-position="510">
+              <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -804,9 +804,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="All_in_java_data_structures_test - 2018.04.10 at 02h 53m 15s.xml">
-      <configuration name="All in java_data_structures_test" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="All_in_java_data_structures_test - 2018.04.10 at 03h 16m 37s.xml">
       <configuration name="All in java_data_structures_test" configurationId="JUnit" />
     </history-entry>
@@ -832,6 +829,9 @@
       <configuration name="All in java_data_structures_test (1)" configurationId="JUnit" />
     </history-entry>
     <history-entry file="All_in_java_data_structures_test_(1) - 2018.04.10 at 05h 42m 44s.xml">
+      <configuration name="All in java_data_structures_test (1)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_java_data_structures_test_(1) - 2018.04.10 at 06h 14m 45s.xml">
       <configuration name="All in java_data_structures_test (1)" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -1359,8 +1359,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.travis.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="3" column="14" lean-forward="false" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+        <state relative-caret-position="510">
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding />
         </state>
       </provider>
