@@ -16,8 +16,6 @@ import java.util.concurrent.ThreadLocalRandom;
  * that we are using for testing does not support this
  * standard.
  *
- * TODO - Perhaps force gradle to use a version of Groovy that supports Java 8+
- *
  * @author Jabari Dash
  */
 public class Plot {
@@ -25,8 +23,9 @@ public class Plot {
     /**
      * Directory in which all tests are held
      */
-    private static String testDirectory = "."    + File.separator +
-            "src"  + File.separator +
+    private static String testDirectory = "." +
+            File.separator                    +
+            "src"  + File.separator           +
             "test" + File.separator;
 
     /**
@@ -39,8 +38,10 @@ public class Plot {
     /**
      * Directory in which all input and output data files are held
      */
-    private static String dataDirectory = "."    + File.separator +
-            "data" + File.separator;
+    private static String dataDirectory = "." +
+            File.separator                    +
+            "data"                            +
+            File.separator;
 
     /**
      * Directory in which all Plot files are held
@@ -109,29 +110,53 @@ public class Plot {
                 "--logarithmic-fit="      + toPythonBoolean(logarithmicFit)
         };
 
-        // File to redirect output to
-        File logFile = new File(
+        // TODO -
+        // In the event that we want to get output from
+        // python script, stdout will go to a separate file.
+        // currently it is not being used. However, at some
+        // point I may want the script to print out a best fit
+        // string. This will go to the stdout file.
+
+        // File to redirect stdout
+        File stdout = new File(
                 dataDirectory +
-                        "logs" +
+                        "logs"         +
                         File.separator +
                         experimentName +
-                        ".log"
+                        ".stdout.log"
         );
 
-        final Process p = new ProcessBuilder(c)
-                              .redirectError(logFile)
-                              .redirectOutput(logFile)
-                              .start();
+        // File to redirect stderr
+        File stderr = new File(
+                dataDirectory +
+                        "logs"         +
+                        File.separator +
+                        experimentName +
+                        ".stderr.log"
+        );
+
+        // Build process
+        // Start it
+        // Wait for it to finish
+        // Get it's exit code
+        int exitCode = new ProcessBuilder(c)
+                          .redirectOutput(stdout)
+                          .redirectError(stderr)
+                          .start()
+                          .waitFor();
 
         // If exit code is not 0
-        if (p.waitFor() != 0) {
+        // print the output
+        if (exitCode != 0) {
 
-            Scanner scanner = new Scanner(logFile);
+            Scanner scanner = new Scanner(stderr);
 
             // Print log to console
             while (scanner.hasNextLine()) {
                 System.out.println(scanner.nextLine());
             }
+
+            scanner.close();
 
             return false;
         }
@@ -152,7 +177,7 @@ public class Plot {
      * @return String representation of the boolean
      */
     @SuppressWarnings("unused")
-    static String toPythonBoolean(boolean bool) {
+    static private String toPythonBoolean(boolean bool) {
         return bool ? "True" : "False";
     }
 

@@ -8,6 +8,15 @@ import argparse
 from functions import *
 from file_io import read_csv
 
+# TODO - Implement python script to fit multiple scatter plots
+# This one, however will only give the best fit line per scatter
+# plot so the graph is not too messy. It still can however take a list
+# of options of types of fits to fit against. But, in this case, only
+# the best fit for each data set will be displayed. For this to work, we need
+# to be able to parse CSV files with more than 2 columns. The 1st column
+# will always be the x value (independent variable. Each subsequent column
+# will represent the y-values for each subsequent data set.
+
 '''
 Given a data set of (x,y) points in the form of a 2 column .csv file, and
 optional parameters for fitting a curve to the data
