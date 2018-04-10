@@ -11,7 +11,7 @@ import java.util.Iterator;
  * @author Jabari Dash
  * @param <T> Generic Type
  */
-public interface Vector<T> extends DataStructure<T>,  Iterable<T> {
+public interface Vector<T> extends DataStructure<T>, Iterable<T> {
 
     /**
      * Returns a String representation of the Vector.

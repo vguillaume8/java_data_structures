@@ -11,6 +11,7 @@ import structures.trees.BinarySearchTree.BinarySearchTreeNode
 
 class BinarySearchTreeSpec extends Specification {
 
+    @Shared Integer[] emptyArray                = []
     @Shared Integer[] sorted                    = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     @Shared Integer[] unbalanced                = [1, 2, 3, 4, 5, 6];
     @Shared Integer[] balancedIncompleteFull    = [7, 3, 1, 5, 4, 6, 11, 9, 13, 8, 10]
@@ -18,6 +19,53 @@ class BinarySearchTreeSpec extends Specification {
     @Shared Integer[] fullAndIncomplete         = [7, 3, 1, 5, 2, 0, 4, 6, 11, 9, 13, 8]
     @Shared Integer[] fullAndComplete           = [7, 3, 1, 5, 2, 0, 4, 6, 11, 9, 13]
     @Shared Integer[] perfect                   = [7, 3, 1, 5, 0, 2, 4, 6, 11, 9, 13, 8, 10, 12, 14]
+
+    @Shared Integer[][] inputs = [
+            emptyArray,
+            sorted,
+            unbalanced,
+            balancedIncompleteFull,
+            balancedIncompleteNotFull,
+            fullAndIncomplete,
+            fullAndComplete,
+            perfect
+    ];
+
+    @Unroll
+    def "Check if an array represents a binary search tree"() {
+        setup:
+        boolean correct = true
+        Integer[][] trees = [
+            [],
+            [1],
+            [2, 1, 3],
+            [7, 3, 10, 1, 4, 9, 11]
+        ]
+
+        Integer[][] notTrees = [
+                [1, 2],
+                [1, 2, 3],
+                [7, 3, 10, 1, 4, 9, 11, 12]
+        ]
+
+        when:
+        for (Integer[] array : trees) {
+            if (!BinarySearchTree.isBinarySearchTree(array)) {
+                correct = false
+                break
+            }
+        }
+
+        for (Integer[] array : notTrees) {
+            if (BinarySearchTree.isBinarySearchTree(array)) {
+                correct = false
+                break
+            }
+        }
+
+        then:
+        correct
+    }
 
     @Unroll
     def "Construct empty BinarySearchTree"() {

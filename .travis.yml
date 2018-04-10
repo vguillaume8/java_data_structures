@@ -1,12 +1,25 @@
+sudo: required
+
 language: java
+
+jdk:
+  - oraclejdk9
+
+python: 2.7
+
+install:
+  - ./install.sh
+
+script:
+  - ./gradlew test -i
+
+# TODO - Cache python and java third party libraries?
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
-  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+  - rm -rf $HOME/.gradle/caches/*/plugin-resolution/
 cache:
   directories:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
 
-script:
-  - gradle jar

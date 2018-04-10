@@ -1,16 +1,20 @@
 package structures.trees;
 
 /**
- * Self balanced AVL BinaryTree.
+ * Self balanced AVL BinarySearchTree.
  *
  * Useful - https://www.youtube.com/watch?v=7m94k2Qhg68
  *
  * @author Jabari Dash
  * @param <K> Generic type for keys.
- * @param <V> Generic type for keys.
+ * @param <V> Generic type for values.
+ * @see structures.trees.BinarySearchTree
  */
 public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, V> {
 
+    /**
+     * Constructs an empty AVLTree.
+     */
     @SuppressWarnings("unused")
     public AVLTree() {
         super();
@@ -18,7 +22,7 @@ public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, 
 
     /**
      * Initialize a BinarySearchTree with a specified
-     * set of keys.
+     * set of keys. Note, all values are null.
      *
      * @param keys Specified keys to insert into BinarySearchTree
      */
@@ -46,8 +50,16 @@ public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, 
     }
 
     /**
+     * Computes the height of the tree. Note, this
+     * method is private because it is takes a node
+     * as an argument. The method height() in the
+     * superclass BinarySearchTree implicitly invokes
+     * this method. Provided AVLTreeNodes have to keep track
+     * of height (but regular BinarySearchTreeNodes do not),
+     * this method is simply an optimization in that it
+     * changes the runtime of height() from O(log2(n)) to O(1).
      *
-     * @param node
+     * @param node Node to start calculating height from.
      */
     @SuppressWarnings("unused")
     protected int height(AVLTreeNode<K, V> node) {
@@ -55,6 +67,13 @@ public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, 
         return node == null ? 0 : node.height;
     }
 
+    /**
+     * Insert a key-value pair into the tree.
+     *
+     * @param key Key
+     * @param value Value
+     * @return True if and only if the new pair was successfully inserted.
+     */
     public boolean insert(K key, V value) {
         // Store size before insertion
         int oldSize = this.size;
@@ -67,10 +86,22 @@ public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, 
     }
 
     /**
+     * Inserts a new key-value pair after a specified node.
+     * We return the node because insert() has two steps.
      *
-     * @param node
-     * @param key
-     * @return
+     * 1. Normal binary search tree insertion
+     * 2. Re-balancing the tree
+     *
+     * Insertion is recursive, so in order
+     * to not lose the pointer to root after subsequent
+     * calls to insert(), we return it, so we
+     * have the proper node when we proceed
+     * to balance the tree in step 2.
+     *
+     * @param node Node to insert from.
+     * @param key Key
+     * @param value Value
+     * @return Root node
      */
     @SuppressWarnings("unused")
     protected AVLTreeNode<K, V> insert(AVLTreeNode<K, V> node, K key, V value) {
@@ -78,7 +109,7 @@ public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, 
         // If we are at the bottom
         if (node == null) {
             this.size++;
-            return new AVLTreeNode<>(key, value);
+            return new AVLTreeNode<K, V>(key, value);
         }
 
         // Compare the keys
@@ -134,6 +165,8 @@ public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, 
     }
 
     /**
+     * Removes a node from thee tree via
+     * it's key.
      *
      * @param key The specified key to remove from the tree.
      * @return True if and only if the node with the associated key was removed successfully.
@@ -147,8 +180,9 @@ public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, 
     }
 
     /**
+     * Returns the root node of the tree.
      *
-     * @return
+     * @return Root node
      */
     protected AVLTreeNode<K, V> root() {
         return (AVLTreeNode<K, V>) root;
@@ -162,11 +196,11 @@ public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, 
      */
     @SuppressWarnings("unused")
     private AVLTreeNode<K, V> rotateLeft(AVLTreeNode<K, V> x) {
-        AVLTreeNode<K, V> y = x.rightChild();
+        AVLTreeNode<K, V> y  = x.rightChild();
         AVLTreeNode<K, V> T2 = y.leftChild();
 
         // Perform rotation
-        y.leftChild = x;
+        y.leftChild  = x;
         x.rightChild = T2;
 
         //  Update heights
@@ -188,12 +222,12 @@ public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, 
      */
     @SuppressWarnings("unused")
     private AVLTreeNode<K, V> rotateRight(AVLTreeNode<K, V> y) {
-        AVLTreeNode<K, V> x = y.leftChild();
+        AVLTreeNode<K, V> x  = y.leftChild();
         AVLTreeNode<K, V> T2 = x.rightChild();
 
         // Perform rotation
         x.rightChild = y;
-        y.leftChild = T2;
+        y.leftChild  = T2;
 
         // Calculate new heights
         // Update height
@@ -208,30 +242,36 @@ public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, 
     }
 
     /**
-     * Node in AVL BinaryTree.
+     * Node in AVL BinarySearchTree.
      *
      * @author Jabari Dash
      * @param <K> Generic type for keys.
      * @param <V> Generic type for keys.
+     * @see structures.trees.BinarySearchTree.BinarySearchTreeNode
      */
     private static class AVLTreeNode<K extends Comparable, V> extends BinarySearchTreeNode<K, V> {
 
+        /**
+         * Height of subtree where
+         * this node is the root.
+         */
         private int height;
 
         /**
+         * Constructs a new Node.
          *
-         * @param key
-         * @param value
+         * @param key Key that will be used for inserting and searching for this node.
+         * @param value Value of the node.
          */
         private AVLTreeNode(K key, V value) {
             super(key, value);
             this.height = 1;
         }
 
-
         /**
+         * Returns the left child of this node.
          *
-         * @return
+         * @return Left child
          */
         @SuppressWarnings("unused")
         protected AVLTreeNode<K, V> leftChild() {
@@ -239,10 +279,10 @@ public final class AVLTree<K extends Comparable, V> extends BinarySearchTree<K, 
             return (AVLTreeNode<K, V>) this.leftChild;
         }
 
-
         /**
+         * Returns the right child of this node.
          *
-         * @return
+         * @return Right child
          */
         @SuppressWarnings("unused")
         protected AVLTreeNode<K, V> rightChild() {

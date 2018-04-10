@@ -1,0 +1,2 @@
+/home/jabari/.local/lib/python2.7/site-packages/scipy/optimize/minpack.py:785: OptimizeWarning: Covariance of the parameters could not be estimated
+  category=OptimizeWarning)

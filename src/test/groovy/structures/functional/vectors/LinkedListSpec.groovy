@@ -108,8 +108,6 @@ class LinkedListSpec extends Specification {
         when:
         map = new HashMap<Integer, Integer>(input)
 
-        println(map.toString())
-
         then:
         map.size()       == size
         map.toString()   == string

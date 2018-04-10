@@ -86,21 +86,21 @@ public interface BinaryTree<K, V> extends DataStructure<K>, Iterable<Pair<K, V>>
     default void display() {
 
         System.out.println(this.getClass().getSimpleName());
-        System.out.println("Size: "           + this.size());
-        System.out.println("Height: "         + this.height());
-        System.out.println("Balanced: "     + this.isBalanced());
-        System.out.println("Full: "         + this.isFull());
-        System.out.println("Complete: "     + this.isComplete());
-        System.out.println("Perfect: "      + this.isPerfect());
-        System.out.println("Keys, In-order: "     + this.toString(IN_ORDER));
-        System.out.println("Keys, Pre-order: "    + this.toString(PRE_ORDER));
-        System.out.println("Keys, Post-order: "   + this.toString(POST_ORDER));
-        System.out.println("Keys, Level-order: "  + this.toString(LEVEL_ORDER));
+        System.out.println("Size: "                 + this.size());
+        System.out.println("Height: "               + this.height());
+        System.out.println("Balanced: "             + this.isBalanced());
+        System.out.println("Full: "                 + this.isFull());
+        System.out.println("Complete: "             + this.isComplete());
+        System.out.println("Perfect: "              + this.isPerfect());
+        System.out.println("Keys, In-order: "       + this.toString(IN_ORDER));
+        System.out.println("Keys, Pre-order: "      + this.toString(PRE_ORDER));
+        System.out.println("Keys, Post-order: "     + this.toString(POST_ORDER));
+        System.out.println("Keys, Level-order: "    + this.toString(LEVEL_ORDER));
         System.out.println("Values, In-order: "     + Arrays.toString(this.values(IN_ORDER)));
         System.out.println("Values, Pre-order: "    + Arrays.toString(this.values(PRE_ORDER)));
         System.out.println("Values, Post-order: "   + Arrays.toString(this.values(POST_ORDER)));
         System.out.println("Values, Level-order: "  + Arrays.toString(this.values(LEVEL_ORDER)));
-        System.out.println("BinaryTree String:\n"         + this.toTreeString());
+        System.out.println("BinaryTree String:\n"   + this.toTreeString());
     }
 
     /**
