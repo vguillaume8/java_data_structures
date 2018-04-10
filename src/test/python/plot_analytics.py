@@ -119,6 +119,8 @@ def plot_data(output_file_path,
 # PROGRAM STARTS EXECUTION HERE
 if __name__ == "__main__":
 
+    a
+
     # We use this object to parse command line arguments
     parser = argparse.ArgumentParser()
 
