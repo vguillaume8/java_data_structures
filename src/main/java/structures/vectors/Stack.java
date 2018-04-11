@@ -88,7 +88,7 @@ public final class Stack<T> implements Vector<T> {
         } else {
             node.next = head;
             head.prev = node;
-            head = node;
+            head      = node;
         }
 
         this.size++;
@@ -127,7 +127,7 @@ public final class Stack<T> implements Vector<T> {
             throw new EmptyDataStructureException("Cannot remove from an empty Stack");
         }
 
-        T value = this.head.value;  // Get value from head
+        T value   = this.head.value;  // Get value from head
         this.head = this.head.next;  // Set head equal to head's next
         this.size--;           // Decrement size of Queue
 

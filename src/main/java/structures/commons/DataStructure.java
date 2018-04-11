@@ -11,7 +11,7 @@ import java.util.Collection;
 public interface DataStructure<K> {
 
     /**
-     * Determines whether or not the DataStructure has a contains a specified key.
+     * Determines whether or not the DataStructure contains a specified key.
      *
      * @param key Specified key
      * @return True if and only if the specified key is within the Structure

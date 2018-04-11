@@ -11,6 +11,8 @@ public final class Application {
 
   public static void main(String[] args) throws Exception {
 
+  // TODO - https://docs.oracle.com/javase/tutorial/essential/concurrency/syncmeth.html
+
     Integer[] a = {4, 3, 2, 1};
     Integer[] b = {1, 2, 3, 4};
 

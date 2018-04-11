@@ -174,7 +174,11 @@ public interface Vector<T> extends DataStructure<T>, Iterable<T> {
             thisIterator = this.iterator();
             thatIterator = vector.iterator();
 
+            // This way we are ensuring that they both have the same
+            // data and it is ordered in the same way
             while (thisIterator.hasNext() && thatIterator.hasNext()) {
+
+                // Check that ith object of each iterator is equal
                 if (!thisIterator.next().equals(thatIterator.next())) {
                     return false;
                 }
@@ -200,7 +204,7 @@ public interface Vector<T> extends DataStructure<T>, Iterable<T> {
         }
 
         // If we made it to the bottom,
-        // they are equal
+        // the objects are equal
         return true;
     }
 }
