@@ -49,15 +49,19 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
      * used for analytics purposes. It has not effect on
      * the structures.performance or behavior of the ArrayList.
      */
-    protected int shifts;
+    private int shifts;
 
     /**
      * The number of times any element has been copied from one
      * array to another. This occurs when the {@code copy()} function is
      * called. If n values are copied, this value increases by n.
      */
-    protected int copies;
+    private int copies;
 
+    /**
+     * Constructs default DynamicArray with resize
+     * threshold 90% and initial size 10.
+     */
     public DynamicArray() {
         this.RESIZE_THRESHOLD = DEFAULT_RESIZE_THRESHOLD;
         this.INITIAL_SIZE     = DEFAULT_INITIAL_SIZE;
@@ -65,13 +69,18 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
         elements = (E[]) new Object[this.INITIAL_SIZE];
     }
 
-
-    public DynamicArray(int length) {
+    /**
+     * Constructs default DynamicArray with resize
+     * threshold 90% and a specified initial size.
+     *
+     * @param initialSize Specified initial size of internal array.
+     */
+    public DynamicArray(int initialSize) {
         this.RESIZE_THRESHOLD = DEFAULT_RESIZE_THRESHOLD;
-        this.INITIAL_SIZE     = length;
+        this.INITIAL_SIZE     = initialSize;
 
         // Create a new array no smaller than the default size
-        elements = (E[]) new Object[length < DEFAULT_INITIAL_SIZE ? DEFAULT_INITIAL_SIZE : length];
+        elements = (E[]) new Object[initialSize < DEFAULT_INITIAL_SIZE ? DEFAULT_INITIAL_SIZE : initialSize];
     }
 
     /**
@@ -185,6 +194,47 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
     @Override
     public int size() {
         return size;
+    }
+
+    /**
+     * Performs a partial shift left on the array.
+     * Values starting from to the end of the list,
+     * and not including the index will be shifted
+     * over to the left. The value at the specified
+     * index will be overridden by the value to its left.
+     * This essentially removes the value from that spot
+     * from the array. This is an auxiliary function for
+     * use with the remove functionality
+     *
+     * @param index Specified index to shift left into
+     */
+    protected void shiftLeft(int index) {
+//        verifyIndex(index);
+
+        // Partial rotation
+        for (int i = index; i < size; i++) {
+            elements[i] = elements[i+1];
+            shifts++;
+        }
+    }
+
+    /**
+     * Performs a partial shift right on the array.
+     * All elements to right of the index, and the
+     * index itself will be shifted to the right one
+     * spot for the purpose of making space for a new element
+     * to be inserted. This is an auxiliary function
+     *
+     * @param index Index to start shifting from
+     */
+    protected void shiftRight(int index) {
+//        verifyIndex(index);
+
+        for (int i = size; i > index; i--) {
+
+            elements[i] = elements[i-1];
+            shifts++;
+        }
     }
 
     /**

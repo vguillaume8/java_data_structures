@@ -13,7 +13,6 @@ import java.util.Collection;
  */
 public final class ArrayList<E> extends DynamicArray<E> implements List<E> {
 
-
     /**
      * Instantiates an ArrayList with an internal array of
      * a specified length. This constructor should be used
@@ -275,47 +274,6 @@ public final class ArrayList<E> extends DynamicArray<E> implements List<E> {
     @Override
     public E remove() {
         return removeLast();
-    }
-
-    /**
-     * Performs a partial shift right on the array.
-     * All elements to right of the index, and the
-     * index itself will be shifted to the right one
-     * spot for the purpose of making space for a new element
-     * to be inserted. This is an auxiliary function
-     *
-     * @param index Index to start shifting from
-     */
-    private void shiftRight(int index) {
-        verifyIndex(index);
-
-        for (int i = size; i > index; i--) {
-
-           elements[i] = elements[i-1];
-           shifts++;
-        }
-    }
-
-    /**
-     * Performs a partial shift left on the array.
-     * Values starting from to the end of the list,
-     * and not including the index will be shifted
-     * over to the left. The value at the specified
-     * index will be overridden by the value to its left.
-     * This essentially removes the value from that spot
-     * from the array. This is an auxiliary function for
-     * use with the remove functionality
-     *
-     * @param index Specified index to shift left into
-     */
-    private void shiftLeft(int index) {
-        verifyIndex(index);
-
-        // Partial rotation
-        for (int i = index; i < size; i++) {
-            elements[i] = elements[i+1];
-            shifts++;
-        }
     }
 
 

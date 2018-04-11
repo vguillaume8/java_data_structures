@@ -32,18 +32,6 @@ public interface List<T> extends Vector<T> {
 //------------------------------------------------------------------------------
 
     /**
-     * Determines whether or not a specified index is within the bounds of the list
-     *
-     * @param index Specified index
-     * @return True if and only if the index is less then the length of the list, and positive
-     */
-    default boolean indexOutOfBounds(int index) {
-        return index < 0 || index >= this.size();
-    }
-
-//------------------------------------------------------------------------------
-
-    /**
      * Insert a value at a specified index
      *
      * @param value Value to be inserted
@@ -112,20 +100,6 @@ public interface List<T> extends Vector<T> {
     @SuppressWarnings("unused")
     void update(T value, int index);
 
-//------------------------------------------------------------------------------
-
-    /**
-     * Verifies if a provided index is within the DataStructure or not
-     *
-     * @param index Specified index to verify
-     * @throws IndexOutOfBoundsException Exception thrown if the index is invalid
-     */
-    default void verifyIndex(int index) {
-        if (indexOutOfBounds(index)) {
-            throw new IndexOutOfBoundsException("size: " + this.size() + " index: " + index);
-        }
-    }
-
 
     /**
      * Static Iterator class so that the List can be iterated on via
@@ -136,7 +110,7 @@ public interface List<T> extends Vector<T> {
      */
     class ListIterator<T> implements Iterator<T> {
         private List<T> list;   // List to iterate over
-        private int cursor;     // Cursor to keep track of position in iteration
+        private int     cursor; // Cursor to keep track of position in iteration
 
         /**
          * Constructor, initialize cursor to index 0, and the list
@@ -145,7 +119,7 @@ public interface List<T> extends Vector<T> {
          * @param list The list to be iterated on
          */
         private ListIterator(List<T> list) {
-            this.list = list;
+            this.list   = list;
             this.cursor = 0;
         }
 

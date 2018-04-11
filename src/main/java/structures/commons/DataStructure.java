@@ -32,6 +32,17 @@ public interface DataStructure<K> {
 //------------------------------------------------------------------------------
 
     /**
+     * Determines whether or not a specified index is within the bounds of the list
+     *
+     * @param index Specified index
+     * @return True if and only if the index is less then the length of the list, and positive
+     */
+    default boolean indexOutOfBounds(int index) {
+        return index < 0 || index >= this.size();
+    }
+//------------------------------------------------------------------------------
+
+    /**
      * Inserts a specified key into the List.
      *
      * @param key The specified key to insert.
@@ -81,6 +92,20 @@ public interface DataStructure<K> {
      * @return Number of keys in the DataStructure.
      */
     int size();
+
+//------------------------------------------------------------------------------
+
+    /**
+     * Verifies if a provided index is within the DataStructure or not
+     *
+     * @param index Specified index to verify
+     * @throws IndexOutOfBoundsException Exception thrown if the index is invalid
+     */
+    default void verifyIndex(int index) {
+        if (indexOutOfBounds(index)) {
+            throw new IndexOutOfBoundsException("size: " + this.size() + " index: " + index);
+        }
+    }
 
 //------------------------------------------------------------------------------
 
