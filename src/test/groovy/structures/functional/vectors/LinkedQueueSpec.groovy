@@ -1,10 +1,10 @@
 package structures.functional.vectors
 
-import structures.vectors.Queue
+import structures.vectors.LinkedQueue
 import spock.lang.Specification
 import spock.lang.Unroll
 
-class QueueSpec extends Specification {
+class LinkedQueueSpec extends Specification {
 
     /**
      * https://www.geeksforgeeks.org/iterative-method-to-find-height-of-binary-tree/
@@ -109,7 +109,7 @@ class QueueSpec extends Specification {
         private int     size
 
         int height() {
-            Queue<Node<T>> queue
+            LinkedQueue<Node<T>> queue
             Node<T>        node
             int            height
             int            count
@@ -118,7 +118,7 @@ class QueueSpec extends Specification {
                 return 0
             }
 
-            queue  = new Queue<Node<T>>()
+            queue  = new LinkedQueue<Node<T>>()
             queue.insert(root)
 
             height = 0
@@ -230,10 +230,10 @@ class QueueSpec extends Specification {
         String breadthFirstSearch(int s) {
             StringBuilder  output
             boolean[]      visited
-            Queue<Integer> queue
+            LinkedQueue<Integer> queue
 
             output  = new StringBuilder()
-            queue   = new Queue<Integer>()
+            queue   = new LinkedQueue<Integer>()
             visited = new boolean[this.numberOfVerticies]
 
             for (int i = 0; i < visited.length; i++) {
@@ -265,12 +265,12 @@ class QueueSpec extends Specification {
      * @param <K> Generic type
      */
     private final class Stack <K> {
-        private Queue<K> inQueue
-        private Queue<K> tempQueue
+        private LinkedQueue<K> inQueue
+        private LinkedQueue<K> tempQueue
 
         Stack() {
-            inQueue   = new Queue<K>()
-            tempQueue = new Queue<K>()
+            inQueue   = new LinkedQueue<K>()
+            tempQueue = new LinkedQueue<K>()
         }
 
         boolean empty() {

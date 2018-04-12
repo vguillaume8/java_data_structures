@@ -6,15 +6,15 @@ import java.util.Collection;
 import java.util.Iterator;
 
 /**
- * Basic FIFO Queue implementation.
+ * Basic FIFO LinkedQueue implementation.
  *
  * @author Jabari Dash
  * @param <K> Generic type
  */
-public final class Queue<K> implements Vector<K> {
+public final class LinkedQueue<K> implements Vector<K> {
 
     /**
-     * Number of elements in the Queue
+     * Number of elements in the LinkedQueue
      */
     private int size;
 
@@ -30,18 +30,18 @@ public final class Queue<K> implements Vector<K> {
     private Node<K> tail;
 
     /**
-     * Constructs empty Queue.
+     * Constructs empty LinkedQueue.
      */
-    public Queue() {
+    public LinkedQueue() {
         super();
     }
 
     /**
-     * Constructs Queue from array of keys.
+     * Constructs LinkedQueue from array of keys.
      *
-     * @param keys Array of keys to instatiate Queue from
+     * @param keys Array of keys to instatiate LinkedQueue from
      */
-    public Queue(K[] keys) {
+    public LinkedQueue(K[] keys) {
         insert(keys);
     }
 
@@ -50,10 +50,10 @@ public final class Queue<K> implements Vector<K> {
     /**
      * Construct queue from Java Collection of values.
      *
-     * @param values Collection of values to construct Queue from.
+     * @param values Collection of values to construct LinkedQueue from.
      * @see java.util.Collection
      */
-    public Queue(Collection<K> values) {
+    public LinkedQueue(Collection<K> values) {
         insert(values);
     }
 
@@ -69,37 +69,37 @@ public final class Queue<K> implements Vector<K> {
     }
 
     /**
-     * Determines whether or not this Queue is equal to
+     * Determines whether or not this LinkedQueue is equal to
      * a provided object.
      *
-     * @param object Object to compare this Queue with.
+     * @param object Object to compare this LinkedQueue with.
      * @return True if and only if their types are the same,
      * lengths are the same, and the contain all the same elements.
      */
     @Override
     public boolean equals(Object object) {
 
-        // Object must be an Queue, and all elements must be equal, or object
-        // must be this Queue itself
-        return this == object || (object instanceof Queue && equivalentTo(object));
+        // Object must be an LinkedQueue, and all elements must be equal, or object
+        // must be this LinkedQueue itself
+        return this == object || (object instanceof LinkedQueue && equivalentTo(object));
     }
 
     /**
      * Retrieves, but does not remove the front-most
-     * element in the Queue.
+     * element in the LinkedQueue.
      *
-     * @return Front-most value from Queue
+     * @return Front-most value from LinkedQueue
      */
     public K peek() {
         if (this.empty()) {
-            throw new EmptyDataStructureException("Cannot peek() empty Queue");
+            throw new EmptyDataStructureException("Cannot peek() empty LinkedQueue");
         }
 
         return head.value;
     }
 
     /**
-     * Inserts key at back of Queue.
+     * Inserts key at back of LinkedQueue.
      *
      * @param key The specified key to insert.
      */
@@ -123,19 +123,19 @@ public final class Queue<K> implements Vector<K> {
     }
 
     /**
-     * Retrieve and remove front-most value from Queue.
+     * Retrieve and remove front-most value from LinkedQueue.
      *
-     * @return Front most value from Queue
+     * @return Front most value from LinkedQueue
      */
     @Override
     public K remove() {
         if (this.empty()) {
-            throw new EmptyDataStructureException("Cannot remove() from empty Queue");
+            throw new EmptyDataStructureException("Cannot remove() from empty LinkedQueue");
         }
 
         K value = head.value;   // Get value from head
         head    = head.next;    // Set head equal to head's next
-        size--;                 // Decrement size of Queue
+        size--;                 // Decrement size of LinkedQueue
 
         return value;
     }
@@ -161,7 +161,7 @@ public final class Queue<K> implements Vector<K> {
     }
 
     /**
-     * Returns an Iterator for iterating over the Queue.
+     * Returns an Iterator for iterating over the LinkedQueue.
      *
      * @return Iterator object
      */

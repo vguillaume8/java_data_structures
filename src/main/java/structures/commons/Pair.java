@@ -13,23 +13,33 @@ public interface Pair<K, V> {
      * Override the equals() method, simple check that
      * the object is of type pair, and its data members match.
      *
-     * @param o Object that this Pair will be compared to.
+     * @param object Object that this Pair will be compared to.
      * @return True if and only if the above conditions are met.
      */
-    default boolean equivalentTo(Object o) {
+    default boolean equivalentTo(Object object) {
 
         // Is the object being compared to itself?
-        if (o == this)
+        if (object == this) {
             return true;
+        }
 
-        // Is o an instance of Pair?
-        if (!(o instanceof Pair)) {
+        // Check that the object is an
+        // instance of the same type of
+        // object of the object calling
+        // this method
+        try {
+
+            if (!Class.forName(this.getClass().getName()).isInstance(object)) {
+                return false;
+            }
+
+        } catch (ClassNotFoundException e) {
             return false;
         }
 
         // Cast to pair, so we can check data members
         @SuppressWarnings("unchecked")
-        Pair<K, V> p = (Pair<K, V>) o;
+        Pair<K, V> p = (Pair<K, V>) object;
 
         // Compare the inner members
         return p.key().equals(this.key()) && p.value().equals(this.value());
@@ -73,7 +83,7 @@ public interface Pair<K, V> {
         // will be no way to distinguish. Perhaps put the
         // strings in quotes, but don't put null in quotes
         // if it came from a null key or value
-        k = key() == null ? "null" : key().toString();
+        k = key()   == null ? "null" : key().toString();
         v = value() == null ? "null" : value().toString();
 
         return "{key: " + k + ", value: " + v + "}";

@@ -2,7 +2,6 @@ package structures.vectors;
 
 import structures.commons.DynamicArray;
 
-import java.util.Arrays;
 import java.util.Collection;
 
 /**
@@ -142,8 +141,7 @@ public final class ArrayList<E> extends DynamicArray<E> implements List<E> {
      * @param index Specified index.
      */
     public void set(E value, int index) {
-        verifyIndex(index);
-        elements[index] = value;
+        update(index, value);
     }
 
 }

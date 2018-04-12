@@ -3,14 +3,14 @@ package structures.unit.vectors
 import spock.lang.Unroll
 import spock.lang.Specification
 import structures.commons.DataStructure.EmptyDataStructureException
-import structures.vectors.Queue;
+import structures.vectors.LinkedQueue;
 
-class QueueSpec extends Specification {
+class LinkedQueueSpec extends Specification {
 
     @Unroll
     def "Construct Queue from Java Collection"() {
         when:
-        Queue<Integer> list = new Queue<Integer>(input)
+        LinkedQueue<Integer> list = new LinkedQueue<Integer>(input)
 
         then:
         list.size()     == input.size()
@@ -27,12 +27,12 @@ class QueueSpec extends Specification {
     @Unroll
     def "#Check Queue equality"() {
         setup:
-        Queue<Integer> list1
-        Queue<Integer> list2
+        LinkedQueue<Integer> list1
+        LinkedQueue<Integer> list2
 
         when:
-        list1 = new Queue<Integer>(input1)
-        list2 = new Queue<Integer>(input2)
+        list1 = new LinkedQueue<Integer>(input1)
+        list2 = new LinkedQueue<Integer>(input2)
 
         then:
         list1.equals(list2) == equals
@@ -51,7 +51,7 @@ class QueueSpec extends Specification {
     @Unroll
     def "#Construct an empty Queue"() {
         setup:
-        Queue queue = new Queue()
+        LinkedQueue queue = new LinkedQueue()
 
         expect:
         queue.size() == 0
@@ -61,7 +61,7 @@ class QueueSpec extends Specification {
     @Unroll
     def "#Construct an empty Queue from array"() {
         setup:
-        Queue queue = new Queue(values)
+        LinkedQueue queue = new LinkedQueue(values)
 
         expect:
         queue.size() == size
@@ -77,7 +77,7 @@ class QueueSpec extends Specification {
     @Unroll
     def "#Construct queue from non-empty array"() {
         when:
-        Queue<Integer> queue = new Queue<Integer>(values);
+        LinkedQueue<Integer> queue = new LinkedQueue<Integer>(values);
 
         then:
         queue.empty() == isEmpty
@@ -98,7 +98,7 @@ class QueueSpec extends Specification {
     @Unroll
     def "#push()"() {
         setup:
-        Queue queue = new Queue();
+        LinkedQueue queue = new LinkedQueue();
 
         when:
         int i = 0
@@ -123,7 +123,7 @@ class QueueSpec extends Specification {
     @Unroll
     def "#pop()"() {
         setup:
-        Queue queue = new Queue(values);
+        LinkedQueue queue = new LinkedQueue(values);
 
         when:
         int i = 0
@@ -148,7 +148,7 @@ class QueueSpec extends Specification {
     @Unroll
     def "#pop() an empty Queue"() {
         setup:
-        Queue queue = new Queue();
+        LinkedQueue queue = new LinkedQueue();
 
         when:
         queue.remove()
@@ -161,7 +161,7 @@ class QueueSpec extends Specification {
 
     @Unroll def "#peek()"() {
         setup:
-        Queue queue = new Queue(values);
+        LinkedQueue queue = new LinkedQueue(values);
 
         expect:
         queue.peek() == peek
@@ -178,7 +178,7 @@ class QueueSpec extends Specification {
     @Unroll
     def "#peek() an empty Queue"() {
         setup:
-        Queue queue = new Queue();
+        LinkedQueue queue = new LinkedQueue();
 
         when:
         queue.peek()
@@ -192,7 +192,7 @@ class QueueSpec extends Specification {
     @Unroll
     def "#toString()"() {
         setup:
-        Queue queue = new Queue(values);
+        LinkedQueue queue = new LinkedQueue(values);
 
         expect:
         queue.toString() == string

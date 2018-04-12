@@ -91,11 +91,19 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
         elements              = (E[]) new Object[this.INITIAL_SIZE];
     }
 
+    /**
+     *
+     * @param values
+     */
     public DynamicArray(E[] values) {
         this(values.length);
         insert(values);
     }
 
+    /**
+     *
+     * @param values
+     */
     public DynamicArray(Collection<E> values) {
         this(values.size());
         insert(values);
@@ -422,6 +430,18 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
         }
 
         return array;
+    }
+
+    /**
+     *
+     * @param index
+     * @param value
+     * @return
+     */
+    protected boolean update(int index, E value) {
+        verifyIndex(index);
+        elements[index] = value;
+        return true;
     }
 
 }

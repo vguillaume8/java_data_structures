@@ -3,14 +3,14 @@ package structures.unit.vectors
 import spock.lang.Unroll
 import spock.lang.Specification
 import structures.commons.DataStructure.EmptyDataStructureException
-import structures.vectors.Stack;
+import structures.vectors.LinkedStack;
 
-class StackSpec extends Specification {
+class LinkedStackSpec extends Specification {
 
     @Unroll
     def "Construct Stack from Java Collection"() {
         when:
-        Stack<Integer> stack = new Stack<Integer>(input)
+        LinkedStack<Integer> stack = new LinkedStack<Integer>(input)
 
         then:
         stack.size()     == input.size()
@@ -27,12 +27,12 @@ class StackSpec extends Specification {
     @Unroll
     def "#Check Stack equality"() {
         setup:
-        Stack<Integer> list1
-        Stack<Integer> list2
+        LinkedStack<Integer> list1
+        LinkedStack<Integer> list2
 
         when:
-        list1 = new Stack<Integer>(input1)
-        list2 = new Stack<Integer>(input2)
+        list1 = new LinkedStack<Integer>(input1)
+        list2 = new LinkedStack<Integer>(input2)
 
         then:
         list1.equals(list2) == equals
@@ -51,7 +51,7 @@ class StackSpec extends Specification {
     @Unroll
     def "#Construct an empty Stack"() {
         setup:
-        Stack stack = new Stack()
+        LinkedStack stack = new LinkedStack()
 
         expect:
         stack.size() == 0
@@ -61,7 +61,7 @@ class StackSpec extends Specification {
     @Unroll
     def "#Construct an empty Stack from array"() {
         setup:
-        Stack stack = new Stack(values)
+        LinkedStack stack = new LinkedStack(values)
 
         expect:
         stack.size() == size
@@ -77,7 +77,7 @@ class StackSpec extends Specification {
     @Unroll
     def "#Construct stack from non-empty array"() {
         when:
-        Stack<Integer> stack = new Stack<Integer>(values);
+        LinkedStack<Integer> stack = new LinkedStack<Integer>(values);
 
         then:
         stack.empty() == isEmpty
@@ -95,7 +95,7 @@ class StackSpec extends Specification {
     @Unroll
     def "#push()"() {
         setup:
-        Stack stack = new Stack();
+        LinkedStack stack = new LinkedStack();
 
         when:
         int i = 0
@@ -120,7 +120,7 @@ class StackSpec extends Specification {
     @Unroll
     def "#pop()"() {
         setup:
-        Stack stack = new Stack(values);
+        LinkedStack stack = new LinkedStack(values);
 
         when:
         int i = 0
@@ -145,7 +145,7 @@ class StackSpec extends Specification {
     @Unroll
     def "#pop() an empty Stack"() {
         setup:
-        Stack stack = new Stack();
+        LinkedStack stack = new LinkedStack();
 
         when:
         stack.pop()
@@ -158,7 +158,7 @@ class StackSpec extends Specification {
 
     @Unroll def "#top()"() {
         setup:
-        Stack stack = new Stack(values);
+        LinkedStack stack = new LinkedStack(values);
 
         expect:
         stack.top() == top
@@ -175,7 +175,7 @@ class StackSpec extends Specification {
     @Unroll
     def "#top() an empty Stack"() {
         setup:
-        Stack stack = new Stack();
+        LinkedStack stack = new LinkedStack();
 
         when:
         stack.top()
@@ -189,7 +189,7 @@ class StackSpec extends Specification {
     @Unroll
     def "#toString()"() {
         setup:
-        Stack stack = new Stack(values);
+        LinkedStack stack = new LinkedStack(values);
 
         expect:
         stack.toString() == string
