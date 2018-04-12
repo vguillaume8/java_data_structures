@@ -17,7 +17,7 @@ public interface List<T> extends Vector<T> {
      *
      * @param value Specified value to insert
      */
-    boolean append(T value);
+//    boolean append(T value);
 
 //------------------------------------------------------------------------------
 
@@ -28,18 +28,6 @@ public interface List<T> extends Vector<T> {
      * @return Item at the specified index
      */
     T get(int index);
-
-//------------------------------------------------------------------------------
-
-    /**
-     * Determines whether or not a specified index is within the bounds of the list
-     *
-     * @param index Specified index
-     * @return True if and only if the index is less then the length of the list, and positive
-     */
-    default boolean indexOutOfBounds(int index) {
-        return index < 0 || index >= this.size();
-    }
 
 //------------------------------------------------------------------------------
 
@@ -58,17 +46,7 @@ public interface List<T> extends Vector<T> {
      *
      * @param value Specified value to insert
      */
-    boolean prepend(T value);
-
-//------------------------------------------------------------------------------
-
-    /**
-     * Retrieves and removes a value from a specified index
-     *
-     * @param index Index to remove value from
-     * @return The value at the specified index
-     */
-    T remove(int index);
+//    boolean prepend(T value);
 
 //------------------------------------------------------------------------------
 
@@ -85,11 +63,33 @@ public interface List<T> extends Vector<T> {
 //------------------------------------------------------------------------------
 
     /**
+     * Retrieves and removes a value from a specified index
+     *
+     * @param index Index to remove value from
+     * @return The value at the specified index
+     */
+    T remove(int index);
+
+//------------------------------------------------------------------------------
+
+    /**
+     *
+     * @return
+     */
+    default T remove() {
+        return removeLast();
+    }
+
+//------------------------------------------------------------------------------
+
+    /**
      * Removes first value from the List
      *
      * @return First element in DataStructure
      */
-    T removeFirst();
+    default T removeFirst() {
+        return remove(0);
+    }
 
 //------------------------------------------------------------------------------
 
@@ -98,7 +98,9 @@ public interface List<T> extends Vector<T> {
      *
      * @return Last element in DataStructure
      */
-    T removeLast();
+    default T removeLast() {
+        return remove(size() - 1);
+    }
 
 //------------------------------------------------------------------------------
 
@@ -110,22 +112,10 @@ public interface List<T> extends Vector<T> {
      * @param index Specified index.
      */
     @SuppressWarnings("unused")
-    void update(T value, int index);
+    void set(T value, int index);
+
 
 //------------------------------------------------------------------------------
-
-    /**
-     * Verifies if a provided index is within the DataStructure or not
-     *
-     * @param index Specified index to verify
-     * @throws IndexOutOfBoundsException Exception thrown if the index is invalid
-     */
-    default void verifyIndex(int index) {
-        if (indexOutOfBounds(index)) {
-            throw new IndexOutOfBoundsException("size: " + this.size() + " index: " + index);
-        }
-    }
-
 
     /**
      * Static Iterator class so that the List can be iterated on via
@@ -136,7 +126,7 @@ public interface List<T> extends Vector<T> {
      */
     class ListIterator<T> implements Iterator<T> {
         private List<T> list;   // List to iterate over
-        private int cursor;     // Cursor to keep track of position in iteration
+        private int     cursor; // Cursor to keep track of position in iteration
 
         /**
          * Constructor, initialize cursor to index 0, and the list
@@ -145,7 +135,7 @@ public interface List<T> extends Vector<T> {
          * @param list The list to be iterated on
          */
         private ListIterator(List<T> list) {
-            this.list = list;
+            this.list   = list;
             this.cursor = 0;
         }
 

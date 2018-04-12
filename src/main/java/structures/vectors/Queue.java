@@ -114,7 +114,7 @@ public final class Queue<K> implements Vector<K> {
         } else {
             node.prev = tail;
             tail.next = node;
-            tail = node;
+            tail      = node;
         }
 
         this.size++;

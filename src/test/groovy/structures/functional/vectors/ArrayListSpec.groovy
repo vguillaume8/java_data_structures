@@ -58,15 +58,15 @@ class ArrayListSpec extends Specification{
             // Transpose
             for (int j = i; j < n; j++) {
                 temp = matrix.get(i).get(j)
-                matrix.get(i).update(matrix.get(j).get(i), j)
-                matrix.get(j).update(temp, i)
+                matrix.get(i).set(matrix.get(j).get(i), j)
+                matrix.get(j).set(temp, i)
             }
 
             // Invert row
             for (int j = 0; j < n / 2; j++) {
                 temp = matrix.get(i).get(j)
-                matrix.get(i).update(matrix.get(i).get(n-1-j), j)
-                matrix.get(i).update(temp, n-1-j)
+                matrix.get(i).set(matrix.get(i).get(n-1-j), j)
+                matrix.get(i).set(temp, n-1-j)
             }
         }
 
@@ -105,8 +105,8 @@ class ArrayListSpec extends Specification{
 
             if (min != i) {
                 temp = list.get(i)
-                list.update(list.get(min), i)
-                list.update(temp, min)
+                list.set(list.get(min), i)
+                list.set(temp, min)
             }
         }
 

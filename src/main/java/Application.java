@@ -11,13 +11,18 @@ public final class Application {
 
   public static void main(String[] args) throws Exception {
 
-    Integer[] a = {4, 3, 2, 1};
-    Integer[] b = {1, 2, 3, 4};
+  // TODO - https://docs.oracle.com/javase/tutorial/essential/concurrency/syncmeth.html
 
-    ArrayList<Integer> one = new ArrayList<>(a);
-    ArrayList<Integer> two = new ArrayList<>(b);
+    List<Integer> a = new ArrayList<>();
+    List<Integer> b = new LinkedList<>();
 
-    System.out.println(one.equals(two));
+    for (int i = 0; i < 10; i++) {
+      a.insert(i, 0);
+      b.insert(i, 0);
+    }
+
+    System.out.println(a.equals(b));
+
   }
 
 }

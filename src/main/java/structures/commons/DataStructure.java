@@ -11,7 +11,7 @@ import java.util.Collection;
 public interface DataStructure<K> {
 
     /**
-     * Determines whether or not the DataStructure has a contains a specified key.
+     * Determines whether or not the DataStructure contains a specified key.
      *
      * @param key Specified key
      * @return True if and only if the specified key is within the Structure
@@ -29,6 +29,17 @@ public interface DataStructure<K> {
         return size() == 0;
     }
 
+//------------------------------------------------------------------------------
+
+    /**
+     * Determines whether or not a specified index is within the bounds of the list
+     *
+     * @param index Specified index
+     * @return True if and only if the index is less then the length of the list, and positive
+     */
+    default boolean indexOutOfBounds(int index) {
+        return index < 0 || index >= this.size();
+    }
 //------------------------------------------------------------------------------
 
     /**
@@ -81,6 +92,20 @@ public interface DataStructure<K> {
      * @return Number of keys in the DataStructure.
      */
     int size();
+
+//------------------------------------------------------------------------------
+
+    /**
+     * Verifies if a provided index is within the DataStructure or not
+     *
+     * @param index Specified index to verify
+     * @throws IndexOutOfBoundsException Exception thrown if the index is invalid
+     */
+    default void verifyIndex(int index) {
+        if (indexOutOfBounds(index)) {
+            throw new IndexOutOfBoundsException("size: " + this.size() + " index: " + index);
+        }
+    }
 
 //------------------------------------------------------------------------------
 

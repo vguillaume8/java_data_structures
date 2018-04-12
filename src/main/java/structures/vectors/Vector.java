@@ -1,6 +1,8 @@
 package structures.vectors;
 
 import structures.commons.DataStructure;
+
+import java.lang.reflect.ParameterizedType;
 import java.util.Arrays;
 import java.util.Iterator;
 
@@ -84,16 +86,24 @@ public interface Vector<T> extends DataStructure<T>, Iterable<T> {
      * @return Array version of the data structure.
      */
     default T[] toArray(T[] array) {
-        // Cast is safe, because we passed a T[] in, so we
-        // get a T[] back out
-        @SuppressWarnings("unchecked")
-        T[] a = (T[]) Arrays.copyOf(array, this.size(), array.getClass());
+        T[] a = null;
 
-        int i = 0;
+        try {
+            // Cast is safe, because we passed a T[] in, so we
+            // get a T[] back out
+            a = (T[]) Arrays.copyOf(array, this.size(), array.getClass());
 
-        for (T value : this) {
-            a[i] = value;
-            i++;
+            int i = 0;
+
+            // Copy everything from this
+            // vector to the new array
+            for (T value : this) {
+                a[i] = value;
+                i++;
+            }
+
+        } catch (ArrayStoreException exception) {
+            throw new IllegalArgumentException("Array type " + array.getClass().getSimpleName() + " is invalid");
         }
 
         return a;
@@ -147,6 +157,9 @@ public interface Vector<T> extends DataStructure<T>, Iterable<T> {
      * sizes are the same, and they contain all the same keys.
      */
     default boolean equivalentTo(Object object) {
+
+        // TODO - Abstract this to DataStructure so it can be reused
+
         Iterator<T> thisIterator;
         Iterator<T> thatIterator;
 
@@ -154,9 +167,19 @@ public interface Vector<T> extends DataStructure<T>, Iterable<T> {
         if (this == object)
             return true;
 
-        // Check that the object is an instance of Vector
-        if (!(object instanceof Vector))
+        // Check that the object is an
+        // instance of the same type of
+        // object of the object calling
+        // this method
+        try {
+
+            if (!Class.forName(this.getClass().getName()).isInstance(object)) {
+                return false;
+            }
+
+        } catch (ClassNotFoundException e) {
             return false;
+        }
 
         try {
 
@@ -174,7 +197,11 @@ public interface Vector<T> extends DataStructure<T>, Iterable<T> {
             thisIterator = this.iterator();
             thatIterator = vector.iterator();
 
+            // This way we are ensuring that they both have the same
+            // data and it is ordered in the same way
             while (thisIterator.hasNext() && thatIterator.hasNext()) {
+
+                // Check that ith object of each iterator is equal
                 if (!thisIterator.next().equals(thatIterator.next())) {
                     return false;
                 }
@@ -200,7 +227,7 @@ public interface Vector<T> extends DataStructure<T>, Iterable<T> {
         }
 
         // If we made it to the bottom,
-        // they are equal
+        // the objects are equal
         return true;
     }
 }
