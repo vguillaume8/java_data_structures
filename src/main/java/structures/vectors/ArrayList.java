@@ -14,6 +14,14 @@ import java.util.Collection;
 public final class ArrayList<E> extends DynamicArray<E> implements List<E> {
 
     /**
+     * Constructs empty list. The default capacity
+     * of the ArrayList is 10.
+     */
+    public ArrayList() {
+        super();
+    }
+
+    /**
      * Instantiates an ArrayList with an internal array of
      * a specified length. This constructor should be used
      * when the number of elements that the ArrayList will
@@ -28,14 +36,6 @@ public final class ArrayList<E> extends DynamicArray<E> implements List<E> {
     @SuppressWarnings("unchecked")
     public ArrayList(int length) {
         super(length);
-    }
-
-    /**
-     * Constructs empty list. The default capacity
-     * of the ArrayList is 10.
-     */
-    public ArrayList() {
-        super();
     }
 
     /**
@@ -68,9 +68,10 @@ public final class ArrayList<E> extends DynamicArray<E> implements List<E> {
     @Override
     public boolean equals(Object object) {
 
-        // Object must be an ArrayList, and all elements must be equal, or object
+        // Object must be an ArrayList, and
+        // all elements must be equal, or object
         // must be this ArrayList itself
-        return this == object || (object instanceof ArrayList && equivalentTo(object));
+        return equivalentTo(object);
     }
 
     /**
@@ -140,7 +141,7 @@ public final class ArrayList<E> extends DynamicArray<E> implements List<E> {
      * @param value New value.
      * @param index Specified index.
      */
-    public void update(E value, int index) {
+    public void set(E value, int index) {
         verifyIndex(index);
         elements[index] = value;
     }

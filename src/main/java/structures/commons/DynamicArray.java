@@ -69,26 +69,26 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
 
     /**
      * Constructs default DynamicArray with resize
-     * threshold 90% and initial size 10.
-     */
-    public DynamicArray() {
-        this.RESIZE_THRESHOLD = DEFAULT_RESIZE_THRESHOLD;
-        this.INITIAL_SIZE     = DEFAULT_INITIAL_SIZE;
-        elements              = (E[]) new Object[this.INITIAL_SIZE];
-    }
-
-    /**
-     * Constructs default DynamicArray with resize
      * threshold 90% and a specified initial size.
      *
      * @param initialSize Specified initial size of internal array.
      */
     public DynamicArray(int initialSize) {
         this.RESIZE_THRESHOLD = DEFAULT_RESIZE_THRESHOLD;
-        this.INITIAL_SIZE     = initialSize;
+        this.INITIAL_SIZE     = initialSize >= DEFAULT_INITIAL_SIZE ? initialSize : DEFAULT_INITIAL_SIZE;
 
         // Create a new array no smaller than the default size
-        elements = (E[]) new Object[initialSize < DEFAULT_INITIAL_SIZE ? DEFAULT_INITIAL_SIZE : initialSize];
+        elements = (E[]) new Object[this.INITIAL_SIZE];
+    }
+
+    /**
+     * Constructs default DynamicArray with resize
+     * threshold 90% and initial size 10.
+     */
+    public DynamicArray() {
+        this.RESIZE_THRESHOLD = DEFAULT_RESIZE_THRESHOLD;
+        this.INITIAL_SIZE     = DEFAULT_INITIAL_SIZE;
+        elements              = (E[]) new Object[this.INITIAL_SIZE];
     }
 
     public DynamicArray(E[] values) {

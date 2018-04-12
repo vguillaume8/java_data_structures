@@ -1,6 +1,8 @@
 package structures.vectors;
 
 import structures.commons.DataStructure;
+
+import java.lang.reflect.ParameterizedType;
 import java.util.Arrays;
 import java.util.Iterator;
 
@@ -155,6 +157,9 @@ public interface Vector<T> extends DataStructure<T>, Iterable<T> {
      * sizes are the same, and they contain all the same keys.
      */
     default boolean equivalentTo(Object object) {
+
+        // TODO - Abstract this to DataStructure so it can be reused
+
         Iterator<T> thisIterator;
         Iterator<T> thatIterator;
 
@@ -162,9 +167,19 @@ public interface Vector<T> extends DataStructure<T>, Iterable<T> {
         if (this == object)
             return true;
 
-        // Check that the object is an instance of Vector
-        if (!(object instanceof Vector))
+        // Check that the object is an
+        // instance of the same type of
+        // object of the object calling
+        // this method
+        try {
+
+            if (!Class.forName(this.getClass().getName()).isInstance(object)) {
+                return false;
+            }
+
+        } catch (ClassNotFoundException e) {
             return false;
+        }
 
         try {
 

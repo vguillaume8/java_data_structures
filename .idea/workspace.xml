@@ -79,11 +79,14 @@
       <change beforePath="$PROJECT_DIR$/docs/structures/vectors/package-summary.html" afterPath="$PROJECT_DIR$/docs/structures/vectors/package-summary.html" />
       <change beforePath="$PROJECT_DIR$/docs/structures/vectors/package-tree.html" afterPath="$PROJECT_DIR$/docs/structures/vectors/package-tree.html" />
       <change beforePath="$PROJECT_DIR$/docs/type-search-index.zip" afterPath="$PROJECT_DIR$/docs/type-search-index.zip" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Application.java" afterPath="$PROJECT_DIR$/src/main/java/Application.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/structures/commons/DynamicArray.java" afterPath="$PROJECT_DIR$/src/main/java/structures/commons/DynamicArray.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/structures/vectors/ArrayList.java" afterPath="$PROJECT_DIR$/src/main/java/structures/vectors/ArrayList.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/structures/vectors/LinkedList.java" afterPath="$PROJECT_DIR$/src/main/java/structures/vectors/LinkedList.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/structures/vectors/List.java" afterPath="$PROJECT_DIR$/src/main/java/structures/vectors/List.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/structures/vectors/Vector.java" afterPath="$PROJECT_DIR$/src/main/java/structures/vectors/Vector.java" />
+      <change beforePath="$PROJECT_DIR$/src/test/groovy/structures/functional/vectors/ArrayListSpec.groovy" afterPath="$PROJECT_DIR$/src/test/groovy/structures/functional/vectors/ArrayListSpec.groovy" />
+      <change beforePath="$PROJECT_DIR$/src/test/groovy/structures/functional/vectors/LinkedListSpec.groovy" afterPath="$PROJECT_DIR$/src/test/groovy/structures/functional/vectors/LinkedListSpec.groovy" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -122,24 +125,19 @@
       <file leaf-file-name="DynamicArray.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/structures/commons/DynamicArray.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1224">
-              <caret line="282" column="14" lean-forward="true" selection-start-line="282" selection-start-column="14" selection-end-line="282" selection-end-column="14" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2963#2964#0" expanded="true" />
-                <element signature="e#3002#3003#0" expanded="true" />
-                <element signature="e#3550#3580#1" expanded="true" />
-                <element signature="e#5404#5434#1" expanded="true" />
-                <element signature="e#6176#6177#0" expanded="true" />
-                <element signature="e#6210#6211#0" expanded="true" />
-                <element signature="e#9316#9317#0" expanded="true" />
-                <element signature="e#9354#9355#0" expanded="true" />
-                <element signature="e#9827#9854#0" expanded="true" />
-                <element signature="e#9879#9880#0" expanded="true" />
-                <element signature="e#9908#9909#0" expanded="true" />
-                <element signature="e#10078#10079#0" expanded="true" />
-                <element signature="e#10105#10106#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="2686">
+              <caret line="80" column="53" lean-forward="false" selection-start-line="80" selection-start-column="53" selection-end-line="80" selection-end-column="53" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Vector.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/structures/vectors/Vector.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="544">
+              <caret line="43" column="39" lean-forward="false" selection-start-line="43" selection-start-column="39" selection-end-line="43" selection-end-column="39" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -147,22 +145,9 @@
       <file leaf-file-name="List.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/structures/vectors/List.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5610">
-              <caret line="165" column="47" lean-forward="false" selection-start-line="165" selection-start-column="46" selection-end-line="165" selection-end-column="47" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1528#1529#0" expanded="true" />
-                <element signature="e#1575#1576#0" expanded="true" />
-                <element signature="e#2007#2008#0" expanded="true" />
-                <element signature="e#2042#2043#0" expanded="true" />
-                <element signature="e#2265#2266#0" expanded="true" />
-                <element signature="e#2297#2298#0" expanded="true" />
-                <element signature="e#2521#2522#0" expanded="true" />
-                <element signature="e#2562#2563#0" expanded="true" />
-                <element signature="e#2814#2841#1" expanded="true" />
-                <element signature="e#3953#3954#0" expanded="true" />
-                <element signature="e#4014#4015#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="637">
+              <caret line="114" column="11" lean-forward="false" selection-start-line="114" selection-start-column="11" selection-end-line="114" selection-end-column="11" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -170,14 +155,14 @@
       <file leaf-file-name="ArrayList.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/structures/vectors/ArrayList.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2788">
-              <caret line="82" column="29" lean-forward="true" selection-start-line="82" selection-start-column="29" selection-end-line="82" selection-end-column="29" />
+            <state relative-caret-position="2584">
+              <caret line="76" column="7" lean-forward="false" selection-start-line="76" selection-start-column="7" selection-end-line="76" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#848#878#0" expanded="true" />
-                <element signature="e#912#913#0" expanded="true" />
-                <element signature="e#941#942#0" expanded="true" />
-                <element signature="e#1065#1066#0" expanded="true" />
+                <element signature="e#433#434#0" expanded="true" />
+                <element signature="e#456#457#0" expanded="true" />
+                <element signature="e#995#1025#0" expanded="true" />
+                <element signature="e#1059#1060#0" expanded="true" />
                 <element signature="e#1088#1089#0" expanded="true" />
                 <element signature="e#1265#1266#0" expanded="true" />
                 <element signature="e#1294#1295#0" expanded="true" />
@@ -188,32 +173,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LinkedList.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/structures/vectors/LinkedList.java">
+      <file leaf-file-name="Application.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-11297">
-              <caret line="55" column="3" lean-forward="false" selection-start-line="55" selection-start-column="3" selection-end-line="55" selection-end-column="3" />
-              <folding>
-                <element signature="e#1946#1947#0" expanded="true" />
-                <element signature="e#1983#1984#0" expanded="true" />
-                <element signature="e#8425#8426#0" expanded="true" />
-                <element signature="e#8446#8447#0" expanded="true" />
-                <element signature="e#8594#8595#0" expanded="true" />
-                <element signature="e#8621#8622#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Vector.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/structures/vectors/Vector.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5576">
-              <caret line="164" column="16" lean-forward="false" selection-start-line="164" selection-start-column="16" selection-end-line="164" selection-end-column="16" />
+            <state relative-caret-position="646">
+              <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1133#1134#0" expanded="true" />
-                <element signature="e#1187#1188#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -655,16 +621,16 @@
         <option value="$PROJECT_DIR$/src/test/groovy/util/Plot.java" />
         <option value="$PROJECT_DIR$/src/test/python/plot_analytics.py" />
         <option value="$PROJECT_DIR$/src/overview.html" />
-        <option value="$PROJECT_DIR$/src/main/java/Application.java" />
         <option value="$PROJECT_DIR$/src/main/java/structures/vectors/ArrayList2.java" />
         <option value="$PROJECT_DIR$/src/main/java/structures/vectors/Stack.java" />
         <option value="$PROJECT_DIR$/src/main/java/structures/vectors/Queue.java" />
         <option value="$PROJECT_DIR$/src/main/java/structures/commons/DataStructure.java" />
-        <option value="$PROJECT_DIR$/src/main/java/structures/vectors/List.java" />
+        <option value="$PROJECT_DIR$/src/main/java/structures/vectors/LinkedList.java" />
         <option value="$PROJECT_DIR$/src/main/java/structures/commons/DynamicArray.java" />
         <option value="$PROJECT_DIR$/src/main/java/structures/vectors/Vector.java" />
-        <option value="$PROJECT_DIR$/src/main/java/structures/vectors/LinkedList.java" />
         <option value="$PROJECT_DIR$/src/main/java/structures/vectors/ArrayList.java" />
+        <option value="$PROJECT_DIR$/src/main/java/structures/vectors/List.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Application.java" />
       </list>
     </option>
   </component>
@@ -764,7 +730,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
-    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///home/jabari/java_data_structures/src/main/java/structures/vectors/ArrayList.java" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///home/jabari/java_data_structures/src/main/java/structures/vectors/Vector.java" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -790,6 +756,20 @@
       <option name="HEIGHT" value="300" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <module />
+    </configuration>
+    <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="Application" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="java_data_structures_main" />
+      <envs />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
@@ -895,24 +875,6 @@
       <envs />
       <patterns />
     </configuration>
-    <configuration name="functions" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/test/python" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="java_data_structures_test" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/test/python/functions.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
     <configuration name="plot_analytics" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -973,18 +935,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="JUnit.All in java_data_structures_test (1)" />
-      <item index="1" class="java.lang.String" itemvalue="Python.functions" />
-      <item index="2" class="java.lang.String" itemvalue="Python.plot_analytics" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.structures.performance in java_data_structures_test" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.Vectors.avg_cost_to_remove" />
+      <item index="1" class="java.lang.String" itemvalue="Python.plot_analytics" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.structures.performance in java_data_structures_test" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.Vectors.avg_cost_to_remove" />
+      <item index="4" class="java.lang.String" itemvalue="Application.Application" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="JUnit.All in java_data_structures_test (1)" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.Vectors.avg_cost_to_remove" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.structures.performance in java_data_structures_test" />
-        <item index="3" class="java.lang.String" itemvalue="Python.plot_analytics" />
-        <item index="4" class="java.lang.String" itemvalue="Python.functions" />
+        <item index="1" class="java.lang.String" itemvalue="Application.Application" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.Vectors.avg_cost_to_remove" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.structures.performance in java_data_structures_test" />
+        <item index="4" class="java.lang.String" itemvalue="Python.plot_analytics" />
       </list>
     </recent_temporary>
   </component>
@@ -1011,34 +973,34 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="All_in_java_data_structures_test_(1) - 2018.04.12 at 01h 48m 22s.xml">
+    <history-entry file="All_in_java_data_structures_test_(1) - 2018.04.12 at 03h 26m 33s.xml">
       <configuration name="All in java_data_structures_test (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_java_data_structures_test_(1) - 2018.04.12 at 01h 48m 47s.xml">
+    <history-entry file="All_in_java_data_structures_test_(1) - 2018.04.12 at 03h 27m 17s.xml">
       <configuration name="All in java_data_structures_test (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_java_data_structures_test_(1) - 2018.04.12 at 01h 51m 13s.xml">
+    <history-entry file="All_in_java_data_structures_test_(1) - 2018.04.12 at 03h 36m 14s.xml">
       <configuration name="All in java_data_structures_test (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_java_data_structures_test_(1) - 2018.04.12 at 01h 52m 44s.xml">
+    <history-entry file="All_in_java_data_structures_test_(1) - 2018.04.12 at 03h 37m 00s.xml">
       <configuration name="All in java_data_structures_test (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_java_data_structures_test_(1) - 2018.04.12 at 01h 56m 03s.xml">
+    <history-entry file="All_in_java_data_structures_test_(1) - 2018.04.12 at 03h 47m 01s.xml">
       <configuration name="All in java_data_structures_test (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_java_data_structures_test_(1) - 2018.04.12 at 01h 57m 23s.xml">
+    <history-entry file="All_in_java_data_structures_test_(1) - 2018.04.12 at 03h 53m 01s.xml">
       <configuration name="All in java_data_structures_test (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_java_data_structures_test_(1) - 2018.04.12 at 02h 07m 13s.xml">
+    <history-entry file="All_in_java_data_structures_test_(1) - 2018.04.12 at 04h 00m 27s.xml">
       <configuration name="All in java_data_structures_test (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_java_data_structures_test_(1) - 2018.04.12 at 02h 11m 58s.xml">
+    <history-entry file="All_in_java_data_structures_test_(1) - 2018.04.12 at 04h 01m 01s.xml">
       <configuration name="All in java_data_structures_test (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_java_data_structures_test_(1) - 2018.04.12 at 02h 19m 25s.xml">
+    <history-entry file="All_in_java_data_structures_test_(1) - 2018.04.12 at 04h 01m 24s.xml">
       <configuration name="All in java_data_structures_test (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_java_data_structures_test_(1) - 2018.04.12 at 02h 29m 11s.xml">
+    <history-entry file="All_in_java_data_structures_test_(1) - 2018.04.12 at 04h 04m 47s.xml">
       <configuration name="All in java_data_structures_test (1)" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -1053,7 +1015,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="134" y="35" width="2746" height="1765" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32953784" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1063,9 +1024,9 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32994732" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32886806" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32886806" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33958474" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" x="134" y="632" width="2746" height="507" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33958474" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" x="134" y="632" width="2746" height="507" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23927765" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1102,16 +1063,16 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32953784" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32953784" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32886806" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32886806" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33958474" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" x="134" y="632" width="2746" height="507" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2317532" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23927765" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="sbt-shell-toolwindow" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32953784" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32994732" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1419,16 +1380,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="11" column="36" lean-forward="true" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/structures/vectors/ArrayList2.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1480,40 +1431,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/structures/vectors/Vector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5576">
-          <caret line="164" column="16" lean-forward="false" selection-start-line="164" selection-start-column="16" selection-end-line="164" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1133#1134#0" expanded="true" />
-            <element signature="e#1187#1188#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/structures/vectors/LinkedList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-11297">
-          <caret line="55" column="3" lean-forward="false" selection-start-line="55" selection-start-column="3" selection-end-line="55" selection-end-column="3" />
-          <folding>
-            <element signature="e#1946#1947#0" expanded="true" />
-            <element signature="e#1983#1984#0" expanded="true" />
-            <element signature="e#8425#8426#0" expanded="true" />
-            <element signature="e#8446#8447#0" expanded="true" />
-            <element signature="e#8594#8595#0" expanded="true" />
-            <element signature="e#8621#8622#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/structures/commons/DataStructure.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="714">
           <caret line="27" column="20" lean-forward="false" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
           <folding>
-            <element signature="e#741#742#0" expanded="true" />
-            <element signature="e#775#776#0" expanded="true" />
+            <element signature="e#741#742#0" expanded="false" />
+            <element signature="e#775#776#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1523,65 +1447,71 @@
         <state relative-caret-position="671">
           <caret line="30" column="8" lean-forward="true" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
           <folding>
-            <element signature="e#815#845#1" expanded="true" />
+            <element signature="e#815#845#1" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/structures/vectors/LinkedList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4973">
+          <caret line="55" column="3" lean-forward="false" selection-start-line="55" selection-start-column="3" selection-end-line="55" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1946#1947#0" expanded="false" />
+            <element signature="e#1983#1984#0" expanded="false" />
+            <element signature="e#8425#8426#0" expanded="false" />
+            <element signature="e#8446#8447#0" expanded="false" />
+            <element signature="e#8594#8595#0" expanded="false" />
+            <element signature="e#8621#8622#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/structures/commons/DynamicArray.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1224">
-          <caret line="282" column="14" lean-forward="true" selection-start-line="282" selection-start-column="14" selection-end-line="282" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2963#2964#0" expanded="true" />
-            <element signature="e#3002#3003#0" expanded="true" />
-            <element signature="e#3550#3580#1" expanded="true" />
-            <element signature="e#5404#5434#1" expanded="true" />
-            <element signature="e#6176#6177#0" expanded="true" />
-            <element signature="e#6210#6211#0" expanded="true" />
-            <element signature="e#9316#9317#0" expanded="true" />
-            <element signature="e#9354#9355#0" expanded="true" />
-            <element signature="e#9827#9854#0" expanded="true" />
-            <element signature="e#9879#9880#0" expanded="true" />
-            <element signature="e#9908#9909#0" expanded="true" />
-            <element signature="e#10078#10079#0" expanded="true" />
-            <element signature="e#10105#10106#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="2686">
+          <caret line="80" column="53" lean-forward="false" selection-start-line="80" selection-start-column="53" selection-end-line="80" selection-end-column="53" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/structures/vectors/List.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5610">
-          <caret line="165" column="47" lean-forward="false" selection-start-line="165" selection-start-column="46" selection-end-line="165" selection-end-column="47" />
+        <state relative-caret-position="637">
+          <caret line="114" column="11" lean-forward="false" selection-start-line="114" selection-start-column="11" selection-end-line="114" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1528#1529#0" expanded="true" />
-            <element signature="e#1575#1576#0" expanded="true" />
-            <element signature="e#2007#2008#0" expanded="true" />
-            <element signature="e#2042#2043#0" expanded="true" />
-            <element signature="e#2265#2266#0" expanded="true" />
-            <element signature="e#2297#2298#0" expanded="true" />
-            <element signature="e#2521#2522#0" expanded="true" />
-            <element signature="e#2562#2563#0" expanded="true" />
-            <element signature="e#2814#2841#1" expanded="true" />
-            <element signature="e#3953#3954#0" expanded="true" />
-            <element signature="e#4014#4015#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/structures/vectors/Vector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="43" column="39" lean-forward="false" selection-start-line="43" selection-start-column="39" selection-end-line="43" selection-end-column="39" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/structures/vectors/ArrayList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2788">
-          <caret line="82" column="29" lean-forward="true" selection-start-line="82" selection-start-column="29" selection-end-line="82" selection-end-column="29" />
+        <state relative-caret-position="2584">
+          <caret line="76" column="7" lean-forward="false" selection-start-line="76" selection-start-column="7" selection-end-line="76" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#848#878#0" expanded="true" />
-            <element signature="e#912#913#0" expanded="true" />
-            <element signature="e#941#942#0" expanded="true" />
-            <element signature="e#1065#1066#0" expanded="true" />
+            <element signature="e#433#434#0" expanded="true" />
+            <element signature="e#456#457#0" expanded="true" />
+            <element signature="e#995#1025#0" expanded="true" />
+            <element signature="e#1059#1060#0" expanded="true" />
             <element signature="e#1088#1089#0" expanded="true" />
             <element signature="e#1265#1266#0" expanded="true" />
             <element signature="e#1294#1295#0" expanded="true" />

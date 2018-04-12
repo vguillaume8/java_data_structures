@@ -29,8 +29,8 @@ class LinkedListSpec extends Specification {
 
             while (j > 0 && l.get(j-1) > l.get(j)) {
                 t = l.get(j)
-                l.update(l.get(j-1), j)
-                l.update(t, j-1)
+                l.set(l.get(j-1), j)
+                l.set(t, j-1)
                 j--
             }
         }
@@ -152,7 +152,7 @@ class LinkedListSpec extends Specification {
             i = key.hashCode() % valueLists.size()
 
             if (valueLists.get(i) == null) {
-                valueLists.update(new LinkedList<Entry<K, V>>(), i)
+                valueLists.set(new LinkedList<Entry<K, V>>(), i)
 
             } else {
                 collisions++

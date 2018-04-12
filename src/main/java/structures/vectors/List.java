@@ -112,7 +112,8 @@ public interface List<T> extends Vector<T> {
      * @param index Specified index.
      */
     @SuppressWarnings("unused")
-    void update(T value, int index);
+    void set(T value, int index);
+
 
 //------------------------------------------------------------------------------
 

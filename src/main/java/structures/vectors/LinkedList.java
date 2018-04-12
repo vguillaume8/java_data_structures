@@ -378,7 +378,7 @@ public final class LinkedList<T> implements List<T> {
    * @param value The value to be put in the list
    * @param index Index into which teh value will be inserted
    */
-  public void update(T value, int index) {
+  public void set(T value, int index) {
 
     getNode(index).value = value;
   }
