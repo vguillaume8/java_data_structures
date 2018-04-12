@@ -17,7 +17,7 @@ public interface List<T> extends Vector<T> {
      *
      * @param value Specified value to insert
      */
-    boolean append(T value);
+//    boolean append(T value);
 
 //------------------------------------------------------------------------------
 
@@ -46,17 +46,7 @@ public interface List<T> extends Vector<T> {
      *
      * @param value Specified value to insert
      */
-    boolean prepend(T value);
-
-//------------------------------------------------------------------------------
-
-    /**
-     * Retrieves and removes a value from a specified index
-     *
-     * @param index Index to remove value from
-     * @return The value at the specified index
-     */
-    T remove(int index);
+//    boolean prepend(T value);
 
 //------------------------------------------------------------------------------
 
@@ -73,11 +63,33 @@ public interface List<T> extends Vector<T> {
 //------------------------------------------------------------------------------
 
     /**
+     * Retrieves and removes a value from a specified index
+     *
+     * @param index Index to remove value from
+     * @return The value at the specified index
+     */
+    T remove(int index);
+
+//------------------------------------------------------------------------------
+
+    /**
+     *
+     * @return
+     */
+    default T remove() {
+        return removeLast();
+    }
+
+//------------------------------------------------------------------------------
+
+    /**
      * Removes first value from the List
      *
      * @return First element in DataStructure
      */
-    T removeFirst();
+    default T removeFirst() {
+        return remove(0);
+    }
 
 //------------------------------------------------------------------------------
 
@@ -86,7 +98,9 @@ public interface List<T> extends Vector<T> {
      *
      * @return Last element in DataStructure
      */
-    T removeLast();
+    default T removeLast() {
+        return remove(size() - 1);
+    }
 
 //------------------------------------------------------------------------------
 
@@ -100,6 +114,7 @@ public interface List<T> extends Vector<T> {
     @SuppressWarnings("unused")
     void update(T value, int index);
 
+//------------------------------------------------------------------------------
 
     /**
      * Static Iterator class so that the List can be iterated on via

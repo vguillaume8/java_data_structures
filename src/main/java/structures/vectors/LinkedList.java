@@ -56,18 +56,6 @@ public final class LinkedList<T> implements List<T> {
   }
 
   /**
-   * Determines whether or not the list is empty
-   *
-   * @return True if and only if there are no elements in the list, otherwise false
-   */
-  public boolean empty() {
-
-    return size == 0 && head == null;
-  }
-
-//------------------------------------------------------------------------------
-
-  /**
    * Determines whether or not this LinkedList is equal to
    * a provided object.
    *
@@ -180,21 +168,8 @@ public final class LinkedList<T> implements List<T> {
    * @return True to indicate the append was successful.
    */
   public boolean append(T value) {
-    Node<T> node = new Node<>(value);
 
-    if (empty()) {
-      head = node;
-
-    } else {
-
-      node.prev = tail;
-      tail.next = node;
-      tail = node;
-    }
-
-    size++;
-
-    return true;
+    return insert(value);
   }
 
 //------------------------------------------------------------------------------
@@ -221,8 +196,8 @@ public final class LinkedList<T> implements List<T> {
       // The list is not empty
     } else if (index == 0) {
       newNode.next = head;
-      head.prev = newNode;
-      head = newNode;
+      head.prev    = newNode;
+      head         = newNode;
 
     } else {
 
@@ -232,7 +207,7 @@ public final class LinkedList<T> implements List<T> {
       // (essentially, taking its index)
       Node<T> oldNode;
 
-      oldNode = getNode(index);             // Get the ith node
+      oldNode      = getNode(index);        // Get the ith node
       newNode.prev = oldNode.prev;          // Set new node points, to that of older node
       newNode.next = oldNode;               // Set new nodes' next to ith node
 
@@ -377,37 +352,6 @@ public final class LinkedList<T> implements List<T> {
 //------------------------------------------------------------------------------
 
   /**
-   * Removes the last value in the list.
-   *
-   * @return Value of node at specified index
-   */
-  public T remove() {
-    return remove(size-1);
-  }
-
-//------------------------------------------------------------------------------
-
-  /**
-   * Removes the first value in the list.
-   *
-   * @return Value of node at specified index
-   */
-  public T removeFirst() {
-    return remove(0);
-  }
-
-//------------------------------------------------------------------------------
-
-  /**
-   * Removes the last value in the list.
-   *
-   * @return Value of node at specified index
-   */
-  public T removeLast() {
-    return remove();
-  }
-
-  /**
    * Returns the number of elements in the list.
    *
    * @return Number of elements in list
@@ -446,7 +390,7 @@ public final class LinkedList<T> implements List<T> {
    * @param <T> Generic type
    */
   public static class Node<T> {
-    protected T value;        // Value of the node
+    protected T       value;  // Value of the node
     protected Node<T> prev;   // Pointer to previous node in chain
     protected Node<T> next;   // Pointer to next node in chain
 
@@ -457,8 +401,8 @@ public final class LinkedList<T> implements List<T> {
      */
     protected Node(T value) {
       this.value = value;
-      this.prev = null;
-      this.next = null;
+      this.prev  = null;
+      this.next  = null;
     }
 
     /**

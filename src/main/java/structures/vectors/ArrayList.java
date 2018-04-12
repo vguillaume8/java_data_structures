@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 /**
- * Basic implementation of a generic ArrayList
+ * Basic implementation of a generic ArrayList.
  *
  * @author Jabari Dash
  * @param <E> Generic type
@@ -44,8 +44,7 @@ public final class ArrayList<E> extends DynamicArray<E> implements List<E> {
      * @param values Array of elements to construct the list from
      */
     public ArrayList(E[] values) {
-        this(values.length);
-        insert(values);
+        super(values);
     }
 
     /**
@@ -55,8 +54,7 @@ public final class ArrayList<E> extends DynamicArray<E> implements List<E> {
      * @see java.util.Collection
      */
     public ArrayList(Collection<E> values) {
-        this(values.size());
-        insert(values);
+        super(values);
     }
 
     /**
@@ -75,7 +73,6 @@ public final class ArrayList<E> extends DynamicArray<E> implements List<E> {
         return this == object || (object instanceof ArrayList && equivalentTo(object));
     }
 
-
     /**
      * Returns the value at a specified index.
      *
@@ -89,14 +86,15 @@ public final class ArrayList<E> extends DynamicArray<E> implements List<E> {
     }
 
     /**
-     * Inserts a key at the end of the list.
+     * Inserts a value at the end of the list.
      *
-     * @param key The specified key to insert
+     * @param value The specified key to insert
      * @return True to indicate the insertion was successful.
      */
     @Override
-    public boolean insert(E key) {
-        return append(key);
+    public boolean insert(E value) {
+
+        return append(value);
     }
 
     /**
@@ -109,119 +107,7 @@ public final class ArrayList<E> extends DynamicArray<E> implements List<E> {
     @Override
     public boolean insert(E value, int index) {
 
-        // If the ArrayList is empty, simply insert
-        // into the front of the internal array
-        if (empty()) {
-            elements[0] = value;
-            size++;
-            return true;
-        }
-
-        // Make sure we are in bounds
-        verifyIndex(index);
-
-        if (full()) {
-
-            @SuppressWarnings("unchecked")
-            E[] temp = (E[]) new Object[size * 2];
-
-            // Copy the whole array with an offset of 1,
-            // then overwrite the first value
-            if (index == 0) {
-                copy(0, size-1, 1, elements, temp);
-                temp[0] = value;
-
-            // Copy up until the desired index, preserving index
-            // Place the new value in its designated location
-            // Copy the rest of the array with an offset of 1
-            } else {
-                copy(0, index, 0, elements, temp);
-                temp[index] = value;
-
-                // If we are not already at the end
-                // copy the remaining values over
-                if (index < size-1) {
-                    copy(index+1, size-1, 1, elements, temp);
-                }
-
-            }
-
-            // Use temp as our new elements array
-            elements = temp;
-
-        // There is space in the array
-        } else {
-
-            // Make room for new value
-            shiftRight(index);
-
-            // Insert into vacant spot
-            elements[index] = value;
-        }
-
-        size++;
-        allocations++;
-
-        return true;
-    }
-
-
-
-    /**
-     * Inserts a value into the front of the list.
-     *
-     * @param value Specified value to insert
-     * @return True to indicate the prepend was successful.
-     */
-    @Override
-    public boolean prepend(E value) {
-
-        return insert(value, 0);
-    }
-
-    /**
-     * Inserts an element to the back of the list.
-     * @param value Specified value to insert
-     * @return True to indicate the append was successful.
-     */
-    @Override
-    public boolean append(E value) {
-
-        if (empty()) {
-            elements[0] = value;
-            size++;
-            return true;
-        }
-
-        // The internal array is full
-        if (full()) {
-
-            allocations++;
-
-            @SuppressWarnings("unchecked")
-            E[] temp = (E[]) new Object[size * 2];
-
-            // Copy the old array to a new array
-            copy(0, size-1, 0, elements, temp);
-
-            // Place a new value at the back
-            // of the new array
-            temp[size] = value;
-
-            // Use the new array as the
-            // internal array of this
-            // ArrayList
-            elements = temp;
-
-        // There's space, so insert
-        } else {
-            elements[size] = value;
-        }
-
-
-        size++;
-
-        return true;
+       return add(value, index);
     }
 
     /**
@@ -232,50 +118,9 @@ public final class ArrayList<E> extends DynamicArray<E> implements List<E> {
      */
     @Override
     public E remove(int index) {
-        E value;
 
-        // Cannot remove from nothing
-        if (empty()) {
-            throw new EmptyDataStructureException("Cannot remove from an empty ArrayList");
-        }
-
-        verifyIndex(index);       // Verify that the index is valid
-        value = elements[index];  // Store the value are the given index
-        shiftLeft(index);         // Shift all elements up from the right of index over one to the left
-        size--;                   // Decrement size of array
-        return value;             // Return the stored value
+        return delete(index);
     }
-
-    /**
-     * Retrieves and removes the first value in the list.
-     *
-     * @return The first value in the list
-     */
-    @Override
-    public E removeFirst() {
-        return remove(0);
-    }
-
-    /**
-     * Retrieves and removes the last value in the list.
-     *
-     * @return Last value in the list
-     */
-    @Override
-    public E removeLast() {
-        return remove(size - 1);
-    }
-
-    /**
-     * Retrieves and removes the last value in the list.
-     *
-     * @return The last value in the list
-     */
-    @Override
-    public E remove() {
-        return removeLast();
-    }
-
 
     /**
      * Returns a String representation of the list.
@@ -285,7 +130,7 @@ public final class ArrayList<E> extends DynamicArray<E> implements List<E> {
     @Override
     public String toString() {
 
-        return Arrays.toString(toArray());
+        return asString();
     }
 
     /**

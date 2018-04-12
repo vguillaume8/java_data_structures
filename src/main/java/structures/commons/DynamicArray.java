@@ -1,6 +1,7 @@
 package structures.commons;
 
 import java.util.Arrays;
+import java.util.Collection;
 
 /**
  * Abstract class that classes that use an underlying
@@ -11,12 +12,20 @@ import java.util.Arrays;
  */
 public abstract class DynamicArray<E> implements DataStructure<E> {
 
+    /**
+     * Default resize threshold for internal array.
+     * 0.9 represents 90%.
+     */
     private final double DEFAULT_RESIZE_THRESHOLD = 0.9;
-    private final int    DEFAULT_INITIAL_SIZE     = 10;
-
 
     /**
-     *
+     * Default initialize size of internal array
+     */
+    private final int    DEFAULT_INITIAL_SIZE     = 10;
+
+    /**
+     * When the array reaches this threshold
+     * the array will double in size.
      */
     protected final double RESIZE_THRESHOLD;
 
@@ -65,8 +74,7 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
     public DynamicArray() {
         this.RESIZE_THRESHOLD = DEFAULT_RESIZE_THRESHOLD;
         this.INITIAL_SIZE     = DEFAULT_INITIAL_SIZE;
-
-        elements = (E[]) new Object[this.INITIAL_SIZE];
+        elements              = (E[]) new Object[this.INITIAL_SIZE];
     }
 
     /**
@@ -83,6 +91,16 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
         elements = (E[]) new Object[initialSize < DEFAULT_INITIAL_SIZE ? DEFAULT_INITIAL_SIZE : initialSize];
     }
 
+    public DynamicArray(E[] values) {
+        this(values.length);
+        insert(values);
+    }
+
+    public DynamicArray(Collection<E> values) {
+        this(values.size());
+        insert(values);
+    }
+
     /**
      *
      * @return
@@ -91,6 +109,124 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
         return this.allocations;
     }
 
+    /**
+     *
+     *
+     * @param value
+     * @param index
+     * @return
+     */
+    protected boolean add (E value, int index) {
+        // If the ArrayList is empty, simply insert
+        // into the front of the internal array
+        if (empty()) {
+            elements[0] = value;
+            size++;
+            return true;
+        }
+
+        // Make sure we are in bounds
+        verifyIndex(index);
+
+        if (full()) {
+
+            // Allocate a new array double the
+            // size of the current internal array
+            @SuppressWarnings("unchecked")
+            E[] temp = (E[]) new Object[size * 2];
+
+            // Copy the whole array with an offset of 1,
+            // then overwrite the first value
+            if (index == 0) {
+                copy(0, size-1, 1, elements, temp);
+                temp[0] = value;
+
+                // Copy up until the desired index, preserving index
+                // Place the new value in its designated location
+                // Copy the rest of the array with an offset of 1
+            } else {
+                copy(0, index, 0, elements, temp);
+                temp[index] = value;
+
+                // If we are not already at the end
+                // copy the remaining values over
+                if (index < size-1) {
+                    copy(index+1, size-1, 1, elements, temp);
+                }
+            }
+
+            // Use temp as our new elements array
+            elements = temp;
+
+            // There is space in the array
+        } else {
+
+            // Make room for new value
+            shiftRight(index);
+
+            // Insert into vacant spot
+            elements[index] = value;
+        }
+
+        //
+        size++;
+
+        //
+        allocations++;
+
+        return true;
+    }
+
+    /**
+     * Inserts an element to the back of the list.
+     * @param value Specified value to insert
+     * @return True to indicate the append was successful.
+     */
+    protected boolean append(E value) {
+
+        // Check if the internal
+        // array is empty
+        if (empty()) {
+            elements[0] = value;
+            size++;
+            return true;
+        }
+
+        // The internal array is full
+        if (full()) {
+
+            // Increment the number of
+            // allocations performed
+            allocations++;
+
+            // Create a new array with double the size
+            @SuppressWarnings("unchecked")
+            E[] temp = (E[]) new Object[size * 2];
+
+            // Copy the old array to a new array
+            copy(0, size-1, 0, elements, temp);
+
+            // Place a new value at the
+            // back of the new array
+            temp[size] = value;
+
+            // Use the new array as the
+            // internal array of this
+            // ArrayList (get rid of the old one)
+            elements = temp;
+
+            // There's space, so insert
+            // at the back of new array
+        } else {
+            elements[size] = value;
+        }
+
+        // Increment the number of
+        // elements in the ArrayList
+        size++;
+
+        return true;
+    }
 
     /**
      *
@@ -141,6 +277,26 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
 
     }
 
+    /**
+     *
+     * @param index
+     * @return
+     */
+    protected E delete(int index) {
+        E value;
+
+        // Cannot remove from nothing
+        if (empty()) {
+            throw new EmptyDataStructureException("Cannot remove from an empty ArrayList");
+        }
+
+        verifyIndex(index);       // Verify that the index is valid
+        value = elements[index];  // Store the value are the given index
+        shiftLeft(index);         // Shift all elements up from the right of index over one to the left
+        size--;                   // Decrement size of array
+        return value;             // Return the stored value
+    }
+
 
     /**
      * If the number of elements in the ArrayList exceeds a specified
@@ -172,6 +328,17 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
      */
     public int internalSize() {
         return elements.length;
+    }
+
+    /**
+     * Inserts a value into the front of the list.
+     *
+     * @param value Specified value to insert
+     * @return True to indicate the prepend was successful.
+     */
+    protected boolean prepend(E value) {
+
+        return add(value, 0);
     }
 
     /**
@@ -256,8 +423,5 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
 
         return array;
     }
-
-
-
 
 }

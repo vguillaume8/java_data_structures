@@ -84,16 +84,24 @@ public interface Vector<T> extends DataStructure<T>, Iterable<T> {
      * @return Array version of the data structure.
      */
     default T[] toArray(T[] array) {
-        // Cast is safe, because we passed a T[] in, so we
-        // get a T[] back out
-        @SuppressWarnings("unchecked")
-        T[] a = (T[]) Arrays.copyOf(array, this.size(), array.getClass());
+        T[] a = null;
 
-        int i = 0;
+        try {
+            // Cast is safe, because we passed a T[] in, so we
+            // get a T[] back out
+            a = (T[]) Arrays.copyOf(array, this.size(), array.getClass());
 
-        for (T value : this) {
-            a[i] = value;
-            i++;
+            int i = 0;
+
+            // Copy everything from this
+            // vector to the new array
+            for (T value : this) {
+                a[i] = value;
+                i++;
+            }
+
+        } catch (ArrayStoreException exception) {
+            throw new IllegalArgumentException("Array type " + array.getClass().getSimpleName() + " is invalid");
         }
 
         return a;
