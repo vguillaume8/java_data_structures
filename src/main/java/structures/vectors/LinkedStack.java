@@ -10,7 +10,7 @@ import java.util.Iterator;
  *
  *  All basic operations are O(1), except for
  *  contains() O(n), which we shouldn't be using with
- *  a LinkedStack anyways.
+ *  a Stack anyways.
  *
  * @author Jabari Dash
  * @param <T> Generic type

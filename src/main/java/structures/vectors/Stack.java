@@ -1,5 +1,9 @@
 package structures.vectors;
 
+/**
+ *
+ * @param <E>
+ */
 public interface Stack<E> extends Vector<E> {
 
     /**

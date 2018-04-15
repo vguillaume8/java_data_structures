@@ -142,12 +142,12 @@ class LinkedListSpec extends Specification {
     Object x = list.get(index)
 
     then:
-    thrown IndexOutOfBoundsException
+    thrown exception
 
     where:
-    values                 | index
-    [1, 2, 3] as Integer[] | 4
-    [] as Integer[]        | 0
+    values                 | index | exception
+    [1, 2, 3] as Integer[] | 4     | IndexOutOfBoundsException
+    [] as Integer[]        | 0     | EmptyDataStructureException
   }
 
 //------------------------------------------------------------------------------

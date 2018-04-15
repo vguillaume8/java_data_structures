@@ -17,6 +17,7 @@ public final class ArrayList<E> extends DynamicArray<E> implements List<E> {
      * of the ArrayList is 10.
      */
     public ArrayList() {
+
         super();
     }
 
@@ -34,6 +35,7 @@ public final class ArrayList<E> extends DynamicArray<E> implements List<E> {
      */
     @SuppressWarnings("unchecked")
     public ArrayList(int length) {
+
         super(length);
     }
 
@@ -43,6 +45,7 @@ public final class ArrayList<E> extends DynamicArray<E> implements List<E> {
      * @param values Array of elements to construct the list from
      */
     public ArrayList(E[] values) {
+
         super(values);
     }
 
@@ -53,24 +56,8 @@ public final class ArrayList<E> extends DynamicArray<E> implements List<E> {
      * @see java.util.Collection
      */
     public ArrayList(Collection<E> values) {
+
         super(values);
-    }
-
-    /**
-     * Determines whether or not this ArrayList is equal to
-     * a provided object.
-     *
-     * @param object Object to compare this ArrayList with.
-     * @return True if and only if their types are the same,
-     * lengths are the same, and the contain all the same elements.
-     */
-    @Override
-    public boolean equals(Object object) {
-
-        // Object must be an ArrayList, and
-        // all elements must be equal, or object
-        // must be this ArrayList itself
-        return equivalentTo(object);
     }
 
     /**
@@ -81,8 +68,8 @@ public final class ArrayList<E> extends DynamicArray<E> implements List<E> {
      */
     @Override
     public E get(int index) {
-       verifyIndex(index);
-       return elements[index];
+
+       return access(index);
     }
 
     /**
@@ -123,17 +110,6 @@ public final class ArrayList<E> extends DynamicArray<E> implements List<E> {
     }
 
     /**
-     * Returns a String representation of the list.
-     *
-     * @return String version of the list
-     */
-    @Override
-    public String toString() {
-
-        return asString();
-    }
-
-    /**
      * Overwrites a value at a specified index
      * with a new value.
      *
@@ -141,7 +117,17 @@ public final class ArrayList<E> extends DynamicArray<E> implements List<E> {
      * @param index Specified index.
      */
     public void set(E value, int index) {
+
         update(index, value);
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String toString() {
+
+        return asString();
     }
 
 }

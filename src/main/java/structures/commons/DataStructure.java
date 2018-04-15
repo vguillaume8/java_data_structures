@@ -29,6 +29,24 @@ public interface DataStructure<K> {
         return size() == 0;
     }
 
+    /**
+     * Determines whether or not an Object is equal to
+     * this {@code Vector}. Implementing classes can
+     * override the java.lang.Object.equals() method, and
+     * call this.
+     *
+     * @param object Object to compare this object with.
+     * @return True if the objects are of the same type, their
+     * sizes are the same, and they contain all the same keys.
+     */
+    default boolean equivalentTo(Object object) {
+
+
+        // If we made it to the bottom,
+        // the objects are equal
+        return sameType(object) && sameContents(object);
+    }
+
 //------------------------------------------------------------------------------
 
     /**
@@ -87,6 +105,60 @@ public interface DataStructure<K> {
 //------------------------------------------------------------------------------
 
     /**
+     *
+     * @param object
+     * @return
+     */
+    default boolean sameContents(Object object) {
+
+        // TODO - Placeholder
+
+        if (true) {
+            throw new RuntimeException("Method not implemented");
+        }
+
+        return false;
+    }
+
+//------------------------------------------------------------------------------
+
+    /**
+     * Determines at runtime via reflection whether
+     * or not two implementing classes are of the
+     * same type. Example, two arraylists that implement
+     * DataStructure will return true for this. But
+     * a LinkedList and an ArrayList will return false,
+     * even though they both implement the interface List.
+     *
+     * @param object Object to compare to.
+     * @return True if and only if the objects are of the exact same type.
+     */
+    default boolean sameType(Object object) {
+
+        // If object is compared to itself
+        if (this == object)
+            return true;
+
+        // Check that the object is an
+        // instance of the same type of
+        // object of the object calling
+        // this method
+        try {
+
+            if (!Class.forName(this.getClass().getName()).isInstance(object)) {
+                return false;
+            }
+
+        } catch (ClassNotFoundException e) {
+            return false;
+        }
+
+        return true;
+    }
+
+//------------------------------------------------------------------------------
+
+    /**
      * Returns the number of keys in the data structure.
      *
      * @return Number of keys in the DataStructure.
@@ -102,6 +174,10 @@ public interface DataStructure<K> {
      * @throws IndexOutOfBoundsException Exception thrown if the index is invalid
      */
     default void verifyIndex(int index) {
+        if (empty()) {
+            throw new EmptyDataStructureException("Cannot verify index on empty data structure");
+        }
+
         if (indexOutOfBounds(index)) {
             throw new IndexOutOfBoundsException("size: " + this.size() + " index: " + index);
         }
