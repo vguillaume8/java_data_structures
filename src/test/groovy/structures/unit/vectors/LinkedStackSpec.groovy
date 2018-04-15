@@ -1,10 +1,15 @@
 package structures.unit.vectors
 
+import spock.lang.Ignore
 import spock.lang.Unroll
 import spock.lang.Specification
 import structures.commons.DataStructure.EmptyDataStructureException
 import structures.vectors.LinkedStack;
 
+/**
+ * @depracated
+ */
+@Ignore
 class LinkedStackSpec extends Specification {
 
     @Unroll

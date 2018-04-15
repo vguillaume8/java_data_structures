@@ -12,9 +12,10 @@ abstract class StackSpec<T> extends Specification {
 
     @Shared Stack<Object> stack;
 
-    abstract Stack<Object> constructor();
+    abstract Stack<Object> constructor()
     abstract Stack<Object> constructor(Object[] input)
     abstract Stack<Object> constructor(Collection<Object> input)
+    abstract Class         type()
 
     @Unroll
     def "Construct an empty stack from default constructor"() {
@@ -23,6 +24,59 @@ abstract class StackSpec<T> extends Specification {
         stack.empty()
         stack.size()     == 0
         stack.toString() == "[]"
+    }
+
+    @Unroll
+    def "Construct a stack from an array of values"() {
+        when:
+        stack.insert(input)
+        Stack<Integer> s = constructor(input as Integer[])
+
+        then:
+        stack == s
+
+        where:
+        input        | _
+        [1, 2, 3, 4] | _
+        [1, 2]       | _
+        [1]          | _
+        []           | _
+
+    }
+
+    @Unroll
+    def "Construct a stack from a Java collection of values"() {
+        when:
+        stack.insert(input)
+        Stack<Integer> s = constructor(input)
+
+        then:
+        stack == s
+
+        where:
+        input        | _
+        [1, 2, 3, 4] | _
+        [1, 2]       | _
+        [1]          | _
+        []           | _
+
+    }
+
+    @Unroll
+    def "Check equality between stacks by content"() {
+
+        when:
+        Stack<Object> first  = constructor(input1)
+        Stack<Object> second = constructor(input2)
+
+        then:
+        first.equals(second) == equals
+
+        where:
+        input1          | input2          | equals
+        [1, 2, 3, 4, 5] | [1, 2, 3, 4, 5] | true
+        [1, 2, 3, 4, 5] | [1, 2, 3, 4]    | false
+        []              | []              | true
     }
 
     @Unroll
@@ -113,9 +167,26 @@ abstract class StackSpec<T> extends Specification {
         [1]          | _
         []           | _
     }
+
+    @Unroll
+    def "Convert stack to string via toString() method"() {
+        when:
+        stack.insert(input)
+
+        then:
+        stack.toString() == string
+
+        where:
+        input           | string
+        [1, 2, 3, 4, 5] | "[5, 4, 3, 2, 1]"
+        [1, 2]          | "[2, 1]"
+        [1]             | "[1]"
+        []              | "[]"
+    }
 }
 
 class StackSpeck_ArrayStack<T> extends StackSpec {
+
     def setup() {
         stack = new ArrayStack<>()
     }
@@ -134,6 +205,11 @@ class StackSpeck_ArrayStack<T> extends StackSpec {
     Stack<Object> constructor(Collection input) {
         return new ArrayStack<Object>(input)
     }
+
+    @Override
+    Class type() {
+        return ArrayStack
+    }
 }
 
 class StackSpec_LinkedStack<T> extends StackSpec {
@@ -149,6 +225,11 @@ class StackSpec_LinkedStack<T> extends StackSpec {
     @Override
     Stack<Object> constructor(Object[] input) {
         return new LinkedStack<Object>(input)
+    }
+
+    @Override
+    Class type() {
+        return LinkedStack
     }
 
     @Override
