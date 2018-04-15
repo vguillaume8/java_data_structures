@@ -1,10 +1,12 @@
 package structures.unit.vectors
 
+import spock.lang.Ignore
 import spock.lang.Unroll
 import spock.lang.Specification
 import structures.commons.DataStructure.EmptyDataStructureException
 import structures.vectors.LinkedQueue;
 
+@Ignore
 class LinkedQueueSpec extends Specification {
 
     @Unroll

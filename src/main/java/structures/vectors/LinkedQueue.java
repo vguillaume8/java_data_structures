@@ -11,7 +11,7 @@ import java.util.Iterator;
  * @author Jabari Dash
  * @param <K> Generic type
  */
-public final class LinkedQueue<K> implements Vector<K> {
+public final class LinkedQueue<K> implements Queue<K> {
 
     /**
      * Number of elements in the LinkedQueue

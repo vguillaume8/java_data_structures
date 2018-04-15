@@ -12,7 +12,7 @@ import java.util.*;
  * the object. Example, BinarySearchTree<K, V> should give
  * back an Iterator<Pair<K,V>> not an Iterator<K,V>. The
  * latter is not possible. So to avoid this conflict, we
- * allow simpler classes to inherit an interator() method,
+ * allow simpler classes to inherit an iterator() method,
  * such as Stack, List, and Queue, but we do not want all
  * implementing classes to be bound to the contract of
  * supplying an iterator that may not be useful for that

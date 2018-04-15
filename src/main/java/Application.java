@@ -15,6 +15,8 @@ public final class Application {
 
   public static void main(String[] args) throws Exception {
 
+    java.util.ArrayList a;
+
   // TODO - https://docs.oracle.com/javase/tutorial/essential/concurrency/syncmeth.html
 
     Integer[] ordered = IntStream.range(0, 10)
@@ -29,13 +31,11 @@ public final class Application {
                           .boxed()
                           .toArray(Integer[]::new);
 
-    Stack<Integer> s1 = new ArrayStack<>(random);
-    Stack<Integer> s2 = new ArrayStack<>(random);
-    Stack<Integer> s3 = new LinkedStack<>(random);
+    Queue<Integer> queue = new ArrayQueue<>(ordered);
 
-    System.out.println(s1.equals(s2));
+    queue.dequeue();
 
-
+    System.out.println(queue);
   }
 
 }
