@@ -9,8 +9,8 @@ import java.util.*;
  * implement Iterable because when we use this class with
  * more complex types such as Trees, or potentially hashmaps,
  * we will not be iterating over the same generic type as
- * the object. Example, BinarySearchTree<K, V> should give
- * back an Iterator<Pair<K,V>> not an Iterator<K,V>. The
+ * the object. Example, BinarySearchTree&lt; K, V&gt; should give
+ * back an Iterator&lt;Pair&lt;K,V&gt;&gt; not an Iterator&lt; K,V&gt;. The
  * latter is not possible. So to avoid this conflict, we
  * allow simpler classes to inherit an iterator() method,
  * such as Stack, List, and Queue, but we do not want all

@@ -135,12 +135,8 @@ public interface Vector<T> extends DataStructure<T>, Iterable<T> {
 
             // Cast to Vector, and compare the keys
             @SuppressWarnings("unchecked")
-            Vector<T> vector = (Vector<T>) object;
+            Iterable<T> vector = (Iterable<T>) object;
 
-            // Check length
-            if (vector.size() != this.size()) {
-                return false;
-            }
 
             // Iterate over both lists
             // simultaneously

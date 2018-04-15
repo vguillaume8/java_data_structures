@@ -24,5 +24,9 @@ public interface Queue<E> extends Vector<E> {
         return remove();
     }
 
+    /**
+     * 
+     * @return
+     */
     E peek();
 }

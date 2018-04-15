@@ -2,9 +2,7 @@ package structures.vectors;
 
 import structures.commons.DataStructure;
 import structures.commons.DynamicArray;
-
 import java.util.Collection;
-import java.util.Iterator;
 
 /**
  *
