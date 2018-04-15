@@ -1,9 +1,12 @@
 package structures.vectors;
 
 /**
+ * Concrete implementations of Queue
+ * data structures will implement this
+ * interface.
  *
  * @author Jabari Dash
- * @param <E>
+ * @param <E> Generic type
  */
 public interface Queue<E> extends Vector<E> {
 
@@ -25,7 +28,7 @@ public interface Queue<E> extends Vector<E> {
     }
 
     /**
-     * 
+     *
      * @return
      */
     E peek();

@@ -18,7 +18,7 @@ import java.util.concurrent.ThreadLocalRandom;
  *
  * @author Jabari Dash
  */
-public class Plot {
+public final class Plot {
 
     /**
      * Directory in which all tests are held

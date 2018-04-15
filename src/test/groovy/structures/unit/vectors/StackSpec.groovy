@@ -1,21 +1,16 @@
 package structures.unit.vectors
 
 import spock.lang.Shared
-import spock.lang.Specification
 import spock.lang.Unroll
 import structures.commons.DataStructure
 import structures.vectors.Stack
 import structures.vectors.ArrayStack
 import structures.vectors.LinkedStack
+import util.Spec
 
-abstract class StackSpec<T> extends Specification {
+abstract class StackSpec<T> extends Spec {
 
     @Shared Stack<Object> stack;
-
-    abstract Stack<Object> constructor()
-    abstract Stack<Object> constructor(Object[] input)
-    abstract Stack<Object> constructor(Collection<Object> input)
-    abstract Class         type()
 
     @Unroll
     def "Construct an empty stack from default constructor"() {
@@ -188,53 +183,16 @@ abstract class StackSpec<T> extends Specification {
 class StackSpeck_ArrayStack<T> extends StackSpec {
 
     def setup() {
+        myClass = ArrayStack
         stack = new ArrayStack<>()
-    }
-
-    @Override
-    Stack<Object> constructor() {
-        return new ArrayStack<Object>()
-    }
-
-    @Override
-    Stack<Object> constructor(Object[] input) {
-        return new ArrayStack<Object>(input)
-    }
-
-    @Override
-    Stack<Object> constructor(Collection input) {
-        return new ArrayStack<Object>(input)
-    }
-
-    @Override
-    Class type() {
-        return ArrayStack
     }
 }
 
 class StackSpec_LinkedStack<T> extends StackSpec {
+
     def setup() {
+        myClass = LinkedStack
         stack = new LinkedStack<>()
-    }
-
-    @Override
-    Stack<Object> constructor() {
-        return new LinkedStack<Object>()
-    }
-
-    @Override
-    Stack<Object> constructor(Object[] input) {
-        return new LinkedStack<Object>(input)
-    }
-
-    @Override
-    Class type() {
-        return LinkedStack
-    }
-
-    @Override
-    Stack<Object> constructor(Collection input) {
-        return new LinkedStack<Object>(input)
     }
 }
 

@@ -6,8 +6,11 @@ import java.util.Collection;
 import java.util.Iterator;
 
 /**
+ * Implementation of Stack using
+ * an internal array to hold data elements.
+ *
  * @author Jabari Dash
- * @param <E>
+ * @param <E> Generic type
  */
 public final class ArrayStack<E> extends DynamicArray<E> implements Stack<E> {
 

@@ -1,8 +1,12 @@
 package structures.vectors;
 
 /**
+ * Concrete implementations of Stack
+ * data structures will implement this
+ * interface.
  *
- * @param <E>
+ * @author Jabari Dash
+ * @param <E> Generic type
  */
 public interface Stack<E> extends Vector<E> {
 

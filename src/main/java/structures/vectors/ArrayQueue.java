@@ -5,8 +5,11 @@ import structures.commons.DynamicArray;
 import java.util.Collection;
 
 /**
+ * Implementation of Queue using
+ * an internal array to hold data elements.
  *
- * @param <E>
+ * @author Jabari Dash
+ * @param <E> Generic type
  */
 public final class ArrayQueue<E> extends DynamicArray<E> implements Queue<E>, Vector<E> {
 

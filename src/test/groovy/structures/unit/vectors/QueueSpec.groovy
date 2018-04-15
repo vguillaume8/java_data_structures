@@ -1,26 +1,23 @@
 package structures.unit.vectors
 
 import spock.lang.Shared
-import spock.lang.Specification
 import spock.lang.Unroll
 import structures.commons.DataStructure
 import structures.vectors.Queue
 import structures.vectors.ArrayQueue
 import structures.vectors.LinkedQueue
+import util.Spec
 
-abstract class QueueSpec<T> extends Specification {
+abstract class QueueSpec<T> extends Spec {
 
     @Shared Queue<Object> queue;
 
-    abstract Queue<Object> constructor()
-    abstract Queue<Object> constructor(Object[] input)
-    abstract Queue<Object> constructor(Collection<Object> input)
-    abstract Class         type()
-
     @Unroll
     def "Construct an empty queue from default constructor"() {
+        when:
+        queue = (Queue<Integer>) constructor()
 
-        expect:
+        then:
         queue.empty()
         queue.size()     == 0
         queue.toString() == "[]"
@@ -29,6 +26,7 @@ abstract class QueueSpec<T> extends Specification {
     @Unroll
     def "Construct a queue from an array of values"() {
         when:
+        queue = (Queue<Integer>) constructor()
         queue.insert(input)
         Queue<Integer> s = constructor(input as Integer[])
 
@@ -47,7 +45,9 @@ abstract class QueueSpec<T> extends Specification {
     @Unroll
     def "Construct a queue from a Java collection of values"() {
         when:
+        queue = (Queue<Integer>) constructor()
         queue.insert(input)
+
         Queue<Integer> s = constructor(input)
 
         then:
@@ -81,6 +81,8 @@ abstract class QueueSpec<T> extends Specification {
 
     @Unroll
     def "Test enqueue() method"() {
+        given:
+        queue = (Queue<Integer>) constructor()
 
         when:
         for (Integer i : input) {
@@ -101,6 +103,9 @@ abstract class QueueSpec<T> extends Specification {
 
     @Unroll
     def "Test dequeue() method on non-empty queue"() {
+        given:
+        queue = (Queue<Integer>) constructor()
+
         when:
         queue.insert(input)
 
@@ -116,6 +121,9 @@ abstract class QueueSpec<T> extends Specification {
 
     @Unroll
     def "Test dequeue() method on empty queue"() {
+        given:
+        queue = (Queue<Integer>) constructor()
+
         when:
         queue.dequeue()
 
@@ -125,6 +133,9 @@ abstract class QueueSpec<T> extends Specification {
 
     @Unroll
     def "Test peek() method on non-empty queue"() {
+        given:
+        queue = (Queue<Integer>) constructor()
+
         when:
         queue.insert(input)
 
@@ -140,6 +151,9 @@ abstract class QueueSpec<T> extends Specification {
 
     @Unroll
     def "Test peek() method on empty queue"() {
+        given:
+        queue = (Queue<Integer>) constructor()
+
         when:
         queue.peek()
 
@@ -150,6 +164,9 @@ abstract class QueueSpec<T> extends Specification {
 
     @Unroll
     def "Create, then empty out entire queue"() {
+        given:
+        queue = (Queue<Integer>) constructor()
+
         when:
         queue.insert(input)
 
@@ -170,6 +187,9 @@ abstract class QueueSpec<T> extends Specification {
 
     @Unroll
     def "Convert queue to string via toString() method"() {
+        given:
+        queue = (Queue<Integer>) constructor()
+
         when:
         queue.insert(input)
 
@@ -185,56 +205,17 @@ abstract class QueueSpec<T> extends Specification {
     }
 }
 
-class QueueSpec_queue<T> extends QueueSpec {
+class QueueSpec_ArrayQueue<T> extends QueueSpec {
 
     def setup() {
-        queue = new ArrayQueue<>()
-    }
-
-    @Override
-    Queue<Object> constructor() {
-        return new ArrayQueue<Object>()
-    }
-
-    @Override
-    Queue<Object> constructor(Object[] input) {
-        return new ArrayQueue<Object>(input)
-    }
-
-    @Override
-    Queue<Object> constructor(Collection input) {
-        return new ArrayQueue<Object>(input)
-    }
-
-    @Override
-    Class type() {
-        return ArrayQueue
+        myClass = ArrayQueue
     }
 }
 
 class QueueSpec_LinkedQueue<T> extends QueueSpec {
+
     def setup() {
-        queue = new LinkedQueue<>()
-    }
-
-    @Override
-    Queue<Object> constructor() {
-        return new LinkedQueue<Object>()
-    }
-
-    @Override
-    Queue<Object> constructor(Object[] input) {
-        return new LinkedQueue<Object>(input)
-    }
-
-    @Override
-    Class type() {
-        return LinkedQueue
-    }
-
-    @Override
-    Queue<Object> constructor(Collection input) {
-        return new LinkedQueue<Object>(input)
+        myClass = LinkedQueue
     }
 }
 
