@@ -4,7 +4,22 @@
     <bookmark url="file://$PROJECT_DIR$/src/test/groovy/structures/unit/vectors/VectorSpec.groovy" line="132" mnemonic="1" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fedb2063-1be3-4fe9-94aa-d8fc8c2af912" name="Default" comment="" />
+    <list default="true" id="fedb2063-1be3-4fe9-94aa-d8fc8c2af912" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/data/csv/avg_cost_to_insert_into_arraylist.csv" afterPath="$PROJECT_DIR$/data/csv/avg_cost_to_insert_into_arraylist.csv" />
+      <change beforePath="$PROJECT_DIR$/data/csv/avg_cost_to_remove_from_arraylist.csv" afterPath="$PROJECT_DIR$/data/csv/avg_cost_to_remove_from_arraylist.csv" />
+      <change beforePath="$PROJECT_DIR$/data/csv/levels_in_avl_tree_vs_n_random_keys.csv" afterPath="$PROJECT_DIR$/data/csv/levels_in_avl_tree_vs_n_random_keys.csv" />
+      <change beforePath="$PROJECT_DIR$/data/csv/levels_in_bst_tree_vs_n_random_keys.csv" afterPath="$PROJECT_DIR$/data/csv/levels_in_bst_tree_vs_n_random_keys.csv" />
+      <change beforePath="$PROJECT_DIR$/data/csv/shifts_required_when_inserting_rand_index.csv" afterPath="$PROJECT_DIR$/data/csv/shifts_required_when_inserting_rand_index.csv" />
+      <change beforePath="$PROJECT_DIR$/data/png/avg_cost_to_insert_into_arraylist.png" afterPath="$PROJECT_DIR$/data/png/avg_cost_to_insert_into_arraylist.png" />
+      <change beforePath="$PROJECT_DIR$/data/png/avg_cost_to_remove_from_arraylist.png" afterPath="$PROJECT_DIR$/data/png/avg_cost_to_remove_from_arraylist.png" />
+      <change beforePath="$PROJECT_DIR$/data/png/levels_in_avl_tree_vs_n_random_keys.png" afterPath="$PROJECT_DIR$/data/png/levels_in_avl_tree_vs_n_random_keys.png" />
+      <change beforePath="$PROJECT_DIR$/data/png/levels_in_bst_tree_vs_n_random_keys.png" afterPath="$PROJECT_DIR$/data/png/levels_in_bst_tree_vs_n_random_keys.png" />
+      <change beforePath="$PROJECT_DIR$/data/png/shifts_required_when_inserting_rand_index.png" afterPath="$PROJECT_DIR$/data/png/shifts_required_when_inserting_rand_index.png" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/structures/commons/DataStructure.java" afterPath="$PROJECT_DIR$/src/main/java/structures/commons/DataStructure.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/structures/commons/DynamicArray.java" afterPath="$PROJECT_DIR$/src/main/java/structures/commons/DynamicArray.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/structures/vectors/ArrayQueue.java" afterPath="$PROJECT_DIR$/src/main/java/structures/vectors/ArrayQueue.java" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -50,7 +65,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>veri</find>
       <find>size()</find>
       <find>toString</find>
       <find>append</find>
@@ -80,6 +94,7 @@
       <find>toA</find>
       <find>VectorSpec</find>
       <find>util.List</find>
+      <find>size</find>
     </findStrings>
     <replaceStrings>
       <replace>||</replace>
@@ -484,12 +499,12 @@
         <option value="$PROJECT_DIR$/src/main/java/structures/vectors/LinkedQueue.java" />
         <option value="$PROJECT_DIR$/src/main/java/structures/vectors/LinkedList.java" />
         <option value="$PROJECT_DIR$/src/main/java/structures/vectors/ArrayStack.java" />
-        <option value="$PROJECT_DIR$/src/main/java/structures/vectors/ArrayQueue.java" />
         <option value="$PROJECT_DIR$/src/main/java/structures/vectors/ArrayList.java" />
         <option value="$PROJECT_DIR$/src/main/java/structures/vectors/List.java" />
-        <option value="$PROJECT_DIR$/src/main/java/structures/commons/DynamicArray.java" />
-        <option value="$PROJECT_DIR$/src/main/java/structures/commons/DataStructure.java" />
         <option value="$PROJECT_DIR$/src/main/java/structures/trees/BinaryTree.java" />
+        <option value="$PROJECT_DIR$/src/main/java/structures/commons/DataStructure.java" />
+        <option value="$PROJECT_DIR$/src/main/java/structures/vectors/ArrayQueue.java" />
+        <option value="$PROJECT_DIR$/src/main/java/structures/commons/DynamicArray.java" />
       </list>
     </option>
   </component>
@@ -534,19 +549,6 @@
               <item name="java_data_structures" type="b2602c69:ProjectViewProjectNode" />
               <item name="java_data_structures" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="java_data_structures" type="b2602c69:ProjectViewProjectNode" />
-              <item name="java_data_structures" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="java_data_structures" type="b2602c69:ProjectViewProjectNode" />
-              <item name="java_data_structures" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -836,35 +838,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="All_in_java_data_structures_test - 2018.04.16 at 04h 28m 45s.xml">
+    <history-entry file="All_in_java_data_structures_test - 2018.04.16 at 10h 47m 26s.xml">
       <configuration name="All in java_data_structures_test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_java_data_structures_test - 2018.04.16 at 04h 37m 49s.xml">
+    <history-entry file="All_in_java_data_structures_test - 2018.04.16 at 10h 48m 01s.xml">
       <configuration name="All in java_data_structures_test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="QueueSpec_ArrayQueue_and_1_more - 2018.04.16 at 04h 35m 09s.xml">
-      <configuration name="QueueSpec_ArrayQueue and 1 more" configurationId="JUnit" />
+    <history-entry file="All_in_java_data_structures_test - 2018.04.16 at 10h 51m 13s.xml">
+      <configuration name="All in java_data_structures_test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="QueueSpec_ArrayQueue_and_1_more - 2018.04.16 at 04h 36m 08s.xml">
-      <configuration name="QueueSpec_ArrayQueue and 1 more" configurationId="JUnit" />
+    <history-entry file="All_in_java_data_structures_test - 2018.04.16 at 10h 56m 10s.xml">
+      <configuration name="All in java_data_structures_test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="QueueSpec_ArrayQueue_and_1_more - 2018.04.16 at 04h 36m 35s.xml">
-      <configuration name="QueueSpec_ArrayQueue and 1 more" configurationId="JUnit" />
+    <history-entry file="All_in_java_data_structures_test - 2018.04.16 at 10h 56m 31s.xml">
+      <configuration name="All in java_data_structures_test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="QueueSpec_ArrayQueue_and_1_more - 2018.04.16 at 04h 36m 53s.xml">
-      <configuration name="QueueSpec_ArrayQueue and 1 more" configurationId="JUnit" />
+    <history-entry file="All_in_java_data_structures_test - 2018.04.16 at 10h 57m 04s.xml">
+      <configuration name="All in java_data_structures_test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="QueueSpec_ArrayQueue_and_1_more - 2018.04.16 at 04h 37m 20s.xml">
-      <configuration name="QueueSpec_ArrayQueue and 1 more" configurationId="JUnit" />
+    <history-entry file="All_in_java_data_structures_test - 2018.04.16 at 11h 01m 01s.xml">
+      <configuration name="All in java_data_structures_test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="StackSpec_LinkedStack_and_1_more - 2018.04.16 at 04h 27m 36s.xml">
-      <configuration name="StackSpec_LinkedStack and 1 more" configurationId="JUnit" />
+    <history-entry file="All_in_java_data_structures_test - 2018.04.16 at 11h 05m 39s.xml">
+      <configuration name="All in java_data_structures_test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="StackSpec_LinkedStack_and_1_more - 2018.04.16 at 04h 28m 19s.xml">
-      <configuration name="StackSpec_LinkedStack and 1 more" configurationId="JUnit" />
+    <history-entry file="All_in_java_data_structures_test - 2018.04.16 at 11h 06m 23s.xml">
+      <configuration name="All in java_data_structures_test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="StackSpec_LinkedStack_and_1_more - 2018.04.16 at 04h 28m 28s.xml">
-      <configuration name="StackSpec_LinkedStack and 1 more" configurationId="JUnit" />
+    <history-entry file="All_in_java_data_structures_test - 2018.04.16 at 11h 08m 29s.xml">
+      <configuration name="All in java_data_structures_test" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -887,9 +889,9 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32994732" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32886806" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32886806" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33958474" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" x="134" y="632" width="2746" height="507" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33958474" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" x="134" y="632" width="2746" height="507" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25056434" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -932,10 +934,10 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32886806" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32886806" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33958474" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" x="134" y="632" width="2746" height="507" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24303988" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25056434" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="sbt-shell-toolwindow" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32953784" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32994732" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -956,14 +958,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/groovy/util/Util.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="637">
-          <caret line="22" column="4" lean-forward="true" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/groovy/util/Plot.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
@@ -1278,26 +1272,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/structures/vectors/Vector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4318">
-          <caret line="131" column="55" lean-forward="false" selection-start-line="131" selection-start-column="55" selection-end-line="131" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/structures/vectors/Stack.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="10" column="17" lean-forward="false" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/structures/vectors/Queue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="17" column="52" lean-forward="false" selection-start-line="17" selection-start-column="52" selection-end-line="17" selection-end-column="52" />
           <folding />
         </state>
       </provider>
@@ -1336,14 +1314,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/structures/vectors/ArrayQueue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1836">
-          <caret line="56" column="43" lean-forward="false" selection-start-line="56" selection-start-column="43" selection-end-line="56" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/structures/vectors/ArrayList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="927">
@@ -1360,28 +1330,65 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/structures/commons/DynamicArray.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-529">
-          <caret line="529" column="49" lean-forward="false" selection-start-line="529" selection-start-column="49" selection-end-line="529" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/structures/commons/DataStructure.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-12">
-          <caret line="111" column="62" lean-forward="false" selection-start-line="111" selection-start-column="62" selection-end-line="111" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/structures/trees/BinaryTree.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="215" column="30" lean-forward="false" selection-start-line="215" selection-start-column="30" selection-end-line="215" selection-end-column="30" />
           <folding>
             <element signature="e#7032#7059#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/structures/commons/DataStructure.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="15" column="39" lean-forward="false" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/structures/vectors/Queue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="10" column="17" lean-forward="false" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/structures/vectors/Vector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="15" column="17" lean-forward="false" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/structures/commons/DynamicArray.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15096">
+          <caret line="444" column="4" lean-forward="true" selection-start-line="444" selection-start-column="4" selection-end-line="444" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#13095#13122#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/structures/vectors/ArrayQueue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="15" column="79" lean-forward="false" selection-start-line="15" selection-start-column="79" selection-end-line="15" selection-end-column="79" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

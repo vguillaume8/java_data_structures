@@ -10,6 +10,11 @@ import java.util.Collection;
  */
 public interface DataStructure<K> {
 
+    // TODO - https://docs.oracle.com/javase/tutorial/essential/concurrency/syncmeth.html
+    // Check out making methods synchronized to avoid
+    // concurrent modification issues if the objects
+    // are used across multiple threads
+
     /**
      * Determines whether or not the DataStructure contains a specified key.
      *
