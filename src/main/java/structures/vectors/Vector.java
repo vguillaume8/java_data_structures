@@ -137,7 +137,6 @@ public interface Vector<T> extends DataStructure<T>, Iterable<T> {
             @SuppressWarnings("unchecked")
             Iterable<T> vector = (Iterable<T>) object;
 
-
             // Iterate over both lists
             // simultaneously
             thisIterator = this.iterator();

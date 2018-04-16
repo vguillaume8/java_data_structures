@@ -196,50 +196,50 @@ if __name__ == "__main__":
     params['png_directory']   = params['data_directory'] + 'png/'
 
     # Set OPTIONAL arguments to runtime variables
-    # But, since tthey are optional, we must check
+    # But, since they are optional, we must check
     # if it is not None, otherwise we will get a null
     # pointer exception.
     if args.plot_title:
-        params['plot_title'] = args.plot_title
+        params['plot_title']           = args.plot_title
 
     if args.input_data_label:
-        params['input_data_label'] = args.input_data_label
+        params['input_data_label']     = args.input_data_label
 
     if args.x_axis_label:
-        params['x_axis_label'] = args.x_axis_label
+        params['x_axis_label']         = args.x_axis_label
 
     if args.y_axis_label:
-        params['y_axis_label'] = args.y_axis_label
+        params['y_axis_label']         = args.y_axis_label
 
     if args.dependent_variable:
-        params['dependent_variable'] = args.dependent_variable
+        params['dependent_variable']   = args.dependent_variable
 
     if args.independent_variable:
         params['independent_variable'] = args.independent_variable
 
     if args.exponential_fit == 'True':
-        params['exponential_fit'] = bool(args.exponential_fit)
+        params['exponential_fit']      = bool(args.exponential_fit)
 
     if args.cubic_fit == 'True':
-        params['cubic_fit'] = bool(args.cubic_fit)
+        params['cubic_fit']            = bool(args.cubic_fit)
 
     if args.quadratic_fit == 'True':
-        params['quadratic_fit'] = bool(args.quadratic_fit)
+        params['quadratic_fit']        = bool(args.quadratic_fit)
 
     if args.n_log_n_fit == 'True':
-        params['n_log_n_fit'] = bool(args.n_log_n_fit)
+        params['n_log_n_fit']          = bool(args.n_log_n_fit)
 
     if args.linear_fit == 'True':
-        params['linear_fit'] = bool(args.linear_fit)
+        params['linear_fit']           = bool(args.linear_fit)
 
     if args.logarithmic_fit == 'True':
-        params['logarithmic_fit'] = bool(args.logarithmic_fit)
+        params['logarithmic_fit']      = bool(args.logarithmic_fit)
 
     if args.upper_bound == 'True':
-        params['upper_bound'] = bool(args.upper_bound)
+        params['upper_bound']          = bool(args.upper_bound)
 
     if args.lower_bound == 'True':
-        params['lower_bound'] = bool(args.lower_bound)
+        params['lower_bound']          = bool(args.lower_bound)
 
     # Read the x and y components from the .csv file
     x_data, y_data = read_csv(params['csv_directory'] + params['input_file_name'] + '.csv')

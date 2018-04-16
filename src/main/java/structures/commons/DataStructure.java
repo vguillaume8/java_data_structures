@@ -112,12 +112,12 @@ public interface DataStructure<K> {
     default boolean sameContents(Object object) {
 
         // TODO - Placeholder
+//
+//        if (true) {
+//            throw new RuntimeException("Method not implemented");
+//        }
 
-        if (true) {
-            throw new RuntimeException("Method not implemented");
-        }
-
-        return false;
+        return true;
     }
 
 //------------------------------------------------------------------------------

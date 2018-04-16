@@ -8,7 +8,7 @@ jdk:
 python: 2.7
 
 install:
-  - ./install.sh
+  - ./.travis.sh
 
 script:
   - ./gradlew test -i

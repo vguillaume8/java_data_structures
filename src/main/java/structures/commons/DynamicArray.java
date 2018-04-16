@@ -458,28 +458,7 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
             shifts++;
         }
     }
-
-    /**
-     * Returns data structure as an array of specified type.
-     *
-     * @param array Array that specifies the type of the array to return.
-     * @return Array representation of the data structure.
-     */
-    public E[] toArray(E[] array) {
-
-        try {
-
-            array = (E[]) Arrays.copyOf(elements, size(), array.getClass());
-
-        } catch (ArrayStoreException exception) {
-
-            throw new IllegalArgumentException("Array type " + array.getClass().getSimpleName() + " is invalid");
-        }
-
-        return array;
-    }
-
-
+    
     /**
      *
      *

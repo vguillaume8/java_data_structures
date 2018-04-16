@@ -5,6 +5,8 @@ import structures.vectors.Vector;
 import structures.commons.Pair;
 import structures.vectors.ArrayList;
 
+import java.util.Collection;
+
 /**
  * Implementation of BinarySearchTree.
  *
@@ -50,6 +52,19 @@ public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, 
         for (K value : keys) {
             this.insert(value);
         }
+    }
+
+    /**
+     * Initialize a BinarySearchTree with a specified
+     * set of keys.
+     *
+     * @param keys Specified keys to insert into BinarySearchTree
+     */
+    @SuppressWarnings("unused")
+    public BinarySearchTree(Collection<K> keys) {
+        this();
+
+        insert(keys);
     }
 
     //------------------------------------------------------------------------------
