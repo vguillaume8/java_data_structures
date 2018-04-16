@@ -1,204 +1,198 @@
 package structures.unit.vectors
 
+import spock.lang.Shared
 import spock.lang.Unroll
-import spock.lang.Specification
-import structures.commons.DataStructure.EmptyDataStructureException
-import structures.vectors.Stack;
+import structures.commons.DataStructure
+import structures.vectors.Stack
+import structures.vectors.ArrayStack
+import structures.vectors.LinkedStack
+import util.Spec
 
-class StackSpec extends Specification {
+abstract class StackSpec<T> extends Spec {
+
+    @Shared Stack<Object> stack;
 
     @Unroll
-    def "Construct Stack from Java Collection"() {
+    def "Construct an empty stack from default constructor"() {
+
+        expect:
+        stack.empty()
+        stack.size()     == 0
+        stack.toString() == "[]"
+    }
+
+    @Unroll
+    def "Construct a stack from an array of values"() {
         when:
-        Stack<Integer> stack = new Stack<Integer>(input)
+        stack.insert(input)
+        Stack<Integer> s = constructor(input as Integer[])
 
         then:
-        stack.size()     == input.size()
+        stack == s
+
+        where:
+        input        | _
+        [1, 2, 3, 4] | _
+        [1, 2]       | _
+        [1]          | _
+        []           | _
+
+    }
+
+    @Unroll
+    def "Construct a stack from a Java collection of values"() {
+        when:
+        stack.insert(input)
+        Stack<Integer> s = constructor(input)
+
+        then:
+        stack == s
+
+        where:
+        input        | _
+        [1, 2, 3, 4] | _
+        [1, 2]       | _
+        [1]          | _
+        []           | _
+
+    }
+
+    @Unroll
+    def "Check equality between stacks by content"() {
+
+        when:
+        Stack<Object> first  = constructor(input1)
+        Stack<Object> second = constructor(input2)
+
+        then:
+        first.equals(second) == equals
+
+        where:
+        input1          | input2          | equals
+        [1, 2, 3, 4, 5] | [1, 2, 3, 4, 5] | true
+        [1, 2, 3, 4, 5] | [1, 2, 3, 4]    | false
+        []              | []              | true
+    }
+
+    @Unroll
+    def "Test push() method"() {
+
+        when:
+        for (Integer i : input) {
+            stack.push(i)
+        }
+
+        then:
+        stack.empty()    == empty
+        stack.size()     == size
         stack.toString() == string
 
         where:
-        input        | string
-        [1, 2, 3, 4] | "[4, 3, 2, 1]"
-        [1, 2]       | "[2, 1]"
-        [1]          | "[1]"
-        []           | "[]"
+        size | empty ||string             || input
+        5    | false || "[1, 2, 3, 4, 5]" || [5, 4, 3, 2, 1]
+        2    | false || "[2, 1]"          || [1, 2]
+        0    | true  || "[]"              || []
     }
 
     @Unroll
-    def "#Check Stack equality"() {
-        setup:
-        Stack<Integer> list1
-        Stack<Integer> list2
-
+    def "Test pop() method on non-empty stack"() {
         when:
-        list1 = new Stack<Integer>(input1)
-        list2 = new Stack<Integer>(input2)
+        stack.insert(input)
 
         then:
-        list1.equals(list2) == equals
+        stack.pop()  == top
+        stack.size() == size - 1
 
         where:
-        equals || input1       || input2
-        false  || [1, 1, 1, 1] || [1, 2, 3, 4]
-        false  || [1, 2, 3, 4] || [4, 3, 2, 1]
-        true   || [1, 2, 3, 4] || [1, 2, 3, 4]
-        false  || [1, 2, 3, 4] || [1, 2, 3]
-        true   || []           || []
-        false  || []           || [1]
-        true   || [1]          || [1]
+        size || top || input
+        5    || 1   || [5, 4, 3, 2, 1]
+        2    || 2   || [1, 2]
     }
 
     @Unroll
-    def "#Construct an empty Stack"() {
-        setup:
-        Stack stack = new Stack()
-
-        expect:
-        stack.size() == 0
-        stack.empty()
-    }
-
-    @Unroll
-    def "#Construct an empty Stack from array"() {
-        setup:
-        Stack stack = new Stack(values)
-
-        expect:
-        stack.size() == size
-        stack.empty() == isEmpty
-
-        where:
-        values                 | size | isEmpty
-        [] as Integer[]        | 0    | true
-    }
-
-//------------------------------------------------------------------------------
-
-    @Unroll
-    def "#Construct stack from non-empty array"() {
-        when:
-        Stack<Integer> stack = new Stack<Integer>(values);
-
-        then:
-        stack.empty() == isEmpty
-        stack.size() == size
-
-        where:
-        values                 | size | isEmpty
-        [1, 2, 3] as Integer[] | 3    | false
-        [1, 2] as Integer[]    | 2    | false
-        [1] as Integer[]       | 1    | false
-    }
-
-//------------------------------------------------------------------------------
-
-    @Unroll
-    def "#push()"() {
-        setup:
-        Stack stack = new Stack();
-
-        when:
-        int i = 0
-        while (pushes > 0) {
-            stack.push(values[i])
-            pushes--
-            i++
-        }
-
-        then:
-        stack.top() == top
-
-        where:
-        values                  | pushes | top
-        [1, 2, 3] as Integer[]  | 3      | 3
-        [1, 2] as Integer[]     | 2      | 2
-        [1] as Integer[]        | 1      | 1
-    }
-
-//------------------------------------------------------------------------------
-
-    @Unroll
-    def "#pop()"() {
-        setup:
-        Stack stack = new Stack(values);
-
-        when:
-        int i = 0
-        while (pops > 0) {
-            stack.pop()
-            pops--
-            i++
-        }
-
-        then:
-        stack.top() == top
-
-        where:
-        values                  | pops | top
-        [1, 2, 3] as Integer[]  | 2    | 1
-        [1, 2] as Integer[]     | 1    | 1
-        [1] as Integer[]        | 0    | 1
-    }
-
-//------------------------------------------------------------------------------
-
-    @Unroll
-    def "#pop() an empty Stack"() {
-        setup:
-        Stack stack = new Stack();
-
+    def "Test pop() method on empty stack"() {
         when:
         stack.pop()
 
         then:
-        thrown EmptyDataStructureException
+        thrown DataStructure.EmptyDataStructureException
     }
-
-//------------------------------------------------------------------------------
-
-    @Unroll def "#top()"() {
-        setup:
-        Stack stack = new Stack(values);
-
-        expect:
-        stack.top() == top
-
-        where:
-        values                  | top
-        [1, 2, 3] as Integer[]  | 3
-        [1, 2] as Integer[]     | 2
-        [1] as Integer[]        | 1
-    }
-
-//------------------------------------------------------------------------------
 
     @Unroll
-    def "#top() an empty Stack"() {
-        setup:
-        Stack stack = new Stack();
+    def "Test top() method on non-empty stack"() {
+        when:
+        stack.insert(input)
 
+        then:
+        stack.top()  == top
+        stack.size() == size
+
+        where:
+        size || top || input
+        5    || 1   || [5, 4, 3, 2, 1]
+        2    || 2   || [1, 2]
+    }
+
+    @Unroll
+    def "Test top() method on empty stack"() {
         when:
         stack.top()
 
         then:
-        thrown EmptyDataStructureException
+        thrown DataStructure.EmptyDataStructureException
+
     }
 
-//------------------------------------------------------------------------------
+    @Unroll
+    def "Create, then empty out entire stack"() {
+        when:
+        stack.insert(input)
+
+        for (int i = input.size() - 1; i >= 0; i--) {
+            stack.pop()
+        }
+
+        then:
+        stack.empty()
+        stack.toString() == "[]"
+
+        where:
+        input        | _
+        [1, 2, 3, 4] | _
+        [1]          | _
+        []           | _
+    }
 
     @Unroll
-    def "#toString()"() {
-        setup:
-        Stack stack = new Stack(values);
+    def "Convert stack to string via toString() method"() {
+        when:
+        stack.insert(input)
 
-        expect:
+        then:
         stack.toString() == string
 
         where:
-        values                  | string
-        [1, 2, 3] as Integer[]  | "[3, 2, 1]"
-        [1, 2] as Integer[]     | "[2, 1]"
-        [1] as Integer[]        | "[1]"
-        [] as Integer[]         | "[]"
+        input           | string
+        [1, 2, 3, 4, 5] | "[5, 4, 3, 2, 1]"
+        [1, 2]          | "[2, 1]"
+        [1]             | "[1]"
+        []              | "[]"
     }
 }
+
+class StackSpeck_ArrayStack<T> extends StackSpec {
+
+    def setup() {
+        myClass = ArrayStack
+        stack = new ArrayStack<>()
+    }
+}
+
+class StackSpec_LinkedStack<T> extends StackSpec {
+
+    def setup() {
+        myClass = LinkedStack
+        stack = new LinkedStack<>()
+    }
+}
+

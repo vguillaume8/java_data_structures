@@ -1,9 +1,11 @@
 package structures.trees;
 
+import structures.vectors.LinkedQueue;
 import structures.vectors.Vector;
 import structures.commons.Pair;
 import structures.vectors.ArrayList;
-import structures.vectors.Queue;
+
+import java.util.Collection;
 
 /**
  * Implementation of BinarySearchTree.
@@ -50,6 +52,19 @@ public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, 
         for (K value : keys) {
             this.insert(value);
         }
+    }
+
+    /**
+     * Initialize a BinarySearchTree with a specified
+     * set of keys.
+     *
+     * @param keys Specified keys to insert into BinarySearchTree
+     */
+    @SuppressWarnings("unused")
+    public BinarySearchTree(Collection<K> keys) {
+        this();
+
+        insert(keys);
     }
 
     //------------------------------------------------------------------------------
@@ -482,19 +497,19 @@ public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, 
      * @return True if and only if the above conditions are met.
      */
     public boolean isComplete() {
-        Queue<BinarySearchTreeNode<K, V>> queue;
-        BinarySearchTreeNode<K, V> temp;
-        BinarySearchTreeNode<K, V> left;
-        BinarySearchTreeNode<K, V> right;
-        boolean flag;
+        LinkedQueue<BinarySearchTreeNode<K, V>> queue;
+        BinarySearchTreeNode<K, V>        temp;
+        BinarySearchTreeNode<K, V>        left;
+        BinarySearchTreeNode<K, V>        right;
+        boolean                           flag;
 
         // An empty tree is a complete tree
         if (empty()) {
             return true;
         }
 
-        // Create an empty Queue
-        queue = new Queue<>();
+        // Create an empty LinkedQueue
+        queue = new LinkedQueue<>();
 
         // Flag variables which will be true
         // when non full node is seen
@@ -503,14 +518,14 @@ public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, 
         // Start with the first root, insert into queue
         queue.insert(root);
 
-        // Level order traversal using Queue
+        // Level order traversal using LinkedQueue
         while (!queue.empty()) {
 
-            // Get node thing from Queue
+            // Get node thing from LinkedQueue
             temp = queue.remove();
 
             // Get the children
-            left = temp.leftChild;
+            left  = temp.leftChild;
             right = temp.rightChild;
 
             // Check if the node has a left child
@@ -754,7 +769,7 @@ public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, 
      */
     private ArrayList<K> keysToArrayListLevelOrder(BinarySearchTreeNode<K, V> node) {
         ArrayList<K> arrayList;
-        Queue<BinarySearchTreeNode<K, V>> queue;
+        LinkedQueue<BinarySearchTreeNode<K, V>> queue;
         BinarySearchTreeNode<K, V> temp;
         BinarySearchTreeNode<K, V> left;
         BinarySearchTreeNode<K, V> right;
@@ -767,13 +782,13 @@ public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, 
             return arrayList;
         }
 
-        // Create a Queue for level order traversal
-        queue = new Queue<>();
+        // Create a LinkedQueue for level order traversal
+        queue = new LinkedQueue<>();
 
         // Insert the first node to start
         queue.insert(node);
 
-        // While the Queue is not empty (all nodes have not been seen)
+        // While the LinkedQueue is not empty (all nodes have not been seen)
         while (!queue.empty()) {
 
             // Remove from queue, and insert into ArrayList
@@ -906,11 +921,11 @@ public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, 
      * @return ArrayList of pairs.
      */
     private ArrayList<Pair<K, V>> pairsToArrayListLevelOrder(BinarySearchTreeNode<K, V> node) {
-        ArrayList<Pair<K, V>> arrayList;
-        Queue<BinarySearchTreeNode<K, V>> queue;
-        BinarySearchTreeNode<K, V> temp;
-        BinarySearchTreeNode<K, V> left;
-        BinarySearchTreeNode<K, V> right;
+        LinkedQueue<BinarySearchTreeNode<K, V>> queue;
+        ArrayList<Pair<K, V>>             arrayList;
+        BinarySearchTreeNode<K, V>        temp;
+        BinarySearchTreeNode<K, V>        left;
+        BinarySearchTreeNode<K, V>        right;
 
         // Initialize the list
         arrayList = new ArrayList<>();
@@ -920,13 +935,13 @@ public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, 
             return arrayList;
         }
 
-        // Create a Queue for level order traversal
-        queue = new Queue<>();
+        // Create a LinkedQueue for level order traversal
+        queue = new LinkedQueue<>();
 
         // Insert the first node to start
         queue.insert(node);
 
-        // While the Queue is not empty (all nodes have not been seen)
+        // While the LinkedQueue is not empty (all nodes have not been seen)
         while (!queue.empty()) {
 
             // Remove from queue, and insert into ArrayList
@@ -934,7 +949,7 @@ public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, 
             arrayList.insert(temp);
 
             // Get children
-            left = temp.leftChild;
+            left  = temp.leftChild;
             right = temp.rightChild;
 
             // Check left
@@ -1250,7 +1265,7 @@ public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, 
     @SuppressWarnings("unused")
     private ArrayList<V> valuesToArrayListLevelOrder(BinarySearchTreeNode<K, V> node) {
         ArrayList<V>arrayList;
-        Queue<BinarySearchTreeNode<K, V>> queue;
+        LinkedQueue<BinarySearchTreeNode<K, V>> queue;
         BinarySearchTreeNode<K, V> temp;
         BinarySearchTreeNode<K, V> left;
         BinarySearchTreeNode<K, V> right;
@@ -1263,13 +1278,13 @@ public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, 
             return arrayList;
         }
 
-        // Create a Queue for level order traversal
-        queue = new Queue<>();
+        // Create a LinkedQueue for level order traversal
+        queue = new LinkedQueue<>();
 
         // Insert the first node to start
         queue.insert(node);
 
-        // While the Queue is not empty (all nodes have not been seen)
+        // While the LinkedQueue is not empty (all nodes have not been seen)
         while (!queue.empty()) {
 
             // Remove from queue, and insert into ArrayList
@@ -1346,7 +1361,7 @@ public class BinarySearchTree<K extends Comparable, V> implements BinaryTree<K, 
         @Override
         public boolean equals(Object object) {
 
-            return this == object || (object instanceof BinarySearchTreeNode && equivalentTo(object));
+            return equivalentTo(object);
         }
 
         /**

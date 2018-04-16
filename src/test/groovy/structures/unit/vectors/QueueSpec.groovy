@@ -1,20 +1,37 @@
 package structures.unit.vectors
 
+import spock.lang.Shared
 import spock.lang.Unroll
-import spock.lang.Specification
-import structures.commons.DataStructure.EmptyDataStructureException
-import structures.vectors.Queue;
+import structures.commons.DataStructure
+import structures.vectors.Queue
+import structures.vectors.ArrayQueue
+import structures.vectors.LinkedQueue
+import util.Spec
 
-class QueueSpec extends Specification {
+abstract class QueueSpec<T> extends Spec {
+
+    @Shared Queue<Object> queue;
 
     @Unroll
-    def "Construct Queue from Java Collection"() {
+    def "Construct an empty queue from default constructor"() {
         when:
-        Queue<Integer> list = new Queue<Integer>(input)
+        queue = (Queue<Integer>) constructor()
 
         then:
-        list.size()     == input.size()
-        list.toString() == input.toString()
+        queue.empty()
+        queue.size()     == 0
+        queue.toString() == "[]"
+    }
+
+    @Unroll
+    def "Construct a queue from an array of values"() {
+        when:
+        queue = (Queue<Integer>) constructor()
+        queue.insert(input)
+        Queue<Integer> s = constructor(input as Integer[])
+
+        then:
+        queue == s
 
         where:
         input        | _
@@ -22,186 +39,183 @@ class QueueSpec extends Specification {
         [1, 2]       | _
         [1]          | _
         []           | _
+
     }
 
     @Unroll
-    def "#Check Queue equality"() {
-        setup:
-        Queue<Integer> list1
-        Queue<Integer> list2
-
+    def "Construct a queue from a Java collection of values"() {
         when:
-        list1 = new Queue<Integer>(input1)
-        list2 = new Queue<Integer>(input2)
+        queue = (Queue<Integer>) constructor()
+        queue.insert(input)
+
+        Queue<Integer> s = constructor(input)
 
         then:
-        list1.equals(list2) == equals
+        queue == s
 
         where:
-        equals || input1       || input2
-        false  || [1, 1, 1, 1] || [1, 2, 3, 4]
-        false  || [1, 2, 3, 4] || [4, 3, 2, 1]
-        true   || [1, 2, 3, 4] || [1, 2, 3, 4]
-        false  || [1, 2, 3, 4] || [1, 2, 3]
-        true   || []           || []
-        false  || []           || [1]
-        true   || [1]          || [1]
+        input        | _
+        [1, 2, 3, 4] | _
+        [1, 2]       | _
+        [1]          | _
+        []           | _
+
     }
 
     @Unroll
-    def "#Construct an empty Queue"() {
-        setup:
-        Queue queue = new Queue()
+    def "Check equality between queues by content"() {
 
-        expect:
-        queue.size() == 0
-        queue.empty()
-    }
-
-    @Unroll
-    def "#Construct an empty Queue from array"() {
-        setup:
-        Queue queue = new Queue(values)
-
-        expect:
-        queue.size() == size
-        queue.empty() == isEmpty
-
-        where:
-        values                 | size | isEmpty
-        [] as Integer[]        | 0    | true
-    }
-
-//------------------------------------------------------------------------------
-
-    @Unroll
-    def "#Construct queue from non-empty array"() {
         when:
-        Queue<Integer> queue = new Queue<Integer>(values);
+        Queue<Object> first  = constructor(input1)
+        Queue<Object> second = constructor(input2)
 
         then:
-        queue.empty() == isEmpty
-        queue.size() == size
-
-//        queue.size() == size
-//        queue.empty() == isEmpty
+        first.equals(second) == equals
 
         where:
-        values                 | size | isEmpty
-        [1, 2, 3] as Integer[] | 3    | false
-        [1, 2] as Integer[]    | 2    | false
-        [1] as Integer[]       | 1    | false
+        input1          | input2          | equals
+        [1, 2, 3, 4, 5] | [1, 2, 3, 4, 5] | true
+        [1, 2, 3, 4, 5] | [1, 2, 3, 4]    | false
+        []              | []              | true
     }
 
-//------------------------------------------------------------------------------
-
     @Unroll
-    def "#push()"() {
-        setup:
-        Queue queue = new Queue();
+    def "Test enqueue() method"() {
+        given:
+        queue = (Queue<Integer>) constructor()
 
         when:
-        int i = 0
-        while (pushes > 0) {
-            queue.insert(values[i])
-            pushes--
-            i++
+        for (Integer i : input) {
+            queue.enqueue(i)
         }
 
         then:
-        queue.peek() == peek
+        queue.empty()    == empty
+        queue.size()     == size
+        queue.toString() == string
 
         where:
-        values                  | pushes | peek
-        [1, 2, 3] as Integer[]  | 3      | 1
-        [1, 2] as Integer[]     | 2      | 1
-        [1] as Integer[]        | 1      | 1
+        size | empty ||string             || input
+        5    | false || "[5, 4, 3, 2, 1]" || [5, 4, 3, 2, 1]
+        2    | false || "[1, 2]"          || [1, 2]
+        0    | true  || "[]"              || []
     }
 
-//------------------------------------------------------------------------------
-
     @Unroll
-    def "#pop()"() {
-        setup:
-        Queue queue = new Queue(values);
+    def "Test dequeue() method on non-empty queue"() {
+        given:
+        queue = (Queue<Integer>) constructor()
 
         when:
-        int i = 0
-        while (pops > 0) {
-            queue.remove()
-            pops--
-            i++
-        }
+        queue.insert(input)
 
         then:
-        queue.peek() == peek
+        queue.dequeue()  == front
+        queue.size()     == size - 1
 
         where:
-        values                  | pops | peek
-        [1, 2, 3] as Integer[]  | 2    | 3
-        [1, 2] as Integer[]     | 1    | 2
-        [1] as Integer[]        | 0    | 1
+        size || front || input
+        5    || 5     || [5, 4, 3, 2, 1]
+        2    || 1     || [1, 2]
     }
 
-//------------------------------------------------------------------------------
-
     @Unroll
-    def "#pop() an empty Queue"() {
-        setup:
-        Queue queue = new Queue();
+    def "Test dequeue() method on empty queue"() {
+        given:
+        queue = (Queue<Integer>) constructor()
 
         when:
-        queue.remove()
+        queue.dequeue()
 
         then:
-        thrown EmptyDataStructureException
+        thrown DataStructure.EmptyDataStructureException
     }
-
-//------------------------------------------------------------------------------
-
-    @Unroll def "#peek()"() {
-        setup:
-        Queue queue = new Queue(values);
-
-        expect:
-        queue.peek() == peek
-
-        where:
-        values                  | peek
-        [1, 2, 3] as Integer[]  | 1
-        [1, 2] as Integer[]     | 1
-        [1] as Integer[]        | 1
-    }
-
-//------------------------------------------------------------------------------
 
     @Unroll
-    def "#peek() an empty Queue"() {
-        setup:
-        Queue queue = new Queue();
+    def "Test peek() method on non-empty queue"() {
+        given:
+        queue = (Queue<Integer>) constructor()
+
+        when:
+        queue.insert(input)
+
+        then:
+        queue.peek()  == peek
+        queue.size() == size
+
+        where:
+        size || peek || input
+        5    || 5    || [5, 4, 3, 2, 1]
+        2    || 1    || [1, 2]
+    }
+
+    @Unroll
+    def "Test peek() method on empty queue"() {
+        given:
+        queue = (Queue<Integer>) constructor()
 
         when:
         queue.peek()
 
         then:
-        thrown EmptyDataStructureException
+        thrown DataStructure.EmptyDataStructureException
+
     }
 
-//------------------------------------------------------------------------------
+    @Unroll
+    def "Create, then empty out entire queue"() {
+        given:
+        queue = (Queue<Integer>) constructor()
+
+        when:
+        queue.insert(input)
+
+        for (int i = input.size() - 1; i >= 0; i--) {
+            queue.dequeue()
+        }
+
+        then:
+        queue.empty()
+        queue.toString() == "[]"
+
+        where:
+        input        | _
+        [1, 2, 3, 4] | _
+        [1]          | _
+        []           | _
+    }
 
     @Unroll
-    def "#toString()"() {
-        setup:
-        Queue queue = new Queue(values);
+    def "Convert queue to string via toString() method"() {
+        given:
+        queue = (Queue<Integer>) constructor()
 
-        expect:
+        when:
+        queue.insert(input)
+
+        then:
         queue.toString() == string
 
         where:
-        values                  | string
-        [1, 2, 3] as Integer[]  | "[1, 2, 3]"
-        [1, 2] as Integer[]     | "[1, 2]"
-        [1] as Integer[]        | "[1]"
-        [] as Integer[]         | "[]"
+        input           | string
+        [1, 2, 3, 4, 5] | "[1, 2, 3, 4, 5]"
+        [1, 2]          | "[1, 2]"
+        [1]             | "[1]"
+        []              | "[]"
     }
 }
+
+class QueueSpec_ArrayQueue<T> extends QueueSpec {
+
+    def setup() {
+        myClass = ArrayQueue
+    }
+}
+
+class QueueSpec_LinkedQueue<T> extends QueueSpec {
+
+    def setup() {
+        myClass = LinkedQueue
+    }
+}
+

@@ -68,7 +68,7 @@ public final class LinkedList<T> implements List<T> {
 
     // Object must be an LinkedList, and all elements must be equal, or object
     // must be this LinkedList itself
-    return this == object || (object instanceof LinkedList && equivalentTo(object));
+    return equivalentTo(object);
   }
 
 //------------------------------------------------------------------------------
@@ -132,44 +132,7 @@ public final class LinkedList<T> implements List<T> {
     this.size++;
 
     return true;
-  }
 
-//------------------------------------------------------------------------------
-
-  /**
-   * Inserts a specified value at the front of the list.
-   *
-   * @param value The specified value to be inserted
-   * @return True to indicate the prepend was successful.
-   */
-  public boolean prepend(T value) {
-    Node<T> node = new Node<>(value);
-
-    if (this.empty()) {
-      head = node;
-
-    } else {
-      node.next = head;
-      head.prev = node;
-      head = node;
-    }
-
-    this.size++;
-
-    return true;
-  }
-
-//------------------------------------------------------------------------------
-
-  /**
-   * Inserts a specified value at the back of the list.
-   *
-   * @param value The specified value to be inserted
-   * @return True to indicate the append was successful.
-   */
-  public boolean append(T value) {
-
-    return insert(value);
   }
 
 //------------------------------------------------------------------------------
@@ -192,6 +155,7 @@ public final class LinkedList<T> implements List<T> {
     // set new node to the head
     if (this.empty()) {
       head = newNode;
+      tail = newNode;
 
       // The list is not empty
     } else if (index == 0) {
@@ -215,12 +179,10 @@ public final class LinkedList<T> implements List<T> {
       if (oldNode.prev != null)
         oldNode.prev.next = newNode;
 
-      oldNode.prev = newNode;               // Set the old ith node's previous to the new node
-
-//      node = getNode(index-1);
+      // Set the old ith node's previous to the new node
+      oldNode.prev = newNode;
 
     }
-
 
     this.size++;
 
@@ -310,7 +272,7 @@ public final class LinkedList<T> implements List<T> {
     // Removing form the front
     if (index == 0 || size == 1) {
       value = head.value;
-      head = head.next;
+      head  = head.next;
 
     }
 
@@ -325,7 +287,7 @@ public final class LinkedList<T> implements List<T> {
 
       // Get the ith node and its value
       Node<T> node = getNode(index);
-      value = node.value;
+      value        = node.value;
 
       // Set the node at i-1's next to node at i+1
       // Essentially skipping over the node at i

@@ -1,11 +1,22 @@
 package structures.commons;
 
-import java.util.Arrays;
-import java.util.Collection;
+import java.util.*;
 
 /**
  * Abstract class that classes that use an underlying
- * dynamic array will extend.
+ * dynamic array will extend. Note, even though this
+ * class provides an iterator, it purposely does not
+ * implement Iterable because when we use this class with
+ * more complex types such as Trees, or potentially hashmaps,
+ * we will not be iterating over the same generic type as
+ * the object. Example, BinarySearchTree&lt; K, V&gt; should give
+ * back an Iterator&lt;Pair&lt;K,V&gt;&gt; not an Iterator&lt; K,V&gt;. The
+ * latter is not possible. So to avoid this conflict, we
+ * allow simpler classes to inherit an iterator() method,
+ * such as Stack, List, and Queue, but we do not want all
+ * implementing classes to be bound to the contract of
+ * supplying an iterator that may not be useful for that
+ * given class and it's use-case.
  *
  * @author Jabari Dash
  * @param <E> Generic data type
@@ -14,9 +25,9 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
 
     /**
      * Default resize threshold for internal array.
-     * 0.9 represents 90%.
+     * 0.85 represents 85%.
      */
-    private final double DEFAULT_RESIZE_THRESHOLD = 0.9;
+    private final double DEFAULT_RESIZE_THRESHOLD = 0.85;
 
     /**
      * Default initialize size of internal array
@@ -73,7 +84,7 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
      *
      * @param initialSize Specified initial size of internal array.
      */
-    public DynamicArray(int initialSize) {
+    protected DynamicArray(int initialSize) {
         this.RESIZE_THRESHOLD = DEFAULT_RESIZE_THRESHOLD;
         this.INITIAL_SIZE     = initialSize >= DEFAULT_INITIAL_SIZE ? initialSize : DEFAULT_INITIAL_SIZE;
 
@@ -85,18 +96,26 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
      * Constructs default DynamicArray with resize
      * threshold 90% and initial size 10.
      */
-    public DynamicArray() {
+    protected DynamicArray() {
         this.RESIZE_THRESHOLD = DEFAULT_RESIZE_THRESHOLD;
         this.INITIAL_SIZE     = DEFAULT_INITIAL_SIZE;
         elements              = (E[]) new Object[this.INITIAL_SIZE];
     }
 
-    public DynamicArray(E[] values) {
+    /**
+     *
+     * @param values
+     */
+    protected DynamicArray(E[] values) {
         this(values.length);
         insert(values);
     }
 
-    public DynamicArray(Collection<E> values) {
+    /**
+     *
+     * @param values
+     */
+    protected DynamicArray(Collection<E> values) {
         this(values.size());
         insert(values);
     }
@@ -107,6 +126,17 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
      */
     public int allocations() {
         return this.allocations;
+    }
+
+    /**
+     *
+     * @param index
+     * @return
+     */
+    protected E access(int index) {
+
+        verifyIndex(index);
+        return elements[index];
     }
 
     /**
@@ -254,7 +284,7 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
 
         // If start index exceeds stop index
         if (start > stop) {
-            throw new IllegalArgumentException("Start index must be less than or equal to stop index");
+            throw new IllegalArgumentException("Start index must be less than or ` to stop index");
         }
 
         // Must be within bounds
@@ -297,6 +327,23 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
         return value;             // Return the stored value
     }
 
+    /**
+     * Determines whether or not this DynamicArray is equal to
+     * a provided object.
+     *
+     * @param object Object to compare this ArrayList with.
+     * @return True if and only if their types are the same,
+     * lengths are the same, and the contain all the same elements.
+     */
+    @Override
+    public boolean equals(Object object) {
+
+        // Object must be an ArrayList, and
+        // all elements must be equal, or object
+        // must be this ArrayList itself
+        return equivalentTo(object);
+    }
+
 
     /**
      * If the number of elements in the ArrayList exceeds a specified
@@ -328,6 +375,14 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
      */
     public int internalSize() {
         return elements.length;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Iterator<E> iterator() {
+        return new DynamicArrayIterator<>(true);
     }
 
     /**
@@ -403,25 +458,87 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
             shifts++;
         }
     }
-
+    
     /**
-     * Returns data structure as an array of specified type.
      *
-     * @param array Array that specifies the type of the array to return.
-     * @return Array representation of the data structure.
+     *
+     * @param index
+     * @param value
+     * @return
      */
-    public E[] toArray(E[] array) {
-
-        try {
-
-            array = (E[]) Arrays.copyOf(elements, size(), array.getClass());
-
-        } catch (ArrayStoreException exception) {
-
-            throw new IllegalArgumentException("Array type " + array.getClass().getSimpleName() + " is invalid");
-        }
-
-        return array;
+    protected boolean update(int index, E value) {
+        verifyIndex(index);
+        elements[index] = value;
+        return true;
     }
 
+    /**
+     * Iterator for iterating over any class that implements
+     * the DynamicArray interface. The iterator has a mandatory
+     * boolean argument that specifies whether or not to iterate
+     * over the array be ascending indicies or descending. This way
+     * Stacks, Queues, and Lists that us the DynamicArray interface
+     * can all use the same iterator and iterate over the array
+     * in O(n) time and O(1) space.
+     *
+     * @param <E>
+     */
+    protected class DynamicArrayIterator<E> implements Iterator<E> {
+
+        /**
+         * Index of next item to return in iteration.
+         */
+        int cursor;
+
+        /**
+         * Boolean flag that says whether or not we
+         * should iterate going from left to right
+         * (ascending indicies) or right to left
+         * (descending).
+         */
+        final boolean ascending;
+
+        /**
+         *
+         *
+         * @param ascendingIndicies
+         */
+        public DynamicArrayIterator(boolean ascendingIndicies) {
+            ascending = ascendingIndicies;
+
+            // If ascending, start at first index,
+            // otherwise start at last index
+            cursor = ascending ? 0 : size - 1;
+        }
+
+        /**
+         * Returns {@code true} if the iteration has more elements.
+         * (In other words, returns {@code true} if {@link #next} would
+         * return an element rather than throwing an exception.)
+         *
+         * @return {@code true} if the iteration has more elements
+         */
+        @Override
+        public boolean hasNext() {
+
+            return ascending ? cursor < size : cursor >= 0;
+        }
+
+        /**
+         * Returns the next element in the iteration.
+         *
+         * @return the next element in the iteration
+         * @throws NoSuchElementException if the iteration has no more elements
+         */
+        @Override
+        public E next() {
+            E element = (E) elements[cursor];
+
+            // If ascending, increase cursor,
+            // otherwise decrease cursor
+            cursor += ascending ? 1 : -1;
+
+            return element;
+        }
+    }
 }

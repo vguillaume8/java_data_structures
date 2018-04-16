@@ -1,10 +1,10 @@
 package structures.functional.vectors
 
-import structures.vectors.Stack
+import structures.vectors.LinkedStack
 import spock.lang.Specification
 import spock.lang.Unroll
 
-class StackSpec extends Specification {
+class LinkedStackSpec extends Specification {
 
     /**
      * https://www.geeksforgeeks.org/the-stock-span-problem/
@@ -13,13 +13,13 @@ class StackSpec extends Specification {
     @Unroll
     def "Stock span problem"() {
         setup:
-        Stack<Integer> stack
+        LinkedStack<Integer> stack
         List<Integer>  spans
         int            length
 
         when:
         length = stocks.size()
-        stack  = new Stack<Integer>()
+        stack  = new LinkedStack<Integer>()
         spans  = new ArrayList<Integer>(length)
 
         stack.push(0)
@@ -60,7 +60,7 @@ class StackSpec extends Specification {
     @Unroll
     def "Postfix expression evaluation"() {
         setup:
-        Stack<String> stack
+        LinkedStack<String> stack
         String c
         int length
         int result
@@ -69,7 +69,7 @@ class StackSpec extends Specification {
 
         when:
 
-        stack = new Stack<String>()
+        stack = new LinkedStack<String>()
         length = expression.length()
 
         // Only supports single digits 1-5
@@ -142,7 +142,7 @@ class StackSpec extends Specification {
     @Unroll
     def "Parenthesis matching problem"() {
         setup:
-        Stack<String> stack = new Stack<String>()
+        LinkedStack<String> stack = new LinkedStack<String>()
         int length = string.length()
         int i = 0
         String c

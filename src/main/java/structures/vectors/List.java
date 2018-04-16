@@ -13,15 +13,6 @@ import java.util.NoSuchElementException;
 public interface List<T> extends Vector<T> {
 
     /**
-     * Inserts a specified value onto the back of the list
-     *
-     * @param value Specified value to insert
-     */
-//    boolean append(T value);
-
-//------------------------------------------------------------------------------
-
-    /**
      * Returns the value located at a specified index
      *
      * @param index Specified index
@@ -42,16 +33,29 @@ public interface List<T> extends Vector<T> {
 //------------------------------------------------------------------------------
 
     /**
-     * Inserts a specified value into the front of the list
      *
-     * @param value Specified value to insert
+     * @param value
+     * @return
      */
-//    boolean prepend(T value);
+    default boolean insertFirst(T value) {
+        return insert(value, 0);
+    }
 
 //------------------------------------------------------------------------------
 
     /**
-     * Returns iterator (allows use with enhanced forloop)
+     *
+     * @param value
+     * @return
+     */
+    default boolean insertLast(T value) {
+        return insert(value);
+    }
+
+//------------------------------------------------------------------------------
+
+    /**
+     * Returns iterator (allows use with enhanced for loop)
      *
      * @return Iterator for iterating over Structure by index
      */

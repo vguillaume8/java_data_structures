@@ -9,7 +9,7 @@ import java.util.List;
  *
  * @author Jabari Dash
  */
-class Util {
+public final class Util {
 
 //------------------------------------------------------------------------------
 

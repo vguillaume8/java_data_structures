@@ -1,8 +1,12 @@
+import structures.commons.DynamicArray;
 import structures.vectors.*;
 import structures.trees.*;
 import structures.graphs.*;
 import structures.sets.*;
 import structures.maps.*;
+
+import java.util.Random;
+import java.util.stream.IntStream;
 
 /**
  *
@@ -11,18 +15,27 @@ public final class Application {
 
   public static void main(String[] args) throws Exception {
 
+    java.util.ArrayList a;
+
   // TODO - https://docs.oracle.com/javase/tutorial/essential/concurrency/syncmeth.html
 
-    List<Integer> a = new ArrayList<>();
-    List<Integer> b = new LinkedList<>();
+    Integer[] ordered = IntStream.range(0, 10)
+                                 .boxed()
+                                 .toArray(Integer[]::new);
 
-    for (int i = 0; i < 10; i++) {
-      a.insert(i, 0);
-      b.insert(i, 0);
-    }
+    // Integer array of 10 random
+    // numbers between 1 and 9 inclusive
+    Integer[] random = new Random()
+                          .ints(1, 10)
+                          .limit(10)
+                          .boxed()
+                          .toArray(Integer[]::new);
 
-    System.out.println(a.equals(b));
+    Queue<Integer> queue = new ArrayQueue<>(ordered);
 
+    queue.dequeue();
+
+    System.out.println(queue);
   }
 
 }
