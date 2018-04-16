@@ -5,5 +5,5 @@ sudo apt-get install -y python-tk
 
 sudo pip install --upgrade pip
 
-sudo pip install -r requirements.txt
+sudo pip install -r requirements.txt --ignore-installed six
 
