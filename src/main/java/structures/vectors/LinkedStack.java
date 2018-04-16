@@ -93,6 +93,7 @@ public final class LinkedStack<T> implements Stack<T>, Vector<T> {
      * Inserts value at top of LinkedStack.
      *
      * @param value The specified value to insert
+     * @return True if the insertion was successful.
      */
     @Override
     public boolean insert(T value) {
@@ -151,6 +152,7 @@ public final class LinkedStack<T> implements Stack<T>, Vector<T> {
      *
      * @return The topmost value on the LinkedStack.
      */
+    @Override
     public T top() {
         if (this.empty()) {
             throw new EmptyDataStructureException("Cannot top() and empty LinkedStack");

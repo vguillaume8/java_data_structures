@@ -212,6 +212,8 @@ public interface BinaryTree<K, V> extends DataStructure<K>, Iterable<Pair<K, V>>
     /**
      * Returns an array of the keys in the tree in pre-order.
      *
+     *
+     * @param <K> Generic type
      * @return Array of keys in the tree.
      */
     @SuppressWarnings("unused")
@@ -222,6 +224,7 @@ public interface BinaryTree<K, V> extends DataStructure<K>, Iterable<Pair<K, V>>
     /**
      * Returns an array of the keys in the tree in a specified order.
      *
+     * @param <K> Generic type
      * @param traversalType Specified order.
      * @return Array of keys in the tree.
      */

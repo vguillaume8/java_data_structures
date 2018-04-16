@@ -8,6 +8,8 @@ import java.util.Collection;
  * Implementation of Queue using
  * an internal array to hold data elements.
  *
+ * TODO - https://www.geeksforgeeks.org/queue-set-1introduction-and-array-implementation/
+ *
  * @author Jabari Dash
  * @param <E> Generic type
  */
@@ -51,8 +53,10 @@ public final class ArrayQueue<E> extends DynamicArray<E> implements Queue<E>, Ve
     }
 
     /**
+     * Returns but does not remove
+     * the value at the front of the queue.
      *
-     * @return
+     * @return Value at front of queue.
      */
     @Override
     public E peek() {
@@ -84,8 +88,9 @@ public final class ArrayQueue<E> extends DynamicArray<E> implements Queue<E>, Ve
     }
 
     /**
+     * Returns String representation of queue.
      *
-     * @return
+     * @return String representation.
      */
     @Override
     public String toString() {

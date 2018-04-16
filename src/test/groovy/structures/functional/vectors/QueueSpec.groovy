@@ -1,10 +1,15 @@
 package structures.functional.vectors
 
-import structures.vectors.LinkedQueue
-import spock.lang.Specification
+import spock.lang.Shared
 import spock.lang.Unroll
+import structures.vectors.Queue
+import structures.vectors.LinkedQueue
+import structures.vectors.ArrayQueue
+import util.Spec
 
-class LinkedQueueSpec extends Specification {
+abstract class QueueSpec extends Spec {
+
+    @Shared Queue<Object> queue
 
     /**
      * https://www.geeksforgeeks.org/iterative-method-to-find-height-of-binary-tree/
@@ -109,7 +114,7 @@ class LinkedQueueSpec extends Specification {
         private int     size
 
         int height() {
-            LinkedQueue<Node<T>> queue
+            Queue<Node<T>> queue
             Node<T>        node
             int            height
             int            count
@@ -118,7 +123,8 @@ class LinkedQueueSpec extends Specification {
                 return 0
             }
 
-            queue  = new LinkedQueue<Node<T>>()
+            queue  = (Queue< Node<T> >) constructor()
+
             queue.insert(root)
 
             height = 0
@@ -230,10 +236,10 @@ class LinkedQueueSpec extends Specification {
         String breadthFirstSearch(int s) {
             StringBuilder  output
             boolean[]      visited
-            LinkedQueue<Integer> queue
+            Queue<Integer> queue
 
             output  = new StringBuilder()
-            queue   = new LinkedQueue<Integer>()
+            queue   = (Queue<Integer>) constructor()
             visited = new boolean[this.numberOfVerticies]
 
             for (int i = 0; i < visited.length; i++) {
@@ -265,12 +271,12 @@ class LinkedQueueSpec extends Specification {
      * @param <K> Generic type
      */
     private final class Stack <K> {
-        private LinkedQueue<K> inQueue
-        private LinkedQueue<K> tempQueue
+        private Queue<K> inQueue
+        private Queue<K> tempQueue
 
         Stack() {
-            inQueue   = new LinkedQueue<K>()
-            tempQueue = new LinkedQueue<K>()
+            inQueue   = (Queue<K>) constructor()
+            tempQueue = (Queue<K>) constructor()
         }
 
         boolean empty() {
@@ -278,7 +284,7 @@ class LinkedQueueSpec extends Specification {
         }
 
         void push(K element) {
-            inQueue.insert(element)
+            inQueue.enqueue(element)
         }
 
         K pop() {
@@ -289,17 +295,30 @@ class LinkedQueueSpec extends Specification {
             }
 
             while (inQueue.size() != 1) {
-                tempQueue.insert(inQueue.remove())
+                tempQueue.enqueue(inQueue.dequeue())
             }
 
-            value = inQueue.remove()
+            value = inQueue.dequeue()
 
             while (!tempQueue.empty()) {
-                inQueue.insert(tempQueue.remove())
+                inQueue.enqueue(tempQueue.dequeue())
             }
 
             return value
         }
     }
+}
 
+class QueueSpec_ArrayQueue<T> extends QueueSpec {
+
+    def setup() {
+        myClass = ArrayQueue
+    }
+}
+
+class QueueSpec_LinkedQueue<T> extends QueueSpec {
+
+    def setup() {
+        myClass = LinkedQueue
+    }
 }

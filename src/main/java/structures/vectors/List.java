@@ -27,15 +27,17 @@ public interface List<T> extends Vector<T> {
      *
      * @param value Value to be inserted
      * @param index Specified index to insert value at
+     * @return True if the insertion is successful.
      */
     boolean insert(T value, int index);
 
 //------------------------------------------------------------------------------
 
     /**
+     * Insert element at front of list.
      *
-     * @param value
-     * @return
+     * @param value Value to insert.
+     * @return True if the insertion was successful.
      */
     default boolean insertFirst(T value) {
         return insert(value, 0);
@@ -44,9 +46,10 @@ public interface List<T> extends Vector<T> {
 //------------------------------------------------------------------------------
 
     /**
+     * Insert element at end of list.
      *
-     * @param value
-     * @return
+     * @param value Value to insert.
+     * @return True if the insertion was successful.
      */
     default boolean insertLast(T value) {
         return insert(value);
@@ -77,8 +80,11 @@ public interface List<T> extends Vector<T> {
 //------------------------------------------------------------------------------
 
     /**
+     * Removes and returns the next
+     * element from list - provided the
+     * natural order of removal in subclasses.
      *
-     * @return
+     * @return Next element in order of removal.
      */
     default T remove() {
         return removeLast();
