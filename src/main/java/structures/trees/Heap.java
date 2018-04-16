@@ -1,5 +1,5 @@
 package structures.trees;
 
-public final class Heap<K extends Comparable, V> {
+public interface Heap<K extends Comparable, V> extends BinaryTree<K, V> {
 
 }
