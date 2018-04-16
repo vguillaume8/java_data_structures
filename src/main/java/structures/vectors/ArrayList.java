@@ -116,15 +116,19 @@ public final class ArrayList<E> extends DynamicArray<E> implements List<E> {
      * @param value New value.
      * @param index Specified index.
      */
+    @Override
     public void set(E value, int index) {
 
         update(index, value);
     }
 
     /**
+     * Returns String representation
+     * of the List.
      *
-     * @return
+     * @return String representation.
      */
+    @Override
     public String toString() {
 
         return asString();

@@ -103,8 +103,10 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
     }
 
     /**
+     * Construct a DynamicArray from
+     * an array of values.
      *
-     * @param values
+     * @param values Array of values.
      */
     protected DynamicArray(E[] values) {
         this(values.length);
@@ -112,8 +114,10 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
     }
 
     /**
+     * Construct a DynamicArray from
+     * a collection of values.
      *
-     * @param values
+     * @param values Collection of values.
      */
     protected DynamicArray(Collection<E> values) {
         this(values.size());
@@ -121,17 +125,25 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
     }
 
     /**
+     * Returns the number of memory
+     * re-allocations the internal array
+     * has undergone such that the dynamic
+     * array is in it's present state.
      *
-     * @return
+     * @return Number of underwent re-allocations
      */
     public int allocations() {
         return this.allocations;
     }
 
     /**
+     * Returns the value at a
+     * specified index in in
+     * dynamic array (not the
+     * actual internal array)
      *
-     * @param index
-     * @return
+     * @param index Specified index
+     * @return Value at specified index
      */
     protected E access(int index) {
 
@@ -140,11 +152,12 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
     }
 
     /**
+     * Insert a value at a
+     * specified index
      *
-     *
-     * @param value
-     * @param index
-     * @return
+     * @param value Specified value
+     * @param index Specified index
+     * @return True if the insertion was successful
      */
     protected boolean add (E value, int index) {
         // If the ArrayList is empty, simply insert
@@ -259,8 +272,12 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
     }
 
     /**
+     * Returns the number of individual
+     * data copies (from one location to another)
+     * that the dynamic array has undergone such
+     * that it can be in it's current state.
      *
-     * @return
+     * @return Number of underwent copies.
      */
     public int copies() {
         return this.copies;
@@ -308,9 +325,12 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
     }
 
     /**
+     * Removes and returns a value
+     * at a specified index from
+     * data structure.
      *
-     * @param index
-     * @return
+     * @param index Specified index
+     * @return The value at specified index.
      */
     protected E delete(int index) {
         E value;
@@ -378,8 +398,9 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
     }
 
     /**
+     * Returns iterator for dynamic array.
      *
-     * @return
+     * @return Iterator
      */
     public Iterator<E> iterator() {
         return new DynamicArrayIterator<>(true);
@@ -460,11 +481,12 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
     }
     
     /**
+     * Overwrites a value at a specified
+     * index with a new value.
      *
-     *
-     * @param index
-     * @param value
-     * @return
+     * @param index Specified index
+     * @param value New value
+     * @return True if the overwrite was successful.
      */
     protected boolean update(int index, E value) {
         verifyIndex(index);
@@ -499,9 +521,13 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
         final boolean ascending;
 
         /**
+         * Constructor for iterator over
+         * dynamic arrays. Requires boolean
+         * flag to determine whether to
+         * iterate from high to low, or
+         * low to high indicies.
          *
-         *
-         * @param ascendingIndicies
+         * @param ascendingIndicies Boolean flag.
          */
         public DynamicArrayIterator(boolean ascendingIndicies) {
             ascending = ascendingIndicies;

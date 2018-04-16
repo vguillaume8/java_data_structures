@@ -123,9 +123,13 @@ public interface Vector<T> extends DataStructure<T>, Iterable<T> {
 //------------------------------------------------------------------------------
 
     /**
+     * Checks that two objects (subclasses of Vector)
+     * have the same contents, and the contents are
+     * in the same order.
      *
-     * @param object
-     * @return
+     * @param object Object to compare to
+     * @return True if and only if both objects have
+     * the exact same contents in the exact same order.
      */
     @Override
     default boolean sameContents(Object object) {

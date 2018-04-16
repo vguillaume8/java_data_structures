@@ -98,8 +98,9 @@ public final class ArrayStack<E> extends DynamicArray<E> implements Stack<E> {
     }
 
     /**
+     * Returns String representation of stack.
      *
-     * @return
+     * @return String representation.
      */
     @Override
     public String toString() {

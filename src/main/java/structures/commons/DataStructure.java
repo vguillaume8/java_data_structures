@@ -105,9 +105,11 @@ public interface DataStructure<K> {
 //------------------------------------------------------------------------------
 
     /**
+     * Checks that two DataStructures have
+     * the same contents.
      *
-     * @param object
-     * @return
+     * @param object Object to compare.
+     * @return True if the two objects have the same contents.
      */
     default boolean sameContents(Object object) {
 

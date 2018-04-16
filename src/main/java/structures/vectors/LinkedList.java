@@ -144,6 +144,7 @@ public final class LinkedList<T> implements List<T> {
    * @param index Specified index
    * @return True to indicate the insertion was successful.
    */
+  @Override
   public boolean insert(T value, int index) {
     Node<T> newNode;
 
@@ -258,6 +259,7 @@ public final class LinkedList<T> implements List<T> {
    * @param index Index of specified node to remove
    * @return Value of node at specified index
    */
+  @Override
   public T remove(int index) {
     T value;
 

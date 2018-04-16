@@ -90,6 +90,7 @@ public final class LinkedQueue<K> implements Queue<K> {
      *
      * @return Front-most value from LinkedQueue
      */
+    @Override
     public K peek() {
         if (this.empty()) {
             throw new EmptyDataStructureException("Cannot peek() empty LinkedQueue");
