@@ -4,93 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/src/test/groovy/structures/unit/vectors/VectorSpec.groovy" line="132" mnemonic="1" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fedb2063-1be3-4fe9-94aa-d8fc8c2af912" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/bin/java_data_structures.jar" afterPath="$PROJECT_DIR$/bin/java_data_structures.jar" />
-      <change beforePath="$PROJECT_DIR$/docs/allclasses-frame.html" afterPath="$PROJECT_DIR$/docs/allclasses-frame.html" />
-      <change beforePath="$PROJECT_DIR$/docs/allclasses-noframe.html" afterPath="$PROJECT_DIR$/docs/allclasses-noframe.html" />
-      <change beforePath="$PROJECT_DIR$/docs/constant-values.html" afterPath="$PROJECT_DIR$/docs/constant-values.html" />
-      <change beforePath="$PROJECT_DIR$/docs/deprecated-list.html" afterPath="$PROJECT_DIR$/docs/deprecated-list.html" />
-      <change beforePath="$PROJECT_DIR$/docs/help-doc.html" afterPath="$PROJECT_DIR$/docs/help-doc.html" />
-      <change beforePath="$PROJECT_DIR$/docs/index-all.html" afterPath="$PROJECT_DIR$/docs/index-all.html" />
-      <change beforePath="$PROJECT_DIR$/docs/index.html" afterPath="$PROJECT_DIR$/docs/index.html" />
-      <change beforePath="$PROJECT_DIR$/docs/member-search-index.js" afterPath="$PROJECT_DIR$/docs/member-search-index.js" />
-      <change beforePath="$PROJECT_DIR$/docs/member-search-index.zip" afterPath="$PROJECT_DIR$/docs/member-search-index.zip" />
-      <change beforePath="$PROJECT_DIR$/docs/overview-frame.html" afterPath="$PROJECT_DIR$/docs/overview-frame.html" />
-      <change beforePath="$PROJECT_DIR$/docs/overview-summary.html" afterPath="$PROJECT_DIR$/docs/overview-summary.html" />
-      <change beforePath="$PROJECT_DIR$/docs/overview-tree.html" afterPath="$PROJECT_DIR$/docs/overview-tree.html" />
-      <change beforePath="$PROJECT_DIR$/docs/package-search-index.zip" afterPath="$PROJECT_DIR$/docs/package-search-index.zip" />
-      <change beforePath="$PROJECT_DIR$/docs/serialized-form.html" afterPath="$PROJECT_DIR$/docs/serialized-form.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/commons/DataStructure.EmptyDataStructureException.html" afterPath="$PROJECT_DIR$/docs/structures/commons/DataStructure.EmptyDataStructureException.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/commons/DataStructure.html" afterPath="$PROJECT_DIR$/docs/structures/commons/DataStructure.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/commons/DynamicArray.html" afterPath="$PROJECT_DIR$/docs/structures/commons/DynamicArray.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/commons/Pair.html" afterPath="$PROJECT_DIR$/docs/structures/commons/Pair.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/commons/package-frame.html" afterPath="$PROJECT_DIR$/docs/structures/commons/package-frame.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/commons/package-summary.html" afterPath="$PROJECT_DIR$/docs/structures/commons/package-summary.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/commons/package-tree.html" afterPath="$PROJECT_DIR$/docs/structures/commons/package-tree.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/graphs/Graph.html" afterPath="$PROJECT_DIR$/docs/structures/graphs/Graph.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/graphs/UnweightedDirectedGraph.html" afterPath="$PROJECT_DIR$/docs/structures/graphs/UnweightedDirectedGraph.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/graphs/UnweightedUndirectedGraph.html" afterPath="$PROJECT_DIR$/docs/structures/graphs/UnweightedUndirectedGraph.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/graphs/WeightedDirectedGraph.html" afterPath="$PROJECT_DIR$/docs/structures/graphs/WeightedDirectedGraph.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/graphs/WeightedUndirectedGraph.html" afterPath="$PROJECT_DIR$/docs/structures/graphs/WeightedUndirectedGraph.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/graphs/package-frame.html" afterPath="$PROJECT_DIR$/docs/structures/graphs/package-frame.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/graphs/package-summary.html" afterPath="$PROJECT_DIR$/docs/structures/graphs/package-summary.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/graphs/package-tree.html" afterPath="$PROJECT_DIR$/docs/structures/graphs/package-tree.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/maps/HashMap.html" afterPath="$PROJECT_DIR$/docs/structures/maps/HashMap.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/maps/HashMapChaining.html" afterPath="$PROJECT_DIR$/docs/structures/maps/HashMapChaining.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/maps/HashMapDoubleHashing.html" afterPath="$PROJECT_DIR$/docs/structures/maps/HashMapDoubleHashing.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/maps/HashMapLinearProbing.html" afterPath="$PROJECT_DIR$/docs/structures/maps/HashMapLinearProbing.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/maps/HashMapQuadraticProbing.html" afterPath="$PROJECT_DIR$/docs/structures/maps/HashMapQuadraticProbing.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/maps/Map.html" afterPath="$PROJECT_DIR$/docs/structures/maps/Map.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/maps/package-frame.html" afterPath="$PROJECT_DIR$/docs/structures/maps/package-frame.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/maps/package-summary.html" afterPath="$PROJECT_DIR$/docs/structures/maps/package-summary.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/maps/package-tree.html" afterPath="$PROJECT_DIR$/docs/structures/maps/package-tree.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/sets/HashSet.html" afterPath="$PROJECT_DIR$/docs/structures/sets/HashSet.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/sets/Set.html" afterPath="$PROJECT_DIR$/docs/structures/sets/Set.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/sets/TreeSet.html" afterPath="$PROJECT_DIR$/docs/structures/sets/TreeSet.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/sets/package-frame.html" afterPath="$PROJECT_DIR$/docs/structures/sets/package-frame.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/sets/package-summary.html" afterPath="$PROJECT_DIR$/docs/structures/sets/package-summary.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/sets/package-tree.html" afterPath="$PROJECT_DIR$/docs/structures/sets/package-tree.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/trees/AVLTree.html" afterPath="$PROJECT_DIR$/docs/structures/trees/AVLTree.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/trees/BinarySearchTree.html" afterPath="$PROJECT_DIR$/docs/structures/trees/BinarySearchTree.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/trees/BinaryTree.TreeIterator.html" afterPath="$PROJECT_DIR$/docs/structures/trees/BinaryTree.TreeIterator.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/trees/BinaryTree.html" afterPath="$PROJECT_DIR$/docs/structures/trees/BinaryTree.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/trees/Heap.html" afterPath="$PROJECT_DIR$/docs/structures/trees/Heap.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/trees/PrefixTree.html" afterPath="$PROJECT_DIR$/docs/structures/trees/PrefixTree.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/trees/RedBlackTree.html" afterPath="$PROJECT_DIR$/docs/structures/trees/RedBlackTree.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/trees/package-frame.html" afterPath="$PROJECT_DIR$/docs/structures/trees/package-frame.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/trees/package-summary.html" afterPath="$PROJECT_DIR$/docs/structures/trees/package-summary.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/trees/package-tree.html" afterPath="$PROJECT_DIR$/docs/structures/trees/package-tree.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/vectors/ArrayList.html" afterPath="$PROJECT_DIR$/docs/structures/vectors/ArrayList.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/vectors/ArrayQueue.html" afterPath="$PROJECT_DIR$/docs/structures/vectors/ArrayQueue.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/vectors/ArrayStack.html" afterPath="$PROJECT_DIR$/docs/structures/vectors/ArrayStack.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/vectors/LinkedList.Node.html" afterPath="$PROJECT_DIR$/docs/structures/vectors/LinkedList.Node.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/vectors/LinkedList.html" afterPath="$PROJECT_DIR$/docs/structures/vectors/LinkedList.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/vectors/LinkedQueue.html" afterPath="$PROJECT_DIR$/docs/structures/vectors/LinkedQueue.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/vectors/LinkedStack.html" afterPath="$PROJECT_DIR$/docs/structures/vectors/LinkedStack.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/vectors/List.ListIterator.html" afterPath="$PROJECT_DIR$/docs/structures/vectors/List.ListIterator.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/vectors/List.html" afterPath="$PROJECT_DIR$/docs/structures/vectors/List.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/vectors/Queue.html" afterPath="$PROJECT_DIR$/docs/structures/vectors/Queue.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/vectors/Stack.html" afterPath="$PROJECT_DIR$/docs/structures/vectors/Stack.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/vectors/Vector.html" afterPath="$PROJECT_DIR$/docs/structures/vectors/Vector.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/vectors/package-frame.html" afterPath="$PROJECT_DIR$/docs/structures/vectors/package-frame.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/vectors/package-summary.html" afterPath="$PROJECT_DIR$/docs/structures/vectors/package-summary.html" />
-      <change beforePath="$PROJECT_DIR$/docs/structures/vectors/package-tree.html" afterPath="$PROJECT_DIR$/docs/structures/vectors/package-tree.html" />
-      <change beforePath="$PROJECT_DIR$/docs/type-search-index.js" afterPath="$PROJECT_DIR$/docs/type-search-index.js" />
-      <change beforePath="$PROJECT_DIR$/docs/type-search-index.zip" afterPath="$PROJECT_DIR$/docs/type-search-index.zip" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/structures/commons/DataStructure.java" afterPath="$PROJECT_DIR$/src/main/java/structures/commons/DataStructure.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/structures/commons/DynamicArray.java" afterPath="$PROJECT_DIR$/src/main/java/structures/commons/DynamicArray.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/structures/trees/BinaryTree.java" afterPath="$PROJECT_DIR$/src/main/java/structures/trees/BinaryTree.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/structures/vectors/ArrayList.java" afterPath="$PROJECT_DIR$/src/main/java/structures/vectors/ArrayList.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/structures/vectors/ArrayQueue.java" afterPath="$PROJECT_DIR$/src/main/java/structures/vectors/ArrayQueue.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/structures/vectors/ArrayStack.java" afterPath="$PROJECT_DIR$/src/main/java/structures/vectors/ArrayStack.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/structures/vectors/LinkedList.java" afterPath="$PROJECT_DIR$/src/main/java/structures/vectors/LinkedList.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/structures/vectors/LinkedQueue.java" afterPath="$PROJECT_DIR$/src/main/java/structures/vectors/LinkedQueue.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/structures/vectors/LinkedStack.java" afterPath="$PROJECT_DIR$/src/main/java/structures/vectors/LinkedStack.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/structures/vectors/List.java" afterPath="$PROJECT_DIR$/src/main/java/structures/vectors/List.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/structures/vectors/Queue.java" afterPath="$PROJECT_DIR$/src/main/java/structures/vectors/Queue.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/structures/vectors/Vector.java" afterPath="$PROJECT_DIR$/src/main/java/structures/vectors/Vector.java" />
-    </list>
+    <list default="true" id="fedb2063-1be3-4fe9-94aa-d8fc8c2af912" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -124,20 +38,7 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
-      <file leaf-file-name="BinaryTree.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/structures/trees/BinaryTree.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="215" column="30" lean-forward="false" selection-start-line="215" selection-start-column="30" selection-end-line="215" selection-end-column="30" />
-              <folding>
-                <element signature="e#7032#7059#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="600" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -647,23 +548,6 @@
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="java_data_structures" type="b2602c69:ProjectViewProjectNode" />
-              <item name="java_data_structures" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="structures" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="java_data_structures" type="b2602c69:ProjectViewProjectNode" />
-              <item name="java_data_structures" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="structures" type="462c0819:PsiDirectoryNode" />
-              <item name="trees" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -994,7 +878,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="134" y="35" width="2746" height="1765" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32953784" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1006,7 +889,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32994732" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32886806" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33958474" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" x="134" y="632" width="2746" height="507" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33958474" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" x="134" y="632" width="2746" height="507" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25056434" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1498,7 +1381,7 @@
         <state relative-caret-position="170">
           <caret line="215" column="30" lean-forward="false" selection-start-line="215" selection-start-column="30" selection-end-line="215" selection-end-column="30" />
           <folding>
-            <element signature="e#7032#7059#0" expanded="true" />
+            <element signature="e#7032#7059#0" expanded="false" />
           </folding>
         </state>
       </provider>
