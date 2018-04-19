@@ -52,22 +52,8 @@ public abstract class LinkedStructure<E> implements DataStructure<E>, Iterable<E
      */
     @Override
     public boolean insert(E value) {
-        Node<E> node = new Node<>(value);
 
-        if (empty()) {
-            head = node;
-            tail = node;
-
-        } else {
-            node.prev = tail;
-            tail.next = node;
-            tail = node;
-        }
-
-        this.size++;
-
-        return true;
-
+        return insertTail(value);
     }
 
     /**
@@ -77,7 +63,23 @@ public abstract class LinkedStructure<E> implements DataStructure<E>, Iterable<E
      * @param value New head value
      * @return True if insertion is successful.
      */
-    public boolean insertHead(E value) {
+    protected boolean insertHead(E value) {
+        Node<E> node = new Node<E>(value);
+
+        if (empty()) {
+
+            head = node;
+            tail = node;
+
+        } else {
+
+            node.next = head;
+            head.prev = node;
+            head      = node;
+        }
+
+        size++;
+
         return true;
     }
 
@@ -88,7 +90,23 @@ public abstract class LinkedStructure<E> implements DataStructure<E>, Iterable<E
      * @param value New tail value
      * @return True if the insertion is successful.
      */
-    public boolean insertTail(E value) {
+    protected boolean insertTail(E value) {
+        Node<E> node = new Node<E>(value);
+
+        if (empty()) {
+
+            head = node;
+            tail = node;
+
+        } else {
+
+            node.prev = tail;
+            tail.next = node;
+            tail      = node;
+        }
+
+        size++;
+
         return true;
     }
 
@@ -184,6 +202,7 @@ public abstract class LinkedStructure<E> implements DataStructure<E>, Iterable<E
          * @param value Specified value of Node
          */
         public Node(T value) {
+
             this.value = value;
             this.prev  = null;
             this.next  = null;

@@ -12,25 +12,6 @@ import java.util.Collection;
  */
 public final class LinkedList<T> extends LinkedStructure<T> implements List<T> {
 
-
-  // TODO - Implement removeLast()
-  // currently inheriting from List. The problem
-  // is that is that it is implemented as a default
-  // method, and removes by index. For a linkedlist,
-  // removing by index is O(n). But, we have a pointer
-  // to the tail, so we can reduce removeLast() to O(1)
-  // the same way we are doing in Queue. We can then
-  // ultimately use the same function in LinkedQueue and LinkedList
-  // to accomplish this action in O(1)
-
-  // Technically the same goes for removeFirst(), but
-  // we exit after first iteration of loop. There is
-  // slight overhead, but this is still constant time.
-  // However, we can remove this overheard, and use the same
-  // implementation that LinkedStack uses to minimize
-  // overhead and maximize code reuse, all while maintaining
-  // O(1) time for remove first / pop().
-
   /**
    * Constructs empty list
    */
@@ -102,6 +83,26 @@ public final class LinkedList<T> extends LinkedStructure<T> implements List<T> {
 
 //------------------------------------------------------------------------------
 
+
+  /**
+   *
+   * @param value Value to insert.
+   * @return
+   */
+  @Override
+  public boolean insertFirst(T value) {
+
+    return insertHead(value);
+  }
+
+  @Override
+  public boolean insertLast(T value) {
+
+    return insertTail(value);
+  }
+
+//------------------------------------------------------------------------------
+
   /**
    * Insert specified value at specified index in list.
    *
@@ -125,6 +126,7 @@ public final class LinkedList<T> extends LinkedStructure<T> implements List<T> {
 
       // The list is not empty
     } else if (index == 0) {
+
       newNode.next = head;
       head.prev    = newNode;
       head         = newNode;
