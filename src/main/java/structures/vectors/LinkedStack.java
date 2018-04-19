@@ -1,6 +1,6 @@
 package structures.vectors;
 
-import structures.vectors.LinkedList.Node;
+import structures.commons.LinkedStructure.Node;
 
 import java.util.Collection;
 import java.util.Iterator;

@@ -1,8 +1,8 @@
 package structures.vectors;
 
+import structures.commons.LinkedStructure;
+
 import java.util.Collection;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 /**
  * Basic implementation of Doubly Linked List
@@ -10,22 +10,26 @@ import java.util.NoSuchElementException;
  * @author Jabari Dash
  * @param <T> Generic type
  */
-public final class LinkedList<T> implements List<T> {
+public final class LinkedList<T> extends LinkedStructure<T> implements List<T> {
 
-  /**
-   * Number of elements in linked list
-   */
-  private int size;
 
-  /**
-   * Pointer to first node in list
-   */
-  private Node<T> head;
+  // TODO - Implement removeLast()
+  // currently inheriting from List. The problem
+  // is that is that it is implemented as a default
+  // method, and removes by index. For a linkedlist,
+  // removing by index is O(n). But, we have a pointer
+  // to the tail, so we can reduce removeLast() to O(1)
+  // the same way we are doing in Queue. We can then
+  // ultimately use the same function in LinkedQueue and LinkedList
+  // to accomplish this action in O(1)
 
-  /**
-   * Pointer to last node in list
-   */
-  private Node<T> tail;
+  // Technically the same goes for removeFirst(), but
+  // we exit after first iteration of loop. There is
+  // slight overhead, but this is still constant time.
+  // However, we can remove this overheard, and use the same
+  // implementation that LinkedStack uses to minimize
+  // overhead and maximize code reuse, all while maintaining
+  // O(1) time for remove first / pop().
 
   /**
    * Constructs empty list
@@ -45,6 +49,8 @@ public final class LinkedList<T> implements List<T> {
     insert(values);
   }
 
+//------------------------------------------------------------------------------
+
   /**
    * Construct linked list from Java Collection of values.
    *
@@ -53,22 +59,6 @@ public final class LinkedList<T> implements List<T> {
    */
   public LinkedList(Collection<T> values) {
     insert(values);
-  }
-
-  /**
-   * Determines whether or not this LinkedList is equal to
-   * a provided object.
-   *
-   * @param object Object to compare this LinkedList with.
-   * @return True if and only if their types are the same,
-   * lengths are the same, and the contain all the same elements.
-   */
-  @Override
-  public boolean equals(Object object) {
-
-    // Object must be an LinkedList, and all elements must be equal, or object
-    // must be this LinkedList itself
-    return equivalentTo(object);
   }
 
 //------------------------------------------------------------------------------
@@ -109,31 +99,6 @@ public final class LinkedList<T> implements List<T> {
     return node;
   }
 
-  /**
-   * Append a specified value  to the back of the list
-   *
-   * @param value Specified value to be inserted into the list
-   * @return True to indicate the insertion was successful.
-   */
-  @Override
-  public boolean insert(T value) {
-    Node<T> node = new Node<>(value);
-
-    if (empty()) {
-      head = node;
-      tail = node;
-
-    } else {
-      node.prev = tail;
-      tail.next = node;
-      tail = node;
-    }
-
-    this.size++;
-
-    return true;
-
-  }
 
 //------------------------------------------------------------------------------
 
@@ -188,67 +153,6 @@ public final class LinkedList<T> implements List<T> {
     this.size++;
 
     return true;
-  }
-
-  /**
-   * Returns an Iterator to iterate over the list.
-   *
-   * @return Iterator object.
-   */
-  @Override
-  public Iterator<T> iterator() {
-
-    return iterator(head);
-  }
-
-  /**
-   * Provided the head node of any LinkedList,
-   * this method returns an Iterator. This method is used
-   * by instances of linked objects such as Queues, and Stacks.
-   * That a similar function does not need to be implemented
-   * multiple times.
-   *
-   * @param head The first node in the list.
-   * @return Iterator object.
-   */
-  protected static <T> Iterator<T> iterator(Node<T> head) {
-
-    return new Iterator<T>() {
-
-      Node<T> node = head;
-
-      /**
-       * Determines whether or not there are more Nodes
-       * to iterate over
-       *
-       * @return True if and only if there are more nodes in the chain
-       */
-      @Override
-      public boolean hasNext() {
-
-        // If there is a node left to print, return false
-        // if the node is null, we have traversed off the list
-        return this.node != null;
-      }
-
-      /**
-       * Returns the value of the next Node in the chain
-       *
-       * @return Value of the next Node
-       */
-      @Override
-      public T next() {
-        // If there are no more keys left, throw an Exception
-        if (!hasNext()) {
-          throw new NoSuchElementException("No element");
-        }
-
-        T value = node.value;
-        node = node.next;
-
-        return value;
-      }
-    };
   }
 
 //------------------------------------------------------------------------------
@@ -313,17 +217,6 @@ public final class LinkedList<T> implements List<T> {
     return value;
   }
 
-//------------------------------------------------------------------------------
-
-  /**
-   * Returns the number of elements in the list.
-   *
-   * @return Number of elements in list
-   */
-  @Override
-  public int size() {
-    return size;
-  }
 
   /**
    * Returns a String representation of the list
@@ -347,38 +240,4 @@ public final class LinkedList<T> implements List<T> {
     getNode(index).value = value;
   }
 
-  /**
-   * Node class for chaining together keys in a LinkedList
-   *
-   * @author Jabari Dash
-   * @param <T> Generic type
-   */
-  public static class Node<T> {
-    protected T       value;  // Value of the node
-    protected Node<T> prev;   // Pointer to previous node in chain
-    protected Node<T> next;   // Pointer to next node in chain
-
-    /**
-     * Constructs a new {@code Node} with a specified value.
-     *
-     * @param value Specified value of Node
-     */
-    protected Node(T value) {
-      this.value = value;
-      this.prev  = null;
-      this.next  = null;
-    }
-
-    /**
-     * Returns a String representation of the node
-     *
-     * @return String version of the node's value
-     */
-    @Override
-    public String toString() {
-
-      return value == null ? "null" : value.toString();
-    }
-
-  }
 }

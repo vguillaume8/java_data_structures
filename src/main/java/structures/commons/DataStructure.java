@@ -10,6 +10,10 @@ import java.util.Collection;
  */
 public interface DataStructure<K> {
 
+    // TODO - Force all implementing classes to have asString()
+    // this way I can remember to put this as a default method
+    // at the lowest level interface that extends this interface.
+
     // TODO - https://docs.oracle.com/javase/tutorial/essential/concurrency/syncmeth.html
     // Check out making methods synchronized to avoid
     // concurrent modification issues if the objects
