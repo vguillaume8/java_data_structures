@@ -22,8 +22,8 @@ public final class ArrayQueue<E> extends DynamicArray<E> implements Queue<E>, Ve
     // but provided that the front will always be moving
     // when we dequeue, a lot of the looping functions
     // do not work. Unless, we change the way that dynamic
-    // array works, and all loops start from this.front,
-    // and front just always remains 0, for all other structures.
+    // array works, and all loops start from a variable front.
+    // For non-queues, front just always remains 0.
     // However, this requires lots of reworking.
 
     /**
@@ -36,10 +36,10 @@ public final class ArrayQueue<E> extends DynamicArray<E> implements Queue<E>, Ve
     /**
      * Constructs LinkedQueue from array of keys.
      *
-     * @param keys Array of keys to instatiate LinkedQueue from
+     * @param values Array of keys to instatiate LinkedQueue from
      */
-    public ArrayQueue(E[] keys) {
-        insert(keys);
+    public ArrayQueue(E[] values) {
+        super(values);
     }
 
     /**
@@ -49,7 +49,7 @@ public final class ArrayQueue<E> extends DynamicArray<E> implements Queue<E>, Ve
      * @see java.util.Collection
      */
     public ArrayQueue(Collection<E> values) {
-        insert(values);
+        super(values);
     }
 
     /**
@@ -73,7 +73,23 @@ public final class ArrayQueue<E> extends DynamicArray<E> implements Queue<E>, Ve
      */
     @Override
     public E remove() {
-        return delete(0);
+        E value;
+
+        // TODO - Finish implementation
+
+        // Get first element
+        // in the queue
+        value = delete(0);
+
+        // Push front pointer
+        // further back in
+        // internal array
+        if (!empty()) {
+            ;
+//            front++;
+        }
+
+        return value;
     }
 
     /**

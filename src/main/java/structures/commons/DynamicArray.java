@@ -1,13 +1,15 @@
 package structures.commons;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  * Abstract class that classes that use an underlying
  * dynamic array will extend. Note, even though this
  * class provides an iterator, it purposely does not
  * implement Iterable because when we use this class with
- * more complex types such as Trees, or potentially hashmaps,
+ * more complex types such as Trees, or potentially hash maps,
  * we will not be iterating over the same generic type as
  * the object. Example, BinarySearchTree&lt; K, V&gt; should give
  * back an Iterator&lt;Pair&lt;K,V&gt;&gt; not an Iterator&lt; K,V&gt;. The
@@ -38,12 +40,12 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
      * When the array reaches this threshold
      * the array will double in size.
      */
-    protected final double RESIZE_THRESHOLD;
+    private final double RESIZE_THRESHOLD;
 
     /**
-     *
+     * Initial size of internal array
      */
-    protected final int INITIAL_SIZE;
+    private final int INITIAL_SIZE;
 
     /**
      * Number of elements present in the ArrayList.
@@ -60,7 +62,7 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
      * We use this value for analytic purposes. It has no
      * effect on the structures.performance or behavior of the ArrayList.
      */
-    protected int allocations;
+    private int allocations;
 
     /**
      * The number of times an element has been shifted in the array.
@@ -77,6 +79,22 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
      * called. If n values are copied, this value increases by n.
      */
     private int copies;
+
+    /**
+     * Integer that points to the index of the beginning
+     * of the sequence within the internal array. For queues,
+     * this value will change. For Stacks, and LinkedList,
+     * it will remain the 0.
+     */
+    protected int front = 0;
+
+    /**
+     * Integer that points to the index of the
+     * end of the sequence within the internal array.
+     * Essentially, this will always be size() - 1,
+     * but for cleaner syntax we will use this variable.
+     */
+    protected int back = 0;
 
     /**
      * Constructs default DynamicArray with resize
@@ -160,10 +178,11 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
      * @return True if the insertion was successful
      */
     protected boolean add (E value, int index) {
+
         // If the ArrayList is empty, simply insert
         // into the front of the internal array
         if (empty()) {
-            elements[0] = value;
+            elements[front] = value;
             size++;
             return true;
         }
@@ -230,7 +249,7 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
         // Check if the internal
         // array is empty
         if (empty()) {
-            elements[0] = value;
+            elements[front] = value;
             size++;
             return true;
         }
@@ -292,7 +311,7 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
      * @param src Source array from which to copy
      * @param dst Destination array to copy to
      */
-    protected void copy(int start, int stop, int offset, E[] src, E[] dst) {
+    private void copy(int start, int stop, int offset, E[] src, E[] dst) {
 
         // Must be within bounds
         if (start < 0 || start >= src.length) {
@@ -321,7 +340,6 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
             dst[i+offset] = src[i];
             copies++;
         }
-
     }
 
     /**
@@ -371,7 +389,7 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
      *
      * @return True if and only if the capacity threshold is passed.
      */
-    protected boolean full() {
+    private boolean full() {
 
         // Convert size and length to doubles
         // to perform division with decimals
@@ -451,7 +469,7 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
      *
      * @param index Specified index to shift left into
      */
-    protected void shiftLeft(int index) {
+    private void shiftLeft(int index) {
 //        verifyIndex(index);
 
         // Partial rotation
@@ -470,7 +488,7 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
      *
      * @param index Index to start shifting from
      */
-    protected void shiftRight(int index) {
+    private void shiftRight(int index) {
 //        verifyIndex(index);
 
         for (int i = size; i > index; i--) {
@@ -534,7 +552,7 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
 
             // If ascending, start at first index,
             // otherwise start at last index
-            cursor = ascending ? 0 : size - 1;
+            cursor = ascending ? front : size - 1;
         }
 
         /**
@@ -547,7 +565,7 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
         @Override
         public boolean hasNext() {
 
-            return ascending ? cursor < size : cursor >= 0;
+            return ascending ? cursor < size : cursor >= front;
         }
 
         /**

@@ -1,6 +1,8 @@
 package structures.vectors;
 
-import structures.vectors.LinkedList.Node;
+import structures.commons.DataStructure;
+import structures.commons.LinkedStructure;
+import structures.commons.LinkedStructure.Node;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -15,137 +17,51 @@ import java.util.Iterator;
  * @author Jabari Dash
  * @param <T> Generic type
  */
-public final class LinkedStack<T> implements Stack<T>, Vector<T> {
+public final class LinkedStack<T> extends LinkedStructure<T> implements Stack<T>, Vector<T> {
 
     /**
-     * Number of elements on the LinkedStack
-     */
-    protected int size;
-
-    /**
-     * Pointer to the first node in the chain
-     */
-    private Node<T> head;
-
-//------------------------------------------------------------------------------
-
-    /**
-     * Constructs empty LinkedStack
+     * Constructs empty stack
      */
     public LinkedStack() {
-        super();
+        ;
     }
 
-//------------------------------------------------------------------------------
-
     /**
-     * Constructs {@code LinkedStack} from array of values.
+     * Construct stack from array of values
      *
-     * @param values Array of values to instantiate LinkedStack from.
+     * @param values Array of values
      */
     public LinkedStack(T[] values) {
-        insert(values);
+        super(values);
     }
 
-//------------------------------------------------------------------------------
-
     /**
-     * Construct stack from Java Collection of values.
+     * Construct stack from collection of values
      *
-     * @param values Collection of values to construct LinkedStack from.
-     * @see java.util.Collection
+     * @param values Collection of values
      */
     public LinkedStack(Collection<T> values) {
-        insert(values);
+        super(values);
     }
 
-//------------------------------------------------------------------------------
-
     /**
-     * Determines whether or not this LinkedStack is equal to
-     * a provided object.
+     * Inserts a value at the top of stack.
      *
-     * @param object Object to compare this LinkedStack with.
-     * @return True if and only if their types are the same,
-     * lengths are the same, and the contain all the same elements.
-     */
-    public boolean equals(Object object) {
-        return equivalentTo(object);
-    }
-
-//------------------------------------------------------------------------------
-
-
-    /**
-     * Returns an Iterator for iterating over the LinkedStack.
-     *
-     * @return Iterator object
-     */
-    @Override
-    public Iterator<T> iterator() {
-
-        // Need to get the head node
-        return LinkedList.iterator(head);
-    }
-//------------------------------------------------------------------------------
-
-    /**
-     * Inserts value at top of LinkedStack.
-     *
-     * @param value The specified value to insert
-     * @return True if the insertion was successful.
+     * @param value Specified value to be inserted into the list
+     * @return True if insertion was successful
      */
     @Override
     public boolean insert(T value) {
-        Node<T> node = new Node<>(value);
 
-        if (this.empty()) {
-            head = node;
+        // NOTE - This method is overridden because
+        // because default methods in the interface
+        // calls the insert method, which by default
+        // inserts into the back of the LinkedStructure.
+        // To reverse the order, we overwrite and insert
+        // in the front.
 
-        } else {
-            node.next = head;
-            head.prev = node;
-            head      = node;
-        }
-
-        this.size++;
-
-        return true;
+        return insertHead(value);
     }
-
-
-//------------------------------------------------------------------------------
-
-    /**
-     * Retrieves and removes top of LinkedStack.
-     *
-     * @return Value form top of LinkedStack
-     */
-    @Override
-    public T remove() {
-        if (this.empty()) {
-            throw new EmptyDataStructureException("Cannot remove from an empty LinkedStack");
-        }
-
-        T value   = this.head.value;  // Get value from head
-        this.head = this.head.next;   // Set head equal to head's next
-        this.size--;                  // Decrement size of LinkedQueue
-
-        return value;
-    }
-
-    /**
-     * Returns number of elements on the stack.
-     *
-     * @return Number of elements on stack.
-     */
-    @Override
-    public int size() {
-        return size;
-    }
-
-//------------------------------------------------------------------------------
-
 
     /**
      * Retrieves but does not remove the topmost value from the LinkedStack.
@@ -154,22 +70,20 @@ public final class LinkedStack<T> implements Stack<T>, Vector<T> {
      */
     @Override
     public T top() {
-        if (this.empty()) {
-            throw new EmptyDataStructureException("Cannot top() and empty LinkedStack");
-        }
 
-        return this.head.value;
+        return getNode(0).value;
     }
 
-//------------------------------------------------------------------------------
-
     /**
-     * Returns a String representation of the list
+     * Removes an element from the DataStructure. The order
+     * in which the value comes out depends on the implementation
+     * of implementing class
      *
-     * @return String version of the list
+     * @return Removed value from DataStructure
+     * @see DataStructure
      */
     @Override
-    public String toString() {
-        return asString();
+    public T remove() {
+        return delete(0);
     }
 }
