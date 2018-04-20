@@ -22,6 +22,7 @@ public interface Queue<E> extends Vector<E> {
      * @return True if the insertion was successful.
      */
     default boolean enqueue(E element) {
+
         return insert(element);
     }
 
@@ -36,6 +37,7 @@ public interface Queue<E> extends Vector<E> {
      * @return Value at front of queue.
      */
     default E dequeue() {
+
         return remove();
     }
 

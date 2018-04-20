@@ -1,7 +1,6 @@
 package structures.performance.vectors
 
 import util.Plot
-import util.Util
 import spock.lang.Shared
 import spock.lang.Specification
 

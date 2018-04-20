@@ -1,41 +1,47 @@
-import structures.commons.DynamicArray;
 import structures.vectors.*;
-import structures.trees.*;
-import structures.graphs.*;
-import structures.sets.*;
-import structures.maps.*;
-
-import java.util.Random;
-import java.util.stream.IntStream;
+import dev.*;
 
 /**
+ * Main class that contains
+ * main method. It is used for
+ * development. In the final
+ * executable jar, main will have
+ * an empty body and simply exit
+ * with an exit code of 0. The jar
+ * is meant to be used as a library
+ * rather than a runnable program
+ * with a given sequence of events.
  *
+ * @author Jabari Dash
  */
-public final class Application {
+public final class Application extends Main {
 
   public static void main(String[] args) throws Exception {
 
-    java.util.ArrayList a;
 
   // TODO - https://docs.oracle.com/javase/tutorial/essential/concurrency/syncmeth.html
 
-    Integer[] ordered = IntStream.range(0, 10)
-                                 .boxed()
-                                 .toArray(Integer[]::new);
+    int len = 5;
+    int min = 0;
+    int max = 5;
 
-    // Integer array of 10 random
-    // numbers between 1 and 9 inclusive
-    Integer[] random = new Random()
-                          .ints(1, 10)
-                          .limit(10)
-                          .boxed()
-                          .toArray(Integer[]::new);
+    Integer[] ascending  = Arrays.array(len, min, max, true, true);
+    Integer[] descending = Arrays.array(len, min, max, true, false);
+    Integer[] random     = Arrays.array(len, min, max, false, false);
 
-    Queue<Integer> queue = new ArrayQueue<>(ordered);
+    ArrayQueue<Integer> queue = new ArrayQueue<>(ascending);
 
-    queue.dequeue();
+    System.out.println("Queue: " + queue);
 
-    System.out.println(queue);
+    int x = queue.dequeue();
+
+    println("val: " + x);
+
+    println(queue);
+
+    println("size: " + queue.size());
+
+    println("shifts: " + queue.shifts());
   }
 
 }

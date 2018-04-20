@@ -43,6 +43,12 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
     private final double RESIZE_THRESHOLD;
 
     /**
+     * When the array must grow, it
+     * will grow by this factor.
+     */
+    private final int GROW_FACTOR = 2;
+
+    /**
      * Initial size of internal array
      */
     private final int INITIAL_SIZE;
@@ -55,7 +61,7 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
     /**
      * The internal array containing the elements in the ArrayList.
      */
-    protected E[] elements;
+    public E[] elements;
 
     /**
      * The amount of times the array needed to be resized.
@@ -103,6 +109,7 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
      * @param initialSize Specified initial size of internal array.
      */
     protected DynamicArray(int initialSize) {
+
         this.RESIZE_THRESHOLD = DEFAULT_RESIZE_THRESHOLD;
         this.INITIAL_SIZE     = initialSize >= DEFAULT_INITIAL_SIZE ? initialSize : DEFAULT_INITIAL_SIZE;
 
@@ -115,6 +122,7 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
      * threshold 90% and initial size 10.
      */
     protected DynamicArray() {
+
         this.RESIZE_THRESHOLD = DEFAULT_RESIZE_THRESHOLD;
         this.INITIAL_SIZE     = DEFAULT_INITIAL_SIZE;
         elements              = (E[]) new Object[this.INITIAL_SIZE];
@@ -127,6 +135,7 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
      * @param values Array of values.
      */
     protected DynamicArray(E[] values) {
+
         this(values.length);
         insert(values);
     }
@@ -138,6 +147,7 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
      * @param values Collection of values.
      */
     protected DynamicArray(Collection<E> values) {
+
         this(values.size());
         insert(values);
     }
@@ -151,6 +161,7 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
      * @return Number of underwent re-allocations
      */
     public int allocations() {
+
         return this.allocations;
     }
 
@@ -166,6 +177,7 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
     protected E access(int index) {
 
         verifyIndex(index);
+
         return elements[index];
     }
 
@@ -182,6 +194,7 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
         // If the ArrayList is empty, simply insert
         // into the front of the internal array
         if (empty()) {
+
             elements[front] = value;
             size++;
             return true;
@@ -195,32 +208,38 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
             // Allocate a new array double the
             // size of the current internal array
             @SuppressWarnings("unchecked")
-            E[] temp = (E[]) new Object[size * 2];
+            E[] temp = grow();
 
             // Copy the whole array with an offset of 1,
             // then overwrite the first value
             if (index == 0) {
-                copy(0, size-1, 1, elements, temp);
+
+                copy(front, size-1, 1, elements, temp);
+
                 temp[0] = value;
 
                 // Copy up until the desired index, preserving index
                 // Place the new value in its designated location
                 // Copy the rest of the array with an offset of 1
             } else {
-                copy(0, index, 0, elements, temp);
+
+                copy(front, index, 0, elements, temp);
+
                 temp[index] = value;
 
                 // If we are not already at the end
                 // copy the remaining values over
                 if (index < size-1) {
+
                     copy(index+1, size-1, 1, elements, temp);
                 }
+
             }
 
             // Use temp as our new elements array
             elements = temp;
 
-            // There is space in the array
+        // There is space in the array
         } else {
 
             // Make room for new value
@@ -230,10 +249,8 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
             elements[index] = value;
         }
 
-        //
         size++;
 
-        //
         allocations++;
 
         return true;
@@ -249,6 +266,7 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
         // Check if the internal
         // array is empty
         if (empty()) {
+
             elements[front] = value;
             size++;
             return true;
@@ -263,10 +281,11 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
 
             // Create a new array with double the size
             @SuppressWarnings("unchecked")
-            E[] temp = (E[]) new Object[size * 2];
+            E[] temp = grow();
 
             // Copy the old array to a new array
-            copy(0, size-1, 0, elements, temp);
+            copy(front, size-1, 0, elements, temp);
+
 
             // Place a new value at the
             // back of the new array
@@ -280,6 +299,7 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
             // There's space, so insert
             // at the back of new array
         } else {
+
             elements[size] = value;
         }
 
@@ -299,7 +319,8 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
      * @return Number of underwent copies.
      */
     public int copies() {
-        return this.copies;
+
+        return copies;
     }
 
     /**
@@ -315,31 +336,44 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
 
         // Must be within bounds
         if (start < 0 || start >= src.length) {
+
             throw new IllegalArgumentException("Start index must be in bounds or source array");
         }
 
         // If start index exceeds stop index
         if (start > stop) {
-            throw new IllegalArgumentException("Start index must be less than or ` to stop index");
+
+            throw new IllegalArgumentException("Start index must be less than or equal to stop index");
         }
 
         // Must be within bounds
         // TODO - IntelliJ says stop always < 0, maybe if-else can be simplified
         if (stop < 0 || stop >= src.length) {
+
             throw new IllegalArgumentException("Stop index must be in bounds or src array");
         }
 
         // destination array must be at least size of source
         if (src.length >= dst.length) {
+
             throw new IllegalArgumentException("Destination array must be at least the length of the source array");
         }
 
         // Copy the array
-        for (int i = start; i <= stop; i++){
+        // NOTE - If front is not 0, then
+        // there is an additional offset that
+        // we must take into account. Since we
+        // are copying to a new array, we eliminate
+        // the empty space in front of "front" by
+        // shifting down to the left by "front"
+        // number of spaces.
+        for (int i = start; i <= stop; i++) {
 
-            dst[i+offset] = src[i];
+            dst[i + offset] = src[i];
+
             copies++;
         }
+
     }
 
     /**
@@ -355,14 +389,19 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
 
         // Cannot remove from nothing
         if (empty()) {
+
             throw new EmptyDataStructureException("Cannot remove from an empty ArrayList");
         }
 
-        verifyIndex(index);       // Verify that the index is valid
-        value = elements[index];  // Store the value are the given index
-        shiftLeft(index);         // Shift all elements up from the right of index over one to the left
-        size--;                   // Decrement size of array
-        return value;             // Return the stored value
+        verifyIndex(index);
+
+        value = elements[index];
+
+        shiftLeft(index);
+
+        size--;
+
+        return value;
     }
 
     /**
@@ -403,6 +442,29 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
     }
 
     /**
+     * Returns an that has a capacity
+     * that is some scalar multiple of
+     * the current size of the data structure,
+     * where the scalar multiple is greater than 2.
+     *
+     * @return New empty array of larger capacity
+     */
+    private E[] grow() {
+
+        E[] temp = (E[]) new Object[size * GROW_FACTOR];
+
+        return temp;
+    }
+
+    /**
+     *
+     * @return
+     */
+    private E[] shrink() {
+        return null;
+    }
+
+    /**
      * Returns the size of the internal list. Note, this
      * does not specify the number of elements in the list,
      * rather the number of spaces that the dynamically
@@ -412,6 +474,7 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
      * @return Length of internal array that contains the elements
      */
     public int internalSize() {
+
         return elements.length;
     }
 
@@ -421,6 +484,7 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
      * @return Iterator
      */
     public Iterator<E> iterator() {
+
         return new DynamicArrayIterator<>(true);
     }
 
@@ -444,6 +508,7 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
      */
     @SuppressWarnings("unused")
     public int shifts() {
+
         return shifts;
     }
 
@@ -454,6 +519,7 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
      */
     @Override
     public int size() {
+
         return size;
     }
 
@@ -470,11 +536,12 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
      * @param index Specified index to shift left into
      */
     private void shiftLeft(int index) {
-//        verifyIndex(index);
 
         // Partial rotation
         for (int i = index; i < size; i++) {
+
             elements[i] = elements[i+1];
+
             shifts++;
         }
     }
@@ -489,11 +556,11 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
      * @param index Index to start shifting from
      */
     private void shiftRight(int index) {
-//        verifyIndex(index);
 
         for (int i = size; i > index; i--) {
 
             elements[i] = elements[i-1];
+
             shifts++;
         }
     }
@@ -507,8 +574,11 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
      * @return True if the overwrite was successful.
      */
     protected boolean update(int index, E value) {
+
         verifyIndex(index);
+
         elements[index] = value;
+
         return true;
     }
 
@@ -545,10 +615,11 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
          * iterate from high to low, or
          * low to high indicies.
          *
-         * @param ascendingIndicies Boolean flag.
+         * @param ascending Boolean flag.
          */
-        public DynamicArrayIterator(boolean ascendingIndicies) {
-            ascending = ascendingIndicies;
+        public DynamicArrayIterator(boolean ascending) {
+
+           this.ascending = ascending;
 
             // If ascending, start at first index,
             // otherwise start at last index
@@ -576,6 +647,7 @@ public abstract class DynamicArray<E> implements DataStructure<E> {
          */
         @Override
         public E next() {
+
             E element = (E) elements[cursor];
 
             // If ascending, increase cursor,

@@ -13,7 +13,7 @@ import java.util.Collection;
  * @author Jabari Dash
  * @param <E> Generic type
  */
-public final class ArrayQueue<E> extends DynamicArray<E> implements Queue<E>, Vector<E> {
+public final class ArrayQueue<E> extends DynamicArray<E> implements Queue<E> {
 
     // TODO - Complete implementation
     // a lot of the code from dynamic array probably
@@ -27,7 +27,7 @@ public final class ArrayQueue<E> extends DynamicArray<E> implements Queue<E>, Ve
     // However, this requires lots of reworking.
 
     /**
-     * Constructs empty LinkedQueue.
+     * Constructs empty ArrayQueue.
      *
      * <p>
      * Time: O(1)<br>
@@ -35,19 +35,21 @@ public final class ArrayQueue<E> extends DynamicArray<E> implements Queue<E>, Ve
      *
      */
     public ArrayQueue() {
+
         super();
     }
 
     /**
-     * Constructs LinkedQueue from array of keys.
+     * Constructs ArrayQueue from array of keys.
      *
      * <p>
      * Time: O(n)<br>
      * Space: O(1)
      *
-     * @param values Array of keys to instatiate LinkedQueue from
+     * @param values Array of keys to instantiate ArrayQueue from
      */
     public ArrayQueue(E[] values) {
+
         super(values);
     }
 
@@ -58,10 +60,11 @@ public final class ArrayQueue<E> extends DynamicArray<E> implements Queue<E>, Ve
      * Time: O(n)<br>
      * Space: O(1)
      *
-     * @param values Collection of values to construct LinkedQueue from.
+     * @param values Collection of values to construct ArrayQueue from.
      * @see java.util.Collection
      */
     public ArrayQueue(Collection<E> values) {
+
         super(values);
     }
 
@@ -77,6 +80,7 @@ public final class ArrayQueue<E> extends DynamicArray<E> implements Queue<E>, Ve
      */
     @Override
     public E peek() {
+
         return access(0);
     }
 
@@ -96,23 +100,28 @@ public final class ArrayQueue<E> extends DynamicArray<E> implements Queue<E>, Ve
      */
     @Override
     public E remove() {
-        E value;
 
-        // TODO - Finish implementation
 
-        // Get first element
-        // in the queue
-        value = delete(0);
+        return delete(0);
 
-        // Push front pointer
-        // further back in
-        // internal array
-        if (!empty()) {
-            ;
+        // TODO - Finish
+
+//        E value;
+//
+//        value = access(0);
+//
+//        size--;
+//
+//        if (size > 1) {
+//
 //            front++;
-        }
-
-        return value;
+//
+//        } else {
+//
+//            front = 0;
+//        }
+//
+//        return value;
     }
 
     /**
@@ -127,6 +136,7 @@ public final class ArrayQueue<E> extends DynamicArray<E> implements Queue<E>, Ve
      */
     @Override
     public boolean insert(E element) {
+
         return append(element);
     }
 
@@ -137,6 +147,7 @@ public final class ArrayQueue<E> extends DynamicArray<E> implements Queue<E>, Ve
      */
     @Override
     public String toString() {
+
         return asString();
     }
 }
