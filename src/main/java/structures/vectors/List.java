@@ -15,6 +15,13 @@ public interface List<T> extends Vector<T> {
     /**
      * Returns the value located at a specified index
      *
+     * <p>
+     * Time: <br>
+     *     O(1) for array implementation<br>
+     *     O(n) for linked implementations<br>
+     *
+     * Space: O(1)
+     *
      * @param index Specified index
      * @return Item at the specified index
      */
@@ -24,6 +31,10 @@ public interface List<T> extends Vector<T> {
 
     /**
      * Insert a value at a specified index
+     *
+     * <p>
+     * Time: O(n)<br>
+     * Space: O(1)
      *
      * @param value Value to be inserted
      * @param index Specified index to insert value at
@@ -36,6 +47,13 @@ public interface List<T> extends Vector<T> {
     /**
      * Insert element at front of list.
      *
+     * <p>
+     * Time: <br>
+     *     O(n) for array implementation<br>
+     *     O(1) for linked implementations<br>
+     *
+     * Space: O(1)
+     *
      * @param value Value to insert.
      * @return True if the insertion was successful.
      */
@@ -47,6 +65,10 @@ public interface List<T> extends Vector<T> {
 
     /**
      * Insert element at end of list.
+     *
+     * <p>
+     * Time: O(1)<br>
+     * Space: O(1)
      *
      * @param value Value to insert.
      * @return True if the insertion was successful.
@@ -72,6 +94,10 @@ public interface List<T> extends Vector<T> {
     /**
      * Retrieves and removes a value from a specified index
      *
+     * <p>
+     * Time: O(n)<br>
+     * Space: O(1)
+     *
      * @param index Index to remove value from
      * @return The value at the specified index
      */
@@ -84,6 +110,10 @@ public interface List<T> extends Vector<T> {
      * element from list - provided the
      * natural order of removal in subclasses.
      *
+     * <p>
+     * Time: O(1)<br>
+     * Space: O(1)
+     *
      * @return Next element in order of removal.
      */
     default T remove() {
@@ -94,6 +124,13 @@ public interface List<T> extends Vector<T> {
 
     /**
      * Removes first value from the List
+     *
+     * <p>
+     * Time: <br>
+     *     O(n) for array implementation<br>
+     *     O(1) for linked implementations<br>
+     *
+     * Space: O(1)
      *
      * @return First element in DataStructure
      */
@@ -106,6 +143,10 @@ public interface List<T> extends Vector<T> {
     /**
      * Removes the last value from the List
      *
+     * <p>
+     * Time: O(1)<br>
+     * Space: O(1)
+     *
      * @return Last element in DataStructure
      */
     default T removeLast() {
@@ -117,6 +158,13 @@ public interface List<T> extends Vector<T> {
     /**
      * Overwrites a value at a specified index
      * with a new value.
+     *
+     * <p>
+     * Time: <br>
+     *     O(1) for array implementation<br>
+     *     O(n) for linked implementations<br>
+     *
+     * Space: O(1)
      *
      * @param value New value.
      * @param index Specified index.
@@ -171,7 +219,7 @@ public interface List<T> extends Vector<T> {
 
             // If there are no more keys left, throw an Exception
             if (!hasNext()) {
-                throw new NoSuchElementException("No element");
+                throw new NoSuchElementException("No next element");
             }
 
             int current = this.cursor;    // Store the current cursor value

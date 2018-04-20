@@ -61,6 +61,9 @@ public abstract class LinkedStructure<E> implements DataStructure<E>, Iterable<E
      * Removes and returns the value of
      * a node at a specified index.
      *
+     * Time: O(n)
+     * Space: O(1)
+     *
      * @param index Specified index
      * @return Value of node at that index.
      */
@@ -76,20 +79,17 @@ public abstract class LinkedStructure<E> implements DataStructure<E>, Iterable<E
         // within the bounds of the list
         verifyIndex(index);
 
-        // Removing form the front
+        // Removing from the front
         if (index == 0 || size == 1) {
-            value = head.value;
-            head  = head.next;
+            value     = head.value;
+            head      = head.next;
 
+            // NOTE - We do not need to
+            // set head.next or head.prev
+            // to null after we change the
+            // pointer because head.next is
+            // already null.
         }
-
-        // TODO - Figure out why I commented this out
-        // Delete last should be O(1), not O(n)
-//    else if (index == size - 1) {
-//      value = tail.value;
-//      tail = tail.next;
-//
-//    }
 
         else {
 
@@ -138,6 +138,9 @@ public abstract class LinkedStructure<E> implements DataStructure<E>, Iterable<E
     /**
      * Returns the node at a specified index in the list.
      *
+     * Time: O(n)
+     * Space: O(1)
+     *
      * @param index The specified to retrieve the node from
      * @return SinglyLinkedListNode at specified index
      */
@@ -173,6 +176,9 @@ public abstract class LinkedStructure<E> implements DataStructure<E>, Iterable<E
     /**
      * Append a specified value  to the back of the list
      *
+     * Time: O(1)
+     * Space: O(1)
+     *
      * @param value Specified value to be inserted into the list
      * @return True to indicate the insertion was successful.
      */
@@ -185,6 +191,9 @@ public abstract class LinkedStructure<E> implements DataStructure<E>, Iterable<E
     /**
      * Prepends a new value to the front
      * of the structure.
+     *
+     * Time: O(1)
+     * Space: O(1)
      *
      * @param value New head value
      * @return True if insertion is successful.
@@ -212,6 +221,9 @@ public abstract class LinkedStructure<E> implements DataStructure<E>, Iterable<E
     /**
      * Inserts a new value at a specified
      * index.
+     *
+     * Time: O(n)
+     * Space: O(1)
      *
      * @param value New value
      * @param index Specified index
@@ -264,6 +276,9 @@ public abstract class LinkedStructure<E> implements DataStructure<E>, Iterable<E
      * Appends a new value to the back
      * of the structure.
      *
+     * Time: O(1)
+     * Space: O(1)
+     *
      * @param value New tail value
      * @return True if the insertion is successful.
      */
@@ -305,10 +320,11 @@ public abstract class LinkedStructure<E> implements DataStructure<E>, Iterable<E
      * That a similar function does not need to be implemented
      * multiple times.
      *
+     *
      * @param head The first node in the list.
      * @return Iterator object.
      */
-    public static <E> Iterator<E> iterator(Node<E> head) {
+    public Iterator<E> iterator(Node<E> head) {
 
         return new Iterator<E>() {
 

@@ -21,6 +21,10 @@ public final class LinkedStack<T> extends LinkedStructure<T> implements Stack<T>
 
     /**
      * Constructs empty stack
+     *
+     * <p>
+     * Time: O(1)<br>
+     * Space: O(1)
      */
     public LinkedStack() {
         ;
@@ -28,6 +32,10 @@ public final class LinkedStack<T> extends LinkedStructure<T> implements Stack<T>
 
     /**
      * Construct stack from array of values
+     *
+     * <p>
+     * Time: O(n)<br>
+     * Space: O(1)
      *
      * @param values Array of values
      */
@@ -38,6 +46,10 @@ public final class LinkedStack<T> extends LinkedStructure<T> implements Stack<T>
     /**
      * Construct stack from collection of values
      *
+     * <p>
+     * Time: O(n)<br>
+     * Space: O(1)
+     *
      * @param values Collection of values
      */
     public LinkedStack(Collection<T> values) {
@@ -46,6 +58,10 @@ public final class LinkedStack<T> extends LinkedStructure<T> implements Stack<T>
 
     /**
      * Inserts a value at the top of stack.
+     *
+     * <p>
+     * Time: O(1)<br>
+     * Space: O(1)
      *
      * @param value Specified value to be inserted into the list
      * @return True if insertion was successful
@@ -66,6 +82,10 @@ public final class LinkedStack<T> extends LinkedStructure<T> implements Stack<T>
     /**
      * Retrieves but does not remove the topmost value from the LinkedStack.
      *
+     * <p>
+     * Time: O(1)<br>
+     * Space: O(1)
+     *
      * @return The topmost value on the LinkedStack.
      */
     @Override
@@ -78,6 +98,10 @@ public final class LinkedStack<T> extends LinkedStructure<T> implements Stack<T>
      * Removes an element from the DataStructure. The order
      * in which the value comes out depends on the implementation
      * of implementing class
+     *
+     * <p>
+     * Time: O(1)<br>
+     * Space: O(1)
      *
      * @return Removed value from DataStructure
      * @see DataStructure
