@@ -27,7 +27,8 @@ public final class LinkedList<T> extends LinkedStructure<T> implements List<T> {
    * @param values Array of keys to construct the list from
    */
   public LinkedList(T[] values) {
-    insert(values);
+
+    super(values);
   }
 
 //------------------------------------------------------------------------------
@@ -39,7 +40,8 @@ public final class LinkedList<T> extends LinkedStructure<T> implements List<T> {
    * @see java.util.Collection
    */
   public LinkedList(Collection<T> values) {
-    insert(values);
+
+    super(values);
   }
 
 //------------------------------------------------------------------------------
@@ -52,53 +54,8 @@ public final class LinkedList<T> extends LinkedStructure<T> implements List<T> {
    */
   @Override
   public T get(int index) {
+
     return getNode(index).value;
-  }
-
-//------------------------------------------------------------------------------
-
-  /**
-   * Returns the node at a specified index in the list.
-   *
-   * @param index The specified to retrieve the node from
-   * @return SinglyLinkedListNode at specified index
-   */
-  private Node<T> getNode(int index) {
-    Node<T> node;
-
-    verifyIndex(index);
-
-    node = head;
-
-    // index up until the
-    // specified index (inclusive)
-    for (int i = 0; i < index; i++) {
-      node = node.next;
-    }
-
-    // Otherwise, return the ith node
-    return node;
-  }
-
-
-//------------------------------------------------------------------------------
-
-
-  /**
-   *
-   * @param value Value to insert.
-   * @return
-   */
-  @Override
-  public boolean insertFirst(T value) {
-
-    return insertHead(value);
-  }
-
-  @Override
-  public boolean insertLast(T value) {
-
-    return insertTail(value);
   }
 
 //------------------------------------------------------------------------------
@@ -112,49 +69,8 @@ public final class LinkedList<T> extends LinkedStructure<T> implements List<T> {
    */
   @Override
   public boolean insert(T value, int index) {
-    Node<T> newNode;
 
-    // Create a new node with
-    // the value to be inserted
-    newNode = new Node<>(value);
-
-    // If the list is empty,
-    // set new node to the head
-    if (this.empty()) {
-      head = newNode;
-      tail = newNode;
-
-      // The list is not empty
-    } else if (index == 0) {
-
-      newNode.next = head;
-      head.prev    = newNode;
-      head         = newNode;
-
-    } else {
-
-      // If the index is somewhere in the middle,
-      // Find the ith node, and put
-      // the new node right in front of it
-      // (essentially, taking its index)
-      Node<T> oldNode;
-
-      oldNode      = getNode(index);        // Get the ith node
-      newNode.prev = oldNode.prev;          // Set new node points, to that of older node
-      newNode.next = oldNode;               // Set new nodes' next to ith node
-
-      // Set the i-1th node's next to the new node
-      if (oldNode.prev != null)
-        oldNode.prev.next = newNode;
-
-      // Set the old ith node's previous to the new node
-      oldNode.prev = newNode;
-
-    }
-
-    this.size++;
-
-    return true;
+    return insertMiddle(value, index);
   }
 
 //------------------------------------------------------------------------------
@@ -167,67 +83,8 @@ public final class LinkedList<T> extends LinkedStructure<T> implements List<T> {
    */
   @Override
   public T remove(int index) {
-    T value;
 
-    if (this.empty()) {
-      throw new EmptyDataStructureException("Cannot remove from an empty LinkedList");
-    }
-
-    // Verify that the index is
-    // within the bounds of the list
-    verifyIndex(index);
-
-    // Removing form the front
-    if (index == 0 || size == 1) {
-      value = head.value;
-      head  = head.next;
-
-    }
-
-      // TODO - Figure out why I commented this out
-//    else if (index == size - 1) {
-//      value = tail.value;
-//      tail = tail.next;
-//
-//    }
-
-    else {
-
-      // Get the ith node and its value
-      Node<T> node = getNode(index);
-      value        = node.value;
-
-      // Set the node at i-1's next to node at i+1
-      // Essentially skipping over the node at i
-      node.prev.next = node.next;
-
-      // If node at i is not the end node
-      // link the following nodes in the chain
-      if (node.next != null) {
-
-        // Set i+1's previous to i's previous, again
-        // skipping right over the node at i itself
-        node.next.prev = node.prev;
-      }
-
-    }
-
-    // After removing a node,
-    // decrement length of list
-    this.size--;
-
-    return value;
-  }
-
-
-  /**
-   * Returns a String representation of the list
-   *
-   * @return String version of the list
-   */
-  @Override
-  public String toString() {
-    return asString();
+    return delete(index);
   }
 
   /**
@@ -239,7 +96,7 @@ public final class LinkedList<T> extends LinkedStructure<T> implements List<T> {
    */
   public void set(T value, int index) {
 
-    getNode(index).value = value;
+    setNode(value, index);
   }
 
 }

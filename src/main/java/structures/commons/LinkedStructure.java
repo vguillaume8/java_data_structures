@@ -1,7 +1,9 @@
 package structures.commons;
 
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.StringJoiner;
 
 /**
  * Abstract class that all linked
@@ -9,7 +11,7 @@ import java.util.NoSuchElementException;
  * linked queues, etc will extend.
  *
  * @author Jabari Dash
- * @param <E>
+ * @param <E> Generic type
  */
 public abstract class LinkedStructure<E> implements DataStructure<E>, Iterable<E> {
 
@@ -21,12 +23,101 @@ public abstract class LinkedStructure<E> implements DataStructure<E>, Iterable<E
     /**
      * Pointer to first node in list
      */
-    protected Node<E> head;
+    private Node<E> head;
 
     /**
      * Pointer to last node in list
      */
-    protected Node<E> tail;
+    private Node<E> tail;
+
+    /**
+     * Constructs empty LinkedStructure.
+     */
+    protected LinkedStructure() {
+        ;
+    }
+
+    /**
+     * Constructs LinkedStructure from an
+     * array of values.
+     *
+     * @param values Array of values to insert.
+     */
+    protected LinkedStructure(E[] values) {
+        insert(values);
+    }
+
+    /**
+     * Constructs a LinkedStructure from a
+     * collection of values.
+     *
+     * @param values Collection of values to insert.
+     */
+    protected LinkedStructure(Collection<E> values) {
+        insert(values);
+    }
+
+    /**
+     * Removes and returns the value of
+     * a node at a specified index.
+     *
+     * @param index Specified index
+     * @return Value of node at that index.
+     */
+    protected E delete(int index) {
+
+        E value;
+
+        if (this.empty()) {
+            throw new EmptyDataStructureException("Cannot remove from an empty LinkedList");
+        }
+
+        // Verify that the index is
+        // within the bounds of the list
+        verifyIndex(index);
+
+        // Removing form the front
+        if (index == 0 || size == 1) {
+            value = head.value;
+            head  = head.next;
+
+        }
+
+        // TODO - Figure out why I commented this out
+        // Delete last should be O(1), not O(n)
+//    else if (index == size - 1) {
+//      value = tail.value;
+//      tail = tail.next;
+//
+//    }
+
+        else {
+
+            // Get the ith node and its value
+            Node<E> node = getNode(index);
+            value        = node.value;
+
+            // Set the node at i-1's next to node at i+1
+            // Essentially skipping over the node at i
+            node.prev.next = node.next;
+
+            // If node at i is not the end node
+            // link the following nodes in the chain
+            if (node.next != null) {
+
+                // Set i+1's previous to i's previous, again
+                // skipping right over the node at i itself
+                node.next.prev = node.prev;
+            }
+
+        }
+
+        // After removing a node,
+        // decrement length of list
+        this.size--;
+
+        return value;
+    }
 
     /**
      * Determines whether or not this LinkedList is equal to
@@ -43,6 +134,41 @@ public abstract class LinkedStructure<E> implements DataStructure<E>, Iterable<E
         // must be this LinkedList itself
         return equivalentTo(object);
     }
+
+    /**
+     * Returns the node at a specified index in the list.
+     *
+     * @param index The specified to retrieve the node from
+     * @return SinglyLinkedListNode at specified index
+     */
+    protected Node<E> getNode(int index) {
+        Node<E> node;
+
+        verifyIndex(index);
+
+        // Search from left to right
+        if (index < size / 2) {
+
+            node = head;
+
+            for (int i = 0; i < index; i++) {
+                node = node.next;
+            }
+
+        // Search from left to right
+        } else {
+            node = tail;
+
+            // Search from right to left
+            for (int i = size - 1; i > index; i--) {
+                node = node.prev;
+            }
+
+        }
+
+        return node;
+    }
+
 
     /**
      * Append a specified value  to the back of the list
@@ -76,6 +202,57 @@ public abstract class LinkedStructure<E> implements DataStructure<E>, Iterable<E
             node.next = head;
             head.prev = node;
             head      = node;
+        }
+
+        size++;
+
+        return true;
+    }
+
+    /**
+     * Inserts a new value at a specified
+     * index.
+     *
+     * @param value New value
+     * @param index Specified index
+     * @return True if the insertion is successful
+     */
+    protected boolean insertMiddle(E value, int index) {
+        Node<E> newNode = new Node<>(value);
+
+        if (this.empty()) {
+
+            head = newNode;
+            tail = newNode;
+
+            // If removing from the front
+        } else if (index == 0) {
+
+            newNode.next = head;
+            head.prev    = newNode;
+            head         = newNode;
+
+        } else {
+
+            // If the index is somewhere in the middle,
+            // Find the ith node, and put
+            // the new node right in front of it
+            // (essentially, taking its index)
+            Node<E> oldNode;
+
+            oldNode      = getNode(index);        // Get the ith node
+            newNode.prev = oldNode.prev;          // Set new node points, to that of older node
+            newNode.next = oldNode;               // Set new nodes' next to ith node
+
+            // Set the i-1th node's next to the new node
+            if (oldNode.prev != null) {
+                oldNode.prev.next = newNode;
+            }
+
+            // Set the old ith node's
+            // previous to the new node
+            oldNode.prev = newNode;
+
         }
 
         size++;
@@ -174,6 +351,20 @@ public abstract class LinkedStructure<E> implements DataStructure<E>, Iterable<E
 //------------------------------------------------------------------------------
 
     /**
+     * Updates the value of a node
+     * at a specified index.
+     *
+     * @param value New value
+     * @param index Specified index
+     */
+    protected void setNode(E value, int index) {
+
+        getNode(index).value = value;
+    }
+
+//------------------------------------------------------------------------------
+
+    /**
      * Returns the number of elements in the list.
      *
      * @return Number of elements in list
@@ -181,6 +372,25 @@ public abstract class LinkedStructure<E> implements DataStructure<E>, Iterable<E
     @Override
     public int size() {
         return size;
+    }
+
+//------------------------------------------------------------------------------
+
+    /**
+     * Returns a String representation
+     * of the structure.
+     *
+     * @return String representation
+     */
+    @Override
+    public String toString() {
+        StringJoiner sj = new StringJoiner(", ", "[", "]");
+
+        for (E value : this) {
+            sj.add(value.toString());
+        }
+
+        return sj.toString();
     }
 
 //------------------------------------------------------------------------------
