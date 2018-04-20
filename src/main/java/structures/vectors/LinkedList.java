@@ -14,6 +14,11 @@ public final class LinkedList<T> extends LinkedStructure<T> implements List<T> {
 
   /**
    * Constructs empty list
+   *
+   * <p>
+   * Time: O(1)<br>
+   * Space: O(1)
+   *
    */
   public LinkedList() {
     ;
@@ -23,6 +28,10 @@ public final class LinkedList<T> extends LinkedStructure<T> implements List<T> {
 
   /**
    * Constructs {@code LinkedList} from array of keys.
+   *
+   * <p>
+   * Time: O(n)<br>
+   * Space: O(1)
    *
    * @param values Array of keys to construct the list from
    */
@@ -35,6 +44,10 @@ public final class LinkedList<T> extends LinkedStructure<T> implements List<T> {
 
   /**
    * Construct linked list from Java Collection of values.
+   *
+   * <p>
+   * Time: O(n)<br>
+   * Space: O(1)
    *
    * @param values Collection of values to construct list from.
    * @see java.util.Collection
@@ -49,6 +62,10 @@ public final class LinkedList<T> extends LinkedStructure<T> implements List<T> {
   /**
    * Returns the value at a specified index in the list
    *
+   * <p>
+   * Time: O(n)<br>
+   * Space: O(1)
+   *
    * @param index The specified to retrieve the value from
    * @return The value of the node at the specified index
    */
@@ -62,6 +79,10 @@ public final class LinkedList<T> extends LinkedStructure<T> implements List<T> {
 
   /**
    * Insert specified value at specified index in list.
+   *
+   * <p>
+   * Time: O(n)<br>
+   * Space: O(1)
    *
    * @param value Specified value to be inserted into the list
    * @param index Specified index
@@ -78,6 +99,10 @@ public final class LinkedList<T> extends LinkedStructure<T> implements List<T> {
   /**
    * Removes a node at a specified index from the list.
    *
+   * <p>
+   * Time: O(n)<br>
+   * Space: O(1)
+   *
    * @param index Index of specified node to remove
    * @return Value of node at specified index
    */
@@ -90,6 +115,10 @@ public final class LinkedList<T> extends LinkedStructure<T> implements List<T> {
   /**
    * Overwrites a value at a specified index
    * with a new value.
+   *
+   * <p>
+   * Time: O(n)<br>
+   * Space: O(1)
    *
    * @param value The value to be put in the list
    * @param index Index into which teh value will be inserted

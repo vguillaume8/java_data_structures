@@ -28,6 +28,11 @@ public final class ArrayQueue<E> extends DynamicArray<E> implements Queue<E>, Ve
 
     /**
      * Constructs empty LinkedQueue.
+     *
+     * <p>
+     * Time: O(1)<br>
+     * Space: O(1)
+     *
      */
     public ArrayQueue() {
         super();
@@ -35,6 +40,10 @@ public final class ArrayQueue<E> extends DynamicArray<E> implements Queue<E>, Ve
 
     /**
      * Constructs LinkedQueue from array of keys.
+     *
+     * <p>
+     * Time: O(n)<br>
+     * Space: O(1)
      *
      * @param values Array of keys to instatiate LinkedQueue from
      */
@@ -44,6 +53,10 @@ public final class ArrayQueue<E> extends DynamicArray<E> implements Queue<E>, Ve
 
     /**
      * Construct queue from Java Collection of values.
+     *
+     * <p>
+     * Time: O(n)<br>
+     * Space: O(1)
      *
      * @param values Collection of values to construct LinkedQueue from.
      * @see java.util.Collection
@@ -56,6 +69,10 @@ public final class ArrayQueue<E> extends DynamicArray<E> implements Queue<E>, Ve
      * Returns but does not remove
      * the value at the front of the queue.
      *
+     * <p>
+     * Time: O(1)<br>
+     * Space: O(1)
+     *
      * @return Value at front of queue.
      */
     @Override
@@ -67,6 +84,12 @@ public final class ArrayQueue<E> extends DynamicArray<E> implements Queue<E>, Ve
      * Removes an element from the DataStructure. The order
      * in which the value comes out depends on the implementation
      * of implementing class
+     *
+     * TODO - Optimize to O(1)
+     *
+     * <p>
+     * Time: O(n)<br>
+     * Space: O(1)
      *
      * @return Removed value from DataStructure
      * @see DataStructure
@@ -94,6 +117,10 @@ public final class ArrayQueue<E> extends DynamicArray<E> implements Queue<E>, Ve
 
     /**
      * Inserts a specified key into the List.
+     *
+     * <p>
+     * Time: O(1)<br>
+     * Space: O(1)
      *
      * @param element The specified key to insert.
      * @return True if and only if the key was successfully inserted.

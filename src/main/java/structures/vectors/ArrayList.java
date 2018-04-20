@@ -15,6 +15,11 @@ public final class ArrayList<E> extends DynamicArray<E> implements List<E> {
     /**
      * Constructs empty list. The default capacity
      * of the ArrayList is 10.
+     *
+     * <p>
+     * Time: O(1)<br>
+     * Space: O(1)
+     *
      */
     public ArrayList() {
 
@@ -31,6 +36,10 @@ public final class ArrayList<E> extends DynamicArray<E> implements List<E> {
      * capacity (10) is passed, the ArrayList's capacity will
      * default to 10.
      *
+     * <p>
+     * Time: O(1)<br>
+     * Space: O(1)
+     *
      * @param length Specific initial capacity of ArrayList.
      */
     @SuppressWarnings("unchecked")
@@ -42,6 +51,10 @@ public final class ArrayList<E> extends DynamicArray<E> implements List<E> {
     /**
      * Constructs ArrayList from array of elements.
      *
+     * <p>
+     * Time: O(n)<br>
+     * Space: O(1)
+     *
      * @param values Array of elements to construct the list from
      */
     public ArrayList(E[] values) {
@@ -51,6 +64,10 @@ public final class ArrayList<E> extends DynamicArray<E> implements List<E> {
 
     /**
      * Construct array list from Java Collection of values.
+     *
+     * <p>
+     * Time: O(n)<br>
+     * Space: O(1)
      *
      * @param values Collection of values to construct list from.
      * @see java.util.Collection
@@ -62,6 +79,10 @@ public final class ArrayList<E> extends DynamicArray<E> implements List<E> {
 
     /**
      * Returns the value at a specified index.
+     *
+     * <p>
+     * Time: O(1)<br>
+     * Space: O(1)
      *
      * @param index Specified index.
      * @return Value at specified index.
@@ -75,6 +96,10 @@ public final class ArrayList<E> extends DynamicArray<E> implements List<E> {
     /**
      * Inserts a value at the end of the list.
      *
+     * <p>
+     * Time: O(1)<br>
+     * Space: O(1)
+     *
      * @param value The specified key to insert
      * @return True to indicate the insertion was successful.
      */
@@ -86,6 +111,10 @@ public final class ArrayList<E> extends DynamicArray<E> implements List<E> {
 
     /**
      * Inserts a value at a specified index.
+     *
+     * <p>
+     * Time: O(n)<br>
+     * Space: O(1)
      *
      * @param value Value to be inserted
      * @param index Specified index to insert value at
@@ -100,6 +129,10 @@ public final class ArrayList<E> extends DynamicArray<E> implements List<E> {
     /**
      * Retrieves and removes the value at a specified index.
      *
+     * <p>
+     * Time: O(n)<br>
+     * Space: O(1)
+     *
      * @param index Index to remove value from.
      * @return Value at specified index.
      */
@@ -112,6 +145,10 @@ public final class ArrayList<E> extends DynamicArray<E> implements List<E> {
     /**
      * Overwrites a value at a specified index
      * with a new value.
+     *
+     * <p>
+     * Time: O(1)<br>
+     * Space: O(1)
      *
      * @param value New value.
      * @param index Specified index.

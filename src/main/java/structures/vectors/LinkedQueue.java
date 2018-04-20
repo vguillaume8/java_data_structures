@@ -17,6 +17,10 @@ public final class LinkedQueue<E> extends LinkedStructure<E> implements Queue<E>
 
     /**
      * Constructs empty queue
+     *
+     * <p>
+     * Time: O(1)<br>
+     * Space: O(1)
      */
     public LinkedQueue() {
         ;
@@ -24,6 +28,10 @@ public final class LinkedQueue<E> extends LinkedStructure<E> implements Queue<E>
 
     /**
      * Construct queue from array of values.
+     *
+     * <p>
+     * Time: O(n)<br>
+     * Space: O(1)
      *
      * @param values Array of values
      */
@@ -34,6 +42,10 @@ public final class LinkedQueue<E> extends LinkedStructure<E> implements Queue<E>
     /**
      * Construct queue from collection of values.
      *
+     * <p>
+     * Time: O(n)<br>
+     * Space: O(1)
+     *
      * @param values Collection of values
      */
     public LinkedQueue(Collection<E> values) {
@@ -43,6 +55,10 @@ public final class LinkedQueue<E> extends LinkedStructure<E> implements Queue<E>
     /**
      * Returns but does not remove the
      * value at the front of the queue.
+     *
+     * <p>
+     * Time: O(1)<br>
+     * Space: O(1)
      *
      * @return Value at front of queue.
      */
@@ -55,6 +71,10 @@ public final class LinkedQueue<E> extends LinkedStructure<E> implements Queue<E>
      * Removes an element from the DataStructure. The order
      * in which the value comes out depends on the implementation
      * of implementing class
+     *
+     * <p>
+     * Time: O(1)<br>
+     * Space: O(1)
      *
      * @return Removed value from DataStructure
      * @see DataStructure

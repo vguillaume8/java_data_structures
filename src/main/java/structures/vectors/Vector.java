@@ -46,6 +46,10 @@ public interface Vector<T> extends DataStructure<T>, Iterable<T> {
      * Determines whether or not a specified value is in the vector
      * via linear search.
      *
+     * <p>
+     * Time: O(n)<br>
+     * Space: O(1)
+     *
      * @param value Specified value to search for.
      * @return True if and only if the specified value if in the vector.
      */
@@ -66,6 +70,10 @@ public interface Vector<T> extends DataStructure<T>, Iterable<T> {
      * Removes an element from the DataStructure. The order
      * in which the value comes out depends on the implementation
      * of implementing class
+     *
+     * <p>
+     * Time: O(1)<br>
+     * Space: O(1)
      *
      * @return Removed value from DataStructure
      * @see structures.commons.DataStructure

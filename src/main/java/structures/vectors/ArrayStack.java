@@ -17,6 +17,11 @@ public final class ArrayStack<E> extends DynamicArray<E> implements Stack<E> {
 
     /**
      * Constructs empty stack
+     *
+     * <p>
+     * Time: O(1)<br>
+     * Space: O(1)
+     *
      */
     public ArrayStack() {
 
@@ -27,6 +32,10 @@ public final class ArrayStack<E> extends DynamicArray<E> implements Stack<E> {
 
     /**
      * Constructs stack from array of values.
+     *
+     * <p>
+     * Time: O(n)<br>
+     * Space: O(1)
      *
      * @param values Array of values to instantiate LinkedStack from.
      */
@@ -39,6 +48,10 @@ public final class ArrayStack<E> extends DynamicArray<E> implements Stack<E> {
 
     /**
      * Construct stack from Java Collection of values.
+     *
+     * <p>
+     * Time: O(n)<br>
+     * Space: O(1)
      *
      * @param values Collection of values to construct LinkedStack from.
      * @see java.util.Collection
@@ -54,6 +67,10 @@ public final class ArrayStack<E> extends DynamicArray<E> implements Stack<E> {
      * Removes an element from the DataStructure. The order
      * in which the value comes out depends on the implementation
      * of implementing class
+     *
+     * <p>
+     * Time: O(1)<br>
+     * Space: O(1)
      *
      * @return Removed value from DataStructure
      * @see DataStructure
@@ -78,6 +95,10 @@ public final class ArrayStack<E> extends DynamicArray<E> implements Stack<E> {
     /**
      * Inserts a specified key into the List.
      *
+     * <p>
+     * Time: O(1)<br>
+     * Space: O(1)
+     *
      * @param value The specified value to insert.
      * @return True if and only if the key was successfully inserted.
      */
@@ -89,6 +110,10 @@ public final class ArrayStack<E> extends DynamicArray<E> implements Stack<E> {
 
     /**
      * Retrieves but does not remove the topmost value from the LinkedStack.
+     *
+     * <p>
+     * Time: O(1)<br>
+     * Space: O(1)
      *
      * @return The topmost value on the LinkedStack.
      */
