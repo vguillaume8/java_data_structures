@@ -1,7 +1,7 @@
 package structures.unit.trees
 
 import structures.trees.BinarySearchTree
-import util.Util;
+import util.Arrays;
 import spock.lang.Shared
 import structures.commons.Pair
 import spock.lang.Specification
@@ -412,7 +412,7 @@ class BinarySearchTreeSpec extends Specification {
         tree = new BinarySearchTree<>(pairs)
 
         then:
-        Util.equals(tree.keys(), keys)
+        Arrays.equals(tree.keys(), keys)
 
         where:
         keys                                     || _
@@ -425,7 +425,7 @@ class BinarySearchTreeSpec extends Specification {
         BinarySearchTree<Integer, String> tree = new BinarySearchTree<>(perfect)
 
         then:
-        Util.equals(tree.keys(order), output)
+        Arrays.equals(tree.keys(order), output)
 
         where:
         output                                                             || order
@@ -505,7 +505,7 @@ class BinarySearchTreeSpec extends Specification {
         Comparable[] array = BinarySearchTree.sort(keys)
 
         expect:
-        Util.isSorted(array)
+        Arrays.isSorted(array)
 
         where:
         keys                                                               || _
@@ -588,7 +588,7 @@ class BinarySearchTreeSpec extends Specification {
         tree = new BinarySearchTree<>(pairs)
 
         then:
-        Util.equals(tree.values(traversalType), values)
+        Arrays.equals(tree.values(traversalType), values)
 
         where:
         traversalType                || values

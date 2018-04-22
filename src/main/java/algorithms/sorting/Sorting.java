@@ -1,13 +1,13 @@
-package algorithms;
+package algorithms.sorting;
 
 import util.Util;
 
 /**
- * Simple sorting algoithms for arrays.
+ * Simple sorting algorithms for arrays.
  *
  * @author Jabari Dash
  */
-public class Sorting {
+public final class Sorting {
 
     /**
      * Constant for telling quick sort to use Lumoto partition scheme.
@@ -34,62 +34,6 @@ public class Sorting {
         t    = a[i];
         a[i] = a[j];
         a[j] = t;
-    }
-
-    /**
-     * Bubble sort for Comparable objects.
-     *
-     * @param a Array of comparable objects.
-     * @param <E> Generic type
-     * @return Pointer to sorted array
-     */
-    public static <E extends Comparable> E[] bubble(E[] a) {
-
-        boolean swapped;
-
-        for (int i = 0; i < a.length; i++) {
-
-            swapped = false;
-
-            for (int j = 0; j < a.length - i -1 ; j++) {
-
-                if (a[j].compareTo(a[j+1]) > 0) {
-
-                    swap(a, j, j+1);
-                    swapped = true;
-                }
-            }
-
-            if (!swapped) {
-                break;
-            }
-        }
-
-        return a;
-    }
-
-    /**
-     * Insertion sort for Comparable objects.
-     *
-     * @param a Array of comparable objects.
-     * @param <E> Generic type
-     * @return Pointer to sorted array
-     */
-    public static <E extends Comparable> E[] insertion(E[] a) {
-        int j;
-
-        for (int i = 0; i < a.length; i++) {
-
-            j = i;
-
-            while (j > 0 && a[j-1].compareTo(a[j]) > 0) {
-
-                swap(a, j-1, j);
-                j--;
-            }
-        }
-
-        return a;
     }
 
     /**
@@ -146,8 +90,8 @@ public class Sorting {
         }
 
         String message = "Partition scheme: " + partitionScheme + " unrecognized. " +
-                         "Please use " + LUMOTO_PARTITION_SCHEME +
-                         " or " + HOARE_PARITION_SCHEME;
+                         "Please use \"" + LUMOTO_PARTITION_SCHEME +
+                         "\" or \"" + HOARE_PARITION_SCHEME+ "\"";
 
         throw new RuntimeException(message);
     }

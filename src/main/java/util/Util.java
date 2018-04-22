@@ -2,7 +2,10 @@ package util;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Util {
+/**
+ * Reusable static methods.
+ */
+public final class Util {
 
 
     /**
