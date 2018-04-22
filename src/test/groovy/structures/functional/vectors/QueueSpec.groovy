@@ -76,6 +76,7 @@ abstract class QueueSpec extends Spec {
         length        = input.length()
 
         for (int i = 0; i < length; i++) {
+
             c = input.charAt(i).toString()
 
             if (c != " ") {
@@ -84,6 +85,7 @@ abstract class QueueSpec extends Spec {
             } else {
 
                 while (!stack.empty()) {
+
                     stringBuilder.append(stack.pop())
                 }
 

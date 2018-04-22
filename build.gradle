@@ -39,12 +39,19 @@ dependencies {
   )
 }
 
+// TODO - javadoc
+// Allow javadoc task ability to take arguments
+// so that there can be a user version of the
+// javadoc with member level = public, and a dev
+// version where member level = private that also
+// includes the dev package
+
 javadoc {
   outputs.upToDateWhen { false }
   include 'structures/'
   options.memberLevel = JavadocMemberLevel.PUBLIC
-  options.overview = "src/overview.html"
-  source = sourceSets.main.allJava
-  classpath = configurations.compile
-  destinationDir = new File("${projectDir}/docs/")
+  options.overview    = "src/overview.html"
+  source              = sourceSets.main.allJava
+  classpath           = configurations.compile
+  destinationDir      = new File("${projectDir}/docs/")
 }

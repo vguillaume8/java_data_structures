@@ -1,3 +1,4 @@
+import algorithms.Sorting;
 import structures.vectors.*;
 import dev.*;
 
@@ -31,17 +32,23 @@ public final class Application extends Main {
 
     ArrayQueue<Integer> queue = new ArrayQueue<>(ascending);
 
-    System.out.println("Queue: " + queue);
+//    System.out.println("Queue: " + queue);
+//
+//    int x = queue.dequeue();
+//
+//    println("val: " + x);
+//
+//    println(queue);
+//
+//    println("size: " + queue.size());
+//
+//    println("shifts: " + queue.shifts());
 
-    int x = queue.dequeue();
+    println(random);
 
-    println("val: " + x);
+    Sorting.merge(random);
 
-    println(queue);
-
-    println("size: " + queue.size());
-
-    println("shifts: " + queue.shifts());
+    println(random);
   }
 
 }

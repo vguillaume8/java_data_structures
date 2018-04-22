@@ -7,6 +7,7 @@ public class Main {
      * @param array
      */
     protected static void println(Object[] array) {
+
         println(Arrays.toString(array));
     }
 
@@ -15,6 +16,7 @@ public class Main {
      * @param array
      */
     protected static void print(Object[] array) {
+
         print(Arrays.toString(array));
     }
 
