@@ -51,7 +51,7 @@ public final class Arrays {
      * @param array Array to verify.
      * @return True if and only if the above condition is met.
      */
-    static <E extends Comparable> boolean isSorted(E[] array) {
+    public static <E extends Comparable> boolean isSorted(E[] array) {
 
         for (int i = 0; i < array.length-1; i++) {
 

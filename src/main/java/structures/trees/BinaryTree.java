@@ -263,7 +263,7 @@ public interface BinaryTree<K, V> extends DataStructure<K>, Iterable<Pair<K, V>>
      * if possible, as we must first find the node, then remove it.
      * Finding the node by value requires a full traversal of the tree,
      * whereas removing by key performs a binary search on the keys. The remove
-     * operation is still O(n) in the worst case though because a simple binary search tree
+     * operation is still O(n) in the worst case though because a bubbleSortSimplified binary search tree
      * may be linear.
      *
      * @param value Specified value to remove.

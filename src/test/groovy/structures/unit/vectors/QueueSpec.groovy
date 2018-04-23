@@ -6,7 +6,7 @@ import structures.commons.DataStructure
 import structures.vectors.Queue
 import structures.vectors.ArrayQueue
 import structures.vectors.LinkedQueue
-import util.Spec
+import test.Spec
 
 abstract class QueueSpec<T> extends Spec {
 

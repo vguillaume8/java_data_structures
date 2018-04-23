@@ -12,7 +12,7 @@ import structures.vectors.LinkedQueue
 import structures.vectors.LinkedStack
 import structures.trees.BinarySearchTree
 import structures.trees.AVLTree
-import util.Spec
+import test.Spec
 
 abstract class DataStructureSpec extends Spec {
 

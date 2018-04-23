@@ -10,7 +10,7 @@ package structures.commons;
 public interface Pair<K, V> {
 
     /**
-     * Override the equals() method, simple check that
+     * Override the equals() method, bubbleSortSimplified check that
      * the object is of type pair, and its data members match.
      *
      * @param object Object that this Pair will be compared to.

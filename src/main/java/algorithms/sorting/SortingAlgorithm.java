@@ -9,30 +9,14 @@ import java.util.function.Function;
  * to follow.
  *
  * @author Jabari Dash
- * @param <E>
+ * @param <E> Generic type
  */
 public abstract class SortingAlgorithm<E extends Comparable> {
 
     /**
-     * Constant for deciding to use the optimized version of a method.
-     */
-    protected static final String OPTIMIZED = "optimized";
-
-    /**
-     * Constant for deciding to use the simple (non-optimized) version of a method.
-     */
-    protected static final String SIMPLE = "simple";
-
-    /**
      *
      */
-    protected static String DEFAULT = "default";
-
-    /**
-     * Number of comparisons a given
-     * run of a sort takes.
-     */
-    protected int comparisons;
+    protected static final String DEFAULT = "default";
 
     /**
      * HashMaps of sorting algorithms; Default size 5;
@@ -54,7 +38,6 @@ public abstract class SortingAlgorithm<E extends Comparable> {
      * @return
      */
     public int sort(E[] a, String version) {
-        comparisons = 0;
 
         return functions.get(version).apply(a);
     }

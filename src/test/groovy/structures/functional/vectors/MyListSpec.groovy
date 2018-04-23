@@ -5,7 +5,7 @@ import spock.lang.Unroll;
 import structures.vectors.List
 import structures.vectors.ArrayList;
 import structures.vectors.LinkedList;
-import util.Spec;
+import test.Spec;
 
 abstract class MyListSpec extends Spec {
     @Shared List<Integer> list

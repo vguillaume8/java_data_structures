@@ -1,14 +1,12 @@
 package algorithms.sorting;
 
-import java.util.function.Function;
-
 /**
  * Implementations of Bubble sort.
  *
  * @author Jabari Dash
  * @param <E> Generic type
  */
-public final class BubbleSort<E extends Comparable> extends SortingAlgorithm<E> {
+public final class BubbleSort<E extends Comparable<E>> extends SortingAlgorithm<E> {
 
     /**
      * Constructs bubble sort object.
@@ -16,18 +14,20 @@ public final class BubbleSort<E extends Comparable> extends SortingAlgorithm<E> 
     public BubbleSort() {
         super();
 
-        functions.put(DEFAULT, BubbleSort::optimized);
-        functions.put(OPTIMIZED, BubbleSort::optimized);
-        functions.put(SIMPLE, BubbleSort::simple);
+        functions.put("default", BubbleSort::bubbleSortOptimized);
+        functions.put("optimized", BubbleSort::bubbleSortOptimized);
+        functions.put("simple", BubbleSort::bubbleSortSimplified);
     }
 
     /**
+     * Bubble Sort (optimized) for array of Comparable
+     * objects.
      *
-     * @param a
-     * @param <E>
-     * @return
+     * @param a Array of comparable objects.
+     * @param <E> Generic types.
+     * @return Number of comparisons to complete the sort.
      */
-    public static <E extends Comparable> int optimized(E[] a) {
+    public static <E extends Comparable> int bubbleSortOptimized(E[] a) {
         int c = 0;
 
         boolean swapped;
@@ -55,8 +55,15 @@ public final class BubbleSort<E extends Comparable> extends SortingAlgorithm<E> 
         return c;
     }
 
-
-    public static <E extends Comparable> int simple(E[] a) {
+    /**
+     * Bubble Sort (simplified) for array of Comparable
+     * objects.
+     *
+     * @param a Array of comparable objects.
+     * @param <E> Generic types.
+     * @return Number of comparisons to complete the sort.
+     */
+    public static <E extends Comparable> int bubbleSortSimplified(E[] a) {
         int c = 0;
 
         for (int i = 0; i < a.length; i++) {

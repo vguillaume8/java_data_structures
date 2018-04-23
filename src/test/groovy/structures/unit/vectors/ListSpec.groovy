@@ -6,7 +6,7 @@ import structures.commons.DataStructure
 import structures.vectors.List
 import structures.vectors.LinkedList
 import structures.vectors.ArrayList
-import util.Spec
+import test.Spec
 
 abstract class MyListSpec extends Spec {
 

@@ -6,7 +6,7 @@ package algorithms.sorting;
  * @author Jabari Dash
  * @param <E> Generic type
  */
-public final class InsertionSort<E extends Comparable> extends SortingAlgorithm<E> {
+public final class InsertionSort<E extends Comparable<E>> extends SortingAlgorithm<E> {
 
     /**
      * Constructs InsertionSort object.
@@ -14,7 +14,7 @@ public final class InsertionSort<E extends Comparable> extends SortingAlgorithm<
     public InsertionSort() {
         super();
 
-        functions.put("default", InsertionSort::insertionSort);
+        functions.put(DEFAULT, InsertionSort::insertionSort);
     }
 
     /**
@@ -24,7 +24,7 @@ public final class InsertionSort<E extends Comparable> extends SortingAlgorithm<
      * @param <E> Generic type
      * @return Pointer to sorted array
      */
-    public static <E extends Comparable> int insertionSort(E[] a) {
+    public static <E extends Comparable<E>> int insertionSort(E[] a) {
         int c = 0;
 
         int j;

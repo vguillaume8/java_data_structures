@@ -1,10 +1,9 @@
 package structures.unit.vectors
 
-import spock.lang.Ignore
 import spock.lang.Shared
 import spock.lang.Unroll
 import structures.commons.DataStructure
-import util.Spec
+import test.Spec
 import structures.vectors.*
 
 abstract class VectorSpec extends Spec {

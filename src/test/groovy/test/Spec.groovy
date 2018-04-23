@@ -1,4 +1,4 @@
-package util
+package test
 
 import spock.lang.Specification
 
@@ -56,6 +56,7 @@ abstract class Spec extends Specification {
      * @return
      */
     boolean isAssignableFrom(Class parent, Object child) {
+
         return parent.isAssignableFrom(child.getClass())
     }
 

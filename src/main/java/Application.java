@@ -1,7 +1,4 @@
-import algorithms.sorting.BubbleSort;
-import algorithms.sorting.InsertionSort;
-import algorithms.sorting.Sorting;
-import algorithms.sorting.SortingAlgorithm;
+import algorithms.sorting.*;
 import structures.vectors.*;
 import dev.*;
 import util.Arrays;
@@ -48,7 +45,7 @@ public final class Application extends Main {
 //
 //    println("shifts: " + queue.shifts());
 
-    SortingAlgorithm algorithm = new BubbleSort();
+    SortingAlgorithm algorithm = new MergeSort();
 
     println(random);
 

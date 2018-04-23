@@ -5,7 +5,7 @@ import spock.lang.Unroll
 import structures.vectors.Queue
 import structures.vectors.LinkedQueue
 import structures.vectors.ArrayQueue
-import util.Spec
+import test.Spec
 
 abstract class QueueSpec extends Spec {
 

@@ -3,7 +3,7 @@ package structures.unit.commons
 import structures.vectors.ArrayList
 import structures.vectors.ArrayQueue
 import structures.vectors.ArrayStack
-import util.Spec
+import test.Spec
 
 abstract class DynamicArraySpec extends Spec {
 

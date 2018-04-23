@@ -6,7 +6,7 @@ import structures.commons.DataStructure
 import structures.vectors.Stack
 import structures.vectors.ArrayStack
 import structures.vectors.LinkedStack
-import util.Spec
+import test.Spec
 
 abstract class StackSpec<T> extends Spec {
 

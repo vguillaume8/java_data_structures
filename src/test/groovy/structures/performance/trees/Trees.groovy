@@ -1,6 +1,6 @@
 package structures.performance.trees
 
-import util.Plot
+import test.Plot
 import spock.lang.Shared
 import spock.lang.Specification
 import structures.trees.AVLTree

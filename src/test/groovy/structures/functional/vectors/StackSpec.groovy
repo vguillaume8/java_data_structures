@@ -4,10 +4,8 @@ import spock.lang.Shared
 import spock.lang.Unroll
 import structures.vectors.Stack
 import structures.vectors.ArrayStack
-import structures.vectors.ArrayList
 import structures.vectors.LinkedStack
-import structures.vectors.List
-import util.Spec
+import test.Spec
 
 abstract class StackSpec extends Spec {
 
