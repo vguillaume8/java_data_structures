@@ -1,5 +1,7 @@
 package algorithms.sorting;
 
+import algorithms.commons.Output;
+
 /**
  * Implementation of insertion sort.
  *
@@ -24,8 +26,9 @@ public final class InsertionSort<E extends Comparable<E>> extends SortingAlgorit
      * @param <E> Generic type
      * @return Pointer to sorted array
      */
-    public static <E extends Comparable<E>> int insertionSort(E[] a) {
-        int c = 0;
+    public static <E extends Comparable<E>> Output insertionSort(E[] a, Output output) {
+
+        output.methodCalls++;
 
         int j;
 
@@ -33,15 +36,14 @@ public final class InsertionSort<E extends Comparable<E>> extends SortingAlgorit
 
             j = i;
 
-            while (j > 0 && a[j-1].compareTo(a[j]) > 0) {
-                c++;
+            while (j > 0 && greaterThan(a[j-1], a[j], output)) {
 
-                swap(a, j-1, j);
+                swap(a, j-1, j, output);
                 j--;
             }
         }
 
-        return c;
+        return output;
     }
 
 }

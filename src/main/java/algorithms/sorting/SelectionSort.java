@@ -1,5 +1,7 @@
 package algorithms.sorting;
 
+import algorithms.commons.Output;
+
 public final class SelectionSort<E extends Comparable <E>> extends SortingAlgorithm<E> {
 
     /**
@@ -18,11 +20,10 @@ public final class SelectionSort<E extends Comparable <E>> extends SortingAlgori
      * @param <E> Generic type
      * @return Pointer to sorted array
      */
-    public static <E extends Comparable> int selectionSort(E[] a) {
-        int c;
+    public static <E extends Comparable> Output selectionSort(E[] a, Output output) {
         int min;
 
-        c = 0;
+        output.methodCalls++;
 
         for (int i = 0; i < a.length; i++) {
 
@@ -30,9 +31,7 @@ public final class SelectionSort<E extends Comparable <E>> extends SortingAlgori
 
             for (int j = i; j < a.length; j++) {
 
-                c++;
-
-                if (a[j].compareTo(a[min]) < 0) {
+                if (lessThan(a[j], a[min], output)) {
 
                     min = j;
                 }
@@ -40,10 +39,10 @@ public final class SelectionSort<E extends Comparable <E>> extends SortingAlgori
 
             if (min != i) {
 
-                swap(a, min, i);
+                swap(a, min, i, output);
             }
         }
 
-        return c;
+        return output;
     }
 }

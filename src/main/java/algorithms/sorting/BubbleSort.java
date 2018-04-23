@@ -1,5 +1,7 @@
 package algorithms.sorting;
 
+import algorithms.commons.Output;
+
 /**
  * Implementations of Bubble sort.
  *
@@ -27,8 +29,9 @@ public final class BubbleSort<E extends Comparable<E>> extends SortingAlgorithm<
      * @param <E> Generic types.
      * @return Number of comparisons to complete the sort.
      */
-    public static <E extends Comparable> int bubbleSortOptimized(E[] a) {
-        int c = 0;
+    public static <E extends Comparable> Output bubbleSortOptimized(E[] a, Output output) {
+
+        output.methodCalls++;
 
         boolean swapped;
 
@@ -38,11 +41,9 @@ public final class BubbleSort<E extends Comparable<E>> extends SortingAlgorithm<
 
             for (int j = 0; j < a.length - i -1 ; j++) {
 
-                c++;
+                if (greaterThan(a[j], a[j+1], output)) {
 
-                if (a[j].compareTo(a[j+1]) > 0) {
-
-                    swap(a, j, j+1);
+                    swap(a, j, j+1, output);
                     swapped = true;
                 }
             }
@@ -52,7 +53,7 @@ public final class BubbleSort<E extends Comparable<E>> extends SortingAlgorithm<
             }
         }
 
-        return c;
+        return output;
     }
 
     /**
@@ -63,22 +64,23 @@ public final class BubbleSort<E extends Comparable<E>> extends SortingAlgorithm<
      * @param <E> Generic types.
      * @return Number of comparisons to complete the sort.
      */
-    public static <E extends Comparable> int bubbleSortSimplified(E[] a) {
-        int c = 0;
+    public static <E extends Comparable> Output bubbleSortSimplified(E[] a, Output output) {
+
+        output.methodCalls++;
 
         for (int i = 0; i < a.length; i++) {
 
             for (int j = 0; j < a.length - i -1 ; j++) {
 
-                c++;
+                output.comparisons++;
 
                 if (a[j].compareTo(a[j+1]) > 0) {
 
-                    swap(a, j, j+1);
+                    output = swap(a, j, j+1, output);
                 }
             }
         }
 
-        return c;
+        return output;
     }
 }

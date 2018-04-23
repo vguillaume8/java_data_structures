@@ -1,7 +1,9 @@
+import algorithms.commons.Output;
 import algorithms.sorting.*;
 import structures.vectors.*;
 import dev.*;
 import util.Arrays;
+import util.Util;
 
 /**
  * Main class that contains
@@ -20,10 +22,9 @@ public final class Application extends Main {
 
   public static void main(String[] args) throws Exception {
 
-
   // TODO - https://docs.oracle.com/javase/tutorial/essential/concurrency/syncmeth.html
 
-    int len = 5;
+    int len = 10000;
     int min = 0;
     int max = 5;
 
@@ -31,27 +32,19 @@ public final class Application extends Main {
     Integer[] descending = Arrays.array(len, min, max, true, false);
     Integer[] random     = Arrays.array(len, min, max, false, false);
 
-    ArrayQueue<Integer> queue = new ArrayQueue<>(ascending);
-
-//    System.out.println("Queue: " + queue);
-//
-//    int x = queue.dequeue();
-//
-//    println("val: " + x);
-//
-//    println(queue);
-//
-//    println("size: " + queue.size());
-//
-//    println("shifts: " + queue.shifts());
 
     SortingAlgorithm algorithm = new MergeSort();
+    Output output;
 
     println(random);
 
-    algorithm.sort(random);
+    output = algorithm.sort(random);
 
     println(random);
+
+    println(output);
+
+    println(Util.x);
   }
 
 }

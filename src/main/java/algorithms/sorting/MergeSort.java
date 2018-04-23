@@ -1,5 +1,8 @@
 package algorithms.sorting;
 
+import algorithms.commons.Output;
+import util.Util;
+
 /**
  * Implementation of mergeSort sort.
  *
@@ -24,9 +27,9 @@ public final class MergeSort<E extends Comparable <E>> extends SortingAlgorithm<
      * @param <E> Generic type
      * @return Pointer to sorted array
      */
-    public static <E extends Comparable> int mergeSort(E[] a) {
+    public static <E extends Comparable> Output mergeSort(E[] a, Output output) {
 
-        return mergeSort(a, 0, a.length-1, 0);
+        return mergeSort(a, 0, a.length-1, output);
     }
 
     /**
@@ -36,17 +39,20 @@ public final class MergeSort<E extends Comparable <E>> extends SortingAlgorithm<
      * @param <E> Generic type
      * @return Pointer to sorted array
      */
-    private static <E extends Comparable> int mergeSort(E[] a, int low, int high, int c) {
+    private static <E extends Comparable> Output mergeSort(E[] a, int low, int high, Output output) {
+
+        output.methodCalls++;
 
         if (low < high) {
+
             int mid = low + (high - low) / 2;
             int i;
             int j;
             int k;
             E[] b;
 
-            c += mergeSort(a, low, mid, 0);
-            c += mergeSort(a, mid+1, high, 0);
+            mergeSort(a, low, mid, output);
+            mergeSort(a, mid+1, high, output);
 
             i = low;
             j = mid+1;
@@ -56,9 +62,7 @@ public final class MergeSort<E extends Comparable <E>> extends SortingAlgorithm<
 
             while (i <= mid && j <= high) {
 
-                c++;
-
-                if (a[i].compareTo(a[j]) < 0) {
+                if (lessThan(a[i], a[j], output)) {
                     b[k] = a[i];
                     i++;
 
@@ -88,6 +92,6 @@ public final class MergeSort<E extends Comparable <E>> extends SortingAlgorithm<
             }
         }
 
-        return c;
+        return output;
     }
 }

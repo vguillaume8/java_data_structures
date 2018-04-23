@@ -8,6 +8,8 @@ import java.util.concurrent.ThreadLocalRandom;
 public final class Util {
 
 
+    public static int x = 0;
+
     /**
      * Returns random integer between min and max,
      * both inclusive.

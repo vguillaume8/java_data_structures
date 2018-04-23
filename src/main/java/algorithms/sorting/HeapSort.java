@@ -1,5 +1,7 @@
 package algorithms.sorting;
 
+import algorithms.commons.Output;
+
 public final class HeapSort<E extends Comparable<E> > extends SortingAlgorithm<E> {
 
     /**
@@ -17,9 +19,9 @@ public final class HeapSort<E extends Comparable<E> > extends SortingAlgorithm<E
      * @param <E>
      * @return
      */
-    public static <E extends Comparable> int heapSort(E[] a) {
+    public static <E extends Comparable> Output heapSort(E[] a, Output output) {
 
-        return 0;
+        return null;
     }
 
 }

@@ -1,5 +1,6 @@
 package algorithms.sorting;
 
+import algorithms.commons.Output;
 import util.Util;
 
 /**
@@ -26,9 +27,9 @@ public final class QuickSort<E extends Comparable> extends SortingAlgorithm<E> {
      * @param <E>
      * @return
      */
-    public static <E extends Comparable> int quickSortHoare(E[] a) {
+    public static <E extends Comparable> Output quickSortHoare(E[] a, Output output) {
 
-        return quickSortHoare(a, 0, a.length-1, 0);
+        return quickSortHoare(a, 0, a.length-1, output);
     }
 
     /**
@@ -36,9 +37,9 @@ public final class QuickSort<E extends Comparable> extends SortingAlgorithm<E> {
      * @param <E>
      * @return
      */
-    public static <E extends Comparable> int quickSortLumoto(E[] a) {
+    public static <E extends Comparable> Output quickSortLumoto(E[] a, Output output) {
 
-        return quickSortLumoto(a, 0, a.length-1, 0);
+        return quickSortLumoto(a, 0, a.length-1, output);
     }
 
     /**
@@ -49,7 +50,9 @@ public final class QuickSort<E extends Comparable> extends SortingAlgorithm<E> {
      * @param <E> Generic type
      * @return Pointer to sorted array
      */
-    private static <E extends Comparable> int quickSortHoare(E[] a, int low, int high, int c) {
+    private static <E extends Comparable> Output quickSortHoare(E[] a, int low, int high, Output output) {
+
+        output.methodCalls++;
 
         if (low < high) {
 
@@ -60,23 +63,19 @@ public final class QuickSort<E extends Comparable> extends SortingAlgorithm<E> {
 
             while (i <= j) {
 
-                while (a[i].compareTo(pivot) < 0) {
-
-                    c++;
+                while (lessThan(a[i], pivot, output)) {
 
                     i++;
                 }
 
-                while (a[j].compareTo(pivot) > 0) {
-
-                    c++;
+                while (greaterThan(a[j], pivot, output)) {
 
                     j--;
                 }
 
                 if (i <= j) {
 
-                    swap(a, i, j);
+                    swap(a, i, j, output);
 
                     i++;
                     j--;
@@ -86,17 +85,17 @@ public final class QuickSort<E extends Comparable> extends SortingAlgorithm<E> {
 
             if (low < j) {
 
-                c+= quickSortHoare(a, low, j, 0);
+                quickSortHoare(a, low, j, output);
             }
 
             if (i < high) {
 
-                c+= quickSortHoare(a, i, high, 0);
+                quickSortHoare(a, i, high, output);
             }
 
         }
 
-        return c;
+        return output;
     }
 
     /**
@@ -107,7 +106,9 @@ public final class QuickSort<E extends Comparable> extends SortingAlgorithm<E> {
      * @param <E> Generic type
      * @return Pointer to sorted array
      */
-    private static <E extends Comparable> int quickSortLumoto(E[] a, int low, int r, int c) {
+    private static <E extends Comparable> Output quickSortLumoto(E[] a, int low, int r, Output output) {
+
+        output.methodCalls++;
 
         if (low < r) {
 
@@ -116,29 +117,25 @@ public final class QuickSort<E extends Comparable> extends SortingAlgorithm<E> {
 
             for (int j = low; j <= r-1; j++) {
 
-                if (a[j].compareTo(a[pivot]) < 0) {
-
-                    c++;
+                if (lessThan(a[j], a[pivot], output)) {
 
                     i++;
-                    swap(a, i, j);
+                    swap(a, i, j, output);
                 }
 
             }
 
-            if (a[r].compareTo(a[i+1]) < 0) {
+            if (lessThan(a[r], a[i+1], output)) {
 
-                c++;
-
-                swap(a, i+1, r);
+                swap(a, i+1, r, output);
             }
 
             pivot = i + 1;
 
-            c += quickSortLumoto(a, low, pivot-1, 0);
-            c += quickSortLumoto(a, pivot+1, r, 0);
+            quickSortLumoto(a, low, pivot-1, output);
+            quickSortLumoto(a, pivot+1, r, output);
         }
 
-        return c;
+        return output;
     }
 }

@@ -1,6 +1,10 @@
 package algorithms.sorting;
 
+import algorithms.commons.Output;
+import util.Util;
+
 import java.util.HashMap;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 /**
@@ -21,7 +25,7 @@ public abstract class SortingAlgorithm<E extends Comparable> {
     /**
      * HashMaps of sorting algorithms; Default size 5;
      */
-    protected HashMap< String, Function< E[], Integer> > functions;
+    protected HashMap< String, BiFunction< E[], Output, Output>> functions;
 
     /**
      *
@@ -33,13 +37,47 @@ public abstract class SortingAlgorithm<E extends Comparable> {
 
     /**
      *
+     * @param first
+     * @param second
+     * @param output
+     * @param <E>
+     * @return
+     */
+    public static <E extends Comparable<E>> boolean lessThan(E first, E second, Output output) {
+
+        output.comparisons++;
+
+        return first.compareTo(second) < 0;
+    }
+
+    /**
+     *
+     * @param first
+     * @param second
+     * @param output
+     * @param <E>
+     * @return
+     */
+    public static <E extends Comparable<E>> boolean greaterThan(E first, E second, Output output) {
+
+        Util.x++;
+
+        output.comparisons++;
+
+        return first.compareTo(second) > 0;
+    }
+
+    /**
+     *
      * @param a
      * @param version
      * @return
      */
-    public int sort(E[] a, String version) {
+    public Output sort(E[] a, String version) {
 
-        return functions.get(version).apply(a);
+        Output output = new Output();
+
+        return functions.get(version).apply(a, output);
     }
 
     /**
@@ -49,7 +87,7 @@ public abstract class SortingAlgorithm<E extends Comparable> {
      * @param a Array to sort
      * @return Number of comparisons required to complete sort.
      */
-    public int sort(E[] a) {
+    public Output sort(E[] a) {
 
         return sort(a, DEFAULT);
     }
@@ -62,11 +100,15 @@ public abstract class SortingAlgorithm<E extends Comparable> {
      * @param i First index
      * @param j Second index
      */
-    protected static <E extends Comparable> void swap(E[] a, int i, int j) {
+    protected static <E extends Comparable> Output swap(E[] a, int i, int j, Output output) {
         E t;
+
+        output.dataSwaps++;
 
         t    = a[i];
         a[i] = a[j];
         a[j] = t;
+
+        return output;
     }
 }
